@@ -1,11 +1,11 @@
 /node_modules/
 /compiled/src/*
 /tmp/*
+/debug.log
 /npm-debug.log
 /dist/*
 
 # Created by https://www.gitignore.io/api/osx
-
 ### OSX ###
 .DS_Store
 .AppleDouble
@@ -13,7 +13,6 @@
 
 # Icon must end with two \r
 Icon
-
 
 # Thumbnails
 ._*
