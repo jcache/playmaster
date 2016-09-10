@@ -3,7 +3,7 @@
     "description": "evolition.io presents playmaster, your table top roleplaying character manager",
     "version": "0.0.1",
     "author": "Kevin Carr <kevin@evolition.io>",
-    "main": "production.index.js",
+    "main": "index.js",
     "dependencies": {
       "react": "^15.3.0",
       "electron-compile": "^3.2.5",
