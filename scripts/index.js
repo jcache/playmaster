@@ -59,7 +59,7 @@ Bsync.init(BrowserSyncOPTS, (err, bs) => {
 
   // WATCH
   Bsync.watch([
-      'source/entry.js',
+      'app/entry.js',
       'src/**/*.js',
       'src/**/*.jsx',
       'src/**/*.html'

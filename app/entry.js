@@ -2,8 +2,15 @@
 
 const path = require('path');
 const electron = require('electron');
-const { app, BrowserWindow, ipcMain, dialog, shell, Menu } = electron;
 
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+  dialog,
+  shell,
+  Menu
+} = electron;
 
 let createWindow = () => {
   let mainWindow = void 0;
@@ -41,13 +48,12 @@ let createWindow = () => {
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
   });
-
 };
+
 app.on('window-all-closed', () => {
-  // On OS X it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
     app.quit();
   }
 });
+
 app.on('ready', createWindow);
