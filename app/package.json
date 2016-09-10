@@ -1,0 +1,23 @@
+{
+    "name": "playmaster",
+    "description": "evolition.io presents playmaster, your table top roleplaying character manager",
+    "version": "0.0.1",
+    "author": "Kevin Carr <kevin@evolition.io>",
+    "main": "production.index.js",
+    "dependencies": {
+      "react": "^15.3.0",
+      "electron-compile": "^3.2.5",
+      "electron-compilers": "^3.1.1",
+      "react-dom": "^15.3.0",
+      "react-redux": "^4.4.5",
+      "react-router": "^2.6.1",
+      "react-router-redux": "^4.0.5",
+      "react-tooltip": "^3.1.5",
+      "redux": "^3.5.2",
+      "redux-form": "^5.3.2",
+      "redux-logger": "^2.6.1",
+      "redux-thunk": "^2.1.0",
+      "babel-preset-stage-0": "^6.5.0",
+      "uuid": "^2.0.2"
+    }
+}
