@@ -1,5 +1,83 @@
-body {
-  height: 100%;
-  background-color: purple;
+.flex-class() {
+  display:flex;
+  flex:1;
+}
+body, html {
+  display:flex;
+  background-color: #000000;
   margin:0;
+  height:100%;
+}
+#react-root {
+  display:flex;
+  flex:1;
+  height:100%;
+}
+.ApplicationFrame {
+  .flex-class();
+  justify-content: space-around;
+  height:100%;
+  flex-direction: column;
+  padding-left: 0;
+  padding-right: 0;
+
+}
+
+.ApplicationBody{
+  .flex-class();
+  flex-direction: column;
+  overflow:hidden;
+  overflow-y: scroll;
+  position:relative;
+
+  .ApplicationHeader {
+    background-color: #111;
+    flex-grow: 0;
+    transition: all .3s ease;
+    &.small {
+      position:fixed;
+      top:0;
+      min-height:60px;
+      background-color: rgba(0,0,0,.95);
+    }
+
+    &.large {
+      min-height:150px;
+      background-color: rgba(128, 0, 128, 1.00);
+    }
+
+  }
+
+  .AppView {
+    flex:1;
+    display: flex;
+  }
+}
+
+
+.ApplicationFooter {
+  .flex-class();
+  min-height: 40px;
+  max-height: 40px;
+  background-color: #111;
+}
+.header-scroll {
+    width:100%;
+    -ms-transition:     all 0.3s ease-out;
+    -moz-transition:    all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -o-transition:      all 0.3s ease-out;
+    transition:         all 0.3s ease-out;
+}
+.scroll3::-webkit-scrollbar {
+  background: rgba(128, 78, 198, .5);
+  width: 5px;
+}
+
+.scroll3::-webkit-scrollbar-thumb {
+  background: rgba(128, 78, 198, 1.00);
+}
+
+.scroll3::-webkit-scrollbar-track {
+  background: rgba(128, 78, 198, 0);
 }

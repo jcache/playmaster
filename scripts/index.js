@@ -32,13 +32,8 @@ const BrowserSyncOPTS = {
   middleware: [
     historyApiFallback()
   ],
-
-  socket: {
-    domain: getRootUrl
-  }
+  socket: { domain: getRootUrl }
 };
-
-
 
 Bsync.init(BrowserSyncOPTS, (err, bs) => {
 

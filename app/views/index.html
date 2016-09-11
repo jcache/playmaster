@@ -8,17 +8,18 @@
   </head>
   <body>
     <div id="react-root"></div>
-    <script> window.$ = window.jQuery = require('./js/jquery.min.js') </script>
-    <script src="./js/bootstrap.min.js"></script>
-    <!--<script src="./main.js"></script> -->
-    <script>
-      if (process.env.BROWSER_SYNC_MAIN_URL) {
-        const current = document.currentScript;
-        const script = document.createElement('script');
-        script.src = process.env.BROWSER_SYNC_MAIN_URL;
-        script.async = true;
-        current.parentNode.insertBefore(script, current);
-      }
-    </script>
+  <script> window.$ = window.jQuery = require('./js/jquery.min.js') </script>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/application.js"></script>
+  <script src="index.js"></script>
+  <script>
+    if (process.env.BROWSER_SYNC_MAIN_URL) {
+      const current = document.currentScript;
+      const script = document.createElement('script');
+      script.src = process.env.BROWSER_SYNC_MAIN_URL;
+      script.async = true;
+      current.parentNode.insertBefore(script, current);
+    }
+  </script>
   </body>
 </html>

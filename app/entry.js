@@ -42,7 +42,7 @@ let createWindow = () => {
     height: winH,
     minWidth: winW,
     minHeight: winH,
-    frame: true
+    frame: false
   });
 
   mainWindow.setPosition(
