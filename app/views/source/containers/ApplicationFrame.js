@@ -15,29 +15,31 @@ class ApplicationFrame extends Component {
     console.log(this.props) // props
   }
   handleScroll(){
-    var sc = $(this.refs.appbody).scrollTop()
-    if (sc > 60) {
+    var sc = $(this.refs.scrollview).scrollTop()
+    console.log(sc);
+    if (sc > 150) {
       this.setState({
         scrollingClass: "small",
-        scrollingVal: sc < 150 ? sc : 150
       });
-    } else {
+    } else if(sc < 150) {
       this.setState({
         scrollingClass: "large",
-        scrollingVal: sc
       });
     }
-
   }
   render() {
     let {scrollingClass, scrollingVal} = this.state
     return (
       <div className="ApplicationFrame container-fluid">
-        <div ref="appbody" className={`ApplicationBody scroll3`} onScroll={() => this.handleScroll()}>
+        <div className={`ApplicationBody`}>
           <div className={`ApplicationHeader header-scroll ${this.state.scrollingClass}`}>
             <p>header</p>
           </div>
-          <div className={`AppView ${this.state.scrollingVal}`} style={{marginTop: scrollingVal }} >
+          <div
+            ref="scrollview"
+            className={`AppView scroll3 ${this.state.scrollingVal}`}
+            style={{marginTop: scrollingVal }}
+            onScroll={() => this.handleScroll()}>
             {this.props.children}
           </div>
         </div>
