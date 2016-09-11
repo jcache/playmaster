@@ -7,7 +7,6 @@
     "dependencies": {
       "react": "^15.3.0",
       "electron-compile": "^3.2.5",
-      "electron-compilers": "^3.1.1",
       "react-dom": "^15.3.0",
       "react-redux": "^4.4.5",
       "react-router": "^2.6.1",
@@ -17,6 +16,9 @@
       "redux-form": "^5.3.2",
       "redux-logger": "^2.6.1",
       "redux-thunk": "^2.1.0",
+      "babel-loader": "^6.2.4",
+      "babel-preset-es2017": "^1.6.1",
+      "babel-preset-react": "^6.11.1",
       "babel-preset-stage-0": "^6.5.0",
       "uuid": "^2.0.2"
     }
