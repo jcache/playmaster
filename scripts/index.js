@@ -60,8 +60,9 @@ Bsync.init(BrowserSyncOPTS, (err, bs) => {
   // WATCH
   Bsync.watch([
       'app/entry.js',
-      'src/**/*.js',
-      'src/**/*.jsx',
-      'src/**/*.html'
+      'app/**/*.js',
+      'app/**/*.jsx',
+      'app/**/*.less',
+      'app/**/*.html'
     ]).on('change', Bsync.reload);
 });
