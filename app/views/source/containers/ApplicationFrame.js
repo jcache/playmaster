@@ -1,44 +1,50 @@
 import React, { Component } from 'react';
 import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
-
+import ApplicationHeader from './ApplicationHeader';
 class ApplicationFrame extends Component {
+
   constructor (props) {
     super(props);
     this.state = {
       scrollingClass: "large",
       scrollingVal: 0,
-
+      headerMaxScroll: 175,
+      headerMinScroll: 60,
     };
   }
-  componentWillMount(){
-    console.log(this.props) // props
-  }
+
   handleScroll(){
+    let { headerMaxScroll, headerMinScroll } = this.state;
     var sc = $(this.refs.scrollview).scrollTop()
-    console.log(sc);
-    if (sc > 150) {
-      this.setState({
-        scrollingClass: "small",
-      });
-    } else if(sc < 150) {
+    if (sc <= headerMinScroll) {
       this.setState({
         scrollingClass: "large",
+        scrollingVal: headerMinScroll,
+      });
+    } else if(sc >= headerMinScroll && sc < headerMaxScroll  ){
+      this.setState({
+        scrollingClass: "small",
+        scrollingVal: sc,
+      });
+    } else {
+      this.setState({
+        scrollingClass: "small",
+        scrollingVal: headerMaxScroll,
       });
     }
   }
+
   render() {
-    let {scrollingClass, scrollingVal} = this.state
+    let {scrollingClass, scrollingVal,headerMaxScroll, headerMinScroll} = this.state
     return (
       <div className="ApplicationFrame container-fluid">
         <div className={`ApplicationBody`}>
-          <div className={`ApplicationHeader header-scroll ${this.state.scrollingClass}`}>
-            <p>header</p>
-          </div>
-          <div
-            ref="scrollview"
+
+          <ApplicationHeader scrollingClass={scrollingClass} scrollingVal={scrollingVal} headerMaxScroll={headerMaxScroll} headerMinScroll={headerMinScroll}/>
+
+          <div ref="scrollview"
             className={`AppView scroll3 ${this.state.scrollingVal}`}
-            style={{marginTop: scrollingVal }}
             onScroll={() => this.handleScroll()}>
             {this.props.children}
           </div>

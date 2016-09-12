@@ -28,16 +28,82 @@ body, html {
   flex-direction: column;
   position:relative;
   .ApplicationHeader {
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
     background-color: #111;
-    flex-grow: 0;
     transition: all .3s ease;
-    &.small {
-      min-height:60px;
-      background-color: rgba(0,0,0,.95);
+
+    .AppControlUtils {
+      position: absolute;
+      display:flex;
+      padding:0px;
+      right:20px;
+      margin:0px;
+      top: 10px;
+      transition: all .2s ease;
+      flex:1;
+      li {
+        display:flex;
+        flex:1;
+        padding:0px;
+        margin:0px 13px;
+        a {
+          color: #fff;
+          font-size: 22px;
+          font-weight:600px;
+          line-height:18px;
+          margin: 0px;
+          padding:10px;
+        }
+        &.SearchIcon{
+          background-color: rgba(0,0,0,.1);
+          border-radius: 40px;
+        }
+        &.SettingsIcon{
+          background-color: rgba(0,0,0,.1);
+          border-radius: 40px;
+        }
+
+      }
     }
+
+    &.small {
+      background-color: rgba(40, 28, 75, 1.00);
+      .AppControlUtils {
+        top: 30px;
+      }
+    }
+
     &.large {
-      min-height:150px;
       background-color: rgba(128, 0, 128, 1.00);
+      .AppControlUtils {
+        top: 10px;
+
+      }
+    }
+
+    .AppControl {
+      position:absolute;
+      top: 10px;
+      left:20px;
+      display:flex;
+      flex:1;
+      flex-direction: row;
+      margin:0px;
+      padding:0px;
+      li {
+        display:flex;
+        flex:1;
+        padding:0px;
+        margin:0px;
+        a {
+          color: #fff;
+          font-size:13.5px;
+          line-height:18px;
+          margin: 0px;
+          padding:10px;
+        }
+      }
     }
   }
 
@@ -46,7 +112,13 @@ body, html {
     display: flex;
     overflow:hidden;
     overflow-y: scroll;
+    padding:10px 20px;
     p {
+      &.lead {
+        color:rgba(128, 0, 128, 1.00);
+        font-size:26px;
+        line-height:38px;
+      }
       font-size:18px;
       line-height:30px;
     }
