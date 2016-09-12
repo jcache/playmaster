@@ -20,7 +20,7 @@ class ApplicationFrame extends Component {
     if (sc <= headerMinScroll) {
       this.setState({
         scrollingClass: "large",
-        scrollingVal: headerMinScroll,
+        scrollingVal: headerMaxScroll,
       });
     } else if(sc >= headerMinScroll && sc < headerMaxScroll  ){
       this.setState({
@@ -30,7 +30,7 @@ class ApplicationFrame extends Component {
     } else {
       this.setState({
         scrollingClass: "small",
-        scrollingVal: headerMaxScroll,
+        scrollingVal: headerMinScroll,
       });
     }
   }
