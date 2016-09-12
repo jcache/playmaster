@@ -40,12 +40,8 @@ class ApplicationFrame extends Component {
     return (
       <div className="ApplicationFrame container-fluid">
         <div className={`ApplicationBody`}>
-
-          <ApplicationHeader scrollingClass={scrollingClass} scrollingVal={scrollingVal} headerMaxScroll={headerMaxScroll} headerMinScroll={headerMinScroll}/>
-
-          <div ref="scrollview"
-            className={`AppView scroll3 ${this.state.scrollingVal}`}
-            onScroll={() => this.handleScroll()}>
+          <ApplicationHeader scrollingClass={scrollingClass} scrollingVal={scrollingVal} headerMaxScroll={headerMaxScroll} headerMinScroll={headerMinScroll} />
+          <div ref="scrollview" className={`AppView scroll3 ${this.state.scrollingVal}`} onScroll={() => this.handleScroll()} >
             {this.props.children}
           </div>
         </div>

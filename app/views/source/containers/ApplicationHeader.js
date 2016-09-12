@@ -9,19 +9,16 @@ class ApplicationHeader extends Component {
     const Style = { minHeight: scrollingVal < headerMinScroll ? headerMaxScroll : scrollingVal }
     return (
       <div className={`ApplicationHeader header-scroll ${scrollingClass}`} style={Style}>
-        
         <ul className={`AppControl`}>
           <li><a href="#"><IoClose/></a></li>
           <li><a href="#"><IoPlus/></a></li>
           <li><a href="#"><IoMinus/></a></li>
         </ul>
-
         <ul className={`AppControlUtils`}>
           <li className="SearchIcon"><a href="#"><IoIosSearchStrong/></a></li>
           <li className="SettingsIcon"><a href="#"><IoIosGear/></a></li>
           <li><a href="#"><IoMinus/></a></li>
         </ul>
-
       </div>
     );
   }

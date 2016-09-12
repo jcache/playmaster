@@ -20,6 +20,7 @@
   "scripts": {
     "postinstall": "install-app-deps",
     "dist": "NODE_ENV=production build -m --x64",
+    "win-dist": "NODE_ENV=production build -w --x64",
     "start": "NODE_ENV=development babel-node scripts/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
