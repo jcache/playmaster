@@ -30,8 +30,10 @@ body, html {
   .ApplicationHeader {
     -webkit-app-region: drag;
     -webkit-user-select: none;
-    background-color: #111;
+    background: url('../images/galaxy.png') top center no-repeat;
+    background-size: cover;
     transition: all .3s ease;
+    border-bottom:2px solid rgba(0,0,0,.5);
 
     .AppControlUtils {
       position: absolute;
@@ -45,6 +47,7 @@ body, html {
       li {
         display:flex;
         flex:1;
+        align-items: center;
         padding:0px;
         margin:0px 13px;
         a {
@@ -53,31 +56,68 @@ body, html {
           font-weight:600px;
           line-height:18px;
           margin: 0px;
-          padding:10px;
+          // padding:10px;
         }
         &.SearchIcon{
-          background-color: rgba(0,0,0,.1);
-          border-radius: 40px;
+          a {
+            background-color: rgba(0,0,0,.1);
+            border-radius: 40px !important;
+          }
+        }
+        &.ProfileBn{
+          a {
+            font-size:14px;
+          }
         }
         &.SettingsIcon{
-          background-color: rgba(0,0,0,.1);
-          border-radius: 40px;
+          a {
+            background-color: rgba(0,0,0,.1);
+            border-radius: 40px !important;
+          }
         }
+        &.ProfileDropdown{
+          transition: all .3s ease;
+          background: url('../images/rogue.jpg') center center ;
+          background-size:  contain;
+          -webkit-box-shadow: 0px 0px 1px 1px rgba(255,255,255,.5);
+          a {
+            transition: all .3s ease;
 
+            display: block;
+            visibility: hidden;
+          }
+
+        }
       }
     }
 
     &.small {
-      background-color: rgba(40, 28, 75, 1.00);
+      background-color: rgba(40, 28, 75, 1.00) !important;
       .AppControlUtils {
         top: 10px;
+        .ProfileDropdown{
+          border-radius: 40px;
+          height:40px;
+          width:40px;
+          a {
+            width: 40px;
+          }
+        }
       }
     }
 
     &.large {
-      background-color: rgba(128, 0, 128, 1.00);
+      background-color: rgba(128, 0, 128, 1.00) !important;
       .AppControlUtils {
-        top: 50px;
+        top: 20px;
+        .ProfileDropdown{
+          border-radius: 70px;
+          height:70px;
+          width:70px !important;
+          a {
+            width: 70px;
+          }
+        }
 
       }
     }

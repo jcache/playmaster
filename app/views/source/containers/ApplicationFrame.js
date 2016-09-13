@@ -7,8 +7,8 @@ class ApplicationFrame extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      scrollingClass: "large",
-      scrollingVal: 0,
+      scrollingClass: "small",
+      scrollingVal: 60,
       headerMaxScroll: 175,
       headerMinScroll: 60,
     };
@@ -17,20 +17,20 @@ class ApplicationFrame extends Component {
   handleScroll(){
     let { headerMaxScroll, headerMinScroll } = this.state;
     var sc = $(this.refs.scrollview).scrollTop()
-    if (sc <= headerMinScroll) {
+    if (sc < headerMinScroll) {
+      this.setState({
+        scrollingClass: "small",
+        scrollingVal: sc <= headerMinScroll ? headerMinScroll :  sc,
+      });
+    } else if(sc > headerMinScroll && sc < headerMaxScroll ){
       this.setState({
         scrollingClass: "large",
-        scrollingVal: headerMaxScroll,
-      });
-    } else if(sc >= headerMinScroll && sc < headerMaxScroll  ){
-      this.setState({
-        scrollingClass: "small",
         scrollingVal: sc,
       });
-    } else {
+    } else if(sc > headerMaxScroll ){
       this.setState({
-        scrollingClass: "small",
-        scrollingVal: headerMinScroll,
+        scrollingClass: "large",
+        scrollingVal: sc >= headerMaxScroll ? headerMaxScroll :  sc,
       });
     }
   }
@@ -40,8 +40,8 @@ class ApplicationFrame extends Component {
     return (
       <div className="ApplicationFrame container-fluid">
         <div className={`ApplicationBody`}>
-          <ApplicationHeader scrollingClass={scrollingClass} scrollingVal={scrollingVal} headerMaxScroll={headerMaxScroll} headerMinScroll={headerMinScroll} />
-          <div ref="scrollview" className={`AppView scroll3 ${this.state.scrollingVal}`} onScroll={() => this.handleScroll()} >
+          <ApplicationHeader scrollingClass={scrollingClass} scrollingVal={scrollingVal} headerMaxScroll={headerMaxScroll} headerMinScroll={headerMinScroll}/>
+          <div ref="scrollview" className={`AppView scroll3 ${this.state.scrollingVal}`} onScroll={() => this.handleScroll()}>
             {this.props.children}
           </div>
         </div>
