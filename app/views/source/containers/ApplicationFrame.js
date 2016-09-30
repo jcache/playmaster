@@ -7,8 +7,8 @@ class ApplicationFrame extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      scrollingClass: "small",
-      scrollingVal: 60,
+      scrollingClass: "large",
+      scrollingVal: 175,
       headerMaxScroll: 175,
       headerMinScroll: 60,
     };
@@ -17,20 +17,21 @@ class ApplicationFrame extends Component {
   handleScroll(){
     let { headerMaxScroll, headerMinScroll } = this.state;
     var sc = $(this.refs.scrollview).scrollTop()
-    if (sc < headerMinScroll) {
+
+    if (sc < headerMinScroll) { // AT TOP SCROLL TRIGGER
       this.setState({
-        scrollingClass: "small",
-        scrollingVal: sc <= headerMinScroll ? headerMinScroll :  sc,
+        scrollingClass: "large",
+        scrollingVal: sc <= headerMinScroll ? headerMaxScroll :  sc,
       });
-    } else if(sc > headerMinScroll && sc < headerMaxScroll ){
+    } else if(sc > headerMinScroll && sc < headerMaxScroll ){ // IN BETWEEN
       this.setState({
         scrollingClass: "large",
         scrollingVal: sc,
       });
-    } else if(sc > headerMaxScroll ){
+    } else if(sc > headerMaxScroll ){ // LOWER SCROLL TRIGGER
       this.setState({
-        scrollingClass: "large",
-        scrollingVal: sc >= headerMaxScroll ? headerMaxScroll :  sc,
+        scrollingClass: "small",
+        scrollingVal: sc >= headerMaxScroll ? headerMinScroll :  sc,
       });
     }
   }
