@@ -7,8 +7,9 @@ class ApplicationFrame extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      scrollingClass: "small",
-      scrollingVal: 60,
+      scrollingClass: "large",
+      scrollingVal: 0,
+      scrollVal: 175,
       headerMaxScroll: 175,
       headerMinScroll: 60,
     };
@@ -16,32 +17,33 @@ class ApplicationFrame extends Component {
 
   handleScroll(){
     let { headerMaxScroll, headerMinScroll } = this.state;
-    var sc = $(this.refs.scrollview).scrollTop()
-    if (sc < headerMinScroll) {
+    var scroll_top = $(this.refs.scrollview).scrollTop();
+    var container_height = $(this.refs.scrollview).height();
+    if(scroll_top > 2){
       this.setState({
-        scrollingClass: "small",
-        scrollingVal: sc <= headerMinScroll ? headerMinScroll :  sc,
+        scrollingClass: "small" ,
+        scrollVal: headerMinScroll - 2 ,
       });
-    } else if(sc > headerMinScroll && sc < headerMaxScroll ){
+    } else if(scroll_top < headerMinScroll / 2){
       this.setState({
-        scrollingClass: "large",
-        scrollingVal: sc,
+        scrollingClass: "large" ,
+        scrollVal: headerMaxScroll + 1 ,
       });
-    } else if(sc > headerMaxScroll ){
+    }else if(container_height < headerMaxScroll){
       this.setState({
-        scrollingClass: "large",
-        scrollingVal: sc >= headerMaxScroll ? headerMaxScroll :  sc,
+        scrollingClass: "small" ,
+        scrollVal: headerMinScroll  + 10 ,
       });
     }
   }
 
   render() {
-    let {scrollingClass, scrollingVal,headerMaxScroll, headerMinScroll} = this.state
+    let {scrollingClass, scrollingVal,scrollVal,headerMaxScroll, headerMinScroll} = this.state
     return (
       <div className="ApplicationFrame container-fluid">
         <div className={`ApplicationBody`}>
-          <ApplicationHeader scrollingClass={scrollingClass} scrollingVal={scrollingVal} headerMaxScroll={headerMaxScroll} headerMinScroll={headerMinScroll}/>
-          <div ref="scrollview" className={`AppView scroll3`} onScroll={() => this.handleScroll()}>
+          <ApplicationHeader scrollingClass={scrollingClass} scrollingVal={scrollVal}/>
+          <div ref="scrollview" className={`AppView scroll3 ${this.state.scrollingVal}`} onScroll={() => this.handleScroll()}>
             {this.props.children}
           </div>
         </div>

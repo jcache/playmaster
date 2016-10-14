@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
+import { IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';
 
 class DefaultView extends Component {
   constructor (props) {
@@ -11,18 +12,56 @@ class DefaultView extends Component {
   render() {
     return (
       <div className="DefaultView">
+        <div className='DashboardModules'>
+          <div className='Chat Module '>
+            <hgroup className='ModuleHeader'>
+              <h3>Chat</h3>
+            </hgroup>
 
-        <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget risus commodo, tincidunt libero sit amet, porta augue. Curabitur sit amet tellus pellentesque, condimentum risus ut, sagittis urna.</p>
 
-        <p> Nulla interdum mattis hendrerit. Duis vulputate arcu sit amet sodales varius. Aenean dapibus, ante quis rutrum viverra, justo erat fermentum ipsum, eu pulvinar eros eros suscipit lorem. In non gravida diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque condimentum condimentum erat, a lobortis nunc dictum a. Donec volutpat semper nisl, nec fringilla ex consequat ut. Aliquam erat volutpat. Quisque vel massa commodo, rhoncus nisl id, tristique neque. Integer sit amet metus quis ex euismod accumsan in non metus. Curabitur pharetra malesuada turpis eu semper. Quisque arcu augue, sagittis ac ornare vel, bibendum vel justo.</p>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget risus commodo, tincidunt libero sit amet, porta augue. Curabitur sit amet tellus pellentesque, condimentum risus ut, sagittis urna. Nulla interdum mattis hendrerit. Duis vulputate arcu sit amet sodales varius. Aenean dapibus, ante quis rutrum viverra, justo erat fermentum ipsum, eu pulvinar eros eros suscipit lorem. In non gravida diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque condimentum condimentum erat, a lobortis nunc dictum a. Donec volutpat semper nisl, nec fringilla ex consequat ut. Aliquam erat volutpat. Quisque vel massa commodo, rhoncus nisl id, tristique neque. Integer sit amet metus quis ex euismod accumsan in non metus. Curabitur pharetra malesuada turpis eu semper. Quisque arcu augue, sagittis ac ornare vel, bibendum vel justo.</p>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget risus commodo, tincidunt libero sit amet, porta augue. Curabitur sit amet tellus pellentesque, condimentum risus ut, sagittis urna. Nulla interdum mattis hendrerit. Duis vulputate arcu sit amet sodales varius. Aenean dapibus, ante quis rutrum viverra, justo erat fermentum ipsum, eu pulvinar eros eros suscipit lorem. In non gravida diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque condimentum condimentum erat, a lobortis nunc dictum a. Donec volutpat semper nisl, nec fringilla ex consequat ut. Aliquam erat volutpat. Quisque vel massa commodo, rhoncus nisl id, tristique neque. Integer sit amet metus quis ex euismod accumsan in non metus. Curabitur pharetra malesuada turpis eu semper. Quisque arcu augue, sagittis ac ornare vel, bibendum vel justo.</p>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget risus commodo, tincidunt libero sit amet, porta augue. Curabitur sit amet tellus pellentesque, condimentum risus ut, sagittis urna. Nulla interdum mattis hendrerit. Duis vulputate arcu sit amet sodales varius. Aenean dapibus, ante quis rutrum viverra, justo erat fermentum ipsum, eu pulvinar eros eros suscipit lorem. In non gravida diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque condimentum condimentum erat, a lobortis nunc dictum a. Donec volutpat semper nisl, nec fringilla ex consequat ut. Aliquam erat volutpat. Quisque vel massa commodo, rhoncus nisl id, tristique neque. Integer sit amet metus quis ex euismod accumsan in non metus. Curabitur pharetra malesuada turpis eu semper. Quisque arcu augue, sagittis ac ornare vel, bibendum vel justo.</p>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget risus commodo, tincidunt libero sit amet, porta augue. Curabitur sit amet tellus pellentesque, condimentum risus ut, sagittis urna. Nulla interdum mattis hendrerit. Duis vulputate arcu sit amet sodales varius. Aenean dapibus, ante quis rutrum viverra, justo erat fermentum ipsum, eu pulvinar eros eros suscipit lorem. In non gravida diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque condimentum condimentum erat, a lobortis nunc dictum a. Donec volutpat semper nisl, nec fringilla ex consequat ut. Aliquam erat volutpat. Quisque vel massa commodo, rhoncus nisl id, tristique neque. Integer sit amet metus quis ex euismod accumsan in non metus. Curabitur pharetra malesuada turpis eu semper. Quisque arcu augue, sagittis ac ornare vel, bibendum vel justo.</p>
+          </div>
+          <div className='Campaign Module '>
+            <div className="campaignBgContainer"></div>
+            <div className="campaignBody">
+              <h3>Mazius Al'Ghul</h3>
+              <h2>The Mazius Campaign</h2>
+            </div>
+            <div className="campaign_avatar"></div>
+            <a onClick={()=>{alert('click left')}} className="seekButton left"><IoChevronLeft size={24} color={'rgba(255,255,255,1)'} /></a>
+            <a onClick={()=>{alert('click right')}} className="seekButton right"><IoChevronRight size={24} color={'rgba(255,255,255,1)'} /></a>
+          </div>
+          <div className='Character Module '>
+            <hgroup className='ModuleHeader'>
+              <h3>Characters</h3>
+            </hgroup>
+            <div className="characterListContainer scroll3">
+              <div className="character">
+                <div className="characterAvatar"></div>
+              </div>
+              <div className="character">
+                <div className="characterAvatar"></div>
+              </div>
+              <div className="character">
+                <div className="characterAvatar"></div>
+              </div>
+              <div className="character">
+                <div className="characterAvatar"></div>
+              </div>
+              <div className="character">
+                <div className="characterAvatar"></div>
+              </div>
+              <div className="character">
+                <div className="characterAvatar"></div>
+              </div>
+              <div className="character">
+                <div className="characterAvatar"></div>
+              </div>
+              <div className="character">
+                <div className="characterAvatar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
     );
