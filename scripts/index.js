@@ -35,6 +35,16 @@ const BrowserSyncOPTS = {
   socket: { domain: getRootUrl }
 };
 
+// NODE ENVIRONMENT
+const args = process.argv.length > 2 ? process.argv: false;
+if (args) {
+	let dev = args.indexOf('development');
+	let prod = args.indexOf('production');
+	if (dev || prod) {
+		process.env.NODE_ENV == dev ? dev: prod;
+	}
+}
+
 Bsync.init(BrowserSyncOPTS, (err, bs) => {
 
   // ERRORS

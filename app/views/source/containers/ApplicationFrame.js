@@ -7,9 +7,10 @@ class ApplicationFrame extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      scrollingClass: "large",
+      scrollingClass: "small",
       scrollingVal: 0,
-      scrollVal: 175,
+      scrollVal: 60,
+
       headerMaxScroll: 175,
       headerMinScroll: 60,
     };
@@ -19,22 +20,24 @@ class ApplicationFrame extends Component {
     let { headerMaxScroll, headerMinScroll } = this.state;
     var scroll_top = $(this.refs.scrollview).scrollTop();
     var container_height = $(this.refs.scrollview).height();
-    if(scroll_top > 2){
-      this.setState({
-        scrollingClass: "small" ,
-        scrollVal: headerMinScroll - 2 ,
-      });
-    } else if(scroll_top < headerMinScroll / 2){
-      this.setState({
-        scrollingClass: "large" ,
-        scrollVal: headerMaxScroll + 1 ,
-      });
-    }else if(container_height < headerMaxScroll){
-      this.setState({
-        scrollingClass: "small" ,
-        scrollVal: headerMinScroll  + 10 ,
-      });
-    }
+    // if(scroll_top > 2){
+    //   this.setState({
+    //     scrollingClass: "small" ,
+    //     scrollVal: headerMinScroll - 2 ,
+    //   });
+    // } else if(scroll_top < headerMinScroll / 2){
+    //
+    //   this.setState({
+    //     scrollingClass: "large" ,
+    //     scrollVal: headerMaxScroll + 1 ,
+    //   });
+    // }else if(container_height < headerMaxScroll){
+    //   this.setState({
+    //     scrollingClass: "small" ,
+    //     scrollVal: headerMinScroll  + 10 ,
+    //
+    //   });
+    // }
   }
 
   render() {

@@ -3,10 +3,84 @@ import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
 import { IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';
 
+const characters = [
+  {
+    id: 1,
+    characerName: "Mazius Al'Ghul",
+    characerProfession: "Necromancer",
+    characterAvatarUri: 'images/rogue.jpg'
+  },
+  {
+    id: 2,
+    characerName: "Mazius Al'Ghul",
+    characerProfession: "Sorcerer",
+    characterAvatarUri: 'images/rogue.jpg'
+  },
+  {
+    id: 3,
+    characerName: "Mazius Al'Ghul",
+    characerProfession: "Psionic",
+    characterAvatarUri: 'images/rogue.jpg'
+  },
+  {
+    id: 4,
+    characerName: "Mazius Al'Ghul",
+    characerProfession: "Bio-Wizard",
+    characterAvatarUri: 'images/rogue.jpg'
+  },
+  {
+    id: 5,
+    characerName: "Mazius Al'Ghul",
+    characerProfession: "Cleaner",
+    characterAvatarUri: 'images/rogue.jpg'
+  },
+  {
+    id: 6,
+    characerName: "Mazius Al'Ghul",
+    characerProfession: "Janitor",
+    characterAvatarUri: 'images/rogue.jpg'
+  },
+]
+const campaigns = [
+  {
+    id: 1,
+    campaignName: "The Mazius Campaign",
+    charactersInGame: [1,4,5,6], // ENUM FTW
+    campaignBannerUri: 'images/galaxy.png'
+  },
+  {
+    id: 3,
+    campaignName: "Another Campaign",
+    charactersInGame: [2,3], // ENUM FTW
+    campaignBannerUri: 'images/galaxy.png'
+  },
+]
+
 class DefaultView extends Component {
   constructor (props) {
     super(props);
     this.state = {};
+  }
+
+  _lookupCharacterInCampaign(id){
+    return campaigns.map((c) =>{
+      return c.charactersInGame.indexOf(id) != -1 ? c.campaignName : null
+    });
+  }
+
+  _renderCharacters() {
+    return characters.map((c) =>{
+      return(
+        <div key={c.id} className="character" >
+          <div className="characterAvatar" style={{backgroundImage: `url('./${c.characterAvatarUri}')`}}></div>
+          <div className="characterDetail">
+            <p className="characterName">{c.characerName}</p>
+            <p>{c.characerProfession}</p>
+            <p>{this._lookupCharacterInCampaign(c.id)}</p>
+          </div>
+        </div>
+      )
+    })
   }
 
   render() {
@@ -35,30 +109,7 @@ class DefaultView extends Component {
               <h3>Characters</h3>
             </hgroup>
             <div className="characterListContainer scroll3">
-              <div className="character">
-                <div className="characterAvatar"></div>
-              </div>
-              <div className="character">
-                <div className="characterAvatar"></div>
-              </div>
-              <div className="character">
-                <div className="characterAvatar"></div>
-              </div>
-              <div className="character">
-                <div className="characterAvatar"></div>
-              </div>
-              <div className="character">
-                <div className="characterAvatar"></div>
-              </div>
-              <div className="character">
-                <div className="characterAvatar"></div>
-              </div>
-              <div className="character">
-                <div className="characterAvatar"></div>
-              </div>
-              <div className="character">
-                <div className="characterAvatar"></div>
-              </div>
+              {this._renderCharacters()}
             </div>
           </div>
         </div>

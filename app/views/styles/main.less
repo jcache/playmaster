@@ -129,16 +129,30 @@ body, html {
             border-bottom: 1px solid rgba(0,0,0,.5);
             flex: 1;
             min-height: 80px;
-            position: relative;
+            display:flex;
+            .characterDetail{
+              flex:1;
+              margin-left:10px;
+              padding:10px 0;
+              color: rgba(255,255,255,1);
+              p {
+                &.characterName {
+                  font-weight: 400;
+                  color: rgba(148, 9, 64, 1.00);
+                }
+                margin:0;
+                line-height:18px;
+                font-size:13.5px;
+              }
+            }
             .characterAvatar {
-              position: absolute;
-              width: 60px;
+              align-self:center;
+              margin-left:10px;
+              flex:1;
+              max-width: 60px;
               height: 60px;
-              background: url('../images/rogue.jpg') center center ;
+              background-position: center center;
               border-radius: 60px;
-              top: 50%;
-              left: 10px;
-              margin-top:-30px;
             }
           }
         }
