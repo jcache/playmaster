@@ -66,8 +66,8 @@ Bsync.init(BrowserSyncOPTS, (err, bs) => {
   Bsync.watch([
       'app/entry.js',
       'app/**/*.js',
-      'app/**/*.jsx',
       'app/**/*.less',
+      'app/**/*.jsx',
       'app/**/*.html'
     ]).on('change', Bsync.reload);
 });
