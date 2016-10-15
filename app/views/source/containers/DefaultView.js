@@ -12,9 +12,9 @@ const characters = [
   },
   {
     id: 2,
-    characerName: "Mazius Al'Ghul",
+    characerName: "Peter Parker",
     characerProfession: "Sorcerer",
-    characterAvatarUri: 'images/rogue.jpg'
+    characterAvatarUri: 'images/spiderman.jpg'
   },
   {
     id: 3,
@@ -77,6 +77,9 @@ class DefaultView extends Component {
             <p className="characterName">{c.characerName}</p>
             <p>{c.characerProfession}</p>
             <p>{this._lookupCharacterInCampaign(c.id)}</p>
+          </div>
+          <div className="expGauge">
+            <span className="completion"></span>
           </div>
         </div>
       )

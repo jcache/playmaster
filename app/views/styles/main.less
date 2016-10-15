@@ -30,8 +30,8 @@ body, html {
       background-color: rgba(26, 11, 52, .2);
       display:flex;
       flex:1;
-      max-height:420px;
-      min-height:400px;
+      max-height:520px;
+      min-height:200px;
       .ModuleHeader {
         display:flex;
         flex:1;
@@ -117,6 +117,8 @@ body, html {
       &.Character {
         max-width:350px;
         min-width:300px;
+        max-height:800px;
+
         flex-direction: column;
         .characterListContainer {
           display: flex;
@@ -128,12 +130,30 @@ body, html {
             background-color: rgba(18, 12, 31, 1.00);
             border-bottom: 1px solid rgba(0,0,0,.5);
             flex: 1;
-            min-height: 80px;
+            min-height: 100px;
+            max-height: 110px;
+            margin-bottom:2px;
             display:flex;
+            position:relative;
+            .expGauge{
+              position: absolute;
+              height:2px;
+              bottom:-3px;
+              left:0;
+              width:100%;
+              display:flex;
+              background-color: rgba(23, 81, 117, .5);
+              .completion{
+                background-color:rgba(23, 81, 117, .6);
+                width:40%;
+
+              }
+
+            }
             .characterDetail{
               flex:1;
               margin-left:10px;
-              padding:10px 0;
+              align-self: center;
               color: rgba(255,255,255,1);
               p {
                 &.characterName {
@@ -148,7 +168,7 @@ body, html {
             .characterAvatar {
               align-self:center;
               margin-left:10px;
-              flex:1;
+              flex:1;    background-size: cover;
               max-width: 60px;
               height: 60px;
               background-position: center center;
