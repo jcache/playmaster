@@ -1,6 +1,374 @@
-body {
-  height: 100%;
-  background-color: purple;
+.flex-class() {
+  display:flex;
+  flex:1;
+}
+
+body, html {
+  display:flex;
+  background-color: #000000;
   margin:0;
-  border: 105px solid green;
+  height:100%;
+  width:100%;
+}
+
+#react-root {
+  display:flex;
+  flex:1;
+  height:100%;
+}
+
+.DefaultView{
+  display: flex;
+  flex:1;
+  .DashboardModules{
+    justify-content: center;
+    margin: 20px 0;
+    display: flex;
+    flex:1;
+    align-content: space-between;
+    .Module {
+      background-color: rgba(26, 11, 52, .2);
+      display:flex;
+      flex:1;
+      max-height:520px;
+      min-height:200px;
+      .ModuleHeader {
+        display:flex;
+        flex:1;
+        flex-grow: 1;
+        background-color: rgba(40, 28, 75, 1.00);
+        max-height:45px;
+        h3 {
+          flex:1;
+          font-weight:200;
+          letter-spacing: .2em;
+          line-height:45px;
+          text-transform: uppercase;
+          padding:0 10px;
+          font-size:13px;
+          color: rgba(255,255,255,1);
+          margin:0;
+        }
+      }
+      &.Campaign {
+        position: relative;
+        max-width:700px;
+        min-width:400px;
+        margin: 0 25px;
+        flex-direction: column;
+        .campaign_avatar {
+          position:absolute;
+          background-color: rgba(38, 30, 72, 1.00);
+          background: url('../images/rogue.jpg') center center ;
+          border: 3px solid white;
+          width: 132px;
+          border-radius: 66px;
+          height: 132px;
+          margin-left: -66px;
+          margin-top: -76px;
+          left:50%;
+          top:50%;
+        }
+        .campaignBgContainer{
+          flex:1;
+          height:100px;
+          background: url('../images/galaxy.png') top center no-repeat;
+          background-size: cover;
+        }
+        .campaignBody{
+          flex:1;
+          height:100px;
+          background-color: rgba(32, 21, 55, .5);
+          h3 {
+            font-size:20px;
+            font-weight: 200;
+            color: rgba(148, 9, 64, 1.00);
+            text-align: center;
+            align-items: center;
+            margin: 70px 0 0 0;
+          }
+          h2 {
+            font-size:24px;
+            font-weight: 400;
+            color: rgba(255,255,255,1);
+            text-align: center;
+            align-items: center;
+            margin: 5px 0 0 0;
+          }
+        }
+        .seekButton {
+          background-color: rgba(32, 21, 55, .25);
+          display:flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          width: 50px;
+          height: 80px;
+          top:50%;
+          margin-top: -40px;
+          &.left   {
+            left: 0;
+          }
+          &.right  {
+            right: 0;
+          }
+        }
+      }
+      &.Character {
+        max-width:350px;
+        min-width:300px;
+        max-height:800px;
+
+        flex-direction: column;
+        .characterListContainer {
+          display: flex;
+          flex-direction: column;
+          overflow:hidden;
+          overflow-y: scroll;
+          flex:1;
+          .character {
+            background-color: rgba(18, 12, 31, 1.00);
+            border-bottom: 1px solid rgba(0,0,0,.5);
+            flex: 1;
+            min-height: 100px;
+            max-height: 110px;
+            margin-bottom:2px;
+            display:flex;
+            position:relative;
+            .expGauge{
+              position: absolute;
+              height:2px;
+              bottom:-3px;
+              left:0;
+              width:100%;
+              display:flex;
+              background-color: rgba(23, 81, 117, .5);
+              .completion{
+                background-color:rgba(23, 81, 117, .6);
+                width:40%;
+
+              }
+
+            }
+            .characterDetail{
+              flex:1;
+              margin-left:10px;
+              align-self: center;
+              color: rgba(255,255,255,1);
+              p {
+                &.characterName {
+                  font-weight: 400;
+                  color: rgba(148, 9, 64, 1.00);
+                }
+                margin:0;
+                line-height:18px;
+                font-size:13.5px;
+              }
+            }
+            .characterAvatar {
+              align-self:center;
+              margin-left:10px;
+              flex:1;    background-size: cover;
+              max-width: 60px;
+              height: 60px;
+              background-position: center center;
+              border-radius: 60px;
+            }
+          }
+        }
+      }
+      &.Chat {
+        max-width:350px;
+        min-width:300px;
+      }
+    }
+  }
+}
+
+
+.ApplicationFrame {
+  .flex-class();
+  justify-content: space-around;
+  height:100%;
+  flex-direction: column;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.silly {
+  font-size:150px !important;
+  color:red;
+}
+.ApplicationBody{
+  .flex-class();
+  flex-direction: column;
+  position:relative;
+  .ApplicationHeader {
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+    background: url('../images/galaxy.png') top center no-repeat;
+    background-size: cover;
+    // transition: all .3s ease;
+    border-bottom:2px solid rgba(0,0,0,.5);
+
+    .AppControlUtils {
+      position: absolute;
+      display:flex;
+      padding:0px;
+      right:20px;
+      margin:0px;
+      top: 10px;
+      transition: all .2s ease;
+      flex:1;
+      li {
+        display:flex;
+        flex:1;
+        align-items: center;
+        padding:0px;
+        margin:0px 13px;
+        a {
+          color: #fff;
+          font-size: 22px;
+          font-weight:600px;
+          line-height:18px;
+          margin: 0px;
+          background-color: rgba(0,0,0,.1);
+          border-radius: 40px !important;
+        }
+        &.ProfileBn{
+          a {
+            font-size:14px;
+          }
+        }
+        &.SearchIcon    { }
+        &.SettingsIcon  { }
+        &.ProfileDropdown {
+          transition: all .3s ease;
+          background: url('../images/rogue.jpg') center center ;
+          background-size:  contain;
+          -webkit-box-shadow: 0px 0px 1px 1px rgba(255,255,255,.5);
+          a {
+            transition: all .3s ease;
+            display: block;
+            visibility: hidden;
+          }
+        }
+      }
+    }
+
+    &.small {
+      background-color: rgba(40, 28, 75, 1.00) !important;
+      .AppControlUtils {
+        top: 10px;
+        .ProfileDropdown{
+          border-radius: 40px;
+          height:40px;
+          width:40px;
+          a {
+            width: 40px;
+          }
+        }
+      }
+    }
+
+    &.large {
+      background-color: rgba(128, 0, 128, 1.00) !important;
+      .AppControlUtils {
+        top: 20px;
+        .ProfileDropdown{
+          border-radius: 70px;
+          height:70px;
+          width:70px !important;
+          a {
+            width: 70px;
+          }
+        }
+      }
+    }
+
+    .AppControl {
+      position:absolute;
+      top: 10px;
+      left:20px;
+      display:flex;
+      flex:1;
+      flex-direction: row;
+      margin:0px;
+      padding:0px;
+      li {
+        display:flex;
+        flex:1;
+        padding:0px;
+        margin:0px;
+        a {
+          color: #fff;
+          font-size:13.5px;
+          line-height:18px;
+          margin: 0px;
+          padding:10px;
+        }
+      }
+    }
+  }
+
+  .AppView {
+    flex:1;
+    display: flex;
+    overflow:hidden;
+    overflow-y: scroll;
+    padding:10px 20px;
+    p {
+      &.lead {
+        color:rgba(128, 0, 128, 1.00);
+        font-size:26px;
+        line-height:38px;
+      }
+      font-size:18px;
+      line-height:30px;
+    }
+  }
+}
+
+
+.ApplicationFooter {
+  .flex-class();
+  min-height: 40px;
+  max-height: 40px;
+  background-color: #111;
+}
+.header-scroll {
+  width:100%;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.scroll3::-webkit-scrollbar {
+  background: rgba(128, 78, 198, .5);
+  width: 5px;
+}
+
+.scroll3::-webkit-scrollbar-thumb {
+  background: rgba(128, 78, 198, 1.00);
+}
+
+.scroll3::-webkit-scrollbar-track {
+  background: rgba(128, 78, 198, 0);
+}
+
+
+.character-scroll {
+  width:100%;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.scroll3::-webkit-scrollbar {
+  background: rgba(128, 78, 198, .5);
+  width: 5px;
+}
+
+.scroll3::-webkit-scrollbar-thumb {
+  background: rgba(128, 78, 198, 1.00);
+}
+
+.scroll3::-webkit-scrollbar-track {
+  background: rgba(128, 78, 198, 0);
 }

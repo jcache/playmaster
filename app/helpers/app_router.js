@@ -5,7 +5,6 @@ const fs = require('fs');
 const character_data = require('../seed/characters');
 
 class Route {
-
   constructor() {
     this.app_data_path = electron.app.getPath('appData') + '/evolition_app_template/data/';
     this.app_plugin_path = electron.app.getPath('appData') + '/evolition_app_template/plugins/';
