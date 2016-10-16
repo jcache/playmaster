@@ -50,7 +50,9 @@ class ApplicationFrame extends Component {
             {this.props.children}
           </div>
         </div>
-        <div className="ApplicationFooter">footer</div>
+        <div className="ApplicationFooter">
+          
+        </div>
       </div>
     );
   }
