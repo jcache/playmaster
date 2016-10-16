@@ -216,6 +216,7 @@ body, html {
             border:none;
             max-height:70px;
             margin:10px;
+            width: 93%;
             border: 2px solid rgba(36, 26, 66, 1.00);
             border-radius:8px;
             resize: vertical;
@@ -352,7 +353,22 @@ body, html {
         }
       }
     }
-  }
+
+    nav {
+      background: transparent;
+      .nav-wrapper {
+        -webkit-app-region: drag;
+        background: rgba(0, 0, 0, 0);;
+        .nav-login{
+          margin-right: 20%;
+          margin-top: 0px;
+        }
+        a {
+          -webkit-app-region: no-drag;
+        }
+      }
+    }
+}
 
   .AppView {
     flex:1;

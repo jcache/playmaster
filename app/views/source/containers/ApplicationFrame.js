@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
 import ApplicationHeader from './ApplicationHeader';
+
 class ApplicationFrame extends Component {
 
   constructor (props) {
@@ -51,7 +52,7 @@ class ApplicationFrame extends Component {
           </div>
         </div>
         <div className="ApplicationFooter">
-          
+
         </div>
       </div>
     );

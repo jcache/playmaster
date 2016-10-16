@@ -9,7 +9,7 @@ const PlayerCtrl = () => {
       <li className="SearchIcon"><a href="#"><IoIosSearchStrong/></a></li>
       <li className="SettingsIcon"><a href="#"><IoIosGear/></a></li>
       <li className="ProfileDropdown">
-        <a href="#">test</a>
+        <a href="#"><button>Sign In</button></a>
       </li>
       <li className="ProfileBn"><a href="#"><IoChevronDown/></a></li>
     </ul>

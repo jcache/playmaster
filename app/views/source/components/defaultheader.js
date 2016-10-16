@@ -1,14 +1,14 @@
 import React from 'react';
 
 import AppCtrl from './appctrl';
-import Navigation from './navigation';
+import Navigation from '../containers/navigation';
 import PlayerCtrl from './playerctrl';
 
-const DefaultHeader = ({Style, scrollingClass}) => {
+const DefaultHeader = (props) => {
   return (
-    <div className={`ApplicationHeader header-scroll ${scrollingClass}`} style={Style}>
+    <div className={`ApplicationHeader header-scroll ${props.scrollingClass}`} style={props.Style} >
       <AppCtrl />
-      <Navigation />
+      <Navigation {...props} />
       <PlayerCtrl />
     </div>
   )
