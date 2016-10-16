@@ -10,34 +10,15 @@ class ApplicationFrame extends Component {
       scrollingClass: "small",
       scrollingVal: 0,
       scrollVal: 60,
-
       headerMaxScroll: 175,
       headerMinScroll: 60,
     };
   }
 
-  handleScroll(){
+  handleScroll() {
     let { headerMaxScroll, headerMinScroll } = this.state;
     var scroll_top = $(this.refs.scrollview).scrollTop();
     var container_height = $(this.refs.scrollview).height();
-    // if(scroll_top > 2){
-    //   this.setState({
-    //     scrollingClass: "small" ,
-    //     scrollVal: headerMinScroll - 2 ,
-    //   });
-    // } else if(scroll_top < headerMinScroll / 2){
-    //
-    //   this.setState({
-    //     scrollingClass: "large" ,
-    //     scrollVal: headerMaxScroll + 1 ,
-    //   });
-    // }else if(container_height < headerMaxScroll){
-    //   this.setState({
-    //     scrollingClass: "small" ,
-    //     scrollVal: headerMinScroll  + 10 ,
-    //
-    //   });
-    // }
   }
 
   render() {
@@ -46,13 +27,19 @@ class ApplicationFrame extends Component {
       <div className="ApplicationFrame container-fluid">
         <div className={`ApplicationBody`}>
           <ApplicationHeader scrollingClass={scrollingClass} scrollingVal={scrollVal}/>
+          <nav>
+            <ul>
+              <li><a onClick={()=> {alert('clicked')}}>Home</a></li>
+              <li><a onClick={()=> {alert('clicked')}}>Characters</a></li>
+              <li><a onClick={()=> {alert('clicked')}}>Campaigns</a></li>
+              <li><a onClick={()=> {alert('clicked')}}>Game Systems</a></li>
+            </ul>
+          </nav>
           <div ref="scrollview" className={`AppView scroll3 ${this.state.scrollingVal}`} onScroll={() => this.handleScroll()}>
             {this.props.children}
           </div>
         </div>
-        <div className="ApplicationFooter">
-          
-        </div>
+        <div className="ApplicationFooter"></div>
       </div>
     );
   }

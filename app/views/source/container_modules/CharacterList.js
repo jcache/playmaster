@@ -84,7 +84,7 @@ class CharacterList extends Component {
           <div className="characterDetail">
             <p className="characterName">{c.characerName}</p>
             <p>{c.characerProfession}</p>
-            <p>{this._lookupCharacterInCampaign(c.id)}</p>
+            <p  className="opt-sm">{this._lookupCharacterInCampaign(c.id)}</p>
           </div>
           <div className="expGauge">
             <span className="completion"></span>

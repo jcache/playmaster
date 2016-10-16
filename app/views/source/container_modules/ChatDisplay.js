@@ -22,7 +22,6 @@ class ChatDisplay extends Component {
             <div className={`chatBubble right`}>asdf</div>
             <div className={`chatBubble left`}>asdf</div>
           </div>
-          <textarea placeholder={`type something + press enter `}/>
         </div>
       </div>
     );
