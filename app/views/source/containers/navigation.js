@@ -23,7 +23,11 @@ class Navigation extends Component{
     return (
       <nav>
         <div className="nav-wrapper">
-          <ul className="right hide-on-med-and-down nav-login">
+          <ul className="right hide-on-med-and-down">
+            <li><a onClick={()=> {alert('clicked')}}>Home</a></li>
+            <li><a onClick={()=> {alert('clicked')}}>Characters</a></li>
+            <li><a onClick={()=> {alert('clicked')}}>Campaigns</a></li>
+            <li><a onClick={()=> {alert('clicked')}}>Game Systems</a></li>
             <li className="nav-item">
               {this.authButton()}
             </li>
