@@ -5,9 +5,10 @@ import { IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';
 import CharacterListModule from '../container_modules/CharacterList';
 import CampaignDisplayModule from '../container_modules/CampaignDisplay';
 import ChatDisplayModule from '../container_modules/ChatDisplay';
+import requireAuth from './RequireAuth';
 
 
-class DefaultView extends Component {
+class DefaultViewAuth extends Component {
   constructor (props) {
     super(props);
   }
@@ -21,6 +22,7 @@ class DefaultView extends Component {
             <CharacterListModule />
           </div>
           <CampaignDisplayModule />
+          <div>THIS IS THE AUTHORIZED VIEW!!!</div>
         </div>
       </div>
     );
@@ -31,4 +33,4 @@ class DefaultView extends Component {
 const mapStateToProps = (state) => {
   return {};
 }
-export default connect(mapStateToProps)(DefaultView)
+export default connect(mapStateToProps)(requireAuth(DefaultViewAuth))

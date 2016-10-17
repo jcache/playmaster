@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  IoIosSearchStrong, IoIosGear, IoChevronDown
+  IoIosSearchStrong, IoIosGear, IoChevronLeft
 } from 'react-icons/lib/io';
 
 const PlayerCtrl = () => {
@@ -11,7 +11,7 @@ const PlayerCtrl = () => {
       <li className="ProfileDropdown">
         <a href="#"><button>Sign In</button></a>
       </li>
-      <li className="ProfileBn"><a href="#"><IoChevronDown/></a></li>
+      <li className="ProfileBn dropdown-content"><a href="#"><IoChevronLeft /></a></li>
     </ul>
   )
 }

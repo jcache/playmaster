@@ -19,7 +19,7 @@ class Navigation extends Component{
   }
 
   render() {
-    console.log('Navigation -- props: ', this.props);
+    // console.log('Navigation -- props: ', this.props);
     return (
       <nav>
         <div className="nav-wrapper">
