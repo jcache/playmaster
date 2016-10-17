@@ -25,6 +25,7 @@ class ApplicationFrame extends Component {
     let {scrollingClass, scrollingVal,scrollVal,headerMaxScroll, headerMinScroll} = this.state
     return (
       <div className="ApplicationFrame container-fluid">
+        <div className="bgImageContainer"></div>
         <div className={`ApplicationBody`}>
           <ApplicationHeader scrollingClass={scrollingClass} scrollingVal={scrollVal}/>
           <nav>
