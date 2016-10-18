@@ -16,7 +16,25 @@ body, html {
   flex:1;
   height:100%;
 }
-
+.CharacterView,
+.CampaignView,
+.GameSystemView,
+.DefaultView{
+  display: flex;
+  flex:1;
+}
+.ViewPlaceholderContainer {
+  flex:1;
+  display:flex;
+  align-items: center;
+  align-content: center;
+  h3 {
+    flex:1;
+    font-size:30px;
+    text-align: center;
+    color: rgba(116, 69, 191, .4);
+  }
+}
 .DefaultView{
   display: flex;
   flex:1;
@@ -557,7 +575,7 @@ body, html {
 }
 
 .scroll3::-webkit-scrollbar-track {
-  background: transparent;
+  background: rgba(128, 78, 198, .5);
 }
 
 .vert-scroll {
@@ -575,7 +593,8 @@ body, html {
 }
 
 .scroll4::-webkit-scrollbar-track {
-  background: transparent;
+
+  background: rgba(128, 78, 198, .5);
 }
 
 

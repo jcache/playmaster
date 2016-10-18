@@ -11,6 +11,9 @@ const history = syncHistoryWithStore(appHistory, store);
 
 import ApplicationFrame from './containers/ApplicationFrame';
 import DefaultView from './containers/DefaultView';
+import CharacterView from './containers/CharacterView';
+import CampaignView from './containers/CampaignView';
+import GameSystemView from './containers/GameSystemView';
 
 class App extends Component {
   render() {
@@ -19,6 +22,9 @@ class App extends Component {
         <Router history={history}>
           <Route path="/" component={ApplicationFrame}>
             <IndexRoute component={DefaultView} />
+            <Route path="character" component={CharacterView} />
+            <Route path="campaign" component={CampaignView} />
+            <Route path="game_system" component={GameSystemView} />
           </Route>
         </Router>
       </Provider>

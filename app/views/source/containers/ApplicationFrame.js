@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
 import ApplicationHeader from './ApplicationHeader';
+import { Overlay } from './mainOverlay';
+import {hashHistory, Link} from 'react-router';
 class ApplicationFrame extends Component {
 
   constructor (props) {
@@ -12,9 +14,15 @@ class ApplicationFrame extends Component {
       scrollVal: 60,
       headerMaxScroll: 175,
       headerMinScroll: 60,
+      overlayVisible: false,
     };
   }
-
+  onDismissOverlay(){
+    let { overlayVisible } = this.state
+    this.setState({
+      overlayVisible: false
+    });
+  }
   handleScroll() {
     let { headerMaxScroll, headerMinScroll } = this.state;
     var scroll_top = $(this.refs.scrollview).scrollTop();
@@ -22,7 +30,7 @@ class ApplicationFrame extends Component {
   }
 
   render() {
-    let {scrollingClass, scrollingVal,scrollVal,headerMaxScroll, headerMinScroll} = this.state
+    let {scrollingClass, scrollingVal,scrollVal,headerMaxScroll, headerMinScroll, overlayVisible} = this.state
     return (
       <div className="ApplicationFrame container-fluid">
         <div className="bgImageContainer"></div>
@@ -30,14 +38,15 @@ class ApplicationFrame extends Component {
           <ApplicationHeader scrollingClass={scrollingClass} scrollingVal={scrollVal}/>
           <nav>
             <ul>
-              <li><a onClick={()=> {alert('clicked')}}>Home</a></li>
-              <li><a onClick={()=> {alert('clicked')}}>Characters</a></li>
-              <li><a onClick={()=> {alert('clicked')}}>Campaigns</a></li>
-              <li><a onClick={()=> {alert('clicked')}}>Game Systems</a></li>
+              <li><Link to={`/`}>Home</Link></li>
+              <li><Link to={`character`} >Characters</Link></li>
+              <li><Link to={`campaign`} >Campaigns</Link></li>
+              <li><Link to={`game_system`} >Game Systems</Link></li>
             </ul>
           </nav>
           <div ref="scrollview" className={`AppView scroll3 ${this.state.scrollingVal}`} onScroll={() => this.handleScroll()}>
             {this.props.children}
+            <Overlay visibility={overlayVisible} onDismissOverlay={() => this.onDismissOverlay()}></Overlay>
           </div>
         </div>
         <div className="ApplicationFooter"></div>
