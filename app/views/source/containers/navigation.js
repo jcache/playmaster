@@ -7,15 +7,17 @@ import * as actions from '../actions';
 class Navigation extends Component{
   authButton() {
     if (this.props.authenticated){
-      return <a
-              className=""
+      return <Link
+              to="/"
               onClick={() => this.props.authenticate(false)}
-              >Sign Out</a>;
+              className=""
+              >Sign Out</Link>;
     }
-    return <a
-            className=""
+    return <Link
+            to="/auth"
             onClick={() => this.props.authenticate(true)}
-            >Sign In</a>;
+            className=""
+            >Sign In</Link>;
   }
 
   render() {

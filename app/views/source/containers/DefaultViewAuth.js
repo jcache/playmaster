@@ -3,12 +3,12 @@ import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
 import { IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';
 import CharacterListModule from '../container_modules/CharacterList';
-import CampaignDisplayModule from '../container_modules/CampaignDisplay';
 import ChatDisplayModule from '../container_modules/ChatDisplay';
-import requireAuth from './RequireAuth';
+import CampaignDisplayModule from '../container_modules/CampaignDisplay';
+import GamesystemDisplayModule from '../container_modules/GamesystemDisplay';
 
 
-class DefaultViewAuth extends Component {
+class DefaultView extends Component {
   constructor (props) {
     super(props);
   }
@@ -18,11 +18,14 @@ class DefaultViewAuth extends Component {
       <div className="DefaultView">
         <div className='DashboardModules'>
           <div style={{ flex: 1, flexDirection: 'column', display: 'flex', maxWidth: '350px'}}>
-            <ChatDisplayModule />
             <CharacterListModule />
+            <ChatDisplayModule />
           </div>
-          <CampaignDisplayModule />
-          <div>THIS IS THE AUTHORIZED VIEW!!!</div>
+          <div style={{ flex: 1, flexDirection: 'column', display: 'flex'}}>
+            <CampaignDisplayModule />
+            <div style={{"color":"#FFF"}}>THIS IS THE AUTHENTICATED VIEW!</div>
+            <GamesystemDisplayModule />
+          </div>
         </div>
       </div>
     );
@@ -33,4 +36,4 @@ class DefaultViewAuth extends Component {
 const mapStateToProps = (state) => {
   return {};
 }
-export default connect(mapStateToProps)(requireAuth(DefaultViewAuth))
+export default connect(mapStateToProps)(DefaultView)
