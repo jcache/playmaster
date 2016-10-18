@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
-import { IoMinus, IoPlus, IoClose, IoIosSearchStrong, IoIosGear, IoChevronDown } from 'react-icons/lib/io';
+import { IoMinus, IoPlus, IoClose, IoIosGear, IoChevronDown, IoNavicon } from 'react-icons/lib/io';
 
 const characters = [
   {
@@ -97,6 +97,7 @@ class CharacterList extends Component {
     return (
       <div className='Character Module '>
         <hgroup className='ModuleHeader'>
+          <IoNavicon size={28} className={`HamburgNav`} color={`rgba(255,255,255,1)`}/>
           <h3>Characters</h3>
         </hgroup>
         <div className="characterListContainer scroll3">

@@ -61,6 +61,7 @@ body, html {
           margin: 5px 0 0 0;
         }
       }
+
       .seekButton {
         background-color: rgba(32, 21, 55, .25);
         display:flex;
@@ -84,20 +85,25 @@ body, html {
       }
       .ModuleHeader {
         display:flex;
-
         flex:1;
         flex-grow: 1;
         background-color: rgba(6, 6, 10, 1.00);
         min-height:45px;
         max-height:45px;
+        justify-content: center;
+        .HamburgNav {
+          flex:1;
+          max-width:40px;
+          align-self: center;
+        }
         h3 {
           flex:1;
-          font-weight:200;
-          letter-spacing: .2em;
+          font-weight:400;
+          letter-spacing: .1825em;
           line-height:45px;
           text-transform: uppercase;
           padding:0 10px;
-          font-size:13px;
+          font-size: 1vmin;
           color: rgba(255,255,255,1);
           margin:0;
         }
@@ -109,6 +115,9 @@ body, html {
         flex-direction: column;
         background-color: rgba(13, 11, 23, 1.00);
         display: flex;
+        min-height:300px;
+        max-height:400px;
+        border: 3px solid rgba(0,0,0,.5);
 
         .moduleBody {
           flex:1;
@@ -116,6 +125,8 @@ body, html {
           overflow: hidden;
           justify-content: center;
           flex-grow: 1;
+          overflow: hidden;
+          overflow-x: scroll;
         }
         ul.communityModule{
           margin:0;
@@ -133,7 +144,7 @@ body, html {
           li {
             flex:1;
             display:flex;
-            margin:20px;
+            margin:20px 5px;
             justify-content:center;
             // flex-shrink:0;
             // margin: 20px 0;
@@ -143,20 +154,25 @@ body, html {
               flex:1;
               align-items: center;
               justify-content: center;
-              background: url('../images/galaxy.png') center center no-repeat;
-              background-size: cover;
+              background: url('../images/monsterbook.jpg') center center no-repeat;
+              background-size: contain;
+              transition: all .5s ease;
+              &:hover {
+                -webkit-filter: opacity(50%);
+              }
               // background-color: white;
             }
           }
         }
       }
       &.Campaign {
-
+        min-height:300px;
         position: relative;
-        // max-width:700px;
         min-width:400px;
         margin: 0 0 0px 25px;
         flex-direction: column;
+        border: 3px solid rgba(0,0,0,.5);
+
         &:first-child {
           margin-bottom: 35px;
         }
@@ -182,9 +198,12 @@ body, html {
         }
       }
       &.Character {
+        min-height:300px;
         max-width:350px;
         min-width:300px;
         flex-direction: column;
+        border: 3px solid rgba(0,0,0,.5);
+
         .characterListContainer {
           display: flex;
           flex-direction: column;
@@ -247,9 +266,12 @@ body, html {
         }
       }
       &.Chat {
+        min-height:300px;
         max-width:350px;
         min-width:300px;
         flex-direction: column;
+        border: 3px solid rgba(0,0,0,.5);
+
         .chatContainer {
           display: flex;
           flex-direction: column;
@@ -517,7 +539,7 @@ body, html {
   min-height: 40px;
   max-height: 40px;
   background-color: transparent;
-  border-top:1px solid rgba(255,255,255,.2);
+  // border-top:1px solid rgba(255,255,255,.2);
 
 }
 .header-scroll {
@@ -535,6 +557,24 @@ body, html {
 }
 
 .scroll3::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.vert-scroll {
+  width:100%;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.scroll4::-webkit-scrollbar {
+  background: transparent;
+  height: 5px;
+}
+
+.scroll4::-webkit-scrollbar-thumb {
+  background: rgba(128, 78, 198, 1.00);
+}
+
+.scroll4::-webkit-scrollbar-track {
   background: transparent;
 }
 

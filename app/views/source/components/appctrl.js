@@ -3,12 +3,12 @@ import {
   IoClose, IoPlus, IoMinus
 } from 'react-icons/lib/io';
 
-const AppCtrl = () => {
+const AppCtrl = ({onCloseApp, onMaximizeToggle, onMinimizeToggle}) => {
   return (
     <ul className={`AppControl`}>
-      <li><a href="#"><IoClose/></a></li>
-      <li><a href="#"><IoPlus/></a></li>
-      <li><a href="#"><IoMinus/></a></li>
+      <li><a onClick={() => onCloseApp()} href="#"><IoClose/></a></li>
+      <li><a onClick={() => onMaximizeToggle()} href="#"><IoPlus/></a></li>
+      <li><a onClick={() => onMinimizeToggle()} href="#"><IoMinus/></a></li>
     </ul>
   )
 }

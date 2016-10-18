@@ -66,6 +66,9 @@ let createWindow = () => {
   ipcMain.on('app_minimize', (event) => {
     mainWindow.minimize();
   });
+  ipcMain.on('app_close', (event) => {
+    mainWindow.close();
+  });
 
   ipcMain.on('app_maximize', (event, val) => {
     val == true ? mainWindow.maximize() : mainWindow.unmaximize();

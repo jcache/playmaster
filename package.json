@@ -6,13 +6,10 @@
   "directories": {
     "doc": "docs"
   },
-
   "engineStrict": true,
-
   "engines": {
     "node": ">= 6.0.0"
   },
-
   "build": {
     "appId": "io.ev.playmaster",
     "app-category-type": "entertainment.utilities.games",
@@ -34,7 +31,11 @@
   "bugs": {
     "url": "https://github.com/evolition/playmaster/issues"
   },
-  "keywords": ["rpg","dnd","game"],
+  "keywords": [
+    "rpg",
+    "dnd",
+    "game"
+  ],
   "author": "Evolition",
   "license": "Apache-2.0",
   "copyright": "Copyright (c) 2016, Evolition, LLC. All rights reserved.",
