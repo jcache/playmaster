@@ -1,5 +1,4 @@
 'use strict';
-
 const path = require('path');
 const electron = require('electron');
 const { app, BrowserWindow, ipcMain, dialog, shell, Menu} = electron;
@@ -30,7 +29,7 @@ let createWindow = () => {
    require('./helpers/app_reporter');
 
   var winW = 1096;
-  var winH = 600;
+  var winH = 800;
   var atomScreen = electron.screen;
   var size = atomScreen.getPrimaryDisplay().workAreaSize;
   var vertL = Math.floor(size.width / 2);
@@ -65,6 +64,9 @@ let createWindow = () => {
   });
   ipcMain.on('app_minimize', (event) => {
     mainWindow.minimize();
+  });
+  ipcMain.on('app_close', (event) => {
+    mainWindow.close();
   });
 
   ipcMain.on('app_maximize', (event, val) => {

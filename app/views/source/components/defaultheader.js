@@ -7,7 +7,7 @@ import PlayerCtrl from './playerctrl';
 const DefaultHeader = (props) => {
   return (
     <div className={`ApplicationHeader header-scroll ${props.scrollingClass}`} style={props.Style} >
-      <AppCtrl />
+      <AppCtrl {...props} />
       <Navigation {...props} />
       <PlayerCtrl />
     </div>

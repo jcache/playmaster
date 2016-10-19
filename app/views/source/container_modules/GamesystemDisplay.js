@@ -13,14 +13,14 @@ class GamesystemDisplayModule extends Component {
         <hgroup className='ModuleHeader'>
           <h3>Game Systems</h3>
         </hgroup>
-        <div className={`moduleBody`}>
+        <div className={`moduleBody scroll4`}>
           <ul className={`communityModule`}>
-            <li> <a>asdfasdf</a></li>
-            <li> <a>asdfasdf</a></li>
-            <li> <a>asdfasdf</a></li>
-            <li> <a>asdfasdf</a></li>
-            <li> <a>asdfasdf</a></li>
-            <li> <a>asdfasdf</a></li>
+            <li> <a></a></li>
+            <li> <a></a></li>
+            <li> <a></a></li>
+            <li> <a></a></li>
+            <li> <a></a></li>
+            <li> <a></a></li>
           </ul>
         </div>
         <a onClick={()=>{alert('click left')}} className="seekButton left"><IoChevronLeft size={24} color={'rgba(255,255,255,1)'} /></a>
