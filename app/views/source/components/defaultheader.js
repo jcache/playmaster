@@ -1,7 +1,7 @@
 import React from 'react';
 
 import AppCtrl from './appctrl';
-import Navigation from '../containers/navigation';
+import Navigation from '../containers/Navigation';
 import PlayerCtrl from './playerctrl';
 
 const DefaultHeader = (props) => {

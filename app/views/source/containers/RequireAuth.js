@@ -1,16 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
 export default function(ComposedComponent) {
   class Authentication extends Component {
+
+    componentWillMount() {
+      if (!this.props.authenticated) {
+        console.log('access denied!!!');
+        this.context.router.push('/');
+      }
+    }
+
+    componentWillUpdate(nextProps) {
+      if (!nextProps.authenticated) {
+        this.context.router.push('/');
+      }
+    }
+
     render() {
-      console.log('Auth HOC -- authenticated: ', this.props.authenticated);
+      // console.log(this.context);
       return <ComposedComponent {...this.props} />
     }
   }
 
-  const mapStateToProps = (state) => {
+  Authentication.contextTypes = {
+    router: React.PropTypes.object
+  }
+
+  function mapStateToProps(state) {
     return { authenticated: state.authenticated }
   }
 
