@@ -46,7 +46,6 @@ class ApplicationFrame extends Component {
     return (
       <div className="ApplicationFrame container-fluid">
         <div className={`ApplicationBody`}>
-          <Navigation />
           <ApplicationHeader scrollingClass={scrollingClass} scrollingVal={scrollVal}/>
           <div ref="scrollview" className={`AppView scroll3 ${this.state.scrollingVal}`} onScroll={() => this.handleScroll()}>
             {this.props.children}

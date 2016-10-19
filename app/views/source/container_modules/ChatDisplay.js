@@ -8,11 +8,13 @@ const ChatDisplay = (props) => {
   return (
     <div className='Chat Module '>
       <hgroup className='ModuleHeader'>
-      <div className='Chat Module '>
-        <hgroup className='ModuleHeader'>
-          <IoNavicon size={28} className={`HamburgNav`} color={`rgba(255,255,255,1)`}/>
+        <div className='Chat Module '>
+          <hgroup className='ModuleHeader'>
+            <IoNavicon size={28} className={`HamburgNav`} color={`rgba(255,255,255,1)`}/>
 
-        <h3>Chat</h3>
+          <h3>Chat</h3>
+        </hgroup>
+        </div>
       </hgroup>
       <div className="chatContainer">
         <div className={`ChatBody scroll3`}>
