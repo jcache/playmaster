@@ -105,6 +105,7 @@ body, html {
         display:flex;
         flex:1;
         flex-grow: 1;
+
         background-color: rgba(6, 6, 10, 1.00);
         min-height:45px;
         max-height:45px;
@@ -140,11 +141,10 @@ body, html {
         .moduleBody {
           flex:1;
           min-width:400px;
-          overflow: hidden;
           justify-content: center;
           flex-grow: 1;
           overflow: hidden;
-          overflow-x: scroll;
+          overflow-y: auto;
         }
         ul.communityModule{
           margin:0;
@@ -230,7 +230,8 @@ body, html {
           flex:1;
           .character {
             transition:all .3s ease;
-            background-color: rgba(18, 12, 31, 1.00);
+            background: -webkit-linear-gradient(top, rgba(5,5,5,.5) 0%, rgba(0,0,0,.5) 100%);
+
             border-bottom: 1px solid rgba(0,0,0,.5);
             flex: 1;
             min-height: 100px;
@@ -284,7 +285,7 @@ body, html {
         }
       }
       &.Chat {
-        min-height:300px;
+        // min-height:300px;
         max-width:350px;
         min-width:300px;
         flex-direction: column;
@@ -296,21 +297,45 @@ body, html {
           flex:1;
           .ChatBody {
             flex:1;
-            overflow:hidden;
-            overflow-y: scroll;
+            overflow: hidden;
+            overflow-y: auto;
             display: flex;
             flex-direction: column;
             flex:1;
             .chatBubble{
               transition: all .5s ease;
               flex:1;
+              flex-direction: row;
+              align-items: center;
+              display:flex;
               flex-grow: 0;
-              min-height:80px;
-              &.left {
-                background-color: rgba(13, 11, 23, 1.00);
+              min-height:60px;
+              background: -webkit-linear-gradient(top, rgba(5,5,5,.5) 0%, rgba(0,0,0,.5) 100%);
+              // &.left {
+              //   background-color: rgba(13, 11, 23, 1.00);
+              // }
+              // &.right {
+              //   background-color: purple;
+              // }
+              .playerContentHolder {
+                flex:1;
+                padding:0 20px;
               }
-              &.right {
-                background-color: purple;
+              .indicator {
+                flex:1;
+                max-width: 40px;
+                color:rgba(116, 69, 191, 1.00);
+              }
+              .playerAvatar {
+                align-self:center;
+                margin-left:10px;
+                flex:1;
+
+                background-size: cover;
+                max-width: 40px;
+                height: 40px;
+                background-position: center center;
+                border-radius: 40px;
               }
             }
           }
@@ -561,8 +586,8 @@ body, html {
   .AppView {
     flex:1;
     display: flex;
-    overflow:hidden;
-    overflow-y: scroll;
+    overflow: hidden;
+    overflow-x: auto;
     padding:20px 40px;
     p {
       &.lead {
@@ -618,7 +643,7 @@ body, html {
   transition: all 0.3s ease-out;
 }
 .scroll3::-webkit-scrollbar {
-  background: transparent;
+  background: rgba(128, 78, 198, .5);
   width: 5px;
 }
 
@@ -627,7 +652,7 @@ body, html {
 }
 
 .scroll3::-webkit-scrollbar-track {
-  background: rgba(128, 78, 198, .5);
+  background: transparent;
 }
 
 .vert-scroll {
