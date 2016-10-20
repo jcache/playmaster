@@ -1,20 +1,14 @@
 import React from 'react';
 
 import AppCtrl from './appctrl';
-import Navigation from './navigation';
+import Navigation from '../containers/Navigation';
 import PlayerCtrl from './playerctrl';
 
-const DefaultHeader = ({
-  Style,
-  scrollingClass,
-  onCloseApp,
-  onMaximizeToggle,
-  onMinimizeToggle
-}) => {
+const DefaultHeader = (props) => {
   return (
-    <div className={`ApplicationHeader header-scroll ${scrollingClass}`} style={Style}>
-      <AppCtrl onCloseApp={onCloseApp} onMaximizeToggle={onMaximizeToggle} onMinimizeToggle={onMinimizeToggle}  />
-      <Navigation />
+    <div className={`ApplicationHeader header-scroll ${props.scrollingClass}`} style={props.Style} >
+      <AppCtrl {...props} />
+      <Navigation {...props} />
       <PlayerCtrl />
     </div>
   )

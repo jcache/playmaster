@@ -14,8 +14,6 @@ class DefaultView extends Component {
   }
 
   render() {
-    let t = this.props.authenticated ? "visible" : "hidden"; // this.props.authenticated;
-    const Style={"color":"#FFF", visibility: t }
     return (
       <div className="DefaultView">
         <div className='DashboardModules'>
@@ -25,7 +23,7 @@ class DefaultView extends Component {
           </div>
           <div style={{ flex: 1, flexDirection: 'column', display: 'flex'}}>
             <CampaignDisplayModule />
-            <div style={Style}>THIS IS THE AUTHENTICATED VIEW!</div>
+            <div style={{"color":"#FFF"}}>THIS IS THE AUTHENTICATED VIEW!</div>
             <GamesystemDisplayModule />
           </div>
         </div>

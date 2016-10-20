@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
-import DefaultHeader from '../components/DefaultHeader';
-const {BrowserWindow} = require('electron').remote
 
+import DefaultHeader from '../components/defaultheader';
 
 class ApplicationHeader extends Component {
   constructor (props) {

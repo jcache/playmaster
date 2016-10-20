@@ -10,7 +10,7 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "electron-compile": "^3.3.6",
-    "electron-prebuilt-compile": "^1.4.3",
+    "materialize-css": "^0.97.7",
     "react": "^15.3.2",
     "react-dom": "^15.3.0",
     "react-icons": "^2.2.1",
