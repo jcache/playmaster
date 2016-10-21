@@ -319,7 +319,9 @@ body, html {
               // }
               .playerContentHolder {
                 flex:1;
-                padding:0 20px;
+                padding:0 20px 0 10px;
+                h2 { font-size:16px; font-weight:600; margin: 0; color: rgba(21, 59, 88, 1.00); }
+                h3 { font-size:12px; line-height:23px; margin: 0; color: rgba(64, 41, 103, 1.00);}
               }
               .indicator {
                 flex:1;
@@ -336,6 +338,11 @@ body, html {
                 height: 40px;
                 background-position: center center;
                 border-radius: 40px;
+              }
+              &:hover {
+                .indicator {
+                  color:rgba(21, 59, 88, 1.00);
+                }
               }
             }
           }
@@ -581,7 +588,7 @@ body, html {
         }
       }
     }
-}
+  }
 
   .AppView {
     flex:1;

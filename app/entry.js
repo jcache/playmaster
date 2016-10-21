@@ -11,7 +11,6 @@ const is_WIN32 = process.platform == "win32";
 
 const setApplicationMenu = function () {
   const menus = [AppMenu, EditMenu];
-
   if (process.env.NODE_ENV === 'development') {
     menus.push(DevMenu);
   }
@@ -62,9 +61,11 @@ let createWindow = () => {
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
   });
+
   ipcMain.on('app_minimize', (event) => {
     mainWindow.minimize();
   });
+
   ipcMain.on('app_close', (event) => {
     mainWindow.close();
   });

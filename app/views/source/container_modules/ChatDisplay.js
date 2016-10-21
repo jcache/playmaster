@@ -21,95 +21,132 @@ const ChatDisplay = (props) => {
 
           <div className={`chatBubble `}>
             <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
-            <div className={`playerContentHolder`} >text</div>
+            <div className={`playerContentHolder`} >
+              <h2>thing one test title</h2>
+              <h3>thing one test title</h3>
+            </div>
             <IoChevronRight className={`indicator`}/>
           </div>
 
           <div className={`chatBubble `}>
             <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
-            <div className={`playerContentHolder`} >text</div>
+            <div className={`playerContentHolder`} >
+              <h2>thing one test title</h2>
+              <h3>thing one test title</h3>
+            </div>
             <IoChevronRight className={`indicator`}/>
           </div>
 
           <div className={`chatBubble `}>
             <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
-            <div className={`playerContentHolder`} >text</div>
+            <div className={`playerContentHolder`} >
+              <h2>thing one test title</h2>
+              <h3>thing one test title</h3>
+            </div>
             <IoChevronRight className={`indicator`}/>
           </div>
 
           <div className={`chatBubble `}>
             <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
-            <div className={`playerContentHolder`} >text</div>
-            <IoChevronRight className={`indicator`}/>
-          </div>
-
-
-          <div className={`chatBubble `}>
-            <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
-            <div className={`playerContentHolder`} >text</div>
+            <div className={`playerContentHolder`} >
+              <h2>thing one test title</h2>
+              <h3>thing one test title</h3>
+            </div>
             <IoChevronRight className={`indicator`}/>
           </div>
 
           <div className={`chatBubble `}>
             <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
-            <div className={`playerContentHolder`} >text</div>
-            <IoChevronRight className={`indicator`}/>
-          </div>
-
-
-          <div className={`chatBubble `}>
-            <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
-            <div className={`playerContentHolder`} >text</div>
+            <div className={`playerContentHolder`} >
+              <h2>thing one test title</h2>
+              <h3>thing one test title</h3>
+            </div>
             <IoChevronRight className={`indicator`}/>
           </div>
 
           <div className={`chatBubble `}>
             <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
-            <div className={`playerContentHolder`} >text</div>
-            <IoChevronRight className={`indicator`}/>
-          </div>
-
-
-          <div className={`chatBubble `}>
-            <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
-            <div className={`playerContentHolder`} >text</div>
-            <IoChevronRight className={`indicator`}/>
-          </div>
-
-          <div className={`chatBubble `}>
-            <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
-            <div className={`playerContentHolder`} >text</div>
+            <div className={`playerContentHolder`} >
+              <h2>thing one test title</h2>
+              <h3>thing one test title</h3>
+            </div>
             <IoChevronRight className={`indicator`}/>
           </div>
 
 
           <div className={`chatBubble `}>
             <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
-            <div className={`playerContentHolder`} >text</div>
+            <div className={`playerContentHolder`} >
+              <h2>thing one test title</h2>
+              <h3>thing one test title</h3>
+            </div>
             <IoChevronRight className={`indicator`}/>
           </div>
 
           <div className={`chatBubble `}>
             <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
-            <div className={`playerContentHolder`} >text</div>
+            <div className={`playerContentHolder`} >
+              <h2>thing one test title</h2>
+              <h3>thing one test title</h3>
+            </div>
+            <IoChevronRight className={`indicator`}/>
+          </div>
+
+          <div className={`chatBubble `}>
+            <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
+            <div className={`playerContentHolder`} >
+              <h2>thing one test title</h2>
+              <h3>thing one test title</h3>
+            </div>
+            <IoChevronRight className={`indicator`}/>
+          </div>
+
+          <div className={`chatBubble `}>
+            <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
+            <div className={`playerContentHolder`} >
+              <h2>thing one test title</h2>
+              <h3>thing one test title</h3>
+            </div>
             <IoChevronRight className={`indicator`}/>
           </div>
 
 
           <div className={`chatBubble `}>
             <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
-            <div className={`playerContentHolder`} >text</div>
+            <div className={`playerContentHolder`} >
+              <h2>thing one test title</h2>
+              <h3>thing one test title</h3>
+            </div>
             <IoChevronRight className={`indicator`}/>
           </div>
 
           <div className={`chatBubble `}>
             <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
-            <div className={`playerContentHolder`} >text</div>
+            <div className={`playerContentHolder`} >
+              <h2>thing one test title</h2>
+              <h3>thing one test title</h3>
+            </div>
             <IoChevronRight className={`indicator`}/>
           </div>
 
 
+          <div className={`chatBubble `}>
+            <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
+            <div className={`playerContentHolder`} >
+              <h2>thing one test title</h2>
+              <h3>thing one test title</h3>
+            </div>
+            <IoChevronRight className={`indicator`}/>
+          </div>
 
+          <div className={`chatBubble `}>
+            <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
+            <div className={`playerContentHolder`} >
+              <h2>thing one test title</h2>
+              <h3>thing one test title</h3>
+            </div>
+            <IoChevronRight className={`indicator`}/>
+          </div>
 
         </div>
       </div>
