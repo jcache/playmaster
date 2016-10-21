@@ -11,7 +11,7 @@ import DefaultViewAuth from './containers/DefaultViewAuth';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={DefaultView} /> // This should eventually be dashboard
+    <IndexRoute component={DefaultView} />
     <Route path="players" component={DefaultView} />
     <Route path="gamesystems" component={GameSystemView} />
     <Route path="characters" component={requireAuth(CharacterView)} />
