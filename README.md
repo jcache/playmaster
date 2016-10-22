@@ -1,4 +1,10 @@
+Playmaster
+================
+The ultimate table-top RPG tool!
+----------------
+Playmaster takes the drudgery out of playing table-top RPG's, so you can focus on the fun. It reduces the time it takes to make a character and automates many of the data-tracking tasks related to playing table-top RPG's.
 
+### Code of Conduct
 This project adheres to the Contributor Covenant code of conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to [playmaster@evolition.io](mailto:playmaster@evolition.io).
 
 ### Documentation
