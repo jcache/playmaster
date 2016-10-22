@@ -4,9 +4,6 @@ import {
 } from 'react-icons/lib/io';
 
 const AppCtrl = ({onCloseApp, onMaximizeToggle, onMinimizeToggle, ipc}) => {
-  function onCloseApp() {
-    ipc.send('app_close');
-  }
   return (
     <ul className={`AppControl`}>
       <li><a onClick={() => onCloseApp()} href="#"><IoClose/></a></li>
