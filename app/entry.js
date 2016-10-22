@@ -11,9 +11,9 @@ const is_WIN32 = process.platform == "win32";
 
 const setApplicationMenu = function () {
   const menus = [AppMenu, EditMenu];
-  if (process.env.NODE_ENV === 'development') {
+  // if (process.env.NODE_ENV === 'development') {
     menus.push(DevMenu);
-  }
+  // }
 
   Menu.setApplicationMenu(Menu.buildFromTemplate(menus));
 };
@@ -48,9 +48,9 @@ let createWindow = () => {
     horzL - (winH / 2)
   );
 
-  if (process.env.NODE_ENV === 'development') {
+  // if (process.env.NODE_ENV === 'development') {
     mainWindow.webContents.openDevTools({ detach: true });
-  }
+  // }
 
   mainWindow.loadURL(`file://${__dirname}/views/index.html`);
 

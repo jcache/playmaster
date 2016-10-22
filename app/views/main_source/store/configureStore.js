@@ -1,12 +1,12 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { routerReducer, push} from 'react-router-redux';
 import rootReducer from '../reducers';
-
+import thunk from 'redux-thunk'
 const initialize = {}
 
 const configureStore = (initialState = initialize) => {
 
-  let middleware = applyMiddleware();
+  let middleware = applyMiddleware(thunk);
 
   if(process.env.NODE_ENV === 'development') {
     middleware = compose(middleware);

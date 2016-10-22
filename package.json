@@ -12,7 +12,7 @@
   },
   "build": {
     "appId": "io.ev.playmaster",
-    "app-category-type": "entertainment.utilities.games",
+    "build.mac.category": "entertainment.utilities.games",
     "win": {
       "iconUrl": "http://eatodo.s3.amazonaws.com/icon.ico"
     }

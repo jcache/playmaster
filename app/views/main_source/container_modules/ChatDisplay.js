@@ -11,9 +11,8 @@ const ChatDisplay = (props) => {
         <div className='Chat Module '>
           <hgroup className='ModuleHeader'>
             <IoNavicon size={28} className={`HamburgNav`} color={`rgba(255,255,255,1)`}/>
-
-          <h3>Conversations</h3>
-        </hgroup>
+            <h3>Conversations</h3>
+          </hgroup>
         </div>
       </hgroup>
       <div className="chatContainer">
@@ -73,7 +72,6 @@ const ChatDisplay = (props) => {
             <IoChevronRight className={`indicator`}/>
           </div>
 
-
           <div className={`chatBubble `}>
             <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
             <div className={`playerContentHolder`} >
@@ -110,7 +108,6 @@ const ChatDisplay = (props) => {
             <IoChevronRight className={`indicator`}/>
           </div>
 
-
           <div className={`chatBubble `}>
             <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
             <div className={`playerContentHolder`} >
@@ -128,7 +125,6 @@ const ChatDisplay = (props) => {
             </div>
             <IoChevronRight className={`indicator`}/>
           </div>
-
 
           <div className={`chatBubble `}>
             <div className={`playerAvatar`} style={{backgroundImage: `url('./images/rogue.jpg')`}}></div>
