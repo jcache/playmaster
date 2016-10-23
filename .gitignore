@@ -4,7 +4,10 @@
 /debug.log
 /npm-debug.log
 /dist/*
- 
+
+# React Dev Tool settings
+**/dev_chromeExt.js
+
 # Created by https://www.gitignore.io/api/osx
 ### OSX ###
 .DS_Store

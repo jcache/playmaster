@@ -21,6 +21,12 @@ const getMainUrl = (options) => {
   return getRootUrl(options) + pathname;
 };
 
+const getChatUrl = (options) => {
+  const pathname = browserSyncConnectUtils.clientScript(options);
+  console.log(getRootUrl(options) + pathname);
+  return getRootUrl(options) + pathname;
+};
+
 const BrowserSyncOPTS = {
   ui: false,
   ghostMode: true,
@@ -38,11 +44,11 @@ const BrowserSyncOPTS = {
 // NODE ENVIRONMENT
 const args = process.argv.length > 2 ? process.argv: false;
 if (args) {
-	let dev = args.indexOf('development');
-	let prod = args.indexOf('production');
-	if (dev || prod) {
-		process.env.NODE_ENV == dev ? dev: prod;
-	}
+  let dev = args.indexOf('development');
+  let prod = args.indexOf('production');
+  if (dev || prod) {
+    process.env.NODE_ENV == dev ? dev: prod;
+  }
 }
 
 Bsync.init(BrowserSyncOPTS, (err, bs) => {
@@ -57,6 +63,7 @@ Bsync.init(BrowserSyncOPTS, (err, bs) => {
       ...{
         NODE_ENV: 'development',
         BROWSER_SYNC_MAIN_URL: getMainUrl(bs.options),
+        BROWSER_SYNC_CHAT_URL: getChatUrl(bs.options),
       },
       ...process.env,
     },

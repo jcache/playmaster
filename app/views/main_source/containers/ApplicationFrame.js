@@ -61,6 +61,6 @@ class ApplicationFrame extends Component {
 
 
 const mapStateToProps = (state) => {
-  return {ipc: ipcRenderer}
+  return {}
 }
 export default connect(mapStateToProps)(ApplicationFrame)

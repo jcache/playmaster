@@ -12,14 +12,14 @@
   },
   "build": {
     "appId": "io.ev.playmaster",
-    "app-category-type": "entertainment.utilities.games",
+    "build.mac.category": "entertainment.utilities.games",
     "win": {
       "iconUrl": "http://eatodo.s3.amazonaws.com/icon.ico"
     }
   },
   "scripts": {
     "postinstall": "install-app-deps",
-    "dist": "NODE_ENV=production build -m --x64",
+    "dist": "electron-packager ./ Playmaster --arch=x64 --out=dist",
     "win-dist": "build -w --x64",
     "start": "babel-node scripts/ development",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -47,7 +47,7 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "browser-sync": "^2.14.0",
-    "electron": "^1.3.5",
+    "electron": "^1.4.4",
     "electron-builder": "^6.6.1",
     "electron-compilers": "^4.0.2",
     "electron-packager": "^8.1.0",

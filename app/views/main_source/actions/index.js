@@ -1,6 +1,4 @@
-import {
-  CHANGE_AUTH
-} from './types';
+import { CHANGE_AUTH } from './types';
 
 export function authenticate(loggedIn) {
   return {

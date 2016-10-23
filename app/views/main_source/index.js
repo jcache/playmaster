@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { ipcRenderer, remote } from 'electron';
 
 import ApplicationFrame from './containers/ApplicationFrame';
 
@@ -13,4 +12,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default App;

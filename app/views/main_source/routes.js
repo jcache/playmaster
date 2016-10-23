@@ -7,7 +7,6 @@ import DefaultView from './containers/DefaultView';
 import CharacterView from './containers/CharacterView';
 import CampaignView from './containers/CampaignView';
 import GameSystemView from './containers/GameSystemView';
-import DefaultViewAuth from './containers/DefaultViewAuth';
 
 export default (
   <Route path="/" component={App}>

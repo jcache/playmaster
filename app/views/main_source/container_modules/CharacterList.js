@@ -1,63 +1,11 @@
 import React, { Component } from 'react';
 import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
+import { CollectCharacters }  from '../actions/CharacterActions';
+import { CollectCampaigns }  from '../actions/CampaignActions';
 import { IoMinus, IoPlus, IoClose, IoIosGear, IoChevronDown, IoNavicon } from 'react-icons/lib/io';
 
-const characters = [
-  {
-    id: 1,
-    characerName: "Mazius Al'Ghul",
-    characerProfession: "Necromancer",
-    characterAvatarUri: 'images/rogue.jpg'
-  },
-  {
-    id: 2,
-    characerName: "Peter Parker",
-    characerProfession: "Sorcerer",
-    characterAvatarUri: 'images/spiderman.jpg'
-  },
-  {
-    id: 3,
-    characerName: "Mazius Al'Ghul",
-    characerProfession: "Psionic",
-    characterAvatarUri: 'images/rogue.jpg'
-  },
-  {
-    id: 4,
-    characerName: "Mazius Al'Ghul",
-    characerProfession: "Bio-Wizard",
-    characterAvatarUri: 'images/rogue.jpg'
-  },
-  {
-    id: 5,
-    characerName: "Mazius Al'Ghul",
-    characerProfession: "Cleaner",
-    characterAvatarUri: 'images/rogue.jpg'
-  },
-  {
-    id: 6,
-    characerName: "Mazius Al'Ghul",
-    characerProfession: "Janitor",
-    characterAvatarUri: 'images/rogue.jpg'
-  },
-]
-const campaigns = [
-  {
-    id: 1,
-    campaignName: "The Mazius Campaign",
-    charactersInGame: [1,4,5,6], // ENUM FTW
-    campaignBannerUri: 'images/galaxy.png'
-  },
-  {
-    id: 3,
-    campaignName: "Another Campaign",
-    charactersInGame: [2,3], // ENUM FTW
-    campaignBannerUri: 'images/galaxy.png'
-  },
-]
-
 class CharacterList extends Component {
-
   constructor (props) {
     super(props);
     this.state = {
@@ -65,7 +13,14 @@ class CharacterList extends Component {
     };
   }
 
+  componentWillMount() {
+    const { dispatch } = this.props;
+    dispatch(CollectCharacters());
+    dispatch(CollectCampaigns());
+  }
+
   _lookupCharacterInCampaign(id){
+    let {campaigns} = this.props;
     return campaigns.map((c) =>{
       return c.charactersInGame.indexOf(id) != -1 ? c.campaignName : null
     });
@@ -73,6 +28,7 @@ class CharacterList extends Component {
 
   _renderCharacters() {
     let {selected} = this.state;
+    let {characters, campaigns} = this.props;
     let selectedCharacterClass = 'selectedCharacter';
     return characters.map((c) =>{
       return(
@@ -93,6 +49,7 @@ class CharacterList extends Component {
       )
     })
   }
+
   render() {
     return (
       <div className='Character Module '>
@@ -109,7 +66,11 @@ class CharacterList extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    characters: state.Characters.characters,
+    campaigns: state.Campaigns.campaigns,
+
+  }
 }
 
 export default connect(mapStateToProps)(CharacterList)
