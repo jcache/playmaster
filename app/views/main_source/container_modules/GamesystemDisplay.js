@@ -2,11 +2,28 @@ import React, { Component } from 'react';
 import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
 import { IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';
+import { CollectGameSystems }  from '../actions/GameSystemActions';
 
 class GamesystemDisplayModule extends Component {
   constructor (props) {
     super(props);
   }
+  componentWillMount(){
+    const { dispatch } = this.props;
+    dispatch(CollectGameSystems());
+  }
+
+  _renderGameSystems() {
+    let {game_systems} = this.props;
+    return game_systems.map((g) =>{
+      return(
+        <li key={g.id}>
+          <a></a>
+        </li>
+      )
+    })
+  }
+
   render() {
     return (
       <div className='Gamesystem Module '>
@@ -15,12 +32,7 @@ class GamesystemDisplayModule extends Component {
         </hgroup>
         <div className={`moduleBody scroll4`}>
           <ul className={`communityModule`}>
-            <li> <a></a></li>
-            <li> <a></a></li>
-            <li> <a></a></li>
-            <li> <a></a></li>
-            <li> <a></a></li>
-            <li> <a></a></li>
+            {this._renderGameSystems()}
           </ul>
         </div>
         <a onClick={()=>{alert('click left')}} className="seekButton left"><IoChevronLeft size={24} color={'rgba(255,255,255,1)'} /></a>
@@ -31,7 +43,8 @@ class GamesystemDisplayModule extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    game_systems: state.Gamesystems.game_systems
+  }
 }
-
 export default connect(mapStateToProps)(GamesystemDisplayModule)
