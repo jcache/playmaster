@@ -6,22 +6,16 @@ import * as actions from '../actions';
 
 class Navigation extends Component{
   authButton() {
-    if (this.props.authenticated){
-      return <Link
-              to="/"
-              onClick={() => this.props.authenticate(false)}
-              className=""
-              >Sign Out</Link>;
-    }
-    return <Link
-            to="/"
-            onClick={() => this.props.authenticate(true)}
-            className=""
-            >Sign In</Link>;
+    // AUTHENTICATED IS A BOOLEAN
+    let {authenticated, authenticate} = this.props;
+    return (
+      <Link to="/" onClick={() => authenticate(!authenticated)}>
+        {authenticated ? `Sign Out` : `Sign In`}
+      </Link>
+    );
   }
 
   render() {
-    // console.log('Navigation -- props: ', this.props);
     return (
       <nav>
         <div className="nav-wrapper">
@@ -29,7 +23,7 @@ class Navigation extends Component{
             <li><Link to="/" >Home</Link></li>
             <li><Link to="/characters" >Characters</Link></li>
             <li><Link to="/campaigns" >Campaigns</Link></li>
-            <li><a onClick={()=> {alert('clicked')}}>Game Systems</a></li>
+            <li><Link to="/gamesystems" >Game Systems</Link></li>
             <li className="nav-item">
               {this.authButton()}
             </li>

@@ -14,8 +14,8 @@ class DefaultView extends Component {
   }
 
   render() {
-    let t = this.props.authenticated ? "visible" : "hidden"; // this.props.authenticated;
-    const Style={"color":"#FFF", visibility: t }
+    let { authenticated } = this.props;
+    const Style={"color":"#FFF", visibility: authenticated ? "visible" : "hidden" }
     return (
       <div className="DefaultView">
         <div className='DashboardModules'>
@@ -33,7 +33,6 @@ class DefaultView extends Component {
     );
   }
 }
-
 
 const mapStateToProps = (state) => {
   return {};

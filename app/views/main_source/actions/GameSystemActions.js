@@ -7,7 +7,6 @@ function LoadGameSystems(game_systems) {
   }
 }
 
-
 export function CollectGameSystems(){
   var game_systems = [
     {

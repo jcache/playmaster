@@ -596,6 +596,7 @@ body, html {
     overflow: hidden;
     overflow-x: auto;
     padding:20px 40px;
+    position: relative;
     p {
       &.lead {
         color:rgba(128, 0, 128, 1.00);
@@ -686,4 +687,57 @@ body, html {
   width:100%;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
+}
+
+.overlay {
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  display:flex;
+  background: rgba(0,0,0,.8);
+  justify-content: center;
+  align-items: center;
+  .settings-view {
+    margin:10px 10px;
+    flex:1;
+
+    // height:80%;
+    flex-shrink: 0;
+    align-self: stretch;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,1);
+    border-radius:6px;
+    padding: 0 20px;
+  }
+  .bn-close {
+    position: absolute;
+    // width:40px;
+    top:20px;
+    font-size:20px;
+    color: rgba(255,255,255,.5);
+    right:20px;
+    // height:40px;
+    svg {
+      vertical-align: top !important;
+    }
+  }
+}
+.saving-throw-header{
+  background-color: #000;
+  max-width:30px;
+  margin-right:0 !important;
+  position: relative;
+
+  // flex:1;
+
+  p{
+    display:block;
+    position:absolute;
+    top:50%;
+    text-align: center;
+    -webkit-transform: rotate(-90deg);
+  }
 }
