@@ -9,6 +9,7 @@ body, html {
   margin:0;
   height:100%;
   width:100%;
+  overflow: hidden;
 }
 
 #react-root {
@@ -16,6 +17,7 @@ body, html {
   flex:1;
   height:100%;
 }
+.SettingsView,
 .CharacterView,
 .CampaignView,
 .GameSystemView,
@@ -395,7 +397,6 @@ body, html {
   background-color: rgba(18, 15, 28, .8);
   nav {
     display:flex;
-    // border-bottom:1px solid rgba(255,255,255,.2);
 
     ul {
       margin-bottom:0;
@@ -434,18 +435,16 @@ body, html {
     -webkit-app-region: drag;
     -webkit-user-select: none;
     background: rgba(0,0,0,.6);
-
+    display:flex;
     background-size: cover;
     // transition: all .3s ease;
     // border-bottom:1px solid rgba(255,255,255,.2);
 
     .AppControlUtils {
-      position: absolute;
       display:flex;
       padding:0px;
       right:20px;
       margin:0px;
-      top: 10px;
       transition: all .2s ease;
       flex:1;
       li {
@@ -453,7 +452,7 @@ body, html {
         flex:1;
         align-items: center;
         padding:0px;
-        margin:0px 13px;
+        margin:0px 20px;
         a {
           color: #fff;
           font-size: 22px;
@@ -464,21 +463,32 @@ body, html {
           border-radius: 40px !important;
         }
         &.ProfileBn{
+          max-width:40px;
           a {
             font-size:14px;
           }
         }
-        &.SearchIcon    { }
+        &.SearchIcon    {
+          max-width:40px;
+        }
         &.SettingsIcon  { }
         &.ProfileDropdown {
-          transition: all .3s ease;
-          background: url('../images/rogue.jpg') center center ;
-          background-size:  contain;
-          -webkit-box-shadow: 0px 0px 1px 1px rgba(255,255,255,.5);
+          max-width:40px;
+          cursor: pointer;
+          margin-top:10px;
           a {
             transition: all .3s ease;
+            -webkit-box-shadow: 0px 0px 1px 1px rgba(255,255,255,.5);
+            background: url('../images/rogue.jpg') center center ;
+            background-size:  contain;
+            flex:1;
+            align-self: stretch;
+
+            transition: all .3s ease;
             display: block;
-            visibility: hidden;
+            &:hover {
+              -webkit-box-shadow: 0px 0px 2px 2px rgba(120, 84, 191, 1.00);
+            }
           }
         }
       }
@@ -488,6 +498,7 @@ body, html {
       // background-color: rgba(40, 28, 75, 1.00) !important;
       .AppControlUtils {
         top: 10px;
+        flex:1;
         .ProfileDropdown{
           border-radius: 40px;
           height:40px;
@@ -515,25 +526,32 @@ body, html {
     }
 
     .AppControl {
-      position:absolute;
-      top: 10px;
-      left:20px;
+      margin-left: 20px;
+      align-items: center;
+      justify-content: center;
+      background: none;
       display:flex;
       flex:1;
+      min-width: 170px;
       flex-direction: row;
       margin:0px;
       padding:0px;
       li {
         display:flex;
-        flex:1;
+        // flex:1;
+        // min-width:40px;
+        align-items: center;
+        justify-content: center;
         padding:0px;
         margin:0px;
         a {
+          flex:1;
+          text-align: center;
+          padding: 0 10px;
           color: #fff;
           font-size:13.5px;
           line-height:18px;
           margin: 0px;
-          padding:10px;
         }
       }
     }
@@ -541,6 +559,7 @@ body, html {
     nav {
       background: transparent;
       display:flex;
+      box-shadow: none;
       // border-bottom:1px solid rgba(255,255,255,.2);
 
       ul {
@@ -578,9 +597,7 @@ body, html {
       .nav-wrapper {
         -webkit-app-region: drag;
         background: rgba(0, 0, 0, 0);;
-        left: 11%;
         .nav-login{
-          margin-right: 20%;
           margin-top: 0px;
         }
         a {
@@ -589,7 +606,62 @@ body, html {
       }
     }
   }
-
+  .tooltip {
+    right: 0 !important;
+    flex:1;
+    max-width: 200px;
+   color: rgba(128, 78, 198, 1.00) !important;
+   font-family: arial;
+   font-weight: 600;
+   text-transform: uppercase;
+   background-color: rgba(6, 5, 9, 1.00) !important;
+   position: absolute;
+   &.characterPrefPane{
+     pointer-events: auto !important;
+     padding: 0;
+     flex:1;
+     overflow: hidden;
+    //  border: 2px solid rgba(120, 84, 191, .1);
+     display:flex;
+     &:hover {
+      visibility: visible !important;
+      opacity: 1 !important;
+     }
+     ul{
+       margin:0;
+       li {
+         flex:1;
+         display:flex;
+         &:last-child{
+           margin-bottom: 0;
+         }
+         a {
+           padding: 0 15px;
+           flex:1;
+           line-height:40px;
+           font-size: 14px;
+           font-weight: 200;
+           color: rgba(120, 84, 191, 1.00);
+           min-width: 200px;
+           text-decoration: none;
+           text-transform: capitalize;
+           &:hover {
+             background-color: rgba(120, 84, 191, .05);
+             color: rgba(120, 84, 191, 1.00);
+           }
+         }
+       }
+     }
+   }
+   &.place-bottom {
+     &:after {
+       background: transparent;
+       border-bottom-color: rgba(120, 84, 191, .1);
+       border-bottom-style: solid !important;
+       border-bottom-width: 6px !important;
+     }
+   }
+  }
   .AppView {
     flex:1;
     display: flex;
@@ -725,6 +797,8 @@ body, html {
     }
   }
 }
+
+
 .saving-throw-header{
   background-color: #000;
   max-width:30px;

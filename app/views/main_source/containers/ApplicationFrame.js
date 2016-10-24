@@ -11,7 +11,7 @@ class ApplicationFrame extends Component {
       scrollingClass: "small",
       scrollingVal: 0,
       scrollVal: 60,
-      overlayVisible: true,
+      overlayVisible: false,
       headerMaxScroll: 175,
       headerMinScroll: 60,
     };

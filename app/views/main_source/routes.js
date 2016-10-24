@@ -5,6 +5,7 @@ import DefaultView from './containers/DefaultView';
 import CharacterView from './containers/CharacterView';
 import CampaignView from './containers/CampaignView';
 import GameSystemView from './containers/GameSystemView';
+import SettingsView from './containers/SettingsView';
 import DefaultViewAuth from './containers/DefaultViewAuth';
 import ApplicationFrame from './containers/ApplicationFrame';
 
@@ -28,6 +29,9 @@ export default (
       <Route path="friends" component={DefaultView} />
       <Route path="chat" component={DefaultView} />
       <Route path="settings" component={DefaultView} />
+    </Route>
+    <Route path="app_settings" component={SettingsView} >
+
     </Route>
     <Route path="character/:id" component={DefaultView}>
       <Route path="inventory" component={DefaultView}>
