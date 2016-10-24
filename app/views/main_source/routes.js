@@ -1,25 +1,16 @@
 import React from 'react';
 import {Route, IndexRoute } from 'react-router';
+
+import App from './';
 import requireAuth from './containers/RequireAuth.js';
 import DefaultView from './containers/DefaultView';
 import CharacterView from './containers/CharacterView';
 import CampaignView from './containers/CampaignView';
 import GameSystemView from './containers/GameSystemView';
-import DefaultViewAuth from './containers/DefaultViewAuth';
-import ApplicationFrame from './containers/ApplicationFrame';
-
-const App = (props) => {
-  return (
-    <ApplicationFrame>
-      {props.children}
-    </ApplicationFrame>
-  )
-}
-
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={DefaultView} />
+    <IndexRoute component={DefaultView} /> // This should eventually be dashboard
     <Route path="players" component={DefaultView} />
     <Route path="gamesystems" component={GameSystemView} />
     <Route path="characters" component={requireAuth(CharacterView)} />
