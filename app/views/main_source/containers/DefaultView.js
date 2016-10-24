@@ -23,9 +23,8 @@ class DefaultView extends Component {
             <CharacterListModule />
             <ChatDisplayModule />
           </div>
-          <div style={{ flex: 1, flexDirection: 'column', display: 'flex'}}>
+          <div style={{ flex: 1, flexDirection: 'column', display: 'flex', maxWidth: '1140px'}}>
             <CampaignDisplayModule />
-            <div style={Style}>THIS IS THE AUTHENTICATED VIEW!</div>
             <GamesystemDisplayModule />
           </div>
         </div>

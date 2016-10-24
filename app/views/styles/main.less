@@ -41,7 +41,7 @@ body, html {
   display: flex;
   flex:1;
   .DashboardModules{
-    justify-content: center;
+    // justify-content: center;
     margin: 0 0 20px;
     display: flex;
     flex:1;
@@ -61,7 +61,7 @@ body, html {
         display:flex;
         flex-direction: column;
         h3 {
-          flex:1;
+          // flex:1;
           align-self: center;
           font-size:20px;
           font-weight: 200;
@@ -124,7 +124,7 @@ body, html {
           line-height:45px;
           text-transform: uppercase;
           padding:0 10px;
-          font-size: 1vmin;
+          font-size: 16px;;
           color: rgba(255,255,255,1);
           margin:0;
         }
@@ -137,7 +137,7 @@ body, html {
         background-color: rgba(13, 11, 23, 1.00);
         display: flex;
         min-height:300px;
-        max-height:400px;
+        // max-height:400px;
         border: 3px solid rgba(0,0,0,.5);
 
         .moduleBody {
@@ -187,12 +187,20 @@ body, html {
       }
       &.Campaign {
         min-height:300px;
+        max-height: 50%;
         position: relative;
         min-width:400px;
         margin: 0 0 0px 25px;
         flex-direction: column;
         border: 3px solid rgba(0,0,0,.5);
+        .moduleBody {
+          position: relative;
+          max-height:200px;
+          h3 {
+            padding-top:20px;
+          }
 
+        }
         &:first-child {
           margin-bottom: 35px;
         }
@@ -205,9 +213,8 @@ body, html {
           border-radius: 66px;
           height: 132px;
           margin-left: -66px;
-          margin-top: -76px;
           left:50%;
-          top:50%;
+          top:-61px;
         }
         .campaignBgContainer{
           flex:1;
