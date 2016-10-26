@@ -6,11 +6,9 @@ import { createHashHistory } from 'history';
 import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './store/configureStore';
 import routes from './routes';
-
 const store = configureStore();
 const appHistory = useRouterHistory(createHashHistory)({ queryKey: false })
 const history = syncHistoryWithStore(appHistory, store);
-
 export const Base = () => {
   return (
     <Provider store={store}>

@@ -28,15 +28,16 @@ class CharacterList extends Component {
 
   _renderCharacters() {
     let {selected} = this.state;
-    let {characters, campaigns} = this.props;
+    let {characters, campaigns, _onSelectCharacter } = this.props;
     let selectedCharacterClass = 'selectedCharacter';
+    import {Style} from './Styles';
     return characters.map((c) =>{
       return(
         <div
-          onClick={() =>{this.setState({selected: c.id})}}
+          onClick={() =>{ _onSelectCharacter(c); this.setState({selected: c.id}); }}
           key={c.id}
           className={`character ${selected == c.id ? selectedCharacterClass : null}`} >
-          <div className="characterAvatar" style={{backgroundImage: `url('./${c.characterAvatarUri}')`}}></div>
+          <div className="characterAvatar" style={[Style, {backgroundImage: `url('./${c.characterAvatarUri}')`}]}></div>
           <div className="characterDetail">
             <p className="characterName">{c.characerName}</p>
             <p>{c.characerProfession}</p>

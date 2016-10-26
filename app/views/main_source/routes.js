@@ -16,8 +16,6 @@ const App = (props) => {
     </ApplicationFrame>
   )
 }
-
-
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={DefaultView} />
@@ -25,14 +23,15 @@ export default (
     <Route path="gamesystems" component={GameSystemView} />
     <Route path="characters" component={requireAuth(CharacterView)} />
     <Route path="campaigns" component={requireAuth(CampaignView)} />
+
+
     <Route path="player/:id" component={DefaultView} >
       <Route path="friends" component={DefaultView} />
       <Route path="chat" component={DefaultView} />
       <Route path="settings" component={DefaultView} />
     </Route>
-    <Route path="app_settings" component={SettingsView} >
 
-    </Route>
+    <Route path="settings" component={SettingsView} ></Route>
     <Route path="character/:id" component={DefaultView}>
       <Route path="inventory" component={DefaultView}>
         <Route path="item/:id" component={DefaultView}>

@@ -15,7 +15,7 @@ const PlayerCtrl = (props) => {
         <Link data-tip data-for='campaigns' ></Link>
       </li>
       <li className="SettingsIcon">
-        <Link to={`app_settings`}><IoIosGear /></Link>
+        <Link to={`settings`}><IoIosGear /></Link>
       </li>
       <li className="ProfileBn dropdown-content">...</li>
     </ul>

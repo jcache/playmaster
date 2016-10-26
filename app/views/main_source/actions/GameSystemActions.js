@@ -11,7 +11,7 @@ export function CollectGameSystems(){
   var game_systems = [
     {
       id: 1,
-      gameSystemName: "Dungeons & Dragons "
+      gameSystemName: "Dungeons & Dragons"
     }
   ];
   return dispatch => {
