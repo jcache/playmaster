@@ -2,7 +2,7 @@
 const path = require('path');
 const electron = require('electron');
 const fs = require('fs');
-const character_data = require('../seed/characters');
+const character_data = {};
 
 class Route {
   constructor() {

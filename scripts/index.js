@@ -1,7 +1,7 @@
 'use strict';
 
 import { spawn } from 'child_process';
-import electron from 'electron-prebuilt';
+import electron from 'electron';
 import browserSync from 'browser-sync';
 
 // BrowserSync

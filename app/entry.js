@@ -7,13 +7,14 @@ import 	AppReporter from './helpers/app_reporter';
 import { AppMenu } from './helpers/app_menu';
 import { DevMenu } from './helpers/dev_menu';
 import { EditMenu } from './helpers/edit_menu';
+import { chromeExt } from './helpers/dev_chromeExt';
 const is_WIN32 = process.platform == "win32";
 
 const setApplicationMenu = function () {
   const menus = [AppMenu, EditMenu];
-  // if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development') {
     menus.push(DevMenu);
-  // }
+  }
 
   Menu.setApplicationMenu(Menu.buildFromTemplate(menus));
 };
@@ -51,6 +52,22 @@ let createWindow = () => {
   // if (process.env.NODE_ENV === 'development') {
     mainWindow.webContents.openDevTools({ detach: true });
   // }
+
+  // ADD REACT DEVTOOLS  For more info: https://goo.gl/HAip0t
+  let appDataPath = app.getPath('appData');
+  let chromeExtPath = is_WIN32 ?
+      '/Google/Chrome/User Data/Default/Extensions/': // WINDOWS CHROME EXTENSION PATH
+      '/Google/Chrome/Default/Extensions/'; // OSX CHROME EXTENSION PATH
+
+  let devToolsExtPath = path.join(
+    appDataPath,
+    chromeExtPath,
+    chromeExt.id,
+    chromeExt.version);
+
+  // console.log('RDToolsPath: ', RDToolsPath);
+  BrowserWindow.addDevToolsExtension(devToolsExtPath);
+
 
   mainWindow.loadURL(`file://${__dirname}/views/index.html`);
 
