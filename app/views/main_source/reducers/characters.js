@@ -1,15 +1,15 @@
-import * as types from '../constants/ActionTypes';
+import {
+  FETCH_CHARACTERS
+} from '../actions/types';
 
-const CharacterState = {
-  characters: [],
-};
 
-export const Characters = (state = CharacterState, action ) => {
+export const Characters = (state = [], action ) => {
   switch (action.type) {
-    case types.LOAD_CHARACTERS:
-      return Object.assign({}, state, {
-        characters: action.characters
-      });
+    case FETCH_CHARACTERS:
+      return [
+        ...state,
+        ...action.payload,
+      ];
    default:
     return state;
   }

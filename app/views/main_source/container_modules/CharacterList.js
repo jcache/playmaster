@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
-import { CollectCharacters }  from '../actions/CharacterActions';
-import { CollectCampaigns }  from '../actions/CampaignActions';
+import * as actions from '../actions';
 import { IoMinus, IoPlus, IoClose, IoIosGear, IoChevronDown, IoNavicon } from 'react-icons/lib/io';
 
 class CharacterList extends Component {
@@ -11,43 +10,46 @@ class CharacterList extends Component {
     this.state = {
       selected: 1
     };
+    console.log('state 1: ', this.state);
+    console.log('init campaigns: ',this.props.campaigns);
   }
 
-  componentWillMount() {
-    const { dispatch } = this.props;
-    dispatch(CollectCharacters());
-    dispatch(CollectCampaigns());
+  componentDidMount() {
+    this.props.fetchCharacters();
+    this.props.fetchCampaigns();
   }
 
-  _lookupCharacterInCampaign(id){
-    let {campaigns} = this.props;
-    return campaigns.map((c) =>{
-      return c.charactersInGame.indexOf(id) != -1 ? c.campaignName : null
-    });
+  _selectCharacter(newID){
+    this.setState = newID;
   }
 
-  _renderCharacters() {
-    let {selected} = this.state;
-    let {characters, campaigns} = this.props;
+  _renderCharacters(c) {
+    let { selected } = this.state;
     let selectedCharacterClass = 'selectedCharacter';
-    return characters.map((c) =>{
-      return(
-        <div
-          onClick={() =>{this.setState({selected: c.id})}}
-          key={c.id}
-          className={`character ${selected == c.id ? selectedCharacterClass : null}`} >
-          <div className="characterAvatar" style={{backgroundImage: `url('./${c.characterAvatarUri}')`}}></div>
-          <div className="characterDetail">
-            <p className="characterName">{c.characerName}</p>
-            <p>{c.characerProfession}</p>
-            <p  className="opt-sm">{this._lookupCharacterInCampaign(c.id)}</p>
-          </div>
-          <div className="expGauge">
-            <span className="completion"></span>
-          </div>
+    console.log('campaigns: ', this.props.campaigns);
+    let campaignName = (id) => {
+      console.log('id: ', id);
+      return campaigns.map((cp) => {
+        console.log('cp: ', cp);
+        return cp.charactersInGame.indexOf(id) != -1 ? cp.campaignName : null
+      });
+    }
+    return(
+      <div
+        onClick={() =>{this.setState({selected: c.id})}}
+        key={c.id}
+        className={`character ${selected == c.id ? selectedCharacterClass : null}`} >
+        <div className="characterAvatar" style={{backgroundImage: `url('./${c.characterAvatarUri}')`}}></div>
+        <div className="characterDetail">
+          <p className="characterName">{c.characerName}</p>
+          <p>{c.characerProfession}</p>
+          <p  className="opt-sm">{ campaignName(c.id) }</p>
         </div>
-      )
-    })
+        <div className="expGauge">
+          <span className="completion"></span>
+        </div>
+      </div>
+    )
   }
 
   render() {
@@ -58,7 +60,7 @@ class CharacterList extends Component {
           <h3>Characters</h3>
         </hgroup>
         <div className="characterListContainer scroll3">
-          {this._renderCharacters()}
+          {this.props.characters.map(this._renderCharacters)}
         </div>
       </div>
     );
@@ -66,11 +68,12 @@ class CharacterList extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log('state: ', state);
   return {
-    characters: state.Characters.characters,
-    campaigns: state.Campaigns.campaigns,
+    characters: state.Characters,
+    campaigns: state.Campaigns,
 
   }
 }
 
-export default connect(mapStateToProps)(CharacterList)
+export default connect(mapStateToProps, actions)(CharacterList)

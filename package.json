@@ -19,8 +19,10 @@
   },
   "scripts": {
     "postinstall": "install-app-deps",
+    "clean": "rm -rf ./dist",
     "dist": "electron-packager ./ Playmaster --arch=x64 --out=dist",
     "win-dist": "build -w --x64",
+    "pack:osx": "npm run clean && electron-packager . \"Playmaster\" --arch=x64 --out=dist/osx --platform=darwin",
     "start": "babel-node scripts/ development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
