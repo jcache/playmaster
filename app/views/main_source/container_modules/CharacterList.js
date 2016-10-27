@@ -23,10 +23,10 @@ class CharacterList extends Component {
     this.setState = newID;
   }
 
-  _renderCharacters() {
-    let {selected} = this.state;
-    let {characters, campaigns, _onSelectCharacter } = this.props;
+  _renderCharacters(props) {
+    let {characters, campaigns, _onSelectCharacter } = props;
     let selectedCharacterClass = 'selectedCharacter';
+    console.log('_renderCharacters -- props: ', props);
     return characters.map((c) =>{
       return(
         <div>
@@ -60,7 +60,7 @@ class CharacterList extends Component {
           <h3>Characters</h3>
         </hgroup>
         <div className="characterListContainer scroll3">
-          {this.props.characters.map(this._renderCharacters)}
+          {this._renderCharacters(this.props)}
         </div>
       </div>
     );
@@ -68,11 +68,10 @@ class CharacterList extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('state: ', state);
+  console.log('state 2: ', state);
   return {
     characters: state.Characters,
     campaigns: state.Campaigns,
-
   }
 }
 
