@@ -1,2 +1,3 @@
 export const LOAD_CHARACTERS  = 'LOAD_CHARACTERS';
 export const LOAD_CAMPAIGNS   = 'LOAD_CAMPAIGNS';
+export const LOAD_GAME_SYSTEMS   = 'LOAD_GAME_SYSTEMS'; 
