@@ -87,8 +87,9 @@ let createWindow = () => {
     mainWindow.close();
   });
 
-  ipcMain.on('app_maximize', (event, val) => {
-    val == true ? mainWindow.maximize() : mainWindow.unmaximize();
+  ipcMain.on('app_maximize', (event, maximize) => {
+    maximize ? mainWindow.maximize() : mainWindow.unmaximize();
+    mainWindow.center()
   });
 
   ipcMain.on('config-paths', (e, arg) => {

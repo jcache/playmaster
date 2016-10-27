@@ -23,33 +23,33 @@ class CharacterList extends Component {
     this.setState = newID;
   }
 
-  _renderCharacters(c) {
-    let { selected } = this.state;
+  _renderCharacters() {
+    let {selected} = this.state;
+    let {characters, campaigns, _onSelectCharacter } = this.props;
     let selectedCharacterClass = 'selectedCharacter';
-    console.log('campaigns: ', this.props.campaigns);
-    let campaignName = (id) => {
-      console.log('id: ', id);
-      return campaigns.map((cp) => {
-        console.log('cp: ', cp);
-        return cp.charactersInGame.indexOf(id) != -1 ? cp.campaignName : null
-      });
-    }
-    return(
-      <div
-        onClick={() =>{this.setState({selected: c.id})}}
-        key={c.id}
-        className={`character ${selected == c.id ? selectedCharacterClass : null}`} >
-        <div className="characterAvatar" style={{backgroundImage: `url('./${c.characterAvatarUri}')`}}></div>
-        <div className="characterDetail">
-          <p className="characterName">{c.characerName}</p>
-          <p>{c.characerProfession}</p>
-          <p  className="opt-sm">{ campaignName(c.id) }</p>
+    return characters.map((c) =>{
+      return(
+        <div>
+          <div>
+            onClick={() =>{ _onSelectCharacter(c); this.setState({selected: c.id}); }}
+            key={c.id}
+            className={`character ${selected == c.id ? selectedCharacterClass : null}`} >
+            <div className="characterAvatar" style={{backgroundImage: `url('./${c.characterAvatarUri}')`}}></div>
+            <div className="characterDetail">
+              <p className="characterName">{c.characerName}</p>
+              <p>{c.characerProfession}</p>
+              <p  className="opt-sm">{this._lookupCharacterInCampaign(c.id)}</p>
+            </div>
+            <div className="expGauge">
+              <span className="completion"></span>
+            </div>
+          </div>
+          <div className="expGauge">
+            <span className="completion"></span>
+          </div>
         </div>
-        <div className="expGauge">
-          <span className="completion"></span>
-        </div>
-      </div>
-    )
+      )
+    });
   }
 
   render() {

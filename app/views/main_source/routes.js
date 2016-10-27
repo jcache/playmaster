@@ -8,6 +8,7 @@ import mainOverlay from './containers/mainOverlay';
 import CharacterView from './containers/CharacterView';
 import CampaignView from './containers/CampaignView';
 import GameSystemView from './containers/GameSystemView';
+import SettingsView from './containers/SettingsView';
 
 export default (
   <Route path="/" component={App}>
@@ -20,8 +21,10 @@ export default (
     <Route path="player/:id" component={requireAuth(DefaultView)} >
       <Route path="friends" component={DefaultView} />
       <Route path="chat" component={DefaultView} />
-      <Route path="settings" component={DefaultView} />
+      <Route path="settings" component={SettingsView} />
     </Route>
+
+    <Route path="settings" component={SettingsView} ></Route>
     <Route path="character/:id" component={DefaultView}>
       <Route path="inventory" component={DefaultView}>
         <Route path="item/:id" component={DefaultView}>

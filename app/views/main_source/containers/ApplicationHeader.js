@@ -34,6 +34,7 @@ class ApplicationHeader extends Component {
     return (
       <DefaultHeader
         Style={Style}
+        router={this.context.router}
         scrollingClass={scrollingClass}
         onCloseApp={() => this.onCloseApp()}
         onMaximizeToggle={() => this.onMaximizeToggle()}
@@ -43,6 +44,9 @@ class ApplicationHeader extends Component {
         headerMinScroll={headerMinScroll} />
     );
   }
+}
+ApplicationHeader.contextTypes = {
+  router: React.PropTypes.object
 }
 
 const mapStateToProps = (state) => {
