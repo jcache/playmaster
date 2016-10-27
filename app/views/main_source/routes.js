@@ -7,14 +7,16 @@ import DefaultView from './containers/DefaultView';
 import mainOverlay from './containers/mainOverlay';
 import CharacterView from './containers/CharacterView';
 import CampaignView from './containers/CampaignView';
-import GameSystemView from './containers/GameSystemView';
-import SettingsView from './containers/SettingsView';
+import GameSystem from './containers/GameSystemView';
+import Settings from './containers/SettingsView';
+import CreateProfile from './containers/CreateProfileView';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={DefaultView} /> // This should eventually be dashboard
-    <Route path="login" component={mainOverlay} />
-    <Route path="gamesystems" component={GameSystemView} />
+    <IndexRoute component={CreateProfile} />
+    <Route path="create_profile" component={CreateProfile} />
+    <Route path="players" component={DefaultView} />
+    <Route path="gamesystems" component={GameSystem} />
     <Route path="characters" component={requireAuth(CharacterView)} />
     <Route path="campaigns" component={requireAuth(CampaignView)} />
     <Route path="players" component={DefaultView} />
@@ -24,7 +26,7 @@ export default (
       <Route path="settings" component={SettingsView} />
     </Route>
 
-    <Route path="settings" component={SettingsView} ></Route>
+    <Route path="settings" component={Settings} ></Route>
     <Route path="character/:id" component={DefaultView}>
       <Route path="inventory" component={DefaultView}>
         <Route path="item/:id" component={DefaultView}>

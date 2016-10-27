@@ -45,9 +45,6 @@ class ApplicationHeader extends Component {
     );
   }
 }
-ApplicationHeader.contextTypes = {
-  router: React.PropTypes.object
-}
 
 const mapStateToProps = (state) => {
   return {}
