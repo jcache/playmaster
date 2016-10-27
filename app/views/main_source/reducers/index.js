@@ -5,11 +5,12 @@ import authenticationReducer from './authentication';
 import { Characters } from './characters';
 import { Campaigns } from './campaigns';
 import { Gamesystems } from './game_systems';
-
+import { reducer as reduxFormReducer } from 'redux-form';
 const reducer = combineReducers({
   Campaigns,
   Characters,
   Gamesystems,
+  form: reduxFormReducer,
   authenticated: authenticationReducer,
   routing: routerReducer
 });
