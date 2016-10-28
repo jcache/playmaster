@@ -10,13 +10,19 @@ class CreateProfileView extends Component {
   }
   handleSubmit = (values) => {
     console.log(values);
-    console.log(this.context.router.push("/create_profile"))
+    this.context.router.push("/dashboard");
   }
   render() {
     const { handleSubmit } = this.props;
     return (
       <div className="DefaultView">
+      <div style={{flex:1}}>
+        <hgroup>
+          <h1>Create a Player</h1>
+        </hgroup>
+
         <CreateProfileForm onSubmit={this.handleSubmit} />
+        </div>
       </div>
     );
   }
