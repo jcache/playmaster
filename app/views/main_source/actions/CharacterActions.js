@@ -1,8 +1,10 @@
-import * as types from '../constants/ActionTypes';
+import {
+  LOAD_CHARACTERS
+} as types from '../actions/types';
 
 function LoadCharacters(characters) {
   return {
-    type: types.LOAD_CHARACTERS,
+    type: LOAD_CHARACTERS,
     characters: characters
   }
 }

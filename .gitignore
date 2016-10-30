@@ -2,7 +2,7 @@
 /compiled/src/*
 /tmp/*
 /debug.log
-/npm-debug.log
+**/npm-debug.log
 /dist/*
 
 # React Dev Tool settings

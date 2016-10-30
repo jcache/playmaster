@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import { ipcRenderer, remote } from 'electron';
-import { connect}  from 'react-redux';
+import { connect }  from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import CreateProfileForm from '../container_forms/CreateProfileForm';
+import * as actions from '../actions';
 
 class CreateProfileView extends Component {
   constructor (props) {
     super(props);
   }
   handleSubmit = (values) => {
-    console.log(values);
-    console.log(this.context.router.push("/create_profile"))
+    console.log('CreateProfileView -- values: ',values);
+    // console.log('CreateProfileView -- props: ', this.props);
+    // console.log('CreateProfileView -- context: ', this.context);
+    this.props.authenticate(true);
+    // console.log('CreateProfileView -- authenticated after auth: ', this.props.authenticated);
+    this.props.history.goBack();
   }
   render() {
     const { handleSubmit } = this.props;
@@ -21,10 +26,8 @@ class CreateProfileView extends Component {
     );
   }
 }
-CreateProfileView.contextTypes = {
-  router: React.PropTypes.object
-}
+
 const mapStateToProps = (state) => {
-  return {}
+  return { authenticated: state.authenticated }
 }
-export default connect(mapStateToProps)(CreateProfileView)
+export default connect(mapStateToProps, actions)(CreateProfileView)

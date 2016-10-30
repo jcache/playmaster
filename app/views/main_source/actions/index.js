@@ -1,12 +1,24 @@
-import { CHANGE_AUTH } from './types';
-import { FETCH_CHARACTERS } from './types';
-import { FETCH_CAMPAIGNS } from './types';
+import {
+  CHANGE_AUTH,
+  FETCH_CHARACTERS,
+  FETCH_CAMPAIGNS,
+  SELECT_CHARACTER
+} from './types';
+import db from 'lowdb';
+
 
 export const authenticate = (loggedIn) => {
   return {
     type: CHANGE_AUTH,
     payload: loggedIn
   };
+}
+
+export function selectCharacter(characterId) {
+  return {
+    type: SELECT_CHARACTER,
+    payload: characterId
+  }
 }
 
 export function fetchCampaigns() {

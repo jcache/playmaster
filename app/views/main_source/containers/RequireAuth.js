@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
+import SignUp from '../components/signup';
 
 export default function(ComposedComponent) {
+
   class Authentication extends Component {
 
     componentWillMount() {
+      console.log('Auth HOC -- ComposedComponent: ', ComposedComponent);
       if (!this.props.authenticated) {
         console.log('access denied!!!');
-        this.context.router.push('/login');
+        this.context.router.push('/create_profile');
       }
     }
 
@@ -18,8 +22,15 @@ export default function(ComposedComponent) {
     }
 
     render() {
-      // console.log(this.context); 
-      return <ComposedComponent {...this.props} />
+      // if (this.props.authenticated) {
+        return <ComposedComponent {...this.props} />;
+      // }
+
+      // return (
+      //   <ComposedComponent {...this.props} >
+      //     <SignUp />
+      //   </ComposedComponent>
+      // );
     }
   }
 
@@ -31,5 +42,5 @@ export default function(ComposedComponent) {
     return { authenticated: state.authenticated }
   }
 
-  return connect(mapStateToProps)(Authentication);
+  return connect(mapStateToProps)(withRouter(Authentication));
 }

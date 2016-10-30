@@ -11,6 +11,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "electron-compile": "^3.3.6",
     "electron-prebuilt-compile": "^1.4.4",
+    "lowdb": "^0.14.0",
     "materialize-css": "^0.97.7",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",

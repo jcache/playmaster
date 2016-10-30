@@ -1,8 +1,11 @@
-import * as types from '../constants/ActionTypes';
+import {
+  LOAD_PLAYER,
+  NEW_PLAYER
+} from '../actions/types';
 import PlayerController from '../models/player_data';
 function LoadPlayer(player) {
   return {
-    type: types.LOAD_PLAYER,
+    type: LOAD_PLAYER,
     player: player
   }
 }
@@ -13,5 +16,20 @@ export function CollectPlayer(){
     PlayerController.getPlayer(data => {
       dispatch(LoadPlayer(data))
     })
+  }
+}
+
+export const authenticate = (loggedIn) => {
+  return {
+    type: CHANGE_AUTH,
+    payload: loggedIn
+  };
+}
+
+export const signUp = (values) => {
+  console.log('PlayerAction -- signUp: ', values);
+  return {
+    type: NEW_PLAYER,
+    payload: {}
   }
 }

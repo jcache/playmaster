@@ -13,7 +13,7 @@ import CreateProfile from './containers/CreateProfileView';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={CreateProfile} />
+    <IndexRoute component={DefaultView} />
     <Route path="create_profile" component={CreateProfile} />
     <Route path="players" component={DefaultView} />
     <Route path="gamesystems" component={GameSystem} />
@@ -23,10 +23,10 @@ export default (
     <Route path="player/:id" component={requireAuth(DefaultView)} >
       <Route path="friends" component={DefaultView} />
       <Route path="chat" component={DefaultView} />
-      <Route path="settings" component={SettingsView} />
+      <Route path="settings" component={Settings} />
     </Route>
 
-    <Route path="settings" component={Settings} ></Route>
+    <Route path="settings" component={Settings} />
     <Route path="character/:id" component={DefaultView}>
       <Route path="inventory" component={DefaultView}>
         <Route path="item/:id" component={DefaultView}>
