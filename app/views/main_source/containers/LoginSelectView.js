@@ -1,64 +1,55 @@
 import React, { Component } from 'react';
-import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import CreateProfileForm from '../container_forms/CreateProfileForm';
-import {CollectPlayer} from '../actions/PlayerActions';
+import PlayerChip from '../components/PlayerLoginChip';
+import { CollectPlayer, CollectPlayers } from '../actions/PlayerActions';
 import { Link } from 'react-router';
-
-
+import { ipcRenderer, remote } from 'electron';
 
 class LoginSelectView extends Component {
   constructor (props) {
     super(props);
   }
+
   handleSelectPlayer = (values) => {
-    // console.log(values);
-    this.context.router.push("/step_two");
-    this.props.dispatch(CollectPlayer(values))
+    this.props.dispatch(CollectPlayer(values));
   }
-  handleSubmit = (values) => {
-    // console.log(values);
-    this.context.router.push("/step_two");
-    this.props.dispatch(CollectPlayer(values))
+
+  handleSubmit = () => {
+    ipcRenderer.send('resize-to-main');
   }
+  _playerList(){
+    let { players } = this.props;
+    let PlayerList = [];
+
+    players.map((player) => {
+      PlayerList.push(<PlayerChip key={player.id} player={player} />)
+    });
+
+    return (
+      <ul>{PlayerList}</ul>
+    )
+  }
+  componentDidMount(){
+    ipcRenderer.send('resize-to-login');
+    this.props.dispatch(CollectPlayers())
+  }
+
   render() {
     const { handleSubmit } = this.props;
     return (
       <div className="LoginSelectView releaseAppmargin">
-        <div style={{flex:1, display: 'flex', maxWidth: '500px'}}>
-          <div style={{flex:1}}>
+        <div style={{flex:1, display: 'flex', maxWidth: '520px'}}>
+          <div style={{flex:1, display: 'flex', flexDirection: 'column'}}>
             <hgroup>
               <h2>Player Selection</h2>
-              <h4>Select a player to return as </h4>
             </hgroup>
             <div className={`PersonSelectList`}>
-              <ul>
-                <li> <Link to="" className={`active`} style={{backgroundImage: `url('./images/rogue.jpg')`}} href={void(0)}></Link></li>
-                <li> <Link to="" href={void(0)}></Link></li>
-                <li> <Link to="" href={void(0)}></Link></li>
-                <li> <Link to="" href={void(0)}></Link></li>
-                <li> <Link to="" href={void(0)}></Link></li>
-                <li> <Link to="" href={void(0)}></Link></li>
-                <li> <Link to="" href={void(0)}></Link></li>
-                <li> <Link to="" href={void(0)}></Link></li>
-                <li> <Link to="" href={void(0)}></Link></li>
-                <li> <Link to="" href={void(0)}></Link></li>
-                <li> <Link to="" href={void(0)}></Link></li>
-                <li> <Link to="" href={void(0)}></Link></li>
-              </ul>
+              {this._playerList()}
+              <Link to="/step_two" className={`btn btn-xl btn-primary`} onClick={()=> { this.handleSubmit()}}>New Player</Link>
             </div>
           </div>
-        </div>
-        <div style={{flex:1, maxWidth: '500px'}}>
-          <hgroup>
-            <h2>Create a Player</h2>
-            <h4>Select a player to return as </h4>
-          </hgroup>
-          <div className={`PersonCreateContainer`}>
-            <Link to className={`btn btn-xl btn-primary`} href={void(0)}>Begin</Link>
-          </div>
-
         </div>
       </div>
     );
@@ -68,6 +59,8 @@ LoginSelectView.contextTypes = {
   router: React.PropTypes.object
 }
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    players: state.Players.players
+  }
 }
 export default connect(mapStateToProps)(LoginSelectView)

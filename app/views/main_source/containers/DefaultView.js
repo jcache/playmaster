@@ -16,9 +16,9 @@ class DefaultView extends Component {
     };
   }
   componentDidMount(){
-    alert(JSON.stringify(this.props.player));
+    // alert(JSON.stringify(this.props.player));
   }
-  
+
   _onSelectCharacter(character) {
     this.setState({
       selected: character

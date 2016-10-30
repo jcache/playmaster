@@ -16,7 +16,7 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute component={LoginSelect} />
 
-    <Route path="step_two" component={CampaignView} />
+    <Route path="step_two" component={Dashboard} />
     <Route path="dashboard" component={DefaultView} />
     <Route path="players" component={Dashboard} />
     <Route path="gamesystems" component={GameSystem} />

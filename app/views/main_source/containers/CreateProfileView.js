@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
 import CreateProfileForm from '../container_forms/CreateProfileForm';
-import {CollectPlayer} from '../actions/PlayerActions';
+import { CollectPlayer } from '../actions/PlayerActions';
+
 class CreateProfileView extends Component {
   constructor (props) {
     super(props);
   }
-  handleSubmit = (values) => {
-    // console.log(values);
-    this.context.router.push("/step_two");
+
+  handleSubmit(values){
     this.props.dispatch(CollectPlayer(values))
   }
+
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -27,10 +26,7 @@ class CreateProfileView extends Component {
     );
   }
 }
-CreateProfileView.contextTypes = {
-  router: React.PropTypes.object
-}
-const mapStateToProps = (state) => {
-  return {}
-}
-export default connect(mapStateToProps)(CreateProfileView)
+
+
+
+export default connect()(CreateProfileView)

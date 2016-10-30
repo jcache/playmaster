@@ -20,7 +20,8 @@
   "scripts": {
     "postinstall": "install-app-deps",
     "dist": "electron-packager ./ Playmaster --arch=x64 --out=dist",
-    "win-dist": "build -w --x64",
+    "mac-dist": "NODE_ENV=production build -m --x64",
+    "win-dist": "NODE_ENV=production build -w --x64",
     "start": "babel-node scripts/ development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -43,6 +44,7 @@
   "devDependencies": {
     "babel-cli": "^6.11.4",
     "babel-loader": "^6.2.4",
+    "babel-plugin-transform-class-properties": "^6.18.0",
     "babel-preset-es2017": "^1.6.1",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",

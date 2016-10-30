@@ -12,9 +12,9 @@ const is_WIN32 = process.platform == "win32";
 
 const setApplicationMenu = function () {
   const menus = [AppMenu, EditMenu];
-  if (process.env.NODE_ENV === 'development') {
+  // if (process.env.NODE_ENV === 'development') {
     menus.push(DevMenu);
-  }
+  // }
 
   Menu.setApplicationMenu(Menu.buildFromTemplate(menus));
 };
@@ -28,7 +28,7 @@ let createWindow = () => {
    // CRASH REPORTER
    require('./helpers/app_reporter');
 
-  var winW = 1096;
+  var winW = 520;
   var winH = 800;
   var atomScreen = electron.screen;
   var size = atomScreen.getPrimaryDisplay().workAreaSize;
@@ -49,9 +49,9 @@ let createWindow = () => {
     horzL - (winH / 2)
   );
 
-  // if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development') {
     mainWindow.webContents.openDevTools({ detach: true });
-  // }
+  }
 
   // ADD REACT DEVTOOLS  For more info: https://goo.gl/HAip0t
   let appDataPath = app.getPath('appData');
@@ -75,9 +75,24 @@ let createWindow = () => {
     mainWindow.setTitle('evolition | playmaster');
   });
 
+
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
   });
+
+  ipcMain.on('resize-to-login', (e, arg) => {
+    var options = { width: winW, height: winH };
+    options.x = vertL  - (options.width / 2);
+    options.y = horzL - (options.height / 2);
+    mainWindow.setBounds(options, true);
+  });
+
+  ipcMain.on('resize-to-main', (e, arg) => {
+      var options = { width: 1140, height: 800 };
+      options.x = vertL  - (options.width / 2);
+      options.y = horzL - (options.height / 2);
+      mainWindow.setBounds(options, true);
+    });
 
   ipcMain.on('app_minimize', (event) => {
     mainWindow.minimize();
