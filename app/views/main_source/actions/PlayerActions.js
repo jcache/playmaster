@@ -15,10 +15,10 @@ function LoadPlayers(players) {
   }
 }
 
-export function CollectPlayer(player){
+export function CollectPlayer(id){
   return dispatch => {
     // PLAYER CONTROLLER
-    PlayerController.getPlayer(player, data => {
+    PlayerController.getPlayer(id, data => {
       dispatch(LoadPlayer(data))
     })
   }

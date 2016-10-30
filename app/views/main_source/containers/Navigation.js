@@ -14,16 +14,19 @@ class Navigation extends Component{
       </Link>
     );
   }
-
   render() {
     return (
       <nav>
         <div className="nav-wrapper">
           <ul className="hide-on-med-and-down">
-            <li><Link to="/dashboard" >Dashboard</Link></li>
-            <li><Link to="/characters" >Characters</Link></li>
-            <li><Link to="/campaigns" >Campaigns</Link></li>
-            <li><Link to="/gamesystems" >Game Systems</Link></li>
+            {
+              /*
+                <li><Link to="/dashboard" >Dashboard</Link></li>
+                <li><Link to="/characters" >Characters</Link></li>
+                <li><Link to="/campaigns" >Campaigns</Link></li>
+              */
+            }
+            <li><Link to={`player/${this.props.player.id}/gamesystems`} >Game Systems</Link></li>
             <li className="nav-item">
               {this.authButton()}
             </li>
@@ -35,7 +38,10 @@ class Navigation extends Component{
 }
 
 const mapStateToProps = (state) => {
-  return { authenticated: state.authenticated }
+  return {
+    authenticated: state.authenticated,
+    player: state.Player.player
+ }
 }
 
 export default connect(mapStateToProps, actions)(Navigation);

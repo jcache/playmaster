@@ -29,11 +29,12 @@ class ApplicationHeader extends Component {
   }
 
   render() {
-    let {scrollingClass, scrollingVal, headerMaxScroll, headerMinScroll} = this.props;
+    let {scrollingClass, scrollingVal, headerMaxScroll, headerMinScroll, player} = this.props;
     const Style = { minHeight: scrollingVal < headerMinScroll ? headerMaxScroll : scrollingVal }
     return (
       <DefaultHeader
         Style={Style}
+        player={player}
         router={this.context.router}
         scrollingClass={scrollingClass}
         onCloseApp={() => this.onCloseApp()}
@@ -47,7 +48,9 @@ class ApplicationHeader extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    player: state.Player.player
+  }
 }
 
 export default connect(mapStateToProps)(ApplicationHeader)

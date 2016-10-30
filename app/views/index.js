@@ -10,8 +10,6 @@ import routes from './main_source/routes';
 const store = configureStore();
 const appHistory = useRouterHistory(createHashHistory)({ queryKey: false })
 const history = syncHistoryWithStore(appHistory, store);
-
-
 ReactDOM.render(
     <Provider store={store}>
       <Router history={history} routes={routes} />
