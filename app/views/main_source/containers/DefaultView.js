@@ -15,7 +15,10 @@ class DefaultView extends Component {
       selected: {}
     };
   }
-
+  componentDidMount(){
+    alert(JSON.stringify(this.props.player));
+  }
+  
   _onSelectCharacter(character) {
     this.setState({
       selected: character
@@ -23,6 +26,7 @@ class DefaultView extends Component {
   }
 
   render() {
+
     let { authenticated } = this.props;
     let { selected } = this.state;
     const Style={"color":"#FFF", visibility: authenticated ? "visible" : "hidden" };
@@ -44,6 +48,8 @@ class DefaultView extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    player: state.Player.player
+  };
 }
 export default connect(mapStateToProps)(DefaultView)

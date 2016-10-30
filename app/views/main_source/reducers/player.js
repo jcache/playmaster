@@ -1,14 +1,14 @@
 import * as types from '../constants/ActionTypes';
 
-const CharacterState = {
-  characters: [],
+const PlayerState = {
+  player: {},
 };
 
-export const Characters = (state = CharacterState, action ) => {
+export const Player = (state = PlayerState, action ) => {
   switch (action.type) {
-    case types.LOAD_CHARACTERS:
+    case types.LOAD_PLAYER:
       return Object.assign({}, state, {
-        characters: action.characters
+        player: action.player
       });
    default:
     return state;

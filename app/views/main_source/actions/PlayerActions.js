@@ -7,10 +7,10 @@ function LoadPlayer(player) {
   }
 }
 
-export function CollectPlayer(){
+export function CollectPlayer(player){
   return dispatch => {
     // PLAYER CONTROLLER
-    PlayerController.getPlayer(data => {
+    PlayerController.getPlayer(player, data => {
       dispatch(LoadPlayer(data))
     })
   }

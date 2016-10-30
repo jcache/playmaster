@@ -3,14 +3,15 @@ import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import CreateProfileForm from '../container_forms/CreateProfileForm';
-
+import {CollectPlayer} from '../actions/PlayerActions';
 class CreateProfileView extends Component {
   constructor (props) {
     super(props);
   }
   handleSubmit = (values) => {
-    console.log(values);
-    this.context.router.push("/dashboard");
+    // console.log(values);
+    this.context.router.push("/step_two");
+    this.props.dispatch(CollectPlayer(values))
   }
   render() {
     const { handleSubmit } = this.props;
@@ -20,7 +21,6 @@ class CreateProfileView extends Component {
         <hgroup>
           <h1>Create a Player</h1>
         </hgroup>
-
         <CreateProfileForm onSubmit={this.handleSubmit} />
         </div>
       </div>

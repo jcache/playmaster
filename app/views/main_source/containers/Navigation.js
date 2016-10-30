@@ -19,8 +19,8 @@ class Navigation extends Component{
     return (
       <nav>
         <div className="nav-wrapper">
-          <ul className="right hide-on-med-and-down">
-            <li><Link to="/" >Home</Link></li>
+          <ul className="hide-on-med-and-down">
+            <li><Link to="/dashboard" >Dashboard</Link></li>
             <li><Link to="/characters" >Characters</Link></li>
             <li><Link to="/campaigns" >Campaigns</Link></li>
             <li><Link to="/gamesystems" >Game Systems</Link></li>
