@@ -10,30 +10,28 @@ import { ipcRenderer, remote } from 'electron';
 class LoginSelectView extends Component {
   constructor (props) {
     super(props);
+    this.state = {
+      players: []
+    }
   }
 
-  handleSelectPlayer = (values) => {
-    this.props.dispatch(CollectPlayer(values));
-  }
-
-  handleSubmit = () => {
+  handleSubmit() {
     ipcRenderer.send('resize-to-main');
   }
   _playerList(){
     let { players } = this.props;
-    let PlayerList = [];
-
-    players.map((player) => {
-      PlayerList.push(<PlayerChip key={player.id} player={player} />)
+    return players.map((player) => {
+      return <PlayerChip key={player.id} player={player} />
     });
+  }
 
-    return (
-      <ul>{PlayerList}</ul>
-    )
+
+  componentWillMount(){
+    this.props.dispatch(CollectPlayers());
   }
   componentDidMount(){
+    this.props.dispatch(CollectPlayers());
     ipcRenderer.send('resize-to-login');
-    this.props.dispatch(CollectPlayers())
   }
 
   render() {
@@ -46,8 +44,10 @@ class LoginSelectView extends Component {
               <h2>Player Selection</h2>
             </hgroup>
             <div className={`PersonSelectList`}>
+            <ul>
               {this._playerList()}
-              <Link to="/step_two" className={`btn btn-xl btn-primary`} onClick={()=> { this.handleSubmit()}}>New Player</Link>
+            </ul>
+              <Link to="/create_player" className={`btn btn-xl btn-primary`} onClick={()=> { this.handleSubmit()}}>New Player</Link>
             </div>
           </div>
         </div>

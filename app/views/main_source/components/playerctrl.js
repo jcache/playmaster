@@ -3,7 +3,6 @@ import { IoIosSearchStrong, IoIosGear } from 'react-icons/lib/io';
 import ReactTooltip from 'react-tooltip';
 import { Link } from 'react-router';
 
-
 const PlayerCtrl = (props) => {
   let { router, player } = props;
   return (

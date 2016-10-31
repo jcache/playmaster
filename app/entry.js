@@ -21,6 +21,9 @@ const setApplicationMenu = function () {
 let mainWindow = void 0;
 
 let createWindow = () => {
+  console.log(AppRouter.getAppDataPath());
+  AppRouter.loadCharacterDB();
+  AppRouter.loadPlayerDB();
   // SETS APPLICATION MENU
    setApplicationMenu();
    // PROTOCOL MODULE
@@ -78,6 +81,11 @@ let createWindow = () => {
 
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
+  });
+
+  ipcMain.on('config-paths', (e, arg) => {
+    const routePaths = AppRouter.getAppDataPath();
+    e.returnValue = routePaths;
   });
 
   ipcMain.on('resize-to-login', (e, arg) => {

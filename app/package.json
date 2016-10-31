@@ -12,6 +12,9 @@
     "babel-preset-stage-0": "^6.5.0",
     "electron-compile": "^3.3.6",
     "electron-prebuilt-compile": "^1.4.4",
+    "fs-extra": "^0.30.0",
+    "lodash": "^4.16.4",
+    "lowdb": "^0.14.0",
     "materialize-css": "^0.97.7",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
@@ -24,7 +27,7 @@
     "redux-form": "^6.1.1",
     "redux-logger": "^2.7.0",
     "redux-thunk": "^2.1.0",
-    "uuid": "^2.0.2",
+    "uuid": "^2.0.3",
     "webpack": "^1.13.2"
   }
 }

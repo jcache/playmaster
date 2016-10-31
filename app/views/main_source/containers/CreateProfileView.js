@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect}  from 'react-redux';
 import CreateProfileForm from '../container_forms/CreateProfileForm';
-import { CollectPlayer } from '../actions/PlayerActions';
+import { CreatePlayer } from '../actions/PlayerActions';
 
 class CreateProfileView extends Component {
   constructor (props) {
@@ -9,7 +9,9 @@ class CreateProfileView extends Component {
   }
 
   handleSubmit(values){
-    this.props.dispatch(CollectPlayer(values))
+    this.context.router.push('/');
+    let { dispatch } = this.props;
+    dispatch(CreatePlayer(values))
   }
 
   render() {
@@ -20,13 +22,14 @@ class CreateProfileView extends Component {
         <hgroup>
           <h1>Create a Player</h1>
         </hgroup>
-        <CreateProfileForm onSubmit={this.handleSubmit} />
+        <CreateProfileForm onSubmit={(player) => this.handleSubmit(player)} />
         </div>
       </div>
     );
   }
 }
-
-
+CreateProfileView.contextTypes = {
+  router: React.PropTypes.object
+}
 
 export default connect()(CreateProfileView)

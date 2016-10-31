@@ -1,24 +1,31 @@
-const players =[
-  {
-    id: 1,
-    player_name: `aestrro`,
-    avatar_uri: `images/spiderman.jpg`,
-  }, {
-    id: 2,
-    player_name: `jcache`,
-    avatar_uri: `images/rogue.jpg`,
-  }
-]
+import path from 'path';
+import { ipcRenderer, ipcMain, remote } from 'electron';
+import low from 'lowdb';
+import _ from 'lodash';
+import uuid from 'uuid';
+
+const dataPath = ipcRenderer.sendSync('config-paths');
+const PlayersDataPath = path.resolve(dataPath, 'players.json');
+const db = low(PlayersDataPath);
+const Players = db.get('player');
 
 export default {
+  // CREATES PLAYER RESOURCE
+  createPlayer(player,cb) {
+    const newPlayer = _.assign({'id': uuid()} , player);
+    Players.push(newPlayer).value().id;
+    const AllPlayers = Players.value();
+    cb(AllPlayers);
+  },
+  // GET SINGLE RESOURCE
   getPlayer(id,cb) {
-    function findPlayerById(element) {
-      return element.id == id;
-    }
-    var player = players.find(findPlayerById);
+    const player = Players.find({id: id}).value();
     cb(player);
   },
+  // GET PLAYERS BLOB
   getPlayers(cb) {
-    cb(players);
+    const AllPlayers = Players.value();
+    console.log(`[All Players] -> `, AllPlayers);
+    cb(AllPlayers);
   },
 }

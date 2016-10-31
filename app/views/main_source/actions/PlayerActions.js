@@ -15,6 +15,14 @@ function LoadPlayers(players) {
   }
 }
 
+export function CreatePlayer(player){
+  return dispatch => {
+    // PLAYER CONTROLLER
+    PlayerController.createPlayer(player, data => {
+      dispatch(LoadPlayers(data));
+    })
+  }
+}
 export function CollectPlayer(id){
   return dispatch => {
     // PLAYER CONTROLLER

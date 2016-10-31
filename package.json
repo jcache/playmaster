@@ -37,6 +37,16 @@
     "dnd",
     "game"
   ],
+  "contributors": [
+    {
+      "email": "kevin@evolition.io",
+      "name": "Kevin Carr"
+    },
+    {
+      "email": "josh@evolition.io",
+      "name": "Joshua Owens"
+    }
+  ],
   "author": "Evolition",
   "license": "Apache-2.0",
   "copyright": "Copyright (c) 2016, Evolition, LLC. All rights reserved.",
