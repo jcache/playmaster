@@ -2,8 +2,8 @@
 const path = require('path');
 const electron = require('electron');
 const fs = require('fs-extra');
-const character_data = [];
-const player_data = [];
+const character_data = {};
+const player_data = {};
 
 class Route {
 

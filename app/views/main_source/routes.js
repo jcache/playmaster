@@ -19,9 +19,7 @@ export default (
     <Route path="create_player" component={CreateProfile} />
     /* DEFAULT PLAYER ROUTE = DASHBOARD (` /player/1 `) */
     <Route path="player/:id" component={testHOC(Dashboard)} >
-      <Route path="gamesystems" component={GameSystem}>
-
-      </Route>
+      <Route path="gamesystems" component={GameSystem}/>
     </Route>
 
     {/*
