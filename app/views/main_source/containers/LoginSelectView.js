@@ -4,9 +4,10 @@ import { Field, reduxForm } from 'redux-form';
 import CreateProfileForm from '../container_forms/CreateProfileForm';
 import PlayerChip from '../components/PlayerLoginChip';
 import { CollectPlayer, CollectPlayers } from '../actions/PlayerActions';
+import { authenticate } from '../actions';
 import { Link } from 'react-router';
 import { ipcRenderer, remote } from 'electron';
-
+import * as actions from '../actions';
 class LoginSelectView extends Component {
   constructor (props) {
     super(props);
@@ -15,19 +16,21 @@ class LoginSelectView extends Component {
     }
   }
 
-  handleSubmit() {
+  onAuthenticate() {
     ipcRenderer.send('resize-to-main');
+    this.props.dispatch(authenticate(true))
+  }
+  handleSubmit() {
+  //   let { authenticated} = this.props;
+  //   console.log(`authenticated: ${authenticated}`)
+  //   this.props.dispatch(authenticate(true))
   }
   _playerList(){
-    let { players } = this.props;
+    let { players, authenticated} = this.props;
+
     return players.map((player) => {
-      return <PlayerChip key={player.id} player={player} />
+      return <PlayerChip key={player.id} player={player} onAuthenticate={(v) => this.onAuthenticate(v)} />
     });
-  }
-
-
-  componentWillMount(){
-    this.props.dispatch(CollectPlayers());
   }
   componentDidMount(){
     this.props.dispatch(CollectPlayers());
@@ -55,11 +58,10 @@ class LoginSelectView extends Component {
     );
   }
 }
-LoginSelectView.contextTypes = {
-  router: React.PropTypes.object
-}
+
 const mapStateToProps = (state) => {
   return {
+    authenticated: state.authenticated,
     players: state.Players.players
   }
 }

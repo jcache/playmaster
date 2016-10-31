@@ -25,7 +25,7 @@ export default {
   // GET PLAYERS BLOB
   getPlayers(cb) {
     const AllPlayers = Players.value();
-    console.log(`[All Players] -> `, AllPlayers);
+    // console.log(`[All Players] -> `, AllPlayers);
     cb(AllPlayers);
   },
 }

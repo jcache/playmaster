@@ -5,13 +5,13 @@ import Navigation from '../containers/Navigation';
 import PlayerCtrl from './playerctrl';
 
 const DefaultHeader = (props) => {
-  const _renderNavigation = () => {
+  const _renderNavigation = (props) => {
     return (
       <Navigation {...props} />
     )
   }
 
-  const _renderPlayerCtrl = () => {
+  const _renderPlayerCtrl = (props) => {
     return (
       <PlayerCtrl {...props} />
     )
@@ -20,8 +20,8 @@ const DefaultHeader = (props) => {
   return (
     <div className={`ApplicationHeader header-scroll ${props.scrollingClass}`} style={props.Style} >
       <AppCtrl {...props} />
-      {props.player.id !== undefined ? _renderNavigation() : null }
-      {props.player.id !== undefined ? _renderPlayerCtrl() : null }
+      {props.authenticated ? _renderNavigation(props) : null }
+      {props.authenticated ? _renderPlayerCtrl(props) : null }
     </div>
   )
 }

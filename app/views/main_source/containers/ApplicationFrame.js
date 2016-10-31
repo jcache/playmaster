@@ -16,6 +16,7 @@ class ApplicationFrame extends Component {
       headerMinScroll: 60,
     };
   }
+  
   onDismissOverlay(){
     this.setState({
       overlayVisible:false

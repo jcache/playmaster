@@ -5,31 +5,17 @@ import * as actions from '../actions';
 
 
 class Navigation extends Component{
-  authButton() {
-    // AUTHENTICATED IS A BOOLEAN
-    let {authenticated, authenticate} = this.props;
-    return (
-      <Link to="/" onClick={() => authenticate(!authenticated)}>
-        {authenticated ? `Sign Out` : `Sign In`}
-      </Link>
-    );
-  }
   render() {
+    let {player} = this.props;
     return (
       <nav>
         <div className="nav-wrapper">
           <ul className="hide-on-med-and-down">
-            {
-              /*
-                <li><Link to="/dashboard" >Dashboard</Link></li>
-                <li><Link to="/characters" >Characters</Link></li>
-                <li><Link to="/campaigns" >Campaigns</Link></li>
-              */
-            }
-            <li><Link to={`player/${this.props.player.id}/gamesystems`} >Game Systems</Link></li>
-            <li className="nav-item">
-              {this.authButton()}
-            </li>
+            <li><Link to={`player/${player.id}/`} >Dashboard</Link></li>
+            <li><Link to={`player/${player.id}/gamesystems`} >Game Systems</Link></li>
+            <li><Link to={`player/${player.id}/characters`} >Characters</Link></li>
+            <li><Link to={`player/${player.id}/campaigns`} >Campaigns</Link></li>
+
           </ul>
         </div>
       </nav>
@@ -39,7 +25,6 @@ class Navigation extends Component{
 
 const mapStateToProps = (state) => {
   return {
-    authenticated: state.authenticated,
     player: state.Player.player
  }
 }

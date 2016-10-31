@@ -92,14 +92,14 @@ let createWindow = () => {
     var options = { width: winW, height: winH };
     options.x = vertL  - (options.width / 2);
     options.y = horzL - (options.height / 2);
-    mainWindow.setBounds(options, true);
+    mainWindow.setBounds(options, false);
   });
 
   ipcMain.on('resize-to-main', (e, arg) => {
       var options = { width: 1140, height: 800 };
       options.x = vertL  - (options.width / 2);
       options.y = horzL - (options.height / 2);
-      mainWindow.setBounds(options, true);
+      mainWindow.setBounds(options, false);
     });
 
   ipcMain.on('app_minimize', (event) => {

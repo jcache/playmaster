@@ -39,10 +39,9 @@ const PlayerCtrl = (props) => {
       effect="solid">
 
       <ul onMouseLeave={() => ReactTooltip.hide()}>
-        <li><Link onClick={() => ReactTooltip.hide()}>Settings</Link></li>
         <li><Link onClick={() => ReactTooltip.hide()}>Account</Link></li>
         <li><Link onClick={() => ReactTooltip.hide()}>Preferences</Link></li>
-        <li><Link onClick={() => ReactTooltip.hide()}>Log Out</Link></li>
+        <li><Link onClick={() => {ReactTooltip.hide(); props.onAuthenticate(false)}}>Log Out</Link></li>
       </ul>
 
     </ReactTooltip>

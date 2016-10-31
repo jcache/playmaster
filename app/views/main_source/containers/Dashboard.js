@@ -5,7 +5,7 @@ import { IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';
 import CharacterListModule from '../container_modules/CharacterList';
 import ChatDisplayModule from '../container_modules/ChatDisplay';
 import CampaignDisplayModule from '../container_modules/CampaignDisplay';
-import GamesystemDisplayModule from '../container_modules/GamesystemDisplay'; 
+import GamesystemDisplayModule from '../container_modules/GamesystemDisplay';
 
 
 class DefaultView extends Component {
