@@ -1,9 +1,9 @@
 import GMMessage from './Campaigns'
 import Stats from './validators'
-import Badge from './badges' badge.png => 128 x 128
 
 // GAME SYSTEMS
-// 
+// import Badge from './badges' badge.png => 128 x 128
+//
 // "Nightmare Unicorns" = nightmare_unicorns_000
 //   - color = 'rgba(255,0,0)'
 //   - badge_uri = 'file://...'

@@ -28,7 +28,7 @@ let createWindow = () => {
    // CRASH REPORTER
    require('./helpers/app_reporter');
 
-  var winW = 1096;
+  var winW = 1110;
   var winH = 800;
   var atomScreen = electron.screen;
   var size = atomScreen.getPrimaryDisplay().workAreaSize;
