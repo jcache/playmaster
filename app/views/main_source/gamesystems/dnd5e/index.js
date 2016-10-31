@@ -1,5 +1,47 @@
 import GMMessage from './Campaigns'
 import Stats from './validators'
+import Badge from './badges' badge.png => 128 x 128
+
+// GAME SYSTEMS
+// 
+// "Nightmare Unicorns" = nightmare_unicorns_000
+//   - color = 'rgba(255,0,0)'
+//   - badge_uri = 'file://...'
+//   - banner_uri = 'file://...'
+//   - validators = {
+//     stats: [
+//       {
+//         id: 1,
+//         value: 5,
+//         name: "Mental Endurance",
+//         alias: "ME",
+//         StatKey: "NU_ME_STAT"
+//       }
+//     ]
+//     // bonuses: [
+//     //   {id: 1, statModifier: "NU_ME_STAT", baseModifierName: ""},
+//     //   {id: 2, statModifier: "NU_ME_STAT", },
+//     //   {id: 3, statModifier: "NU_ME_STAT", },
+//     //
+//     // ]
+//   }
+//
+//
+// - assets
+//   - badge
+//   - color
+// - validation
+//   - bonus
+//     - races
+//     - stats
+//     - skills
+//   - races
+//     - height
+//     - region
+//   - stats
+//     - attributes
+//   - skills
+//
 
 
 export default function({ dispatch }) {
