@@ -9,3 +9,10 @@ $("#ApplicationBody").scroll(function () {
   }
   //
 });
+// $(document.body).ready(function () {
+//   var SignUp = require("../main_source/views/components/signup");
+//   return (function() {
+//     signup();
+//     $("modal1").openModal();
+//   })();
+// });

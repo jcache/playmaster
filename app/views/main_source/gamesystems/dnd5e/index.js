@@ -14,7 +14,7 @@ export default function({ dispatch }) {
       }
 
       // FYI A bit of the below if statment is psudo-code
-      if (action.type === "redux-form/STAT" && Stats.has(meta.field.name) {
+      if (action.type === "redux-form/STAT" && Stats(meta.field.name)) {
 
         console.log('Example of handling stat validation. In this case fetch_characters!  action:', action);
 
@@ -27,7 +27,6 @@ export default function({ dispatch }) {
 
         }
       }
-      Stats
 
       return next(action);
     }
@@ -38,7 +37,7 @@ export default function({ dispatch }) {
       console.log('Example of sending a message to the GM!  action:', action);
 
       action.payload.then(response => {
-        
+
         console.log('Was message received by the GM?: ', response);
 
         const newAction = { ...action, payload: response };
