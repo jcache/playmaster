@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal } from 'react-bootstrap';
+import { Modal, Button, ModalExample } from 'react-bootstrap';
 
 const modalStyle = {
   position: 'fixed',
@@ -36,7 +36,7 @@ const SignUp = (props) => {
   console.log('SignUp -- props: ', props);
   return (
     <div className='modal-example'>
-      <Button onClick={this.open}>
+      <Button onClick={props.open}>
         Open Modal
       </Button>
       <p>Click to get the full Modal experience!</p>
@@ -45,13 +45,13 @@ const SignUp = (props) => {
         aria-labelledby='modal-label'
         style={modalStyle}
         backdropStyle={backdropStyle}
-        show={!this.state.authenticated}
-        onHide={this.close}
+        show={!props.authenticated}
+        onHide={props.close}
       >
         <div style={dialogStyle()} >
           <h4 id='modal-label'>Text in a modal</h4>
           <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-          <ModalExample/>
+          <ModalExample {...props}/>
         </div>
       </Modal>
     </div>
