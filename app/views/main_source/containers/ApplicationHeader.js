@@ -31,22 +31,10 @@ class ApplicationHeader extends Component {
   }
 
   render() {
-    let {scrollingClass, scrollingVal, headerMaxScroll, headerMinScroll, player,authenticated} = this.props;
-    const Style = { minHeight: scrollingVal < headerMinScroll ? headerMaxScroll : scrollingVal }
+    let { player,authenticated} = this.props;
     return (
-      <DefaultHeader
-        Style={Style}
-        player={player}
-        router={this.context.router}
-        authenticated={authenticated}
-        onAuthenticate={(v) => this.onAuthenticate(v)}
-        scrollingClass={scrollingClass}
-        onCloseApp={() => this.onCloseApp()}
-        onMaximizeToggle={() => this.onMaximizeToggle()}
-        onMinimizeToggle={() => this.onMinimizeToggle()}
-        scrollingVal={scrollingVal}
-        headerMaxScroll={headerMaxScroll}
-        headerMinScroll={headerMinScroll} />
+      <DefaultHeader  player={player} router={this.context.router}
+      authenticated={authenticated} onAuthenticate={(v) => this.onAuthenticate(v)} onCloseApp={() => this.onCloseApp()} />
     );
   }
 }

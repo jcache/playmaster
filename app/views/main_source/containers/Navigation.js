@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect }  from 'react-redux';
-import * as actions from '../actions';
 
 
-class Navigation extends Component{
+export default class Navigation extends Component{
   render() {
     let {player} = this.props;
     return (
@@ -15,18 +14,9 @@ class Navigation extends Component{
             <li><Link to={`player/${player.id}/gamesystems`} >Game Systems</Link></li>
             <li><Link to={`player/${player.id}/characters`} >Characters</Link></li>
             <li><Link to={`player/${player.id}/campaigns`} >Campaigns</Link></li>
-
           </ul>
         </div>
       </nav>
     );
   }
 }
-
-const mapStateToProps = (state) => {
-  return {
-    player: state.Player.player
- }
-}
-
-export default connect(mapStateToProps, actions)(Navigation);

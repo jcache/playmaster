@@ -18,7 +18,7 @@ const DefaultHeader = (props) => {
   }
 
   return (
-    <div className={`ApplicationHeader header-scroll ${props.scrollingClass}`} style={props.Style} >
+    <div className={`ApplicationHeader header-scroll small`} >
       <AppCtrl {...props} />
       {props.authenticated ? _renderNavigation(props) : null }
       {props.authenticated ? _renderPlayerCtrl(props) : null }
