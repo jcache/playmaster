@@ -2,8 +2,9 @@
 const path = require('path');
 const electron = require('electron');
 const fs = require('fs-extra');
-const character_data = {};
-const player_data = {};
+const character_data = {"characters": []};
+const player_data = {"player":[]};
+const application_data = {"app": []};
 
 class Route {
 
@@ -40,7 +41,14 @@ class Route {
     // console.log('seed data: ' , file);
     this.checkOrCreateFile(path, player_data, context);
     // IF THE character.json FILE WAS NEVER CREATED, CREATE IT
-
+  }
+  loadAppDB() {
+    const context = "APPLICATION_MODEL"
+    const srcpath = this.app_data_path;
+    const path = `${srcpath}application.json`;
+    // console.log('seed data: ' , file);
+    this.checkOrCreateFile(path, application_data, context);
+    // IF THE character.json FILE WAS NEVER CREATED, CREATE IT
   }
 }
 

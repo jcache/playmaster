@@ -15,6 +15,7 @@ class ApplicationHeader extends Component {
   onCloseApp(){
    ipcRenderer.send('app_close')
   }
+
   onAuthenticate() {
     this.props.dispatch(authenticate(false))
   }

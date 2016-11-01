@@ -29,7 +29,6 @@ class ApplicationFrame extends Component {
             <Overlay visibility={overlayVisible} onDismissOverlay={() => this.onDismissOverlay()}></Overlay>
           </div>
         </div>
-        <div className="ApplicationFooter"></div>
       </div>
     );
   }
