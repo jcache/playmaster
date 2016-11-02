@@ -15,6 +15,7 @@ export default function(ComposedComponent) {
     },
 
     close() {
+      console.log('close fired! showModal: ', this.props.showModal);
       this.setState({ showModal: false });
     },
 
@@ -35,14 +36,15 @@ export default function(ComposedComponent) {
       );
 
       return (
-        <div>
+        <div className="DefaultView">
         {this.props.children}
           <Modal
             enforceFocus={true}
             show={true}
             onHide={this.close}
-            dialogClassName={"Login"}
-            style={{backgroundColor:"transparent"}}>
+            dialogClassName={"SignUp"}
+          >
+
             <Modal.Header closeButton>
               <Modal.Title>Sign Up / Sign In</Modal.Title>
             </Modal.Header>
@@ -83,15 +85,6 @@ export default function(ComposedComponent) {
         this.context.router.push('/');
       }
     }
-
-    close() {
-      this.setState({ showModal: false });
-    }
-
-    open() {
-      this.setState({ showModal: true });
-    }
-
 
     render() {
       if (this.props.authenticated) {
