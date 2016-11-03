@@ -23,7 +23,7 @@ export default (
     <Route path="player/:id" component={requireAuth(DefaultView)} >
       <Route path="friends" component={DefaultView} />
       <Route path="chat" component={DefaultView} />
-      <Route path="settings" component={SettingsView} />
+      <Route path="settings" component={Settings} />
     </Route>
 
     <Route path="settings" component={Settings} ></Route>
