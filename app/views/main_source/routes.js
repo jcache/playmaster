@@ -14,18 +14,19 @@ import LoginSelect from './containers/LoginSelectView';
 
 export default (
   <Route path="/" component={App}>
+
     <IndexRoute component={LoginSelect} />
 
     <Route path="step_two" component={Dashboard} />
     <Route path="dashboard" component={DefaultView} />
-    <Route path="players" component={Dashboard} />
     <Route path="gamesystems" component={GameSystem} />
     <Route path="characters" component={requireAuth(CharacterView)} />
     <Route path="campaigns" component={requireAuth(CampaignView)} />
-    <Route path="player/:id" component={DefaultView} >
+    <Route path="players" component={DefaultView} />
+    <Route path="player/:id" component={requireAuth(DefaultView)} >
       <Route path="friends" component={DefaultView} />
       <Route path="chat" component={DefaultView} />
-      <Route path="settings" component={DefaultView} />
+      <Route path="settings" component={Settings} />
     </Route>
     <Route path="settings" component={Settings} ></Route>
     <Route path="character/:id" component={DefaultView}>

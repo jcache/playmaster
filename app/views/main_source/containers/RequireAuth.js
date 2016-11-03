@@ -7,7 +7,7 @@ export default function(ComposedComponent) {
     componentWillMount() {
       if (!this.props.authenticated) {
         console.log('access denied!!!');
-        this.context.router.push('/');
+        this.context.router.push('/login');
       }
     }
 
