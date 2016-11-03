@@ -21,6 +21,10 @@ const setApplicationMenu = function () {
 let mainWindow = void 0;
 
 let createWindow = () => {
+  console.log(AppRouter.getAppDataPath());
+  AppRouter.loadCharacterDB();
+  AppRouter.loadPlayerDB();
+  AppRouter.loadAppDB();
   // SETS APPLICATION MENU
    setApplicationMenu();
    // PROTOCOL MODULE
@@ -80,18 +84,23 @@ let createWindow = () => {
     mainWindow.show();
   });
 
+  ipcMain.on('config-paths', (e, arg) => {
+    const routePaths = AppRouter.getAppDataPath();
+    e.returnValue = routePaths;
+  });
+
   ipcMain.on('resize-to-login', (e, arg) => {
     var options = { width: winW, height: winH };
     options.x = vertL  - (options.width / 2);
     options.y = horzL - (options.height / 2);
-    mainWindow.setBounds(options, true);
+    mainWindow.setBounds(options, false);
   });
 
   ipcMain.on('resize-to-main', (e, arg) => {
       var options = { width: 1140, height: 800 };
       options.x = vertL  - (options.width / 2);
       options.y = horzL - (options.height / 2);
-      mainWindow.setBounds(options, true);
+      mainWindow.setBounds(options, false);
     });
 
   ipcMain.on('app_minimize', (event) => {

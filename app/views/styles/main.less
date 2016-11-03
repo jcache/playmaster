@@ -42,6 +42,7 @@ body, html {
   }
 }
 .LoginSelectView {
+  justify-content: center;
   // > div {
   //   padding: 10px 40px;
   // }
@@ -184,8 +185,9 @@ body, html {
         h3 {
           // flex:1;
           align-self: center;
-          font-size:20px;
-          font-weight: 200;
+          font-weight: 400;
+          font-size: 12px;
+          letter-spacing: .1em;
           color: rgba(148, 9, 64, 1.00);
           text-align: center;
           align-items: center;
@@ -240,12 +242,12 @@ body, html {
         }
         h3 {
           flex:1;
-          font-weight:400;
-          letter-spacing: .1825em;
-          line-height:45px;
+          align-self: center;
+          font-weight: 400;
+          font-size: 12px;
+          letter-spacing: .1em;
           text-transform: uppercase;
           padding:0 10px;
-          font-size: 16px;;
           color: rgba(255,255,255,1);
           margin:0;
         }
@@ -573,11 +575,10 @@ body, html {
           a {
             transition: all .3s ease;
             -webkit-box-shadow: 0px 0px 1px 1px rgba(255,255,255,.5);
-            background: url('../images/rogue.jpg') center center ;
+            background-position: center center;
             background-size:  contain;
             flex:1;
             align-self: stretch;
-
             transition: all .3s ease;
             display: block;
             &:hover {
@@ -589,7 +590,7 @@ body, html {
     }
 
     &.small {
-      // background-color: rgba(40, 28, 75, 1.00) !important;
+      min-height: 60px;
       .AppControlUtils {
         top: 10px;
         flex:1;
@@ -620,9 +621,11 @@ body, html {
     }
 
     .AppControl {
-      margin-left: 20px;
+      margin-left: 20px !important;
       align-items: center;
-      justify-content: center;
+      // justify-content: center;
+      // align-self:flex-start;
+
       background: none;
       display:flex;
       flex:1;

@@ -1,10 +1,13 @@
 'use strict';
 const path = require('path');
 const electron = require('electron');
-const fs = require('fs');
-const character_data = {};
+const fs = require('fs-extra');
+const character_data = {"characters": []};
+const player_data = {"player":[]};
+const application_data = {"app": []};
 
 class Route {
+
   constructor() {
     this.app_data_path = electron.app.getPath('appData') + '/evolition_app_template/data/';
     this.app_plugin_path = electron.app.getPath('appData') + '/evolition_app_template/plugins/';
@@ -14,28 +17,38 @@ class Route {
     return this.app_data_path;
   }
 
+  checkOrCreateFile(path, file, context ){
+    fs.ensureFile(path, (err) => {
+      if (err) return console.error(err)
+      console.log(`[${context}] Successfully Loaded`);
+      // file has now been created, including the directory it is to be placed in
+    })
+  }
+
   loadCharacterDB() {
-
-    console.log('seed data: ' , character_data.characters);
+    const context = "CHARACTER_MODEL"
     const srcpath = this.app_data_path;
-    const file = srcpath + 'characters.json';
-
+    const path = `${srcpath}characters.json`;
+    // console.log('seed data: ' , file);
+    this.checkOrCreateFile(path, character_data, context);
     // IF THE character.json FILE WAS NEVER CREATED, CREATE IT
-    fs.exists(file, (exists) => {
-      if (exists !== true) {
-        // MAKES DATA DIRECTORY
-        fs.mkdirs(srcpath, (err) => {
-          if (err) return console.error(err);
-          console.log('[JOB] -> DATABASE DIRECTORY CREATED');
-          // CREATES DATABASE IF IT DOESN'T EXIST
-          fs.ensureFileSync(file);
-          console.log('[JOB] -> CHARACTER DATABASE CREATED');
-          // POPULATE FROM SEED FILE
-          fs.outputJson(file, character_data);
-          console.log('[JOB] -> CHARACTER DATA POPULATED');
-        });
-      }
-    });
+  }
+
+  loadPlayerDB() {
+    const context = "PLAYER_MODEL"
+    const srcpath = this.app_data_path;
+    const path = `${srcpath}players.json`;
+    // console.log('seed data: ' , file);
+    this.checkOrCreateFile(path, player_data, context);
+    // IF THE character.json FILE WAS NEVER CREATED, CREATE IT
+  }
+  loadAppDB() {
+    const context = "APPLICATION_MODEL"
+    const srcpath = this.app_data_path;
+    const path = `${srcpath}application.json`;
+    // console.log('seed data: ' , file);
+    this.checkOrCreateFile(path, application_data, context);
+    // IF THE character.json FILE WAS NEVER CREATED, CREATE IT
   }
 }
 

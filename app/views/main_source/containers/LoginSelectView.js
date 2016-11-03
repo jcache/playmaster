@@ -2,42 +2,24 @@ import React, { Component } from 'react';
 import { connect}  from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import CreateProfileForm from '../container_forms/CreateProfileForm';
-import PlayerChip from '../components/PlayerLoginChip';
+import PlayerChipList from '../container_modules/PlayerChipList';
 import { CollectPlayer, CollectPlayers } from '../actions/PlayerActions';
+import { authenticate } from '../actions';
 import { Link } from 'react-router';
 import { ipcRenderer, remote } from 'electron';
-
+import * as actions from '../actions';
 class LoginSelectView extends Component {
+
   constructor (props) {
     super(props);
   }
-
-  handleSelectPlayer = (values) => {
-    this.props.dispatch(CollectPlayer(values));
-  }
-
-  handleSubmit = () => {
-    ipcRenderer.send('resize-to-main');
-  }
-  _playerList(){
-    let { players } = this.props;
-    let PlayerList = [];
-
-    players.map((player) => {
-      PlayerList.push(<PlayerChip key={player.id} player={player} />)
-    });
-
-    return (
-      <ul>{PlayerList}</ul>
-    )
-  }
   componentDidMount(){
+    this.props.dispatch(CollectPlayers());
     ipcRenderer.send('resize-to-login');
-    this.props.dispatch(CollectPlayers())
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, players, authenticated} = this.props;
     return (
       <div className="LoginSelectView releaseAppmargin">
         <div style={{flex:1, display: 'flex', maxWidth: '520px'}}>
@@ -46,8 +28,8 @@ class LoginSelectView extends Component {
               <h2>Player Selection</h2>
             </hgroup>
             <div className={`PersonSelectList`}>
-              {this._playerList()}
-              <Link to="/step_two" className={`btn btn-xl btn-primary`} onClick={()=> { this.handleSubmit()}}>New Player</Link>
+              <PlayerChipList players={players} authenticated={authenticated} authenticate={authenticate}/>
+              <Link to="/create_player" className={`btn btn-xl btn-primary`}>New Player</Link>
             </div>
           </div>
         </div>
@@ -55,11 +37,10 @@ class LoginSelectView extends Component {
     );
   }
 }
-LoginSelectView.contextTypes = {
-  router: React.PropTypes.object
-}
+
 const mapStateToProps = (state) => {
   return {
+    authenticated: state.authenticated,
     players: state.Players.players
   }
 }

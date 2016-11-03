@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
-
+import { authenticate } from '../actions';
 import DefaultHeader from '../components/defaultheader';
 
 class ApplicationHeader extends Component {
@@ -16,6 +16,9 @@ class ApplicationHeader extends Component {
    ipcRenderer.send('app_close')
   }
 
+  onAuthenticate() {
+    this.props.dispatch(authenticate(false))
+  }
   onMinimizeToggle(){
     ipcRenderer.send('app_minimize')
   }
@@ -29,25 +32,19 @@ class ApplicationHeader extends Component {
   }
 
   render() {
-    let {scrollingClass, scrollingVal, headerMaxScroll, headerMinScroll} = this.props;
-    const Style = { minHeight: scrollingVal < headerMinScroll ? headerMaxScroll : scrollingVal }
+    let { player,authenticated} = this.props;
     return (
-      <DefaultHeader
-        Style={Style}
-        router={this.context.router}
-        scrollingClass={scrollingClass}
-        onCloseApp={() => this.onCloseApp()}
-        onMaximizeToggle={() => this.onMaximizeToggle()}
-        onMinimizeToggle={() => this.onMinimizeToggle()}
-        scrollingVal={scrollingVal}
-        headerMaxScroll={headerMaxScroll}
-        headerMinScroll={headerMinScroll} />
+      <DefaultHeader  player={player} router={this.context.router}
+      authenticated={authenticated} onAuthenticate={(v) => this.onAuthenticate(v)} onCloseApp={() => this.onCloseApp()} />
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    authenticated: state.authenticated,
+    player: state.Player.player
+  }
 }
 
 export default connect(mapStateToProps)(ApplicationHeader)
