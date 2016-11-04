@@ -1,6 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { routerReducer,routerMiddleware, push} from 'react-router-redux';
-import { browserHistory } from 'react-router'
 import rootReducer from '../reducers';
 import thunk from 'redux-thunk'
 const initialize = {}
