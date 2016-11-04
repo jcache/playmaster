@@ -3,7 +3,8 @@
 import { spawn } from 'child_process';
 import electron from 'electron';
 import browserSync from 'browser-sync';
-
+console.log('Electron: '+require('util').inspect(electron, { depth: 5 }));
+console.log('electron.ipcRenderer: ', electron.ipcRenderer);
 // BrowserSync
 import browserSyncConnectUtils from 'browser-sync/lib/connect-utils';
 const Bsync = browserSync.create();
@@ -57,8 +58,8 @@ Bsync.init(BrowserSyncOPTS, (err, bs) => {
   if (err) return console.error(err);
 
   // SPAWN
-  spawn(electron, ['.'], {
-    stdio: 'inherit',
+  const electroSpawn = spawn(electron, ['.'], {
+    stdio: 'ignore',
     env: {
       ...{
         NODE_ENV: 'development',
@@ -67,6 +68,15 @@ Bsync.init(BrowserSyncOPTS, (err, bs) => {
       },
       ...process.env,
     },
+  });
+
+  electroSpawn.on('close', (code) => {  // EXITS WHEN ELECTRON EXITS OR CLOSES BADLY 
+    if (code !== 0){
+      console.log(`WARNING: Electron process exited with code ${code}`);
+    }
+    console.log(' ');
+    Bsync.exit()
+    process.exit()
   });
 
   // WATCH
