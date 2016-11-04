@@ -12,8 +12,6 @@ class ApplicationFrame extends Component {
       scrollingVal: 0,
       scrollVal: 60,
       overlayVisible: false,
-      headerMaxScroll: 175,
-      headerMinScroll: 60,
     };
   }
   onDismissOverlay(){
@@ -23,11 +21,11 @@ class ApplicationFrame extends Component {
   }
 
   render() {
-    let {scrollingClass, scrollingVal,scrollVal,headerMaxScroll, headerMinScroll, overlayVisible} = this.state
+    let {scrollingClass, scrollingVal, scrollVal, overlayVisible} = this.state
     return (
       <div className="ApplicationFrame container-fluid">
         <div className={`ApplicationBody`}>
-          <ApplicationHeader scrollingClass={scrollingClass} scrollingVal={scrollVal}/>
+          <ApplicationHeader scrollingClass={scrollingClass} scrollingVal={scrollVal} />
           <div ref="scrollview" className={`AppView scroll3 ${this.state.scrollingVal}`}>
             {this.props.children}
             <Overlay visibility={overlayVisible} onDismissOverlay={() => this.onDismissOverlay()}></Overlay>
