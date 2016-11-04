@@ -17,9 +17,10 @@ import {CollectPlayer} from '../actions/PlayerActions';
   }
   _renderList(){
     let { players, onAuthenticate} = this.props;
-    return players.map((player) => {
+    const chip = typeof players !== 'undefined' ? players.map((player) => {
       return <PlayerChip key={player.id} player={player} onAuthenticate={(v) => this.onAuthenticate(v)} />
-    });
+    }) : null;
+    return chip;
   }
 
   render() {
