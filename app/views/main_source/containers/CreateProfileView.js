@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
-import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
 import CreateProfileForm from '../container_forms/CreateProfileForm';
+import { CreatePlayer } from '../actions/PlayerActions';
 
 class CreateProfileView extends Component {
   constructor (props) {
     super(props);
   }
-  handleSubmit = (values) => {
-    console.log(values);
-    console.log(this.context.router.push("/create_profile"))
+
+  handleSubmit(values){
+    this.context.router.push('/');
+    let { dispatch } = this.props;
+    dispatch(CreatePlayer(values))
   }
+
   render() {
     const { handleSubmit } = this.props;
     return (
       <div className="DefaultView">
-        <CreateProfileForm onSubmit={this.handleSubmit} />
+      <div style={{flex:1}}>
+        <hgroup>
+          <h1>Create a Player</h1>
+        </hgroup>
+        <CreateProfileForm onSubmit={(player) => this.handleSubmit(player)} />
+        </div>
       </div>
     );
   }
@@ -24,7 +31,5 @@ class CreateProfileView extends Component {
 CreateProfileView.contextTypes = {
   router: React.PropTypes.object
 }
-const mapStateToProps = (state) => {
-  return {}
-}
-export default connect(mapStateToProps)(CreateProfileView)
+
+export default connect()(CreateProfileView)

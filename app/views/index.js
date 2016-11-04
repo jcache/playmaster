@@ -6,12 +6,13 @@ import { createHashHistory } from 'history';
 import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './main_source/store/configureStore';
 import routes from './main_source/routes';
+import welcome_message from 'evolition_module';
+
+console.log(welcome_message.default);
 
 const store = configureStore();
-const appHistory = useRouterHistory(createHashHistory)({ queryKey: false })
+const appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
 const history = syncHistoryWithStore(appHistory, store);
-
-
 ReactDOM.render(
     <Provider store={store}>
       <Router history={history} routes={routes} />

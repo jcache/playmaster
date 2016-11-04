@@ -8,12 +8,10 @@ class ApplicationFrame extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      scrollingClass: "small",
-      scrollingVal: 0,
-      scrollVal: 60,
       overlayVisible: false,
     };
   }
+
   onDismissOverlay(){
     this.setState({
       overlayVisible:false
@@ -21,17 +19,16 @@ class ApplicationFrame extends Component {
   }
 
   render() {
-    let {scrollingClass, scrollingVal, scrollVal, overlayVisible} = this.state
+    let {overlayVisible} = this.state
     return (
       <div className="ApplicationFrame container-fluid">
         <div className={`ApplicationBody`}>
-          <ApplicationHeader scrollingClass={scrollingClass} scrollingVal={scrollVal} />
-          <div ref="scrollview" className={`AppView scroll3 ${this.state.scrollingVal}`}>
+          <ApplicationHeader />
+          <div ref="scrollview" className={`AppView scroll3 `}>
             {this.props.children}
             <Overlay visibility={overlayVisible} onDismissOverlay={() => this.onDismissOverlay()}></Overlay>
           </div>
         </div>
-        <div className="ApplicationFooter"></div>
       </div>
     );
   }

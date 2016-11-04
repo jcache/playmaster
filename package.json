@@ -21,8 +21,8 @@
     "postinstall": "install-app-deps",
     "clean": "rm -rf ./dist",
     "dist": "electron-packager ./ Playmaster --arch=x64 --out=dist",
-    "win-dist": "build -w --x64",
-    "pack:osx": "npm run clean && electron-packager . \"Playmaster\" --arch=x64 --out=dist/osx --platform=darwin",
+    "mac-dist": "NODE_ENV=production build -m --x64",
+    "win-dist": "NODE_ENV=production build -w --x64",
     "start": "babel-node scripts/ development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -38,6 +38,16 @@
     "dnd",
     "game"
   ],
+  "contributors": [
+    {
+      "email": "kevin@evolition.io",
+      "name": "Kevin Carr"
+    },
+    {
+      "email": "josh@evolition.io",
+      "name": "Joshua Owens"
+    }
+  ],
   "author": "Evolition",
   "license": "Apache-2.0",
   "copyright": "Copyright (c) 2016, Evolition, LLC. All rights reserved.",
@@ -45,6 +55,7 @@
   "devDependencies": {
     "babel-cli": "^6.11.4",
     "babel-loader": "^6.2.4",
+    "babel-plugin-transform-class-properties": "^6.18.0",
     "babel-preset-es2017": "^1.6.1",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
