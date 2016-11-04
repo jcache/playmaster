@@ -24,7 +24,7 @@ let createWindow = () => {
   console.log(AppRouter.getAppDataPath());
   AppRouter.loadCharacterDB();
   AppRouter.loadPlayerDB();
-  AppRouter.loadAppDB();
+  AppRouter.loadPlayerDefaultsDB();
   // SETS APPLICATION MENU
    setApplicationMenu();
    // PROTOCOL MODULE

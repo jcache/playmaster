@@ -15,14 +15,13 @@ const PlayerCtrl = (props) => {
       </li>
       <li className="ProfileDropdown">
 
-        <Link
-          style={{backgroundImage: `url('./${player.avatar_uri}')`}}
+        <Link style={{backgroundImage: `url('./${player.avatar_uri}')`}}
           data-tip
           data-for='campaigns' />
 
       </li>
       <li className="SettingsIcon">
-        <Link to={`settings`}>
+        <Link to={`player/${player.id}/settings`}>
           <IoIosGear />
         </Link>
       </li>

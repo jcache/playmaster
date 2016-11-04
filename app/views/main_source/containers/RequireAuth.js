@@ -7,7 +7,7 @@ export default function(ComposedComponent) {
 
     componentWillMount() {
       let { params, dispatch, authenticated } = this.props;
-      if(!authenticated){
+      if (!authenticated) {
         dispatch(CollectPlayer(params.id));
         ipcRenderer.send('resize-to-main');
         this.context.router.push('/');
@@ -19,7 +19,6 @@ export default function(ComposedComponent) {
         this.context.router.push('/');
       }
     }
-
     render() {
       // console.log(this.context);
       return <ComposedComponent {...this.props} />

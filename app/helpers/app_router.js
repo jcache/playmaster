@@ -4,7 +4,8 @@ const electron = require('electron');
 const fs = require('fs-extra');
 const character_data = {"characters": []};
 const player_data = {"player":[]};
-const application_data = {"app": []};
+const player_preferences = {"player_preferences": []};
+const device_settings = {"device_settings": []};
 
 class Route {
 
@@ -42,12 +43,15 @@ class Route {
     this.checkOrCreateFile(path, player_data, context);
     // IF THE character.json FILE WAS NEVER CREATED, CREATE IT
   }
-  loadAppDB() {
-    const context = "APPLICATION_MODEL"
+
+  loadPlayerDefaultsDB() {
+    const context = "PLAYER_MODELS"
     const srcpath = this.app_data_path;
-    const path = `${srcpath}application.json`;
+    const player_preferences_path = `${srcpath}player_preferences.json`;
+    const device_settings_path = `${srcpath}device_settings.json`;
     // console.log('seed data: ' , file);
-    this.checkOrCreateFile(path, application_data, context);
+    this.checkOrCreateFile(player_preferences_path, player_preferences, context);
+    this.checkOrCreateFile(device_settings_path, device_settings, context);
     // IF THE character.json FILE WAS NEVER CREATED, CREATE IT
   }
 }

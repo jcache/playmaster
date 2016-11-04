@@ -3,14 +3,16 @@ import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
 import { IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';
 import { Link } from 'react-router';
+
 class GameSystemView extends Component {
+
   constructor (props) {
     super(props);
   }
 
   render() {
     return (
-      <div className="GameSystemView">
+      <div className="GameSystemView releaseAppmargin">
         <div className="ViewPlaceholderContainer">
           <h3>Game System View</h3>
           <button onClick={() => {this.context.router.goBack() }}>Go Back</button>
@@ -19,10 +21,10 @@ class GameSystemView extends Component {
     );
   }
 }
+
 GameSystemView.contextTypes = {
   router: React.PropTypes.object
 }
-
 
 const mapStateToProps = (state) => {
   return {}

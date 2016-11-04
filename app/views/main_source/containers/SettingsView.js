@@ -10,7 +10,7 @@ class SettingsView extends Component {
 
   render() {
     return (
-      <div className="SettingsView">
+      <div className="SettingsView releaseAppmargin">
         <div className="ViewPlaceholderContainer">
           <h3>Settings View</h3>
           <button onClick={() => {this.context.router.goBack() }}>Go Back</button>
