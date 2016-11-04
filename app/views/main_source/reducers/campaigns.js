@@ -1,15 +1,15 @@
-import * as types from '../constants/ActionTypes';
+import {
+  FETCH_CAMPAIGNS
+} from '../actions/types';
 
-const CampaignState = {
-  campaigns: [],
-};
 
-export const Campaigns = (state = CampaignState, action ) => {
+export const Campaigns = (state = [], action ) => {
   switch (action.type) {
-    case types.LOAD_CAMPAIGNS:
-      return Object.assign({}, state, {
-        campaigns: action.campaigns
-      });
+    case FETCH_CAMPAIGNS:
+      return [
+        ...state,
+        ...action.payload,
+      ];
    default:
     return state;
   }

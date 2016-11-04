@@ -7,6 +7,7 @@ import 	AppReporter from './helpers/app_reporter';
 import { AppMenu } from './helpers/app_menu';
 import { DevMenu } from './helpers/dev_menu';
 import { EditMenu } from './helpers/edit_menu';
+import { chromeExt } from './helpers/dev_chromeExt';
 const is_WIN32 = process.platform == "win32";
 
 const setApplicationMenu = function () {
@@ -20,6 +21,10 @@ const setApplicationMenu = function () {
 let mainWindow = void 0;
 
 let createWindow = () => {
+  console.log(AppRouter.getAppDataPath());
+  AppRouter.loadCharacterDB();
+  AppRouter.loadPlayerDB();
+  AppRouter.loadPlayerDefaultsDB();
   // SETS APPLICATION MENU
    setApplicationMenu();
    // PROTOCOL MODULE
@@ -27,7 +32,7 @@ let createWindow = () => {
    // CRASH REPORTER
    require('./helpers/app_reporter');
 
-  var winW = 1096;
+  var winW = 520;
   var winH = 800;
   var atomScreen = electron.screen;
   var size = atomScreen.getPrimaryDisplay().workAreaSize;
@@ -48,9 +53,25 @@ let createWindow = () => {
     horzL - (winH / 2)
   );
 
-  // if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development') {
     mainWindow.webContents.openDevTools({ detach: true });
-  // }
+  }
+
+  // ADD REACT DEVTOOLS  For more info: https://goo.gl/HAip0t
+  let appDataPath = app.getPath('appData');
+  let chromeExtPath = is_WIN32 ?
+      '/Google/Chrome/User Data/Default/Extensions/': // WINDOWS CHROME EXTENSION PATH
+      '/Google/Chrome/Default/Extensions/'; // OSX CHROME EXTENSION PATH
+
+  let devToolsExtPath = path.join(
+    appDataPath,
+    chromeExtPath,
+    chromeExt.id,
+    chromeExt.version);
+
+  // console.log('RDToolsPath: ', RDToolsPath);
+  BrowserWindow.addDevToolsExtension(devToolsExtPath);
+
 
   mainWindow.loadURL(`file://${__dirname}/views/index.html`);
 
@@ -58,9 +79,29 @@ let createWindow = () => {
     mainWindow.setTitle('evolition | playmaster');
   });
 
+
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
   });
+
+  ipcMain.on('config-paths', (e, arg) => {
+    const routePaths = AppRouter.getAppDataPath();
+    e.returnValue = routePaths;
+  });
+
+  ipcMain.on('resize-to-login', (e, arg) => {
+    var options = { width: winW, height: winH };
+    options.x = vertL  - (options.width / 2);
+    options.y = horzL - (options.height / 2);
+    mainWindow.setBounds(options, false);
+  });
+
+  ipcMain.on('resize-to-main', (e, arg) => {
+      var options = { width: 1140, height: 800 };
+      options.x = vertL  - (options.width / 2);
+      options.y = horzL - (options.height / 2);
+      mainWindow.setBounds(options, false);
+    });
 
   ipcMain.on('app_minimize', (event) => {
     mainWindow.minimize();
@@ -70,8 +111,9 @@ let createWindow = () => {
     mainWindow.close();
   });
 
-  ipcMain.on('app_maximize', (event, val) => {
-    val == true ? mainWindow.maximize() : mainWindow.unmaximize();
+  ipcMain.on('app_maximize', (event, maximize) => {
+    maximize ? mainWindow.maximize() : mainWindow.unmaximize();
+    mainWindow.center()
   });
 
   ipcMain.on('config-paths', (e, arg) => {

@@ -7,14 +7,10 @@ import { IoChevronLeft, IoChevronRight,IoNavicon } from 'react-icons/lib/io';
 const ChatDisplay = (props) => {
   return (
     <div className='Chat Module '>
-      <hgroup className='ModuleHeader'>
-        <div className='Chat Module '>
-          <hgroup className='ModuleHeader'>
-            <IoNavicon size={28} className={`HamburgNav`} color={`rgba(255,255,255,1)`}/>
-            <h3>Conversations</h3>
-          </hgroup>
-        </div>
-      </hgroup>
+    <hgroup className='ModuleHeader deep-purple'>
+      <IoNavicon size={28} className={`HamburgNav`} color={`rgba(255,255,255,1)`}/>
+      <h3>Conversations</h3>
+    </hgroup>
       <div className="chatContainer">
         <div className={`ChatBody scroll3`}>
 

@@ -9,6 +9,7 @@ body, html {
   margin:0;
   height:100%;
   width:100%;
+  overflow: hidden;
 }
 
 #react-root {
@@ -16,6 +17,11 @@ body, html {
   flex:1;
   height:100%;
 }
+.releaseAppmargin {
+  margin: -20px -40px;
+}
+.LoginSelectView,
+.SettingsView,
 .CharacterView,
 .CampaignView,
 .GameSystemView,
@@ -23,23 +29,140 @@ body, html {
   display: flex;
   flex:1;
 }
-.ViewPlaceholderContainer {
-  flex:1;
-  display:flex;
-  align-items: center;
-  align-content: center;
-  h3 {
+.SettingsView{
+  .ViewPlaceholderContainer {
     flex:1;
-    font-size:30px;
-    text-align: center;
-    color: rgba(116, 69, 191, .4);
+    padding:20px 40px;
+    h3 {
+      flex:1;
+      font-size:30px;
+      color: rgba(116, 69, 191, .4);
+    }
+  }
+}
+.LoginSelectView {
+  justify-content: center;
+  // > div {
+  //   padding: 10px 40px;
+  // }
+  hr {
+    border: 1px solid transparent;
+  }
+  hgroup{
+    margin: 20px 40px;
+    text-align:  center;
+
+    &.lt {
+      text-align:left;
+    }
+
+    h2 {
+      text-transform: uppercase;
+      font-size:32px;
+      color: rgba(255,255,255,1);
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+    h4 {
+      text-transform: uppercase;
+      font-size:13.5px;
+      font-weight: 600;
+      color: rgba(140,140,140,1);
+      margin: 0;
+    }
+  }
+  .PersonCreateContainer{
+    display:flex;
+    flex:1;
+    min-height:500px;
+    margin: 10px 40px;
+    .btn {
+      align-self: flex-end;
+    }
+  }
+  .PersonSelectList{
+    display:flex;
+    flex:1;
+    align-items: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    background: rgba(0,0,0,.2);
+    border-radius:8px;
+
+    // justify-content: center;
+    margin: 10px 40px 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 10px;
+    .btn {
+      flex:1;
+      max-height: 70px;
+      align-items: center;
+      background-color: transparent;
+      border: 2px solid rgba(255,255,255,1);
+      justify-content: center;
+      line-height:66px;
+      margin:20px;
+      max-width:100%;
+      align-self:stretch;
+      font-size: 20px;
+      font-weight:600;
+    }
+    ul {
+      // align-self: center;
+      flex:1;
+      margin: 0;
+      padding: 0;
+      display:flex;
+      flex-wrap: wrap;
+      flex-grow: 0;
+      justify-content: flex-start;
+      li {
+        flex:1;
+        align-self: flex-start;
+        display:flex;
+        min-width: 84px;
+        height: 84px;
+        margin: 10px;
+        flex-grow:0;
+        .player-tooltip{
+          background-color: rgba(148, 9, 64, 1.00);
+          &.place-top {
+            &:after {
+              background: transparent;
+              border-top-color: rgba(148, 9, 64, 1.00);
+              border-top-style: solid !important;
+              border-top-width: 6px !important;
+            }
+          }
+        }
+        a {
+          flex:1;
+          display:flex;
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+          border-radius:4px;
+          border: 3px solid rgba(190,190,190, .4);
+          transition: all .3s ease;
+          opacity: .5;
+          &.active {
+            border: 2px solid rgba(255, 255, 255, 1);
+          }
+          &:hover {
+            opacity: 1;
+            border: 2px solid rgba(148, 9, 64, 1.00);
+
+          }
+        }
+      }
+    }
   }
 }
 .DefaultView{
-  display: flex;
-  flex:1;
   .DashboardModules{
-    justify-content: center;
+    // justify-content: center;
     margin: 0 0 20px;
     display: flex;
     flex:1;
@@ -59,10 +182,11 @@ body, html {
         display:flex;
         flex-direction: column;
         h3 {
-          flex:1;
+          // flex:1;
           align-self: center;
-          font-size:20px;
-          font-weight: 200;
+          font-weight: 400;
+          font-size: 12px;
+          letter-spacing: .1em;
           color: rgba(148, 9, 64, 1.00);
           text-align: center;
           align-items: center;
@@ -117,12 +241,12 @@ body, html {
         }
         h3 {
           flex:1;
-          font-weight:400;
-          letter-spacing: .1825em;
-          line-height:45px;
+          align-self: center;
+          font-weight: 400;
+          font-size: 12px;
+          letter-spacing: .1em;
           text-transform: uppercase;
           padding:0 10px;
-          font-size: 1vmin;
           color: rgba(255,255,255,1);
           margin:0;
         }
@@ -135,7 +259,7 @@ body, html {
         background-color: rgba(13, 11, 23, 1.00);
         display: flex;
         min-height:300px;
-        max-height:400px;
+        // max-height:400px;
         border: 3px solid rgba(0,0,0,.5);
 
         .moduleBody {
@@ -185,27 +309,34 @@ body, html {
       }
       &.Campaign {
         min-height:300px;
+        max-height: 50%;
         position: relative;
         min-width:400px;
         margin: 0 0 0px 25px;
         flex-direction: column;
-        border: 3px solid rgba(0,0,0,.5);
+        // border: 3px solid rgba(0,0,0,.5);
+        .moduleBody {
+          position: relative;
+          max-height:200px;
+          h3 {
+            padding-top:20px;
+          }
 
+        }
         &:first-child {
           margin-bottom: 35px;
         }
         .campaign_avatar {
           position:absolute;
           background-color: rgba(38, 30, 72, 1.00);
-          background: url('../images/rogue.jpg') center center ;
+          background-position: center center;
           border: 3px solid white;
           width: 132px;
           border-radius: 66px;
           height: 132px;
           margin-left: -66px;
-          margin-top: -76px;
           left:50%;
-          top:50%;
+          top:-61px;
         }
         .campaignBgContainer{
           flex:1;
@@ -333,9 +464,9 @@ body, html {
                 margin-left:10px;
                 flex:1;
 
-                background-size: cover;
                 max-width: 40px;
                 height: 40px;
+                background-size: cover;
                 background-position: center center;
                 border-radius: 40px;
               }
@@ -393,59 +524,21 @@ body, html {
   flex-direction: column;
   position:relative;
   background-color: rgba(18, 15, 28, .8);
-  nav {
-    display:flex;
-    // border-bottom:1px solid rgba(255,255,255,.2);
 
-    ul {
-      margin-bottom:0;
-      display:flex;
-      flex-direction: row;
-      flex:1;
-
-      li{
-        list-style:none;
-        display:flex;
-        margin:0;
-        a{
-          flex:1;
-          font-weight:200;
-          font-size:13.5px;
-          letter-spacing: .1em;
-          text-decoration: none;
-          text-transform: uppercase;
-          margin:0 20px;
-          color: rgba(255,255,255,1);
-          line-height:60px;
-          transition: all .2s ease;
-          -webkit-box-shadow: inset 0 0px 0px 0px white;
-          &:first-child{
-            margin-left: 10px;
-          }
-          &:hover {
-            -webkit-box-shadow: inset 0 6px 0px -4px white;
-
-          }
-        }
-      }
-    }
-  }
   .ApplicationHeader {
     -webkit-app-region: drag;
     -webkit-user-select: none;
     background: rgba(0,0,0,.6);
-
+    display:flex;
     background-size: cover;
     // transition: all .3s ease;
     // border-bottom:1px solid rgba(255,255,255,.2);
 
     .AppControlUtils {
-      position: absolute;
       display:flex;
       padding:0px;
       right:20px;
       margin:0px;
-      top: 10px;
       transition: all .2s ease;
       flex:1;
       li {
@@ -453,7 +546,7 @@ body, html {
         flex:1;
         align-items: center;
         padding:0px;
-        margin:0px 13px;
+        margin:0px 20px;
         a {
           color: #fff;
           font-size: 22px;
@@ -462,32 +555,44 @@ body, html {
           margin: 0px;
           background-color: rgba(0,0,0,.1);
           border-radius: 40px !important;
+          -webkit-app-region: no-drag;
         }
         &.ProfileBn{
+          max-width:40px;
           a {
             font-size:14px;
           }
         }
-        &.SearchIcon    { }
+        &.SearchIcon    {
+          max-width:40px;
+        }
         &.SettingsIcon  { }
         &.ProfileDropdown {
-          transition: all .3s ease;
-          background: url('../images/rogue.jpg') center center ;
-          background-size:  contain;
-          -webkit-box-shadow: 0px 0px 1px 1px rgba(255,255,255,.5);
+          max-width:40px;
+          cursor: pointer;
+          margin-top:10px;
           a {
             transition: all .3s ease;
+            -webkit-box-shadow: 0px 0px 1px 1px rgba(255,255,255,.5);
+            background-position: center center;
+            background-size:  contain;
+            flex:1;
+            align-self: stretch;
+            transition: all .3s ease;
             display: block;
-            visibility: hidden;
+            &:hover {
+              -webkit-box-shadow: 0px 0px 2px 2px rgba(120, 84, 191, 1.00);
+            }
           }
         }
       }
     }
 
     &.small {
-      // background-color: rgba(40, 28, 75, 1.00) !important;
+      min-height: 60px;
       .AppControlUtils {
         top: 10px;
+        flex:1;
         .ProfileDropdown{
           border-radius: 40px;
           height:40px;
@@ -515,25 +620,36 @@ body, html {
     }
 
     .AppControl {
-      position:absolute;
-      top: 10px;
-      left:20px;
+      margin-left: 20px !important;
+      align-items: center;
+      // justify-content: center;
+      // align-self:flex-start;
+
+      background: none;
       display:flex;
       flex:1;
+      min-width: 170px;
       flex-direction: row;
       margin:0px;
       padding:0px;
       li {
         display:flex;
-        flex:1;
+        // flex:1;
+        // min-width:40px;
+        align-items: center;
+        justify-content: center;
         padding:0px;
         margin:0px;
         a {
+          flex:1;
+          text-align: center;
+          padding: 0 10px;
           color: #fff;
           font-size:13.5px;
           line-height:18px;
           margin: 0px;
           padding:10px;
+          -webkit-app-region: no-drag;
         }
       }
     }
@@ -541,6 +657,7 @@ body, html {
     nav {
       background: transparent;
       display:flex;
+      box-shadow: none;
       // border-bottom:1px solid rgba(255,255,255,.2);
 
       ul {
@@ -555,12 +672,12 @@ body, html {
           margin:0;
           a{
             flex:1;
-            font-weight:200;
-            font-size:13.5px;
+            font-weight:400;
+            font-size:12px;
             letter-spacing: .1em;
             text-decoration: none;
             text-transform: uppercase;
-            margin:0 20px;
+            margin:0 5px;
             color: rgba(255,255,255,1);
             line-height:60px;
             transition: all .2s ease;
@@ -570,7 +687,8 @@ body, html {
               margin-left: 10px;
             }
             &:hover {
-              -webkit-box-shadow: inset 0 6px 0px -4px white;
+                          color: rgba(120, 84, 191, 1.00);
+              -webkit-box-shadow: inset 0 6px 0px -4px rgba(120, 84, 191, 1.00);
             }
           }
         }
@@ -578,9 +696,7 @@ body, html {
       .nav-wrapper {
         -webkit-app-region: drag;
         background: rgba(0, 0, 0, 0);;
-        left: 11%;
         .nav-login{
-          margin-right: 20%;
           margin-top: 0px;
         }
         a {
@@ -590,12 +706,77 @@ body, html {
     }
   }
 
+  .tooltip {
+    right: 0 !important;
+    flex:1;
+    max-width: 200px;
+   color: rgba(128, 78, 198, 1.00) !important;
+   font-family: arial;
+   font-weight: 600;
+   text-transform: uppercase;
+   background-color: rgba(6, 5, 9, 1.00) !important;
+   position: absolute;
+   &.characterPrefPane{
+     pointer-events: auto !important;
+     padding: 0;
+     flex:1;
+     overflow: hidden;
+    //  border: 2px solid rgba(120, 84, 191, .1);
+     display:flex;
+     &:hover {
+      visibility: visible !important;
+      opacity: 1 !important;
+     }
+     ul{
+       margin:0;
+       li {
+         flex:1;
+         display:flex;
+         &:last-child{
+           margin-bottom: 0;
+         }
+
+
+
+
+
+
+
+         a {
+           padding: 0 15px;
+           flex:1;
+           line-height:40px;
+           font-size: 14px;
+           font-weight: 200;
+           color: rgba(255,255,255,1);
+           transition: all .2s ease;
+           min-width: 200px;
+           text-decoration: none;
+           text-transform: capitalize;
+           &:hover {
+             color: rgba(120, 84, 191, 1.00);
+
+           }
+         }
+       }
+     }
+   }
+   &.place-bottom {
+     &:after {
+       background: transparent;
+       border-bottom-color: rgba(120, 84, 191, .1);
+       border-bottom-style: solid !important;
+       border-bottom-width: 6px !important;
+     }
+   }
+  }
   .AppView {
     flex:1;
     display: flex;
     overflow: hidden;
     overflow-x: auto;
     padding:20px 40px;
+    position: relative;
     p {
       &.lead {
         color:rgba(128, 0, 128, 1.00);
@@ -686,4 +867,59 @@ body, html {
   width:100%;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
+}
+
+.overlay {
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  display:flex;
+  background: rgba(0,0,0,.8);
+  justify-content: center;
+  align-items: center;
+  .settings-view {
+    margin:10px 10px;
+    flex:1;
+
+    // height:80%;
+    flex-shrink: 0;
+    align-self: stretch;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,1);
+    border-radius:6px;
+    padding: 0 20px;
+  }
+  .bn-close {
+    position: absolute;
+    // width:40px;
+    top:20px;
+    font-size:20px;
+    color: rgba(255,255,255,.5);
+    right:20px;
+    // height:40px;
+    svg {
+      vertical-align: top !important;
+    }
+  }
+}
+
+
+.saving-throw-header{
+  background-color: #000;
+  max-width:30px;
+  margin-right:0 !important;
+  position: relative;
+
+  // flex:1;
+
+  p{
+    display:block;
+    position:absolute;
+    top:50%;
+    text-align: center;
+    -webkit-transform: rotate(-90deg);
+  }
 }

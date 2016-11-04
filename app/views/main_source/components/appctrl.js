@@ -3,7 +3,7 @@ import {
   IoClose, IoPlus, IoMinus
 } from 'react-icons/lib/io';
 
-const AppCtrl = ({onCloseApp, onMaximizeToggle, onMinimizeToggle}) => {
+const AppCtrl = ({onCloseApp, onMaximizeToggle, onMinimizeToggle, ipc}) => {
   return (
     <ul className={`AppControl`}>
       <li><a onClick={() => onCloseApp()} href="#"><IoClose/></a></li>

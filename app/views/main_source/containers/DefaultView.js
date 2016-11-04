@@ -11,21 +11,34 @@ import GamesystemDisplayModule from '../container_modules/GamesystemDisplay';
 class DefaultView extends Component {
   constructor (props) {
     super(props);
+    this.state = {
+      selected: {}
+    };
+  }
+  componentDidMount(){
+    // alert(JSON.stringify(this.props.player));
+  }
+
+  _onSelectCharacter(character) {
+    this.setState({
+      selected: character
+    });
   }
 
   render() {
-    let t = this.props.authenticated ? "visible" : "hidden"; // this.props.authenticated;
-    const Style={"color":"#FFF", visibility: t }
+
+    let { authenticated } = this.props;
+    let { selected } = this.state;
+    const Style={"color":"#FFF", visibility: authenticated ? "visible" : "hidden" };
     return (
       <div className="DefaultView">
         <div className='DashboardModules'>
           <div style={{ flex: 1, flexDirection: 'column', display: 'flex', maxWidth: '350px'}}>
-            <CharacterListModule />
+            <CharacterListModule _onSelectCharacter={( id ) => { this._onSelectCharacter(id) }}/>
             <ChatDisplayModule />
           </div>
-          <div style={{ flex: 1, flexDirection: 'column', display: 'flex'}}>
-            <CampaignDisplayModule />
-            <div style={Style}>THIS IS THE AUTHENTICATED VIEW!</div>
+          <div style={{ flex: 1, flexDirection: 'column', display: 'flex', maxWidth: '1140px'}}>
+            <CampaignDisplayModule selected={selected} />
             <GamesystemDisplayModule />
           </div>
         </div>
@@ -34,8 +47,9 @@ class DefaultView extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    player: state.Player.player
+  };
 }
 export default connect(mapStateToProps)(DefaultView)

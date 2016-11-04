@@ -1,0 +1,2 @@
+export const LOAD_CAMPAIGNS = 'LOAD_CAMPAIGNS';
+export const JOIN_CAMPAIGN = 'JOIN_CAMPAIGN';

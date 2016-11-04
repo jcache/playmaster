@@ -1,7 +1,7 @@
 'use strict';
 
 import { spawn } from 'child_process';
-import electron from 'electron-prebuilt';
+import electron from 'electron';
 import browserSync from 'browser-sync';
 
 // BrowserSync
@@ -17,20 +17,18 @@ const getRootUrl = (options) => {
 
 const getMainUrl = (options) => {
   const pathname = browserSyncConnectUtils.clientScript(options);
-  console.log(getRootUrl(options) + pathname);
   return getRootUrl(options) + pathname;
 };
 
 const getChatUrl = (options) => {
   const pathname = browserSyncConnectUtils.clientScript(options);
-  console.log(getRootUrl(options) + pathname);
   return getRootUrl(options) + pathname;
 };
 
 const BrowserSyncOPTS = {
   ui: false,
   ghostMode: true,
-  open: true, // false
+  open: false, // false
   notify: false,
   logPrefix: 'playmaster',
   logSnippet: false,
@@ -71,10 +69,9 @@ Bsync.init(BrowserSyncOPTS, (err, bs) => {
 
   // WATCH
   Bsync.watch([
-      'app/entry.js',
-      'app/**/*.js',
-      'app/**/*.less',
-      'app/**/*.jsx',
-      'app/**/*.html'
-    ]).on('change', Bsync.reload);
+    'app/views/**/*.js',
+    'app/views/**/*.less',
+    'app/views/**/*.jsx',
+    'app/views/**/*.html'
+  ],{ignored: 'app/node_modules/**'}).on('change', Bsync.reload);
 });

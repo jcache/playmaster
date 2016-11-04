@@ -1,18 +1,50 @@
 import React from 'react';
-import {
-  IoIosSearchStrong, IoIosGear, IoChevronLeft
-} from 'react-icons/lib/io';
+import { IoIosSearchStrong, IoIosGear } from 'react-icons/lib/io';
+import ReactTooltip from 'react-tooltip';
+import { Link } from 'react-router';
 
-const PlayerCtrl = () => {
+const PlayerCtrl = (props) => {
+  let { router, player } = props;
   return (
+  <div style={{flex:1, display: 'flex'}} >
     <ul className={`AppControlUtils`}>
-      <li className="SearchIcon"><a href="#"><IoIosSearchStrong/></a></li>
-      <li className="SettingsIcon"><a href="#"><IoIosGear/></a></li>
-      <li className="ProfileDropdown">
-        <a href="#"><button>Sign In</button></a>
+      <li className="SearchIcon">
+        <a href="#">
+          <IoIosSearchStrong/>
+        </a>
       </li>
-      <li className="ProfileBn dropdown-content"><a href="#"><IoChevronLeft /></a></li>
+      <li className="ProfileDropdown">
+
+        <Link style={{backgroundImage: `url('./${player.avatar_uri}')`}}
+          data-tip
+          data-for='campaigns' />
+
+      </li>
+      <li className="SettingsIcon">
+        <Link to={`player/${player.id}/settings`}>
+          <IoIosGear />
+        </Link>
+      </li>
+      <li className="ProfileBn dropdown-content"></li>
     </ul>
+
+    <ReactTooltip
+      class='tooltip characterPrefPane'
+      id='campaigns'
+      event='click'
+      delayHide={10}
+      place="bottom"
+      delayShow={1}
+      effect="solid">
+
+      <ul onMouseLeave={() => ReactTooltip.hide()}>
+        <li><Link onClick={() => ReactTooltip.hide()}>Account</Link></li>
+        <li><Link onClick={() => ReactTooltip.hide()}>Preferences</Link></li>
+        <li><Link onClick={() => {ReactTooltip.hide(); props.onAuthenticate(false)}}>Log Out</Link></li>
+      </ul>
+
+    </ReactTooltip>
+  </div>
   )
 }
 

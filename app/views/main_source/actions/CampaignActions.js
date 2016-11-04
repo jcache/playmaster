@@ -13,13 +13,13 @@ export function CollectCampaigns(){
     {
       id: 1,
       campaignName: "The Mazius Campaign",
-      charactersInGame: [1,4,5,6], // ENUM FTW
+      charactersInGame: [1,4,5,6],
       campaignBannerUri: 'images/galaxy.png'
     },
     {
       id: 3,
       campaignName: "Another Campaign",
-      charactersInGame: [2,3], // ENUM FTW
+      charactersInGame: [2,3],
       campaignBannerUri: 'images/galaxy.png'
     },
   ];

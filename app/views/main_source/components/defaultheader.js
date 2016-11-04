@@ -5,11 +5,23 @@ import Navigation from '../containers/Navigation';
 import PlayerCtrl from './playerctrl';
 
 const DefaultHeader = (props) => {
-  return (
-    <div className={`ApplicationHeader header-scroll ${props.scrollingClass}`} style={props.Style} >
-      <AppCtrl {...props} />
+  const _renderNavigation = () => {
+    return (
       <Navigation {...props} />
-      <PlayerCtrl />
+    )
+  }
+
+  const _renderPlayerCtrl = () => {
+    return (
+      <PlayerCtrl {...props} />
+    )
+  }
+
+  return (
+    <div className={`ApplicationHeader header-scroll small`} >
+      <AppCtrl {...props} />
+      {props.authenticated ? _renderNavigation() : null }
+      {props.authenticated ? _renderPlayerCtrl() : null }
     </div>
   )
 }
