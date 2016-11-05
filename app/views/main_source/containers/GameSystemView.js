@@ -15,7 +15,7 @@ class GameSystemView extends Component {
       <div className="GameSystemView releaseAppmargin">
         <div className="ViewPlaceholderContainer">
           <h3>Game System View</h3>
-          <button onClick={() => {this.context.router.goBack() }}>Go Back</button>
+          <Link onClick={() => {this.context.router.goBack() }}>Go Back</Link>
         </div>
       </div>
     );

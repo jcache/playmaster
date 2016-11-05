@@ -13,7 +13,7 @@ class SettingsView extends Component {
       <div className="SettingsView releaseAppmargin">
         <div className="ViewPlaceholderContainer">
           <h3>Settings View</h3>
-          <button onClick={() => {this.context.router.goBack() }}>Go Back</button>
+          <Link onClick={() => {this.context.router.goBack() }}>Go Back</Link>
         </div>
       </div>
     );
