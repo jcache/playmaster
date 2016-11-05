@@ -48,10 +48,10 @@ let createWindow = () => {
     frame: false
   });
 
-  mainWindow.setPosition(
-    vertL - (winW / 2),
-    horzL - (winH / 2)
-  );
+  // mainWindow.setPosition(
+  //   vertL - (winW / 2),
+  //   horzL - (winH / 2)
+  // );
 
   if (process.env.NODE_ENV === 'development') {
     mainWindow.webContents.openDevTools({ detach: true });
