@@ -6,9 +6,9 @@ import {
 const AppCtrl = ({onCloseApp, onMaximizeToggle, onMinimizeToggle, ipc}) => {
   return (
     <ul className={`AppControl`}>
-      <li><a onClick={() => onCloseApp()} href="#"><IoClose/></a></li>
-      <li><a onClick={() => onMaximizeToggle()} href="#"><IoPlus/></a></li>
-      <li><a onClick={() => onMinimizeToggle()} href="#"><IoMinus/></a></li>
+      <li><a onClick={() => onCloseApp()} ><IoClose/></a></li>
+      <li><a onClick={() => onMaximizeToggle()} ><IoPlus/></a></li>
+      <li><a onClick={() => onMinimizeToggle()} ><IoMinus/></a></li>
     </ul>
   )
 }

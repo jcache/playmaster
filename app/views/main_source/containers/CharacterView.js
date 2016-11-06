@@ -11,9 +11,23 @@ class CharacterView extends Component {
 
   render() {
     return (
-      <div className="CharacterView">
-        <div className="ViewPlaceholderContainer">
+      <div className="CharacterView releaseAppmargin">
+        <hgroup>
           <h3>Character View</h3>
+        </hgroup>
+        <div className="Layout scroll3">
+          <div className={`CharactersMain`}>
+            <div className={`CharacterBlock`}></div>
+            <div className={`CharacterBlock`}></div>
+            <div className={`CharacterBlock`}></div>
+            <div className={`CharacterBlock`}></div>
+
+            <div className={`CharacterBlock`}></div>
+            <div className={`CharacterBlock`}></div>
+            <div className={`CharacterBlock`}></div>
+            <div className={`CharacterBlock`}></div>
+
+          </div>
         </div>
       </div>
     );
