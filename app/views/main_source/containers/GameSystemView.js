@@ -15,15 +15,11 @@ class GameSystemView extends Component {
       <div className="GameSystemView releaseAppmargin">
         <div className="ViewPlaceholderContainer">
           <h3>Game System View</h3>
-          <button onClick={() => {this.context.router.goBack() }}>Go Back</button>
+          <button onClick={()=>{ alert('click Go Back') }}>Go Back</button>
         </div>
       </div>
     );
   }
-}
-
-GameSystemView.contextTypes = {
-  router: React.PropTypes.object
 }
 
 const mapStateToProps = (state) => {

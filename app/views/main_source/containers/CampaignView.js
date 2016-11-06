@@ -5,6 +5,7 @@ import { IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';
 
 
 class CampaignView extends Component {
+  
   constructor (props) {
     super(props);
   }

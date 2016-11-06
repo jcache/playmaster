@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { ipcRenderer, remote } from 'electron';
 import { CollectPlayer } from '../actions/PlayerActions';
 export default function(ComposedComponent) {
+
   class Authentication extends Component {
 
     componentWillMount() {
@@ -36,5 +38,5 @@ export default function(ComposedComponent) {
     }
   }
 
-  return connect(mapStateToProps)(Authentication);
+  return connect(mapStateToProps)(withRouter(Authentication));
 }

@@ -3,7 +3,7 @@ import { connect}  from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import CreateProfileForm from '../container_forms/CreateProfileForm';
 import PlayerChipList from '../container_modules/PlayerChipList';
-import { CollectPlayer, CollectPlayers } from '../actions/PlayerActions';
+import { CollectPlayer, LoadPlayers } from '../actions/PlayerActions';
 import { authenticate } from '../actions';
 import { Link } from 'react-router';
 import { ipcRenderer, remote } from 'electron';
@@ -14,7 +14,7 @@ class LoginSelectView extends Component {
     super(props);
   }
   componentDidMount(){
-    this.props.dispatch(CollectPlayers());
+    this.props.dispatch(LoadPlayers());
     ipcRenderer.send('resize-to-login');
   }
 

@@ -1,12 +1,22 @@
-import { CHANGE_AUTH } from './types';
-import { FETCH_CHARACTERS } from './types';
-import { FETCH_CAMPAIGNS } from './types';
+import {
+  CHANGE_AUTH,
+  FETCH_CHARACTERS,
+  FETCH_CAMPAIGNS,
+  SELECT_CHARACTER
+} from './types';
 
 export const authenticate = (loggedIn) => {
   return {
     type: CHANGE_AUTH,
     payload: loggedIn
   };
+}
+
+export function selectCharacter(characterId) {
+  return {
+    type: SELECT_CHARACTER,
+    payload: characterId
+  }
 }
 
 export function fetchCampaigns() {
@@ -68,7 +78,7 @@ export function fetchCharacters() {
         characerName: "Mazius Al'Ghul",
         characerProfession: "Janitor",
         characterAvatarUri: 'images/rogue.jpg'
-      },
+      }
     ]
   }
 }
