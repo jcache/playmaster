@@ -1,4 +1,5 @@
 import * as types from '../constants/ActionTypes';
+import CharacterController from '../models/character_data';
 
 function LoadCharacters(characters) {
   return {
@@ -7,6 +8,20 @@ function LoadCharacters(characters) {
   }
 }
 
+export function CreateCharacter(character){
+  return dispatch => {
+    // PLAYER CONTROLLER
+    CharacterController.createCharacter(character,
+      ret => {
+        dispatch(LoadCharacters(ret));
+      },
+      err => {
+        console.log(err);
+        // DISPATCH ERROR
+      }
+    )
+  }
+}
 
 export function CollectCharacters(){
   var characters = [

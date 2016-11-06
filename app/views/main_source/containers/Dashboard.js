@@ -4,7 +4,7 @@ import { connect}  from 'react-redux';
 import { IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';
 import CharacterListModule from '../container_modules/CharacterList';
 import ChatDisplayModule from '../container_modules/ChatDisplay';
-import CampaignDisplayModule from '../container_modules/CampaignDisplay';
+import CharacterViewer from '../container_modules/CharacterViewer';
 import GamesystemDisplayModule from '../container_modules/GamesystemDisplay';
 
 
@@ -38,7 +38,7 @@ class DefaultView extends Component {
             <ChatDisplayModule />
           </div>
           <div style={{ flex: 1, flexDirection: 'column', display: 'flex', maxWidth: '1140px'}}>
-            <CampaignDisplayModule selected={selected} />
+            <CharacterViewer selected={selected} />
             <GamesystemDisplayModule />
           </div>
         </div>

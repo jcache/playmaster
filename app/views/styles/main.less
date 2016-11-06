@@ -20,6 +20,55 @@ body, html {
 .releaseAppmargin {
   margin: -20px -40px;
 }
+
+.CharacterView {
+  flex-direction: column;
+  padding-bottom: 40px;
+  hgroup {
+    background-color: rgba(0,0,0,.2);
+    padding: 0 40px;
+    border-bottom: 2px solid rgba(32, 21, 55, .75);
+
+    h3 {
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 20px;
+    }
+  }
+}
+
+.Layout{
+  flex:1;
+  display: block;
+  overflow:hidden;
+  overflow-y: scroll !important;
+  padding: 20px;
+
+  .CharactersMain{
+    flex:1;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 30px 0;
+    justify-content: flex-start;
+    .CharacterBlock {
+      display:flex;
+      flex:1;
+      margin:0 15px;
+      align-self: stretch;
+      min-width: 20vw;
+      max-width: 25vw;
+      margin-bottom: 40px;
+      height: 25vh;
+      background-color: green;
+      transition: all .3s ease;
+      &:hover {
+        background-color: orange;
+      }
+    }
+  }
+}
+
 .LoginSelectView,
 .SettingsView,
 .CharacterView,
@@ -179,27 +228,7 @@ body, html {
         height:100px;
         display:flex;
         flex-direction: column;
-        h3 {
-          // flex:1;
-          align-self: center;
-          font-weight: 400;
-          font-size: 12px;
-          letter-spacing: .1em;
-          color: rgba(148, 9, 64, 1.00);
-          text-align: center;
-          align-items: center;
-          margin: 70px 0 0 0;
-        }
-        h2 {
-          align-self: center;
-          flex:1;
-          font-size:24px;
-          font-weight: 400;
-          color: rgba(255,255,255,1);
-          text-align: center;
-          align-items: center;
-          margin: 5px 0 0 0;
-        }
+
       }
 
       .seekButton {
@@ -305,43 +334,97 @@ body, html {
           }
         }
       }
-      &.Campaign {
+      &.CharacterViewer {
         min-height:300px;
         max-height: 50%;
         position: relative;
         min-width:400px;
         margin: 0 0 0px 25px;
+        display:flex;
         flex-direction: column;
         // border: 3px solid rgba(0,0,0,.5);
-        .moduleBody {
-          position: relative;
-          max-height:200px;
-          h3 {
-            padding-top:20px;
-          }
-
-        }
-        &:first-child {
-          margin-bottom: 35px;
-        }
-        .campaign_avatar {
-          position:absolute;
-          background-color: rgba(38, 30, 72, 1.00);
-          background-position: center center;
-          border: 3px solid white;
-          width: 132px;
-          border-radius: 66px;
-          height: 132px;
-          margin-left: -66px;
-          left:50%;
-          top:-61px;
-        }
         .campaignBgContainer{
           flex:1;
-          height:100px;
-          -webkit-filter: grayscale(100%) !important;
+          display:flex;
+          // -webkit-filter: grayscale(100%) !important;
           background: url('../images/galaxy.png') top center no-repeat;
           background-size: cover;
+          .moduleBody {
+            flex:1;
+            position:relative;
+            align-self: flex-end;
+            height:50%;
+            display:flex;
+            background-color: rgba(0,0,0, .5);
+            .characterActions {
+              height:30px;
+              align-self:center;
+              align-items: center;
+              justify-content: center;
+              margin: 3vh 0;
+              display:flex;
+              a {
+                min-width: 25px;
+                line-height:25px;
+                height: 25px;
+                font-weight:600;
+                font-size:11px;
+                text-transform: uppercase;
+                text-decoration: none;
+                text-align: center;
+                color: white;
+                margin: 0 10px;
+                border-radius: 25px;
+                -webkit-box-shadow: 0px 0px 0px 1px rgba(255,255,255,1);
+                transition: all .2s ease;
+                span {
+                  padding: 0 2vw;
+                }
+                &:hover {
+                  color: rgba(116, 69, 191, 1);
+                  -webkit-box-shadow: 0px 0px 0px 2px rgba(116, 69, 191,1);
+                }
+              }
+            }
+            h3 {
+              // flex:1;
+              align-self: center;
+              font-weight: 400;
+              text-transform: uppercase;
+              padding-top:10px;
+              font-size:12px;
+              letter-spacing: .1em;
+              color: rgba(116, 69, 191, 1.00);
+              text-align: center;
+              align-items: center;
+              margin: 50px 0 0 0;
+            }
+            h2 {
+              align-self: center;
+              flex:1;
+              font-size:20px;
+              font-weight: 400;
+              color: rgba(255,255,255,1);
+              text-align: center;
+              align-items: center;
+              margin: 5px 0 0 0;
+            }
+
+            .character_avatar{
+              position:absolute;
+              background-color: rgba(38, 30, 72, 1.00);
+              background-position: center center;
+              border: 4px solid rgba(116, 69, 191, 1.00);
+              width: 100px;
+              align-self: center;
+              border-radius: 50px;
+              height: 100px;
+              left:50%;
+              top: 0;
+              margin-top: -50px;
+              margin-left: -50px;
+            }
+          }
         }
       }
       &.Character {
@@ -404,7 +487,8 @@ body, html {
             .characterAvatar {
               align-self:center;
               margin-left:10px;
-              flex:1;    background-size: cover;
+              flex:1;
+              background-size: cover;
               max-width: 60px;
               height: 60px;
               background-position: center center;
@@ -461,7 +545,6 @@ body, html {
                 align-self:center;
                 margin-left:10px;
                 flex:1;
-
                 max-width: 40px;
                 height: 40px;
                 background-size: cover;
@@ -517,6 +600,7 @@ body, html {
   font-size:150px !important;
   color:red;
 }
+
 .ApplicationBody{
   .flex-class();
   flex-direction: column;
@@ -531,7 +615,6 @@ body, html {
     background-size: cover;
     // transition: all .3s ease;
     // border-bottom:1px solid rgba(255,255,255,.2);
-
     .AppControlUtils {
       display:flex;
       padding:0px;
@@ -539,6 +622,7 @@ body, html {
       margin:0px;
       transition: all .2s ease;
       flex:1;
+
       li {
         display:flex;
         flex:1;

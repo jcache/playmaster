@@ -19,11 +19,11 @@ class ApplicationHeader extends Component {
   onAuthenticate() {
     this.props.dispatch(authenticate(false))
   }
-  onMinimizeToggle(){
-    ipcRenderer.send('app_minimize')
+  onMinimize(){
+    ipcRenderer.send('app_minimize'); 
   }
 
-  onMaximizeToggle(){
+  onMaximize(){
     let { maximizeValue } = this.state;
     this.setState({
       maximizeValue: !maximizeValue
@@ -34,8 +34,12 @@ class ApplicationHeader extends Component {
   render() {
     let { player,authenticated} = this.props;
     return (
-      <DefaultHeader  player={player} router={this.context.router}
-      authenticated={authenticated} onAuthenticate={(v) => this.onAuthenticate(v)} onCloseApp={() => this.onCloseApp()} />
+      <DefaultHeader  player={player}
+      router={this.context.router}
+      authenticated={authenticated}
+      onMinimize={() => {this.onMinimize()}}
+      onMaximize={() => {this.onMaximize()}}
+      onAuthenticate={(v) => this.onAuthenticate(v)} onCloseApp={() => this.onCloseApp()} />
     );
   }
 }

@@ -50,7 +50,7 @@ class CharacterList extends Component {
       <div className='Character Module '>
         <hgroup className='ModuleHeader deep-purple'>
           <IoNavicon size={28} className={`HamburgNav`} color={`rgba(255,255,255,1)`}/>
-          <h3>Characters</h3>
+          <h3>Recent Characters</h3>
         </hgroup>
         <div className="characterListContainer scroll3">
           {this._renderCharacters(this.props)}
