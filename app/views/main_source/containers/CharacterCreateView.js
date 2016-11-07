@@ -11,10 +11,9 @@ class CharacterCreateView extends Component {
     super(props);
   }
   handleSubmit(values){
-    let {params} = this.props
-    this.context.router.push(`/player/${params.id}`);
     let { dispatch } = this.props;
-    dispatch(CreateCharacter(values))
+    dispatch(CreateCharacter(values.pid, values));
+    this.context.router.push(`/player/${values.pid}`);
   }
 
   render() {

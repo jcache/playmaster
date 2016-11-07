@@ -11,13 +11,13 @@ const Characters = db.get('characters');
 
 export default {
   // CREATES PLAYER RESOURCE
-  createCharacter(character,ret,err) {
+  createCharacter(pid,character,ret,err) {
     const newId = uuid(); // => e.g. bab303e3-6705-4164-b4f5-83e6092275e1
     // const newCharacter = new Character(character); // <- JSON IS RETURNED
     const newCharacter = _.assign({id: newId} , character)// <- JSON IS RETURNED
     try {
       Characters.push(newCharacter).value().id;
-      const AllCharacters = Characters.value();
+      const AllCharacters = Characters.filter({pid: pid}).value();
       ret(AllCharacters);
     } catch (e) {
       err(e);
@@ -43,7 +43,6 @@ export default {
   // GET PLAYERS BLOB
   getCharacter(id, cb) {
     const Character = Characters.filter({id: id}).value();
-    // console.log(`[All Players] -> `, AllPlayers);
     cb(Character[0]);
   },
 }

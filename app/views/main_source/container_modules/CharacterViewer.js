@@ -39,16 +39,33 @@ class CharacterViewer extends Component {
       })
     }
   }
-
-  render() {
+  renderCharacter(){
     let { selected_character } = this.state;
     return (
-      <div className='CharacterViewer Module'>
+      <div style={{flex:1, display: 'flex'}}>
         <div className="campaignBgContainer">
           <CharacterViewerModule {...this.props} selected_character={selected_character}/>
         </div>
         <a onClick={()=>{alert('click left')}} className="seekButton left"><IoChevronLeft size={24} color={'rgba(255,255,255,1)'} /></a>
         <a onClick={()=>{alert('click right')}} className="seekButton right"><IoChevronRight size={24} color={'rgba(255,255,255,1)'} /></a>
+      </div>
+    )
+  }
+  renderEmptyCharacter(){
+    let { empty, player } = this.props;
+    return (
+      <div style={{flex:1, display: 'flex'}}>
+        <h1>CHARACTERS NOT FOUND</h1>
+        <Link className={`btn btn-info`} to={`player/${player.id}/character/new`}>Create Character</Link>
+      </div>
+    )
+  }
+  render() {
+    let { selected_character } = this.state;
+    let { empty, player } = this.props;
+    return (
+      <div className='CharacterViewer Module'>
+        {empty ? this.renderEmptyCharacter() : this.renderCharacter()}
       </div>
     );
   }

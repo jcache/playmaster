@@ -3,7 +3,7 @@ import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
 import PlayerChip from '../components/PlayerLoginChip';
 import * as actions from '../actions';
-import {CollectPlayer} from '../actions/PlayerActions';
+import {LoadPlayer} from '../actions/PlayerActions';
 
  class PlayerChipList extends Component {
   constructor (props) {
@@ -13,7 +13,7 @@ import {CollectPlayer} from '../actions/PlayerActions';
     let { dispatch, authenticate} = this.props;
     ipcRenderer.send('resize-to-main');
     dispatch(authenticate(true))
-    dispatch(CollectPlayer(player.id))
+    dispatch(LoadPlayer(player.id))
   }
   _renderList(){
     let { players, onAuthenticate} = this.props;

@@ -1,14 +1,14 @@
 import * as types from '../constants/ActionTypes';
 import PlayerController from '../models/player_data';
 
-function LoadPlayer(player) {
+function loadPlayer(player) {
   return {
     type: types.LOAD_PLAYER,
     player: player
   }
 }
 
-function LoadPlayers(players) {
+function loadPlayers(players) {
   return {
     type: types.LOAD_PLAYERS,
     players: players
@@ -23,11 +23,11 @@ export function CreatePlayer(player){
     })
   }
 }
-export function CollectPlayer(id){
+export function LoadPlayer(id){
   return dispatch => {
     // PLAYER CONTROLLER
     PlayerController.getPlayer(id, data => {
-      dispatch(LoadPlayer(data))
+      dispatch(loadPlayer(data))
     })
   }
 }
@@ -35,7 +35,7 @@ export function CollectPlayer(id){
 export function CollectPlayers(){
   return dispatch => {
     PlayerController.getPlayers(data => {
-      dispatch(LoadPlayers(data))
+      dispatch(loadPlayers(data))
     })
   }
 }

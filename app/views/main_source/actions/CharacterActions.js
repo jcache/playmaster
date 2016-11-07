@@ -29,10 +29,10 @@ export function EditCharacter(character){
   }
 }
 
-export function CreateCharacter(character){
+export function CreateCharacter(pid, character){
   return dispatch => {
     // PLAYER CONTROLLER
-    CharacterController.createCharacter(character,
+    CharacterController.createCharacter(pid, character,
       ret => {
         dispatch(loadCharacters(ret));
       },

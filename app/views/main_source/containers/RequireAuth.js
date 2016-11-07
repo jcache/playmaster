@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ipcRenderer, remote } from 'electron';
-import { CollectPlayer } from '../actions/PlayerActions';
+import { LoadPlayer } from '../actions/PlayerActions';
 import { LoadCharacters, LoadCharacter } from '../actions/CharacterActions';
 export default function(ComposedComponent) {
   class Authentication extends Component {
 
     componentWillMount() {
       let { params, dispatch, authenticated } = this.props;
-      dispatch(CollectPlayer(params.id));
+      dispatch(LoadPlayer(params.id));
       dispatch(LoadCharacters(params.id));
 
       if (!authenticated) {
