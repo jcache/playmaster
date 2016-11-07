@@ -8,7 +8,7 @@ class CharacterList extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      selected: 1
+      selected: 0
     };
   }
 
