@@ -23,11 +23,27 @@ export default {
       err(e);
     }
   },
+
   // GET PLAYERS BLOB
   getCharacters(pid, cb) {
-    console.log(pid);
     const AllCharacters = Characters.filter({pid: pid}).value();
     // console.log(`[All Players] -> `, AllPlayers);
     cb(AllCharacters);
+  },
+  // GET PLAYERS BLOB
+  editCharacter(character, ret, err) {
+    try {
+      Characters.find({id: character.id}).assign(character).value();
+      const AllCharacters = Characters.filter({pid: character.pid}).value();
+      ret(AllCharacters);
+    } catch (e) {
+      err(e);
+    }
+  },
+  // GET PLAYERS BLOB
+  getCharacter(id, cb) {
+    const Character = Characters.filter({id: id}).value();
+    // console.log(`[All Players] -> `, AllPlayers);
+    cb(Character[0]);
   },
 }

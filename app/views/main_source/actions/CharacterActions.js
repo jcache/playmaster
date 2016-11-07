@@ -14,12 +14,12 @@ function selectCharacter(character) {
   }
 }
 
-export function CreateCharacter(character){
+export function EditCharacter(character){
   return dispatch => {
     // PLAYER CONTROLLER
-    CharacterController.createCharacter(character,
+    CharacterController.editCharacter(character,
       ret => {
-        dispatch(LoadCharacters(ret));
+        dispatch(loadCharacters(ret));
       },
       err => {
         console.log(err);
@@ -29,6 +29,28 @@ export function CreateCharacter(character){
   }
 }
 
+export function CreateCharacter(character){
+  return dispatch => {
+    // PLAYER CONTROLLER
+    CharacterController.createCharacter(character,
+      ret => {
+        dispatch(loadCharacters(ret));
+      },
+      err => {
+        console.log(err);
+        // DISPATCH ERROR
+      }
+    )
+  }
+}
+
+export function LoadCharacter(id){
+  return dispatch => {
+    CharacterController.getCharacter(id, character => {
+      dispatch(selectCharacter(character));
+    })
+  }
+}
 export function LoadCharacters(pid){
   return dispatch => {
     CharacterController.getCharacters(pid, characters => {

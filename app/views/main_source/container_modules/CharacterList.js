@@ -12,15 +12,6 @@ class CharacterList extends Component {
     };
   }
 
-  componentDidMount() {
-    this.props.fetchCharacters();
-    this.props.fetchCampaigns();
-  }
-
-  _selectCharacter(newID){
-    this.setState = newID;
-  }
-
   _renderCharacters(props) {
     let {characters, campaigns, _onSelectCharacter } = props;
     let selectedCharacterClass = 'selectedCharacter';
@@ -30,8 +21,8 @@ class CharacterList extends Component {
           <div onClick={() =>{ _onSelectCharacter(c); this.setState({selected: c.id}) }} className={`character selectedCharacter`} >
             <div className="characterAvatar" style={{backgroundImage: `url('./${c.AvatarUri}')`}}></div>
             <div className="characterDetail">
-              <p className="characterName">{c.characerName}</p>
-              <p>{c.characerProfession}</p>
+              <p className="characterName">{c.characterName}</p>
+              <p>{c.characterProfession}</p>
             </div>
             <div className="expGauge">
               <span className="completion"></span>

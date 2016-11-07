@@ -11,8 +11,8 @@ const CharacterListItem = (props) => {
       className={`character ${selected == c.id ? selectedCharacterClass : null}`} >
       <div className="characterAvatar" style={{backgroundImage: `url('./${c.AvatarUri}')`}}></div>
       <div className="characterDetail">
-        <p className="characterName">{c.characerName}</p>
-        <p>{c.characerProfession}</p>
+        <p className="characterName">{c.characterName}</p>
+        <p>{c.characterProfession}</p>
         <p  className="opt-sm">{ campaignName(c.id) }</p>
       </div>
       <div className="expGauge">

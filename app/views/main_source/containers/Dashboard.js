@@ -3,6 +3,7 @@ import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
 import { IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';
 import CharacterListModule from '../container_modules/CharacterList';
+import {LoadCharacter} from '../actions/CharacterActions';
 import ChatDisplayModule from '../container_modules/ChatDisplay';
 import CharacterViewer from '../container_modules/CharacterViewer';
 import GamesystemDisplayModule from '../container_modules/GamesystemDisplay';
@@ -17,8 +18,9 @@ class DefaultView extends Component {
   }
   componentDidMount(){
     let {selected_character} = this.props
+
     this.setState({
-      selected_character: selected_character || {}
+      selected_character: selected_character
     })
     // alert(JSON.stringify(this.props.player));
   }
@@ -30,6 +32,8 @@ class DefaultView extends Component {
     }
   }
   _onSelectCharacter(character) {
+    let {dispatch} = this.props;
+    dispatch(LoadCharacter(character.id));
     this.setState({
       selected_character: character
     });
@@ -48,7 +52,7 @@ class DefaultView extends Component {
             <ChatDisplayModule />
           </div>
           <div style={{ flex: 1, flexDirection: 'column', display: 'flex', maxWidth: '1140px'}}>
-            <CharacterViewer selected_character={selected_character} />
+            <CharacterViewer _onSelectCharacter={( id ) => { this._onSelectCharacter(id) }} selected_character={selected_character} />
             <GamesystemDisplayModule />
           </div>
         </div>

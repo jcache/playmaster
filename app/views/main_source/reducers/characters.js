@@ -9,8 +9,6 @@ const CharactersState = {
   characters: [],
 };
 
-
-
 // CHARACTER REDUCER
 export const Character = (state = CharacterState, action ) => {
   switch (action.type) {

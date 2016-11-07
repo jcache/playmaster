@@ -20,14 +20,14 @@ body, html {
 .releaseAppmargin {
   margin: -20px -40px;
 }
-
+.CharacterView,
 .CharactersView {
   flex-direction: column;
   padding-bottom: 40px;
   hgroup {
     background-color: rgba(0,0,0,.2);
-    padding: 0 40px;
-    border-bottom: 2px solid rgba(32, 21, 55, .75);
+    padding: 0 30px;
+    // border-bottom: 2px solid rgba(32, 21, 55, .75);
 
     h3 {
       font-weight: 500;
@@ -42,24 +42,24 @@ body, html {
   display: block;
   overflow:hidden;
   overflow-y: scroll !important;
-  padding: 20px;
-
+  padding: 30px;
   .CharactersMain{
     flex:1;
     display:flex;
     flex-wrap: wrap;
     flex-direction: row;
-    margin: 30px 0;
+    margin: 20px -10px;
     justify-content: flex-start;
     .CharacterBlock {
       display:flex;
       flex:1;
-      margin:0 15px;
+      margin:0 10px;
       align-self: stretch;
-      min-width: 20vw;
-      max-width: 25vw;
-      margin-bottom: 40px;
-      height: 30vh;
+      min-width: 240px;
+      max-width: 260px;
+      margin-bottom: 20px;
+      height: 340px;
+      max-height: 400px;
       background-color: green;
       transition: all .3s ease;
       &:hover {
@@ -445,12 +445,12 @@ body, html {
           .character {
             transition:all .3s ease;
             background: -webkit-linear-gradient(top, rgba(5,5,5,.5) 0%, rgba(0,0,0,.5) 100%);
-
             border-bottom: 1px solid rgba(0,0,0,.5);
             flex: 1;
-            min-height: 100px;
-            max-height: 110px;
+            min-height: 5vh;
+            max-height: 7vh;
             margin-bottom:2px;
+            padding: 10px 0;
             display:flex;
             position:relative;
             &.selectedCharacter{
@@ -491,10 +491,10 @@ body, html {
               margin-left:10px;
               flex:1;
               background-size: cover;
-              max-width: 60px;
-              height: 60px;
+              max-width: 4vh;
+              min-height: 4vh;
               background-position: center center;
-              border-radius: 60px;
+              border-radius: 4vh;
             }
           }
         }
@@ -883,19 +883,19 @@ body, html {
 }
 @media screen and ( max-height: 900px ) {
 
-  .character {
-    min-height: 60px !important;
-    max-height: 70px !important;
-  }
+  // .character {
+  //   min-height: 60px !important;
+  //   max-height: 70px !important;
+  // }
   // .chatBubble{
   //   min-height:60px !important;
   // }
-  .characterAvatar {
-
-    max-width: 40px !important;
-    height: 40px !important;
-    border-radius: 40px !important;
-  }
+  // .characterAvatar {
+  //
+  //   max-width: 40px !important;
+  //   height: 40px !important;
+  //   border-radius: 40px !important;
+  // }
   .opt-sm {
     display: none !important;
   }

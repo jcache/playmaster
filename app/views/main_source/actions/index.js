@@ -35,38 +35,38 @@ export function fetchCharacters() {
     payload: [
       {
         id: 1,
-        characerName: "Mazius Al'Ghul",
-        characerProfession: "Necromancer",
+        characterName: "Mazius Al'Ghul",
+        characterProfession: "Necromancer",
         characterAvatarUri: 'images/rogue.jpg'
       },
       {
         id: 2,
-        characerName: "Peter Parker",
-        characerProfession: "Sorcerer",
+        characterName: "Peter Parker",
+        characterProfession: "Sorcerer",
         characterAvatarUri: 'images/spiderman.jpg'
       },
       {
         id: 3,
-        characerName: "Mazius Al'Ghul",
-        characerProfession: "Psionic",
+        characterName: "Mazius Al'Ghul",
+        characterProfession: "Psionic",
         characterAvatarUri: 'images/rogue.jpg'
       },
       {
         id: 4,
-        characerName: "Mazius Al'Ghul",
-        characerProfession: "Bio-Wizard",
+        characterName: "Mazius Al'Ghul",
+        characterProfession: "Bio-Wizard",
         characterAvatarUri: 'images/rogue.jpg'
       },
       {
         id: 5,
-        characerName: "Mazius Al'Ghul",
-        characerProfession: "Cleaner",
+        characterName: "Mazius Al'Ghul",
+        characterProfession: "Cleaner",
         characterAvatarUri: 'images/rogue.jpg'
       },
       {
         id: 6,
-        characerName: "Mazius Al'Ghul",
-        characerProfession: "Janitor",
+        characterName: "Mazius Al'Ghul",
+        characterProfession: "Janitor",
         characterAvatarUri: 'images/rogue.jpg'
       },
     ]
