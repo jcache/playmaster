@@ -7,7 +7,7 @@ import uuid from 'uuid';
 const dataPath = ipcRenderer.sendSync('config-paths');
 const CharactersDataPath = path.resolve(dataPath, 'characters.json');
 const db = low(CharactersDataPath);
-const Characters = db.get('character');
+const Characters = db.get('characters');
 
 export default {
   // CREATES PLAYER RESOURCE
@@ -22,5 +22,12 @@ export default {
     } catch (e) {
       err(e);
     }
+  },
+  // GET PLAYERS BLOB
+  getCharacters(pid, cb) {
+    console.log(pid);
+    const AllCharacters = Characters.filter({pid: pid}).value();
+    // console.log(`[All Players] -> `, AllPlayers);
+    cb(AllCharacters);
   },
 }

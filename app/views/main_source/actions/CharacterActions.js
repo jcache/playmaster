@@ -1,10 +1,16 @@
-import * as types from '../constants/ActionTypes';
+import * as types from '../constants/CharacterActionTypes';
 import CharacterController from '../models/character_data';
 
-function LoadCharacters(characters) {
+function loadCharacters(characters) {
   return {
     type: types.LOAD_CHARACTERS,
     characters: characters
+  }
+}
+function selectCharacter(character) {
+  return {
+    type: types.SELECT_CHARACTER,
+    selected_character: character
   }
 }
 
@@ -23,52 +29,11 @@ export function CreateCharacter(character){
   }
 }
 
-export function CollectCharacters(){
-  var characters = [
-    {
-      id: 1,
-      characerName: "Mazius Al'Ghul",
-      characerProfession: "Necromancer",
-      characterAvatarUri: 'images/rogue.jpg',
-      campaign: 1
-    },
-    {
-      id: 2,
-      characerName: "Peter Parker",
-      characerProfession: "Sorcerer",
-      characterAvatarUri: 'images/spiderman.jpg',
-      campaign: 1
-    },
-    {
-      id: 3,
-      characerName: "Mazius Al'Ghul",
-      characerProfession: "Psionic",
-      characterAvatarUri: 'images/rogue.jpg',
-      campaign: 4
-    },
-    {
-      id: 4,
-      characerName: "Overlord",
-      characerProfession: "Bio-Wizard",
-      characterAvatarUri: 'images/rogue.jpg',
-      campaign: 5
-    },
-    {
-      id: 5,
-      characerName: "Mazius Al'Ghul",
-      characerProfession: "Cleaner",
-      characterAvatarUri: 'images/rogue.jpg',
-      campaign: null
-    },
-    {
-      id: 6,
-      characerName: "Mazius Al'Ghul",
-      characerProfession: "Janitor",
-      characterAvatarUri: 'images/rogue.jpg',
-      campaign: null
-    },
-  ];
+export function LoadCharacters(pid){
   return dispatch => {
-    dispatch(LoadCharacters(characters))
+    CharacterController.getCharacters(pid, characters => {
+      dispatch(selectCharacter(characters[0]));
+      dispatch(loadCharacters(characters));
+    })
   }
 }

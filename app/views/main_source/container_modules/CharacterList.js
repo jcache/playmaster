@@ -28,7 +28,7 @@ class CharacterList extends Component {
       return(
         <div key={i}>
           <div onClick={() =>{ _onSelectCharacter(c); this.setState({selected: c.id}) }} className={`character selectedCharacter`} >
-            <div className="characterAvatar" style={{backgroundImage: `url('./${c.characterAvatarUri}')`}}></div>
+            <div className="characterAvatar" style={{backgroundImage: `url('./${c.AvatarUri}')`}}></div>
             <div className="characterDetail">
               <p className="characterName">{c.characerName}</p>
               <p>{c.characerProfession}</p>
@@ -62,7 +62,7 @@ class CharacterList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    characters: state.Characters,
+    characters: state.Characters.characters,
     campaigns: state.Campaigns,
   }
 }

@@ -12,23 +12,33 @@ class DefaultView extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      selected: {}
+      selected_character: {}
     };
   }
   componentDidMount(){
+    let {selected_character} = this.props
+    this.setState({
+      selected_character: selected_character || {}
+    })
     // alert(JSON.stringify(this.props.player));
   }
-
+  componentWillReceiveProps(nextProps){
+    if(this.props.selected_character != nextProps.selected_character){
+      this.setState({
+        selected_character: nextProps.selected_character
+      })
+    }
+  }
   _onSelectCharacter(character) {
     this.setState({
-      selected: character
+      selected_character: character
     });
   }
 
   render() {
 
     let { authenticated } = this.props;
-    let { selected } = this.state;
+    let { selected_character } = this.state;
     const Style={"color":"#FFF", visibility: authenticated ? "visible" : "hidden" };
     return (
       <div className="DefaultView">
@@ -38,7 +48,7 @@ class DefaultView extends Component {
             <ChatDisplayModule />
           </div>
           <div style={{ flex: 1, flexDirection: 'column', display: 'flex', maxWidth: '1140px'}}>
-            <CharacterViewer selected={selected} />
+            <CharacterViewer selected_character={selected_character} />
             <GamesystemDisplayModule />
           </div>
         </div>
@@ -49,7 +59,9 @@ class DefaultView extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    player: state.Player.player
+    player: state.Player.player,
+    characters: state.Characters.characters,
+    selected_character: state.Character.selected_character,
   };
 }
 export default connect(mapStateToProps)(DefaultView)

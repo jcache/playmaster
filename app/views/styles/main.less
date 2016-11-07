@@ -21,7 +21,7 @@ body, html {
   margin: -20px -40px;
 }
 
-.CharacterView {
+.CharactersView {
   flex-direction: column;
   padding-bottom: 40px;
   hgroup {
@@ -59,7 +59,7 @@ body, html {
       min-width: 20vw;
       max-width: 25vw;
       margin-bottom: 40px;
-      height: 25vh;
+      height: 30vh;
       background-color: green;
       transition: all .3s ease;
       &:hover {
@@ -72,6 +72,7 @@ body, html {
 .LoginSelectView,
 .SettingsView,
 .CharacterView,
+.CharactersView,
 .CampaignView,
 .GameSystemView,
 .DefaultView{
@@ -361,12 +362,13 @@ body, html {
               align-self:center;
               align-items: center;
               justify-content: center;
-              margin: 3vh 0;
+              margin: 3vh 0 4vh;
               display:flex;
               a {
-                min-width: 25px;
-                line-height:25px;
-                height: 25px;
+                min-width: 2vw;
+                height: 30px;
+                line-height: 30px;
+                min-height:30px;
                 font-weight:600;
                 font-size:11px;
                 text-transform: uppercase;
@@ -374,7 +376,7 @@ body, html {
                 text-align: center;
                 color: white;
                 margin: 0 10px;
-                border-radius: 25px;
+                border-radius: 6px;
                 -webkit-box-shadow: 0px 0px 0px 1px rgba(255,255,255,1);
                 transition: all .2s ease;
                 span {
@@ -885,9 +887,9 @@ body, html {
     min-height: 60px !important;
     max-height: 70px !important;
   }
-  .chatBubble{
-    min-height:60px !important;
-  }
+  // .chatBubble{
+  //   min-height:60px !important;
+  // }
   .characterAvatar {
 
     max-width: 40px !important;
