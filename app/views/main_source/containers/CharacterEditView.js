@@ -4,7 +4,7 @@ import { connect}  from 'react-redux';
 import { IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';
 import { Link } from 'react-router';
 import { EditCharacter } from '../actions/CharacterActions';
-import EditCharacterForm from '../container_forms/EditCharacterForm';
+import CharacterForm from '../container_forms/CharacterForm';
 
 class CharacterEditView extends Component {
   constructor (props) {
@@ -29,7 +29,7 @@ class CharacterEditView extends Component {
         </hgroup>
         <div className="Layout scroll3">
           <p>{`I am ${character.characterName}`}</p>
-          <EditCharacterForm {...initialValues} onSubmit={(character) => this.handleSubmit(character)}/>
+          <CharacterForm {...initialValues} onSubmit={(character) => this.handleSubmit(character)}/>
           <Link className={`btn btn-primary`} onClick={() => {this.context.router.goBack() }}>Go Back</Link>
         </div>
       </div>

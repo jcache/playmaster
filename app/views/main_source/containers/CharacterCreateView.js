@@ -4,7 +4,7 @@ import { connect}  from 'react-redux';
 import { IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';
 import { Link } from 'react-router';
 import { CreateCharacter } from '../actions/CharacterActions';
-import CreateCharacterForm from '../container_forms/EditCharacterForm';
+import CharacterForm from '../container_forms/CharacterForm';
 
 class CharacterCreateView extends Component {
   constructor (props) {
@@ -30,8 +30,7 @@ class CharacterCreateView extends Component {
         </hgroup>
         <div className="Layout scroll3">
           <p>{`Lets Create a character`}</p>
-          <CreateCharacterForm {...initialValues} onSubmit={(character) => this.handleSubmit(character)}/>
-
+          <CharacterForm {...initialValues} onSubmit={(character) => this.handleSubmit(character)}/>
           <Link className={`btn btn-primary`} onClick={() => {this.context.router.goBack() }}>Go Back</Link>
         </div>
       </div>
