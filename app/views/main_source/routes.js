@@ -15,12 +15,9 @@ import LoginSelect from './containers/LoginSelectView';
 
 export default (
   <Route path="/" component={App}>
-
     <IndexRoute component={LoginSelect} />
     <Route path="create_player" component={CreateProfile} />
-
     /* DEFAULT PLAYER ROUTE = DASHBOARD (` /player/1 `) */
-
     <Route path="player/:id" component={requireAuth(PlayerFrame)} >
       <IndexRoute component={Dashboard}/>
       <Route path="gamesystems" component={GameSystem}/>

@@ -12,10 +12,22 @@ class CharacterView extends Component {
   render() {
     return (
       <div className="CharacterView releaseAppmargin">
-        <div className="ViewPlaceholderContainer">
+        <hgroup>
           <h3>Character View</h3>
-          <Link onClick={() => {this.context.router.goBack() }}>Go Back</Link>
+        </hgroup>
+        <div className="Layout scroll3">
+          <div className={`CharactersMain`}>
+            <div className={`CharacterBlock`}></div>
+            <div className={`CharacterBlock`}></div>
+            <div className={`CharacterBlock`}></div>
+            <div className={`CharacterBlock`}></div>
 
+            <div className={`CharacterBlock`}></div>
+            <div className={`CharacterBlock`}></div>
+            <div className={`CharacterBlock`}></div>
+            <div className={`CharacterBlock`}></div>
+
+          </div>
         </div>
       </div>
     );

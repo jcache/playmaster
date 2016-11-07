@@ -12,7 +12,6 @@
     "babel-preset-stage-0": "^6.5.0",
     "electron-compile": "^3.3.6",
     "electron-prebuilt-compile": "^1.4.4",
-    "evolition_module": "^1.0.5",
     "fs-extra": "^0.30.0",
     "lodash": "^4.16.4",
     "lowdb": "^0.14.0",

@@ -13,7 +13,7 @@ class CampaignDisplayModule extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if(this.props !== nextProps){
+    if(this.props.selected !== nextProps.selected){
       this.setState({
         selected: nextProps.selected
       })
@@ -22,7 +22,7 @@ class CampaignDisplayModule extends Component {
 
   render() {
     let { selected } = this.props;
-    return (
+    const module = selected ? (
       <div className='Campaign Module '>
         <div className="campaignBgContainer"></div>
         <div className="moduleBody">
@@ -33,12 +33,15 @@ class CampaignDisplayModule extends Component {
         <a onClick={()=>{alert('click left')}} className="seekButton left"><IoChevronLeft size={24} color={'rgba(255,255,255,1)'} /></a>
         <a onClick={()=>{alert('click right')}} className="seekButton right"><IoChevronRight size={24} color={'rgba(255,255,255,1)'} /></a>
       </div>
-    );
+    ) : null;
+    return module;
   }
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    selected: state.Characters[state.SelectedCharacter - 1]
+  }
 }
 
 export default connect(mapStateToProps)(CampaignDisplayModule)

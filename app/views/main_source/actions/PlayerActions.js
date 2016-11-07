@@ -1,41 +1,56 @@
-import * as types from '../constants/ActionTypes';
+import {
+  LOAD_PLAYER,
+  LOAD_PLAYERS,
+  NEW_PLAYER
+} from '../actions/types';
 import PlayerController from '../models/player_data';
 
-function LoadPlayer(player) {
-  return {
-    type: types.LOAD_PLAYER,
-    player: player
-  }
+const LoadPlayerAction = {
+  type: LOAD_PLAYER,
+  player: {}
 }
 
-function LoadPlayers(players) {
-  return {
-    type: types.LOAD_PLAYERS,
-    players: players
-  }
+const LoadPlayersAction = {
+  type: LOAD_PLAYERS,
+  players: []
+}
+
+const NewPlayerAction = {
+  type: NEW_PLAYER,
+  player: {}
 }
 
 export function CreatePlayer(player){
   return dispatch => {
     // PLAYER CONTROLLER
     PlayerController.createPlayer(player, data => {
-      dispatch(LoadPlayers(data));
+      dispatch({...NewPlayerAction, player: data });
     })
   }
 }
-export function CollectPlayer(id){
+export const CollectPlayer = (id) => {
   return dispatch => {
     // PLAYER CONTROLLER
     PlayerController.getPlayer(id, data => {
-      dispatch(LoadPlayer(data))
+      dispatch({...LoadPlayerAction, player: data})
     })
   }
 }
 
-export function CollectPlayers(){
+const LoadPlayers = (id) => {
   return dispatch => {
+    // PLAYER CONTROLLER
     PlayerController.getPlayers(data => {
-      dispatch(LoadPlayers(data))
+      dispatch({...LoadPlayersAction, players: data})
     })
   }
 }
+export { LoadPlayers };
+
+const authenticate = (loggedIn) => {
+  return {
+    type: CHANGE_AUTH,
+    payload: loggedIn
+  };
+}
+export {authenticate};

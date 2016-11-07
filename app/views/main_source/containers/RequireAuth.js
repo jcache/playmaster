@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { ipcRenderer, remote } from 'electron';
 import { CollectPlayer } from '../actions/PlayerActions';
 export default function(ComposedComponent) {
+
   class Authentication extends Component {
 
     componentWillMount() {
@@ -10,13 +12,13 @@ export default function(ComposedComponent) {
       if (!authenticated) {
         dispatch(CollectPlayer(params.id));
         ipcRenderer.send('resize-to-main');
-        this.context.router.push('/');
+        this.context.router.push(`/player/${params.id}/characters`);
       }
     }
 
     componentWillUpdate(nextProps) {
-      if (!nextProps.authenticated) {
-        this.context.router.push('/');
+      if (this.props.authenticated != nextProps.authenticated) {
+        this.context.router.push(`/player/${nextProps.params.id}/characters`);
       }
     }
     render() {
@@ -36,5 +38,5 @@ export default function(ComposedComponent) {
     }
   }
 
-  return connect(mapStateToProps)(Authentication);
+  return connect(mapStateToProps)(withRouter(Authentication));
 }
