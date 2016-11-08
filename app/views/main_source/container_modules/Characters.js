@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
-
 export default function(ComposedComponent) {
+
   const innerProps = new WeakMap();
 
   class Characters extends Component {
@@ -19,5 +19,5 @@ export default function(ComposedComponent) {
     return { Player: state.Player }
   }
 
-  return connect(mapStateToProps)(Authentication);
+  return connect(mapStateToProps)(Characters);
 }
