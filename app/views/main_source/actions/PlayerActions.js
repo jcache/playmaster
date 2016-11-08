@@ -1,5 +1,7 @@
-import * as types from '../constants/ActionTypes';
+
+import * as types from '../constants/PlayerActionTypes';
 import PlayerController from '../models/player_data';
+
 
 function loadPlayer(player) {
   return {
@@ -19,7 +21,7 @@ export function CreatePlayer(player){
   return dispatch => {
     // PLAYER CONTROLLER
     PlayerController.createPlayer(player, data => {
-      dispatch(LoadPlayers(data));
+      dispatch({...NewPlayerAction, player: data });
     })
   }
 }
@@ -32,10 +34,19 @@ export function LoadPlayer(id){
   }
 }
 
-export function CollectPlayers(){
+export function LoadPlayers() {
   return dispatch => {
+    // PLAYER CONTROLLER
     PlayerController.getPlayers(data => {
       dispatch(loadPlayers(data))
     })
   }
 }
+
+const authenticate = (loggedIn) => {
+  return {
+    type: CHANGE_AUTH,
+    payload: loggedIn
+  };
+}
+export {authenticate};

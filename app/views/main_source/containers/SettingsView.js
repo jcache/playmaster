@@ -13,14 +13,11 @@ class SettingsView extends Component {
       <div className="SettingsView releaseAppmargin">
         <div className="ViewPlaceholderContainer">
           <h3>Settings View</h3>
-          <Link onClick={() => {this.context.router.goBack() }}>Go Back</Link>
+          <button onClick={() => {()=>{alert('click Go Back')}}}>Go Back</button>
         </div>
       </div>
     );
   }
-}
-SettingsView.contextTypes = {
-  router: React.PropTypes.object
 }
 
 

@@ -1,13 +1,23 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 
+export default function(ComposedComponent) {
 
-const innerProps = new WeakMap();
+  const privateProps = new WeakMap();
 
-class Player extends Component {
-  constructor(props) {
-    super(props);
+  class Player extends Component {
+    constructor(props) {
+      super(props);
+    }
+
+  }
+  Player.contextTypes = {
+    router: React.PropTypes.object
   }
 
-}
+  function mapStateToProps(state) {
+    return {}
+  }
 
-export default Player;
+  return connect(mapStateToProps)(Player);
+}

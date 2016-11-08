@@ -15,7 +15,7 @@ export default {
     const newId = uuid(); // => e.g. bab303e3-6705-4164-b4f5-83e6092275e1
     // const newPlayer = new Player(player); // <- JSON IS RETURNED
     const newPlayer = _.assign({id: newId} , player)// <- JSON IS RETURNED
-    Players.push(newPlayer).value().id;
+    Players.push(newPlayer).value();
     const AllPlayers = Players.value();
     cb(AllPlayers);
   },
@@ -27,7 +27,7 @@ export default {
   // GET PLAYERS BLOB
   getPlayers(cb) {
     const AllPlayers = Players.value();
-    // console.log(`[All Players] -> `, AllPlayers);
+    console.log(`[All Players] -> `, AllPlayers);
     cb(AllPlayers);
   },
 }

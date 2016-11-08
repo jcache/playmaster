@@ -1,4 +1,5 @@
 import * as types from '../constants/CharacterActionTypes';
+
 import CharacterController from '../models/character_data';
 
 function loadCharacters(characters) {

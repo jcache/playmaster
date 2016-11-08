@@ -21,7 +21,6 @@ class CharacterView extends Component {
           <p>{`I am ${character.characterName}`}</p>
           <Link className={`btn btn-primary`} onClick={() => {this.context.router.goBack() }}>Go Back</Link>
           <Link className={`btn btn-info`} to={`player/${character.pid}/character/${character.id}/edit`}>Edit Character</Link>
-
         </div>
       </div>
     );

@@ -32,3 +32,12 @@ export const Characters = (state = CharactersState, action ) => {
     return state;
   }
 }
+
+export function SelectedCharacter(state = 1, action ) {
+  switch (action.type) {
+    case SELECT_CHARACTER:
+      return action.payload;
+   default:
+    return state;
+  }
+}

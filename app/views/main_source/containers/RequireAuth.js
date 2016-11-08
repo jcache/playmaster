@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+// import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { ipcRenderer, remote } from 'electron';
 import { LoadPlayer } from '../actions/PlayerActions';
 import { LoadCharacters, LoadCharacter } from '../actions/CharacterActions';
 export default function(ComposedComponent) {
+
   class Authentication extends Component {
 
     componentWillMount() {

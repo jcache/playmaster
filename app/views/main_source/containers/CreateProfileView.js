@@ -9,9 +9,10 @@ class CreateProfileView extends Component {
   }
 
   handleSubmit(values){
-    this.context.router.push('/');
     let { dispatch } = this.props;
+    console.log('handleSubmit -- values: ', values);
     dispatch(CreatePlayer(values))
+    this.context.router.push('/');
   }
 
   render() {

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { ipcRenderer, remote } from 'electron';
-import { connect}  from 'react-redux';
-import * as actions from '../actions';
 import { IoMinus, IoPlus, IoClose, IoIosGear, IoChevronDown, IoNavicon } from 'react-icons/lib/io';
-
+import { connect}  from 'react-redux';
 class CharacterList extends Component {
   constructor (props) {
     super(props);
@@ -67,5 +64,4 @@ const mapStateToProps = (state) => {
     campaigns: state.Campaigns,
   }
 }
-
-export default connect(mapStateToProps, actions)(CharacterList)
+export default connect(mapStateToProps)(CharacterList)
