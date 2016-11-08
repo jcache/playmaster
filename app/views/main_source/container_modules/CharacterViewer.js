@@ -8,12 +8,21 @@ class CharacterViewerModule extends Component {
   constructor (props) {
     super(props);
   }
+  _renderAvatar(c){
+    let CharacterAvatar;
+    if(c.AvatarUri == undefined){
+      return <div style={{backgroundColor: `rgba(120, 84, 191, 1.00)`}} className="characterAvatar" >{c.characterName.charAt(0)}</div>
+    } else {
+      return <div style={{backgroundImage: 'url(' + c.AvatarUri + ')' }} className="characterAvatar"></div>
+    }
+  }
   render(){
     let { selected_character, _onSelectCharacter } = this.props;
     return(
       <div className="moduleBody">
         <h3>{`${selected_character.characterProfession}`}</h3>
         <h2>{`${selected_character.characterName}`}</h2>
+        {this._renderAvatar(selected_character)}
         <div style={{backgroundImage: 'url(' + selected_character.AvatarUri + ')' }} className="character_avatar"></div>
         <div className={`characterActions`}>
           <Link onClick={()=>{_onSelectCharacter(selected_character)}} to={`player/${selected_character.pid}/character/${selected_character.id}`}><span>Show Character</span></Link>

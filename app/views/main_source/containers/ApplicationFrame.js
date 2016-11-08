@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
 import ApplicationHeader from './ApplicationHeader';
 import { Overlay } from './mainOverlay';

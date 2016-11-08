@@ -52,7 +52,7 @@ class DefaultView extends Component {
             <ChatDisplayModule />
           </div>
           <div style={{ flex: 1, flexDirection: 'column', display: 'flex', maxWidth: '1140px'}}>
-            <CharacterViewer player={player} empty={this.props.characters.length > 1 ? false : true} _onSelectCharacter={( id ) => { this._onSelectCharacter(id) }} selected_character={selected_character} />
+            <CharacterViewer player={player} empty={selected_character.id == undefined ? true : false} _onSelectCharacter={( id ) => { this._onSelectCharacter(id) }} selected_character={selected_character} />
             <GamesystemDisplayModule />
           </div>
         </div>

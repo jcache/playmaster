@@ -29,9 +29,10 @@ class CharacterCreateView extends Component {
           <h3>Create Character View</h3>
         </hgroup>
         <div className="Layout scroll3">
-          <p>{`Lets Create a character`}</p>
-          <CharacterForm {...initialValues} onSubmit={(character) => this.handleSubmit(character)}/>
-          <Link className={`btn btn-primary`} onClick={() => {this.context.router.goBack() }}>Go Back</Link>
+          <div style={{maxWidth: '1140px'}}>
+            <CharacterForm {...initialValues} onSubmit={(character) => this.handleSubmit(character)}/>
+            <Link className={`btn btn-primary`} onClick={() => {this.context.router.goBack() }}>Go Back</Link>
+          </div>
         </div>
       </div>
     );

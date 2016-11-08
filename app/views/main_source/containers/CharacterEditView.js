@@ -26,11 +26,12 @@ class CharacterEditView extends Component {
       <div className="CharacterView releaseAppmargin">
         <hgroup>
           <h3>Edit Character View</h3>
-        </hgroup>
-        <div className="Layout scroll3">
-          <p>{`I am ${character.characterName}`}</p>
-          <CharacterForm {...initialValues} onSubmit={(character) => this.handleSubmit(character)}/>
-          <Link className={`btn btn-primary`} onClick={() => {this.context.router.goBack() }}>Go Back</Link>
+        </hgroup> 
+        <div className="Layout scroll3" >
+          <div style={{maxWidth: '1140px'}}>
+            <CharacterForm {...initialValues} onSubmit={(character) => this.handleSubmit(character)}/>
+            <Link className={`btn btn-primary`} onClick={() => {this.context.router.goBack() }}>Go Back</Link>
+          </div>
         </div>
       </div>
     );

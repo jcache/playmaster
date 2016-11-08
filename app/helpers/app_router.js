@@ -12,6 +12,7 @@ class Route {
   constructor() {
     this.app_data_path = electron.app.getPath('appData') + '/evolition_app_template/data/';
     this.app_plugin_path = electron.app.getPath('appData') + '/evolition_app_template/plugins/';
+    this.app_asset_path = electron.app.getPath('appData') + '/evolition_app_template/assets/';
   }
 
   getAppDataPath() {
@@ -53,6 +54,16 @@ class Route {
     this.checkOrCreateFile(player_preferences_path, player_preferences, context);
     this.checkOrCreateFile(device_settings_path, device_settings, context);
     // IF THE character.json FILE WAS NEVER CREATED, CREATE IT
+  }
+
+  saveAsset(path_toFile,newContext,  filename){
+    const srcpath = this.app_asset_path + newContext;
+    const newFile = `${srcpath}${filename}`;
+    const assetpath = `ev://assets/${newContext}${filename}`;
+    console.log(assetpath);
+    fs.copySync(path.resolve(path_toFile), newFile);
+
+    return assetpath;
   }
 }
 
