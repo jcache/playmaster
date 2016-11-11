@@ -20,6 +20,7 @@ class Route {
   }
 
   checkOrCreateFile(path, file, context ){
+    console.log(path, file);
     fs.ensureFile(path, (err) => {
       if (err) return console.error(err)
       console.log(`[${context}] Successfully Loaded`);
