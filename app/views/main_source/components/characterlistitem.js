@@ -9,7 +9,7 @@ const CharacterListItem = (props) => {
       onClick={() =>{props._selectCharacter({selected: c.id})}}
       key={c.id}
       className={`character ${selected == c.id ? selectedCharacterClass : null}`} >
-      <div className="characterAvatar" style={{backgroundImage: `url('./${c.AvatarUri}')`}}></div>
+      <div className="characterAvatar" style={{backgroundImage: `url('${c.AvatarUri}')`}}></div>
       <div className="characterDetail">
         <p className="characterName">{c.characterName}</p>
         <p>{c.characterProfession}</p>
