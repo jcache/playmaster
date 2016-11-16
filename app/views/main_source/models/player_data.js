@@ -14,7 +14,7 @@ export default {
   createPlayer(player,cb) {
     const newId = uuid(); // => e.g. bab303e3-6705-4164-b4f5-83e6092275e1
     // const newPlayer = new Player(player); // <- JSON IS RETURNED
-    const newPlayer = _.assign({id: newId} , player)// <- JSON IS RETURNED
+    const newPlayer = _.assign({id: uuid()} , player)// <- JSON IS RETURNED
     Players.push(newPlayer).value();
     const AllPlayers = Players.value();
     cb(AllPlayers);
