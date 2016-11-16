@@ -1,5 +1,7 @@
 import React from 'react';
-import { IoIosSearchStrong, IoIosGear } from 'react-icons/lib/io';
+import { IoIosSearchStrong, IoIosGear, IoLogIn } from 'react-icons/lib/io';
+import { MdExitToApp, MdPerson } from 'react-icons/lib/md';
+import { FaSliders } from 'react-icons/lib/fa';
 import ReactTooltip from 'react-tooltip';
 import { Link } from 'react-router';
 
@@ -8,23 +10,11 @@ const PlayerCtrl = (props) => {
   return (
   <div style={{flex:1, display: 'flex'}} >
     <ul className={`AppControlUtils`}>
-      <li className="SearchIcon">
-        <a href="#">
-          <IoIosSearchStrong/>
-        </a>
-      </li>
+      <li className="SearchIcon"><a href="#"> <IoIosSearchStrong/> </a></li>
       <li className="ProfileDropdown">
-
-        <Link style={{backgroundImage: `url('./${player.avatar_uri}')`}}
-          data-tip
-          data-for='campaigns' />
-
+        <Link style={{backgroundImage: `url('./${player.avatar_uri}')`}} data-tip data-for='campaigns' />
       </li>
-      <li className="SettingsIcon">
-        <Link to={`player/${player.id}/settings`}>
-          <IoIosGear />
-        </Link>
-      </li>
+      <li className="SettingsIcon"><Link to={`player/${player.id}/settings`}> <IoIosGear /></Link></li>
       <li className="ProfileBn dropdown-content"></li>
     </ul>
 
@@ -38,9 +28,9 @@ const PlayerCtrl = (props) => {
       effect="solid">
 
       <ul onMouseLeave={() => ReactTooltip.hide()}>
-        <li><Link onClick={() => ReactTooltip.hide()}>Account</Link></li>
-        <li><Link onClick={() => ReactTooltip.hide()}>Preferences</Link></li>
-        <li><Link onClick={() => {ReactTooltip.hide(); props.onAuthenticate(false)}}>Log Out</Link></li>
+        <li><Link to={`player/${player.id}/profile`} onClick={() => ReactTooltip.hide()}><MdPerson/> Player Profile</Link></li>
+        <li><Link onClick={() => ReactTooltip.hide()}><FaSliders/> Player Settings</Link></li>
+        <li><Link onClick={() => {ReactTooltip.hide(); props.onAuthenticate(false)}}><IoLogIn/> Log Out</Link></li>
       </ul>
 
     </ReactTooltip>

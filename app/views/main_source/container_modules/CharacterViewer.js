@@ -23,7 +23,6 @@ class CharacterViewerModule extends Component {
         <h3>{`${selected_character.characterProfession}`}</h3>
         <h2>{`${selected_character.characterName}`}</h2>
         {this._renderAvatar(selected_character)}
-        <div style={{backgroundImage: 'url(' + selected_character.AvatarUri + ')' }} className="characterAvatar"></div>
         <div className={`characterActions`}>
           <Link onClick={()=>{_onSelectCharacter(selected_character)}} to={`player/${selected_character.pid}/character/${selected_character.id}`}><span>Show Character</span></Link>
           <Link><span>Show Campaign</span></Link>

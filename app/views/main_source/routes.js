@@ -12,6 +12,7 @@ import CharacterEditView from './containers/CharacterEditView';
 import CharacterCreateView from './containers/CharacterCreateView';
 import CampaignView from './containers/CampaignView';
 import GameSystem from './containers/GameSystemView';
+import Profile from './containers/ProfileView';
 import Settings from './containers/SettingsView';
 import CreateProfile from './containers/CreateProfileView';
 import LoginSelect from './containers/LoginSelectView';
@@ -24,6 +25,7 @@ export default (
     /* DEFAULT PLAYER ROUTE = DASHBOARD (` /player/1 `) */
     <Route path="player/:id" component={requireAuth(PlayerFrame)} >
       <IndexRoute component={Dashboard}/>
+      <Route path="profile" component={Profile}/>
       <Route path="gamesystems" component={GameSystem}/>
       <Route path="characters" component={CharactersView} />
       <Route path="settings" component={Settings} />

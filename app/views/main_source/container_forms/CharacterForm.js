@@ -49,7 +49,7 @@ class CreateCharacterForm extends Component {
           </div>
           <div className={`col-xs-8`}>
             <div className={`row`}>
-              <Field name={`AvatarUri`} wrapClass={`col-xs-12 form-group`} component={renderTextField} type="hidden" label="Charisma"/>
+              <Field name={`AvatarUri`} wrapClass={`col-xs-12 form-group`} component={renderTextField} type="hidden"/>
               <Field name={`characterName`} wrapClass={`col-xs-6 form-group`} component={renderTextField} type="text" label="Character Name" required={`required`}/>
               <Field name={`characterRace`} wrapClass={`col-xs-6 form-group`} component={renderTextField} type="text" label="Character Race" />
             </div>
