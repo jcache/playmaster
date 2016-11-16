@@ -13,7 +13,7 @@ class CharacterList extends Component {
     if(c.AvatarUri == undefined){
       return  <div className="characterAvatar" style={{backgroundColor: `rgba(120, 84, 191, 1.00)`}}>{c.characterName.charAt(0)}</div>
     } else {
-      return <div className="characterAvatar" style={{backgroundImage: `url('./${c.AvatarUri}')`}}></div>
+      return <div className="characterAvatar" style={{backgroundImage: `url('${c.AvatarUri}')`}}></div>
     }
   }
   _renderCharacters(props) {
