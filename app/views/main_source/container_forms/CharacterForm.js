@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import fs from 'fs-extra';
+let {dialog} = remote;
 import {
   renderTextField,
   renderTextArea,
@@ -11,19 +13,24 @@ import {
 class CreateCharacterForm extends Component {
   constructor (props) {
     super(props);
-    this.state = {
-      avatarURI: ""
-    }
+
     this.handleFile = ::this.handleFile;
   }
 
   handleFile(event) {
-    console.log(event.target.files)
-    for (let f of event.target.files) {
-      this.setState({
-        avatarURI: ipcRenderer.sendSync('send_file', f.path, "character_avatar/", f.name)
-      })
-    }
+    event.preventDefault();
+    dialog.showOpenDialog({
+      filters: [
+        {name: 'Images', extensions: ['jpg', 'png', 'gif']},
+      ],
+      properties: ['openFile', 'openDirectory', 'multiSelections']}, (fileNames) => {
+      // console.log(fileNames);
+      if (fileNames === undefined) return;
+      var fileName = fileNames[0];
+      let avatarURI = ipcRenderer.sendSync('send_file', fileName, "character_avatar/", fileName.split("/").pop());
+      console.log(avatarURI);
+      this.props.change('AvatarUri', avatarURI);
+    });
   }
 
   render() {
@@ -42,6 +49,7 @@ class CreateCharacterForm extends Component {
           </div>
           <div className={`col-xs-8`}>
             <div className={`row`}>
+              <Field name={`AvatarUri`} wrapClass={`col-xs-12 form-group`} component={renderTextField} type="hidden"/>
               <Field name={`characterName`} wrapClass={`col-xs-6 form-group`} component={renderTextField} type="text" label="Character Name" required={`required`}/>
               <Field name={`characterRace`} wrapClass={`col-xs-6 form-group`} component={renderTextField} type="text" label="Character Race" />
             </div>
@@ -52,7 +60,7 @@ class CreateCharacterForm extends Component {
               <Field name={`characterProfession`} wrapClass={`col-xs-6 form-group`} component={renderTextField} type="text" label="Profession" />
             </div>
             <div className={`row`}>
-            <Field name={`characterAvatarURI`} wrapClass={`col-xs-6 form-group`} value={this.state.avatarURI} handleFile={this.handleFile} component={renderFileField} type="file" label="Character Avatar" />
+            <button className={`btn btn-info`} type="button" onClick={this.handleFile}>{`Upload an Avatar`}</button>
             </div>
           </div>
           <div className={`col-xs-12`}>

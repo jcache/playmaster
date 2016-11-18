@@ -20,11 +20,9 @@ class Route {
   }
 
   checkOrCreateFile(path, file, context ){
-    fs.ensureFile(path, (err) => {      
-      fs.outputJson(path, file, function (err) {
-        console.log(err) // => null
-      });
-
+    console.log(path, file);
+    fs.ensureFile(path, (err) => {
+      if (err) return console.error(err)
       console.log(`[${context}] Successfully Loaded`);
       // file has now been created, including the directory it is to be placed in
     })
