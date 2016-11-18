@@ -7,7 +7,7 @@ import uuid from 'uuid';
 const dataPath = ipcRenderer.sendSync('config-paths');
 const CharactersDataPath = path.resolve(dataPath, 'characters.json');
 const db = low(CharactersDataPath);
-const Characters = db.get('characters');
+const Characters = db.get('character');
 
 export default {
   // CREATES PLAYER RESOURCE

@@ -21,7 +21,9 @@ export function CreatePlayer(player){
   return dispatch => {
     // PLAYER CONTROLLER
     PlayerController.createPlayer(player, data => {
-      dispatch({...NewPlayerAction, player: data });
+      // dispatch({...NewPlayerAction, player: data });
+      dispatch(loadPlayer(data))
+
     })
   }
 }
