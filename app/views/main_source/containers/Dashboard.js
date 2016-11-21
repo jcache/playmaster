@@ -41,7 +41,7 @@ class DefaultView extends Component {
 
   render() {
 
-    let { authenticated, player } = this.props;
+    let { authenticated, player, conversations } = this.props;
     let { selected_character } = this.state;
     const Style={"color":"#FFF", visibility: authenticated ? "visible" : "hidden" };
     return (
@@ -49,7 +49,7 @@ class DefaultView extends Component {
         <div className='DashboardModules'>
           <div style={{ flex: 1, flexDirection: 'column', display: 'flex', maxWidth: '350px'}}>
             <CharacterListModule _onSelectCharacter={( id ) => { this._onSelectCharacter(id) }}/>
-            <ChatDisplayModule />
+            <ChatDisplayModule conversations={conversations}/>
           </div>
           <div style={{ flex: 1, flexDirection: 'column', display: 'flex', maxWidth: '1140px'}}>
             <CharacterViewer player={player} empty={selected_character.id == undefined ? true : false} _onSelectCharacter={( id ) => { this._onSelectCharacter(id) }} selected_character={selected_character} />
@@ -63,6 +63,7 @@ class DefaultView extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    conversations: state.Conversations.conversations,
     player: state.Player.player,
     characters: state.Characters.characters,
     selected_character: state.Character.selected_character,

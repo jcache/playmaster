@@ -21,11 +21,11 @@ const setApplicationMenu = function () {
 let mainWindow = void 0;
 
 let createWindow = () => {
-  console.log(AppRouter.getAppDataPath());
-
-  AppRouter.loadCharacterDB();
   AppRouter.loadPlayerDB();
+  AppRouter.loadConversationDB();
+  AppRouter.loadCharacterDB();
   AppRouter.loadPlayerDefaultsDB();
+  AppRouter.loadGameSystemDB();
   // SETS APPLICATION MENU
    setApplicationMenu();
    // PROTOCOL MODULE

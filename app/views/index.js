@@ -1,18 +1,18 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, useRouterHistory } from 'react-router';
-import { createHashHistory } from 'history';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { Router , hashHistory} from 'react-router';
 import configureStore from './main_source/store/configureStore';
 import routes from './main_source/routes';
+import { syncHistoryWithStore } from 'react-router-redux';
 
 const store = configureStore();
-const appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
-const history = syncHistoryWithStore(appHistory, store);
+const history = syncHistoryWithStore(hashHistory, store)
 ReactDOM.render(
     <Provider store={store}>
-      <Router history={history} routes={routes} />
+      <Router history={history}>
+        {require('./main_source/routes')}
+      </Router>
     </Provider>
     , document.getElementById('react-root')
 );

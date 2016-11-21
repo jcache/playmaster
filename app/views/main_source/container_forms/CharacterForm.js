@@ -13,7 +13,6 @@ import {
 class CreateCharacterForm extends Component {
   constructor (props) {
     super(props);
-
     this.handleFile = ::this.handleFile;
   }
 
@@ -24,7 +23,6 @@ class CreateCharacterForm extends Component {
         {name: 'Images', extensions: ['jpg', 'png', 'gif']},
       ],
       properties: ['openFile', 'openDirectory', 'multiSelections']}, (fileNames) => {
-      // console.log(fileNames);
       if (fileNames === undefined) return;
       var fileName = fileNames[0];
       let avatarURI = ipcRenderer.sendSync('send_file', fileName, "character_avatar/", fileName.split("/").pop());

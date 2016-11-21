@@ -20,7 +20,6 @@ class DefaultView extends Component {
 
 
   componentDidMount() {
-    this.props.fetchCharacters();
     this.props.fetchCampaigns();
   }
   componentDidMount(){
@@ -34,14 +33,14 @@ class DefaultView extends Component {
   }
 
   render() {
-    let { authenticated, selected, characters, campaigns, route, _onSelectCharacter } = this.props;
+    let { authenticated, selected, characters, conversations, campaigns, route, _onSelectCharacter } = this.props;
     const Style={"color":"#FFF", visibility: authenticated ? "visible" : "hidden" };
     return (
       <div className="DefaultView">
         <div className='DashboardModules'>
           <div style={{ flex: 1, flexDirection: 'column', display: 'flex', maxWidth: '350px'}}>
             <CharacterListModule { ...this.props } />
-            <ChatDisplayModule />
+            <ChatDisplayModule conversations={conversations} />
           </div>
           <div style={{ flex: 1, flexDirection: 'column', display: 'flex', maxWidth: '1140px'}}>
             <CampaignDisplayModule selected={selected} characters={characters} />
@@ -54,7 +53,9 @@ class DefaultView extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
+    conversations: state.Conversations.conversations,
     characters: state.Characters,
     campaigns: state.Campaigns,
     selected: state.SelectedCharacter
