@@ -24,7 +24,6 @@ class GameSystemsView extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     game_systems: state.GameSystems.game_systems
   }

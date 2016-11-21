@@ -17,6 +17,7 @@ class CreateCharacterForm extends Component {
   }
 
   handleFile(event) {
+    console.log(this)
     event.preventDefault();
     dialog.showOpenDialog({
       filters: [
