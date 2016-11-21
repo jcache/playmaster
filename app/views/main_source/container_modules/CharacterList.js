@@ -8,6 +8,7 @@ class CharacterList extends Component {
       selected: 0
     };
   }
+  
   _renderAvatar(c){
     let CharacterAvatar;
     if(c.AvatarUri == undefined){
@@ -16,6 +17,7 @@ class CharacterList extends Component {
       return <div className="characterAvatar" style={{backgroundImage: `url('${c.AvatarUri}')`}}></div>
     }
   }
+
   _renderCharacters(props) {
     let {characters, campaigns, _onSelectCharacter } = props;
     let {selected } = this.state;
@@ -23,8 +25,7 @@ class CharacterList extends Component {
       const selClass = c.id == selected ? 'selectedCharacter' : null ;
       return(
         <div key={i}>
-          <div
-            onClick={() =>{ _onSelectCharacter(c); this.setState({selected: c.id}) }}
+          <div onClick={() =>{ _onSelectCharacter(c); this.setState({selected: c.id}) }}
             className={`character ${selClass}`} >
             {this._renderAvatar(c)}
             <div className="characterDetail">

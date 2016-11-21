@@ -5,14 +5,15 @@ import _ from 'lodash';
 import uuid from 'uuid';
 
 const dataPath = ipcRenderer.sendSync('config-paths');
-const ApplicationDataPath = path.resolve(dataPath, 'application.json');
-const db = low(ApplicationDataPath);
-const AppData = db.get('application');
+const GameSystemDataPath = path.resolve(dataPath, 'game_systems.json');
+const db = low(GameSystemDataPath);
+const GameSystems = db.get('game_system');
 
 export default {
   // GET PLAYERS BLOB
-  getAppData(cb) {
-    const AllAppData = AppData.value();
-    cb(AllAppData);
+  getGameSystems(cb) {
+    const AllGameSystems = GameSystems.value();
+    cb(AllGameSystems);
   },
+
 }

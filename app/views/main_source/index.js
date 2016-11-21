@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-
 import ApplicationFrame from './containers/ApplicationFrame';
-
-class App extends Component {
+import ApplicationHeader from './containers/ApplicationHeader';
+export default  class App extends Component {
   render() {
     return (
-      <ApplicationFrame>
-        {this.props.children}
-      </ApplicationFrame>
+      <div className="ApplicationFrame container-fluid">
+        <div className={`ApplicationBody`}>
+          <ApplicationHeader />
+          <ApplicationFrame>
+            {this.props.children}
+          </ApplicationFrame>
+        </div>
+      </div>
     )
   }
 }
-
-export default App;

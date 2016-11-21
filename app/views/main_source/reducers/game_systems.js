@@ -1,10 +1,10 @@
-import * as types from '../actions/types';
+import * as types from '../constants/GameSystemActionTypes';
 
-const GamesystemState = {
+const GameSystemState = {
   game_systems: [],
 };
 
-export const Gamesystems = (state = GamesystemState, action ) => {
+export const GameSystems = (state = GameSystemState, action ) => {
   switch (action.type) {
     case types.LOAD_GAME_SYSTEMS:
       return Object.assign({}, state, {

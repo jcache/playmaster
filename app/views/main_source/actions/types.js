@@ -12,6 +12,3 @@ export const SELECT_CHARACTER   = 'select_characters';
 export const FETCH_CAMPAIGNS    = 'fetch_campaigns';
 export const LOAD_CHARACTERS    = 'load_characters';
 export const LOAD_CAMPAIGNS     = 'load_campaigns';
-
-// GAMESYSTEM
-export const LOAD_GAME_SYSTEMS  = 'load_game_systems';

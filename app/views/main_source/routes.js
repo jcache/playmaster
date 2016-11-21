@@ -16,23 +16,25 @@ import Profile from './containers/ProfileView';
 import Settings from './containers/SettingsView';
 import CreateProfile from './containers/CreateProfileView';
 import LoginSelect from './containers/LoginSelectView';
+const NotFound = () => <h1>404.. This page is not found!</h1>
 
-export default (
+module.exports =
   <Route path="/" component={App}>
     <IndexRoute component={LoginSelect} />
     <Route path="create_player" component={CreateProfile} />
 
     /* DEFAULT PLAYER ROUTE = DASHBOARD (` /player/1 `) */
+
     <Route path="player/:id" component={requireAuth(PlayerFrame)} >
-      <IndexRoute component={Dashboard}/>
-      <Route path="profile" component={Profile}/>
-      <Route path="gamesystems" component={GameSystem}/>
+      <IndexRoute component={Dashboard} />
+      <Route path="profile" component={Profile} />
+      <Route path="gamesystems" component={GameSystem} />
       <Route path="characters" component={CharactersView} />
       <Route path="settings" component={Settings} />
       <Route path="campaigns" component={CampaignView} />
       <Route path="character/new" component={CharacterCreateView} />
       <Route path="character/:id" component={CharacterFrame}>
-        <IndexRoute component={CharacterView}/>
+        <IndexRoute component={CharacterView} />
         <Route path="edit" component={CharacterEditView} />
       </Route>
     </Route>
@@ -49,6 +51,6 @@ export default (
         </Route>
       */
     }
-
+    <Route path='*' component={NotFound} />
   </Route>
-);
+;

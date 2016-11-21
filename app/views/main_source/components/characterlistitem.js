@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 const CharacterListItem = (props) => {
   let { selected } = props.state;
   let selectedCharacterClass = 'selectedCharacter';
@@ -13,7 +12,7 @@ const CharacterListItem = (props) => {
       <div className="characterDetail">
         <p className="characterName">{c.characterName}</p>
         <p>{c.characterProfession}</p>
-        <p  className="opt-sm">{ campaignName(c.id) }</p>
+        <p className="opt-sm">{ campaignName(c.id) }</p>
       </div>
       <div className="expGauge">
         <span className="completion"></span>

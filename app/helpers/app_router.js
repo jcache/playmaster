@@ -2,13 +2,14 @@
 const path = require('path');
 const electron = require('electron');
 const fs = require('fs-extra');
-const character_data = {"characters": []};
+const character_data = {"character": []};
 const player_data = {"player":[]};
-const player_preferences = {"player_preferences": []};
-const device_settings = {"device_settings": []};
+const conversation_data = {"conversation":[]};
+const game_system_data = {"game_system":[]};
+const player_preferences = {"player_preference": []};
+const device_settings = {"device_setting": []};
 
 class Route {
-
   constructor() {
     this.app_data_path = electron.app.getPath('appData') + '/evolition_app_template/data/';
     this.app_plugin_path = electron.app.getPath('appData') + '/evolition_app_template/plugins/';
@@ -28,13 +29,26 @@ class Route {
     })
   }
 
+  loadConversationDB() {
+    const context = "CONVERSATION_MODEL"
+    const srcpath = this.app_data_path;
+    const path = `${srcpath}conversations.json`;
+    // console.log('seed data: ' , file);
+    this.checkOrCreateFile(path, conversation_data, context);
+  }
+  loadGameSystemDB() {
+    const context = "GAME_SYSTEM_MODEL"
+    const srcpath = this.app_data_path;
+    const path = `${srcpath}game_systems.json`;
+    // console.log('seed data: ' , file);
+    this.checkOrCreateFile(path, game_system_data, context);
+  }
   loadCharacterDB() {
     const context = "CHARACTER_MODEL"
     const srcpath = this.app_data_path;
     const path = `${srcpath}characters.json`;
     // console.log('seed data: ' , file);
     this.checkOrCreateFile(path, character_data, context);
-    // IF THE character.json FILE WAS NEVER CREATED, CREATE IT
   }
 
   loadPlayerDB() {
@@ -43,7 +57,6 @@ class Route {
     const path = `${srcpath}players.json`;
     // console.log('seed data: ' , file);
     this.checkOrCreateFile(path, player_data, context);
-    // IF THE character.json FILE WAS NEVER CREATED, CREATE IT
   }
 
   loadPlayerDefaultsDB() {
@@ -54,7 +67,6 @@ class Route {
     // console.log('seed data: ' , file);
     this.checkOrCreateFile(player_preferences_path, player_preferences, context);
     this.checkOrCreateFile(device_settings_path, device_settings, context);
-    // IF THE character.json FILE WAS NEVER CREATED, CREATE IT
   }
 
   saveAsset(path_toFile,newContext,  filename){

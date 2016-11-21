@@ -1,40 +1,24 @@
 import React, { Component } from 'react';
 import { connect}  from 'react-redux';
-import ApplicationHeader from './ApplicationHeader';
 import { Overlay } from './mainOverlay';
-class ApplicationFrame extends Component {
 
+class ApplicationFrame extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      overlayVisible: false,
+      overlay: false,
     };
   }
 
-  onDismissOverlay(){
-    this.setState({
-      overlayVisible:false
-    })
-  }
-
   render() {
-    let {overlayVisible} = this.state
+    let {overlay} = this.state
     return (
-      <div className="ApplicationFrame container-fluid">
-        <div className={`ApplicationBody`}>
-          <ApplicationHeader />
-          <div ref="scrollview" className={`AppView scroll3 `}>
-            {this.props.children}
-            <Overlay visibility={overlayVisible} onDismissOverlay={() => this.onDismissOverlay()}></Overlay>
-          </div>
-        </div>
+      <div ref="scrollview" className={`AppView scroll3 `}>
+        {this.props.children}
+        <Overlay visibility={overlay} onDismissOverlay={() => this.setState({overlay: !overlay})}></Overlay>
       </div>
     );
   }
 }
 
-
-const mapStateToProps = (state) => {
-  return {}
-}
-export default connect(mapStateToProps)(ApplicationFrame)
+export default connect()(ApplicationFrame)
