@@ -5,7 +5,7 @@
 
 body, html {
   display:flex;
-  background-color: #000000;
+  background-color: #222;
   margin:0;
   height:100%;
   width:100%;
@@ -51,7 +51,7 @@ body, html {
     flex-direction: row;
     margin: 20px -10px;
     justify-content: flex-start;
-    .ListViewBlock { 
+    .ListViewBlock {
       display:flex;
       flex:1;
       margin:0 10px;
@@ -450,7 +450,7 @@ body, html {
           flex:1;
           .character {
             transition:all .3s ease;
-            background: -webkit-linear-gradient(top, rgba(5,5,5,.5) 0%, rgba(0,0,0,.5) 100%);
+            // background: -webkit-linear-gradient(top, rgba(5,5,5,.5) 0%, rgba(0,0,0,.5) 100%);
             border-bottom: 1px solid rgba(0,0,0,.5);
             flex: 1;
             min-height: 5vh;
@@ -482,8 +482,9 @@ body, html {
               color: rgba(255,255,255,1);
               p {
                 &.characterName {
-                  font-weight: 400;
-                  color: rgba(148, 9, 64, 1.00);
+                  font-weight: 600;
+                  text-transform: uppercase;
+                  color: rgba(104, 63, 175, 1.00);
                 }
                 margin:0;
                 line-height:18px;
@@ -619,7 +620,7 @@ body, html {
   .ApplicationHeader {
     -webkit-app-region: drag;
     -webkit-user-select: none;
-    background: rgba(0,0,0,.6);
+    background:#102441;
     display:flex;
     background-size: cover;
     // transition: all .3s ease;
@@ -861,7 +862,7 @@ body, html {
     display: flex;
     overflow: hidden;
     overflow-x: auto;
-    padding:20px 40px;
+    padding:40px;
     position: relative;
     p {
       &.lead {
