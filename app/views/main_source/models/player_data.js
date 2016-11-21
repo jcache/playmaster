@@ -5,7 +5,7 @@ import _ from 'lodash';
 import uuid from 'uuid';
 
 const dataPath = ipcRenderer.sendSync('config-paths');
-const PlayersDataPath = path.resolve(dataPath, 'players.json');
+const PlayersDataPath = path.resolve(dataPath, 'player.json');
 const db = low(PlayersDataPath);
 const Players = db.get('player');
 
