@@ -3,6 +3,12 @@ import * as types from '../constants/PlayerActionTypes';
 import PlayerController from '../models/player_data';
 
 
+function loadAuthenticationStatus(data) {
+  return {
+    type: types.LOAD_AUTH_STATUS,
+    authenticated: data
+  }
+}
 function loadPlayer(player) {
   return {
     type: types.LOAD_PLAYER,
@@ -26,12 +32,40 @@ export function CreatePlayer(player){
     });
   }
 }
+
+export function setAuthenticatedStatus(id, val){
+  return dispatch => {
+    // PLAYER CONTROLLER
+    PlayerController.setAuthenticationStatus(id, val, data => {
+      dispatch(loadAuthenticationStatus(data))
+    })
+  }
+}
+export function isAuthenticated(id){
+  return dispatch => {
+    // PLAYER CONTROLLER
+    // alert(id);
+    PlayerController.getAuthenticationStatus(id,data => {
+      dispatch(loadAuthenticationStatus(data))
+    })
+  }
+}
 export function LoadPlayer(id){
   return dispatch => {
     // PLAYER CONTROLLER
     PlayerController.getPlayer(id, data => {
       dispatch(loadPlayer(data))
     })
+  }
+}
+
+export function EditProfile(player){
+  return dispatch => {
+    // PLAYER CONTROLLER
+    PlayerController.editPlayer(player, data => {
+      dispatch(loadPlayer(data));
+    });
+
   }
 }
 

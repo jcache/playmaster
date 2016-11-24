@@ -33,7 +33,7 @@ module.exports =
       <Route path="settings" component={Settings} />
       <Route path="campaigns" component={CampaignView} />
       <Route path="character/new" component={CharacterCreateView} />
-      <Route path="character/:id" component={CharacterFrame}>
+      <Route path="character/:cid" component={CharacterFrame}>
         <IndexRoute component={CharacterView} />
         <Route path="edit" component={CharacterEditView} />
       </Route>

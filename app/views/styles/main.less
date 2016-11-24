@@ -20,7 +20,9 @@ body, html {
 .releaseAppmargin {
   margin: -40px -40px;
 }
+.ProfileView,
 .GameSystemsView,
+.CampaignView,
 .CharacterView,
 .CharactersView {
   flex-direction: column;
@@ -74,6 +76,7 @@ body, html {
 .SettingsView,
 .CharacterView,
 .CharactersView,
+.ProfileView,
 .CampaignView,
 .GameSystemsView,
 .DefaultView{
@@ -216,7 +219,7 @@ body, html {
     flex:1;
     align-content: space-between;
     .Module {
-      background-color: rgba(17, 13, 30, 1.00);
+      background-color: rgba(0, 0, 0, .3);
       display:flex;
       flex:1;
       &:first-child {
@@ -285,7 +288,7 @@ body, html {
         flex-direction: column;
         background-color: rgba(13, 11, 23, 1.00);
         display: flex;
-        min-height:300px;
+        max-height:360px;
         // max-height:400px;
         // border: 3px solid rgba(0,0,0,.5);
 
@@ -335,17 +338,19 @@ body, html {
         }
       }
       &.CharacterViewer {
-        min-height:300px;
-        max-height: 50%;
+        min-height:420px;
+        max-height:420px;
+        // max-height: 50%;
         position: relative;
         min-width:400px;
-        margin: 0 0 0px 25px;
+        margin: 0 0 30px 25px;
         display:flex;
         flex-direction: column;
-        // border: 3px solid rgba(0,0,0,.5);
+        border: 1px solid rgba(96, 65, 176, .5);
         .campaignBgContainer{
           flex:1;
           display:flex;
+
           // -webkit-filter: grayscale(100%) !important;
           background: url('../images/galaxy.png') top center no-repeat;
           background-size: cover;
@@ -355,7 +360,7 @@ body, html {
             align-self: flex-end;
             height:50%;
             display:flex;
-            background-color: rgba(0,0,0, .5);
+            background-color: rgba(0,0,0, .1);
             .characterActions {
               height:30px;
               align-self:center;
@@ -593,7 +598,7 @@ body, html {
     top: 0; bottom: 0; left: 0; right: 0;
     width:100%;
     height:100%;
-    -webkit-filter: blur(6px) opacity(30%) saturate(50%);
+    -webkit-filter: blur(6px) opacity(0%) saturate(50%);
     z-index:0;
     position:absolute;
 }
@@ -615,12 +620,15 @@ body, html {
   .flex-class();
   flex-direction: column;
   position:relative;
-  background-color: rgba(18, 15, 28, .8);
-
+  background-color: rgba(25, 25, 25, 1.00);
+  // background: url('../images/galaxy.png') top center no-repeat;
+  background-size: cover;
   .ApplicationHeader {
     -webkit-app-region: drag;
     -webkit-user-select: none;
-    background:#102441;
+    // background: linear-gradient(90deg,#4855fb,#ba2b7d);
+    background: linear-gradient(90deg,rgba(37, 39, 38, 1.00),rgba(28, 28, 30, 1.00));
+
     display:flex;
     background-size: cover;
     // transition: all .3s ease;
@@ -773,7 +781,7 @@ body, html {
             transition: all .2s ease;
             -webkit-box-shadow: inset 0 0px 0px 0px white;
             -webkit-app-region: no-drag;
-
+            &.active,
             &:hover {
               color: rgba(120, 84, 191, 1.00);
               -webkit-box-shadow: inset 0 6px 0px -4px rgba(120, 84, 191, 1.00);
@@ -861,6 +869,7 @@ body, html {
     overflow: hidden;
     overflow-x: auto;
     padding:40px;
+    padding-bottom: 0;
     position: relative;
     p {
       &.lead {
@@ -907,7 +916,7 @@ body, html {
   min-height: 40px;
   max-height: 40px;
   background-color: transparent;
-  // border-top:1px solid rgba(255,255,255,.2);
+  background: linear-gradient(90deg,rgba(37, 39, 38, 1.00),rgba(28, 28, 30, 1.00));
 
 }
 .header-scroll {

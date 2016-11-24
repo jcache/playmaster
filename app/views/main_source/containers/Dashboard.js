@@ -27,10 +27,12 @@ class DefaultView extends Component {
   componentWillReceiveProps(nextProps){
     if(this.props.selected_character != nextProps.selected_character){
       this.setState({
+        player: nextProps.player,
         selected_character: nextProps.selected_character
       })
     }
   }
+
   _onSelectCharacter(character) {
     let {dispatch} = this.props;
     dispatch(LoadCharacter(character.id));
