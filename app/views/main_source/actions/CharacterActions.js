@@ -1,61 +1,62 @@
-import {
-  LOAD_CHARACTERS
-} as types from '../actions/types';
+import * as types from '../constants/CharacterActionTypes';
 
-function LoadCharacters(characters) {
+import CharacterController from '../models/character_data';
+
+function loadCharacters(characters) {
   return {
-    type: LOAD_CHARACTERS,
+    type: types.LOAD_CHARACTERS,
     characters: characters
   }
 }
+function selectCharacter(character) {
+  return {
+    type: types.SELECT_CHARACTER,
+    selected_character: character
+  }
+}
 
-
-export function CollectCharacters(){
-  var characters = [
-    {
-      id: 1,
-      characerName: "Mazius Al'Ghul",
-      characerProfession: "Necromancer",
-      characterAvatarUri: 'images/rogue.jpg',
-      campaign: 1
-    },
-    {
-      id: 2,
-      characerName: "Peter Parker",
-      characerProfession: "Sorcerer",
-      characterAvatarUri: 'images/spiderman.jpg',
-      campaign: 1
-    },
-    {
-      id: 3,
-      characerName: "Mazius Al'Ghul",
-      characerProfession: "Psionic",
-      characterAvatarUri: 'images/rogue.jpg',
-      campaign: 4
-    },
-    {
-      id: 4,
-      characerName: "Overlord",
-      characerProfession: "Bio-Wizard",
-      characterAvatarUri: 'images/rogue.jpg',
-      campaign: 5
-    },
-    {
-      id: 5,
-      characerName: "Mazius Al'Ghul",
-      characerProfession: "Cleaner",
-      characterAvatarUri: 'images/rogue.jpg',
-      campaign: null
-    },
-    {
-      id: 6,
-      characerName: "Mazius Al'Ghul",
-      characerProfession: "Janitor",
-      characterAvatarUri: 'images/rogue.jpg',
-      campaign: null
-    },
-  ];
+export function EditCharacter(character){
   return dispatch => {
-    dispatch(LoadCharacters(characters))
+    // PLAYER CONTROLLER
+    CharacterController.editCharacter(character,
+      ret => {
+        dispatch(loadCharacters(ret));
+      },
+      err => {
+        console.log(err);
+        // DISPATCH ERROR
+      }
+    )
+  }
+}
+
+export function CreateCharacter(pid, character){
+  return dispatch => {
+    // PLAYER CONTROLLER
+    CharacterController.createCharacter(pid, character,
+      ret => {
+        dispatch(loadCharacters(ret));
+      },
+      err => {
+        console.log(err);
+        // DISPATCH ERROR
+      }
+    )
+  }
+}
+
+export function LoadCharacter(id){
+  return dispatch => {
+    CharacterController.getCharacter(id, character => {
+      dispatch(selectCharacter(character));
+    })
+  }
+}
+export function LoadCharacters(pid){
+  return dispatch => {
+    CharacterController.getCharacters(pid, characters => {
+      dispatch(selectCharacter(characters[0]));
+      dispatch(loadCharacters(characters));
+    })
   }
 }

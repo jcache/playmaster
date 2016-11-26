@@ -12,19 +12,27 @@ const is_WIN32 = process.platform == "win32";
 
 const setApplicationMenu = function () {
   const menus = [AppMenu, EditMenu];
-  // if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development') {
     menus.push(DevMenu);
-  // }
+  }
 
   Menu.setApplicationMenu(Menu.buildFromTemplate(menus));
 };
 let mainWindow = void 0;
 
 let createWindow = () => {
-  console.log(AppRouter.getAppDataPath());
-  AppRouter.loadCharacterDB();
-  AppRouter.loadPlayerDB();
-  AppRouter.loadPlayerDefaultsDB();
+  AppRouter.initDatabases(
+    [
+      "settings",
+      "player",
+      "preferences",
+      "character",
+      "campaign",
+      "game_system",
+      "conversation"
+    ]
+  );
+
   // SETS APPLICATION MENU
    setApplicationMenu();
    // PROTOCOL MODULE
@@ -45,13 +53,16 @@ let createWindow = () => {
     height: winH,
     minWidth: winW,
     minHeight: winH,
-    frame: false
+    frame: false,
+    enableLargerThanScreen: true,
+    flashFrame: true,
+    setAlwaysOnTop: true,
   });
 
-  // mainWindow.setPosition(
-  //   vertL - (winW / 2),
-  //   horzL - (winH / 2)
-  // );
+  mainWindow.setPosition(
+    vertL - (winW / 2),
+    horzL - (winH / 2)
+  );
 
   if (process.env.NODE_ENV === 'development') {
     mainWindow.webContents.openDevTools({ detach: true });
@@ -88,20 +99,23 @@ let createWindow = () => {
     const routePaths = AppRouter.getAppDataPath();
     e.returnValue = routePaths;
   });
-
   ipcMain.on('resize-to-login', (e, arg) => {
-    var options = { width: winW, height: winH };
+    var options = { width: 400, height: 800 };
     options.x = vertL  - (options.width / 2);
     options.y = horzL - (options.height / 2);
-    mainWindow.setBounds(options, false);
+    mainWindow.setMinimumSize(winW, winH);
+    mainWindow.setBounds(options, true);
   });
 
   ipcMain.on('resize-to-main', (e, arg) => {
-      var options = { width: 1140, height: 800 };
-      options.x = vertL  - (options.width / 2);
-      options.y = horzL - (options.height / 2);
-      mainWindow.setBounds(options, false);
-    });
+    var options = { width: 1236, height: 800 };
+    options.x = vertL  - (options.width / 2);
+    options.y = horzL - (options.height / 2);
+    mainWindow.show();
+    mainWindow.setMinimumSize(options.width, options.height);
+    mainWindow.setBounds(options, true);
+  });
+
 
   ipcMain.on('app_minimize', (event) => {
     mainWindow.minimize();
@@ -109,6 +123,12 @@ let createWindow = () => {
 
   ipcMain.on('app_close', (event) => {
     mainWindow.close();
+  });
+
+  ipcMain.on('send_file', (event, path,newContext,  name) => {
+    // console.log(path);
+    event.returnValue = AppRouter.saveAsset(path,newContext,  name);
+    // console.log('File(s) here: ', path)
   });
 
   ipcMain.on('app_maximize', (event, maximize) => {

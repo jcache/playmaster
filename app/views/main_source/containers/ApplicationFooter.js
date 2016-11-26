@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect}  from 'react-redux';
 import { Overlay } from './mainOverlay';
 
-class ApplicationFrame extends Component {
+class ApplicationFooter extends Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -13,12 +13,11 @@ class ApplicationFrame extends Component {
   render() {
     let {overlay} = this.state
     return (
-      <div ref="scrollview" className={`AppView scroll3 `}>
-        {this.props.children}
-        <Overlay visibility={overlay} onDismissOverlay={() => this.setState({overlay: !overlay})}></Overlay>
+      <div className={`ApplicationFooter`}>
+        <p>evolition</p>
       </div>
     );
   }
 }
 
-export default connect()(ApplicationFrame)
+export default connect()(ApplicationFooter)

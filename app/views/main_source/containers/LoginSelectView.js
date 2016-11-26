@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { connect}  from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
-import CreateProfileForm from '../container_forms/CreateProfileForm';
 import PlayerChipList from '../container_modules/PlayerChipList';
-import { CollectPlayer, LoadPlayers } from '../actions/PlayerActions';
+import { LoadPlayers } from '../actions/PlayerActions';
 import { authenticate } from '../actions';
 import { Link } from 'react-router';
 import { ipcRenderer, remote } from 'electron';
-import * as actions from '../actions';
 class LoginSelectView extends Component {
 
   constructor (props) {
     super(props);
   }
-  componentDidMount(){
+  componentWillMount(){
     this.props.dispatch(LoadPlayers());
     ipcRenderer.send('resize-to-login');
   }
@@ -40,7 +37,7 @@ class LoginSelectView extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    authenticated: state.authenticated,
+    authenticated: state.Player.authenticated,
     players: state.Players.players
   }
 }

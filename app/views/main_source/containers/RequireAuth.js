@@ -1,42 +1,45 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router';
+// import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { ipcRenderer, remote } from 'electron';
-import { CollectPlayer } from '../actions/PlayerActions';
+import { LoadPlayer,isAuthenticated } from '../actions/PlayerActions';
+import { LoadCharacters, LoadCharacter } from '../actions/CharacterActions';
+import { LoadGameSystems } from '../actions/GameSystemActions';
+import { LoadConversations } from '../actions/ConversationActions';
 export default function(ComposedComponent) {
 
   class Authentication extends Component {
 
-    componentWillMount() {
-      let { params, dispatch, authenticated } = this.props;
-      if (!authenticated) {
-        dispatch(CollectPlayer(params.id));
+    componentDidMount() {
+      let { params, dispatch, authenticated,router} = this.props;
+      dispatch(LoadPlayer(params.id));
+      dispatch(LoadCharacters(params.id));
+      dispatch(LoadConversations(params.id));
+      dispatch(LoadGameSystems());
+      dispatch(isAuthenticated(params.id));
+      if (authenticated == true) {
         ipcRenderer.send('resize-to-main');
-        this.context.router.push(`/player/${params.id}/characters`);
       }
     }
 
     componentWillUpdate(nextProps) {
-      if (this.props.authenticated != nextProps.authenticated) {
-        this.context.router.push(`/player/${nextProps.params.id}/characters`);
+      let { router} = this.props;
+
+      // console.log(nextProps)
+      if (nextProps.authenticated == false) {
+        router.push(`/`);
       }
     }
     render() {
-      // console.log(this.context);
       return <ComposedComponent {...this.props} />
     }
   }
 
-  Authentication.contextTypes = {
-    router: React.PropTypes.object
-  }
-
   function mapStateToProps(state) {
     return {
-      authenticated: state.authenticated ,
-      routing: state.routing
+      authenticated: state.Player.authenticated
     }
   }
 
-  return connect(mapStateToProps)(withRouter(Authentication));
+  return connect(mapStateToProps)(Authentication);
 }

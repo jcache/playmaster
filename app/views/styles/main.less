@@ -5,7 +5,7 @@
 
 body, html {
   display:flex;
-  background-color: #000000;
+  background-color: #222;
   margin:0;
   height:100%;
   width:100%;
@@ -18,15 +18,20 @@ body, html {
   height:100%;
 }
 .releaseAppmargin {
-  margin: -20px -40px;
+  margin: -40px -40px;
 }
-
-.CharacterView {
+.ProfileView,
+.GameSystemsView,
+.CampaignView,
+.CharacterView,
+.CharactersView {
   flex-direction: column;
   padding-bottom: 40px;
   hgroup {
     background-color: rgba(0,0,0,.2);
-    padding: 0 40px;
+    padding: 0 30px;
+    // border-bottom: 2px solid rgba(32, 21, 55, .75);
+
     h3 {
       font-weight: 500;
       text-transform: uppercase;
@@ -40,22 +45,24 @@ body, html {
   display: block;
   overflow:hidden;
   overflow-y: scroll !important;
-  padding: 20px;
-
-  .CharactersMain{
+  padding: 30px;
+  .ListViewMain{
     flex:1;
     display:flex;
     flex-wrap: wrap;
     flex-direction: row;
-    margin-bottom: 40px;
+    margin: 20px -10px;
     justify-content: flex-start;
-    .CharacterBlock {
+    .ListViewBlock {
       display:flex;
-      margin:0 2%;
+      flex:1;
+      margin:0 10px;
       align-self: stretch;
-      min-width: 200px;
-      margin-bottom: 40px;
-      height: 280px;
+      min-width: 240px;
+      max-width: 260px;
+      margin-bottom: 20px;
+      height: 340px;
+      max-height: 400px;
       background-color: green;
       transition: all .3s ease;
       &:hover {
@@ -68,8 +75,10 @@ body, html {
 .LoginSelectView,
 .SettingsView,
 .CharacterView,
+.CharactersView,
+.ProfileView,
 .CampaignView,
-.GameSystemView,
+.GameSystemsView,
 .DefaultView{
   display: flex;
   flex:1;
@@ -196,7 +205,6 @@ body, html {
           &:hover {
             opacity: 1;
             border: 2px solid rgba(148, 9, 64, 1.00);
-
           }
         }
       }
@@ -211,7 +219,7 @@ body, html {
     flex:1;
     align-content: space-between;
     .Module {
-      background-color: rgba(17, 13, 30, 1.00);
+      background-color: rgba(0, 0, 0, .3);
       display:flex;
       flex:1;
       &:first-child {
@@ -224,27 +232,7 @@ body, html {
         height:100px;
         display:flex;
         flex-direction: column;
-        h3 {
-          // flex:1;
-          align-self: center;
-          font-weight: 400;
-          font-size: 12px;
-          letter-spacing: .1em;
-          color: rgba(148, 9, 64, 1.00);
-          text-align: center;
-          align-items: center;
-          margin: 70px 0 0 0;
-        }
-        h2 {
-          align-self: center;
-          flex:1;
-          font-size:24px;
-          font-weight: 400;
-          color: rgba(255,255,255,1);
-          text-align: center;
-          align-items: center;
-          margin: 5px 0 0 0;
-        }
+
       }
 
       .seekButton {
@@ -259,7 +247,7 @@ body, html {
         transition: all .3s ease;
         margin-top: -40px;
         &:hover {
-                  background-color: rgba(32, 21, 55, .75);
+          background-color: rgba(32, 21, 55, .75);
         }
         &.left   {
           left: 0;
@@ -272,7 +260,6 @@ body, html {
         display:flex;
         flex:1;
         flex-grow: 1;
-
         background-color: rgba(6, 6, 10, 1.00);
         min-height:45px;
         max-height:45px;
@@ -301,9 +288,9 @@ body, html {
         flex-direction: column;
         background-color: rgba(13, 11, 23, 1.00);
         display: flex;
-        min-height:300px;
+        max-height:360px;
         // max-height:400px;
-        border: 3px solid rgba(0,0,0,.5);
+        // border: 3px solid rgba(0,0,0,.5);
 
         .moduleBody {
           flex:1;
@@ -350,43 +337,109 @@ body, html {
           }
         }
       }
-      &.Campaign {
-        min-height:300px;
-        max-height: 50%;
+      &.CharacterViewer {
+        min-height:420px;
+        max-height:420px;
+        // max-height: 50%;
         position: relative;
         min-width:400px;
-        margin: 0 0 0px 25px;
+        margin: 0 0 30px 25px;
+        display:flex;
         flex-direction: column;
-        // border: 3px solid rgba(0,0,0,.5);
-        .moduleBody {
-          position: relative;
-          max-height:200px;
-          h3 {
-            padding-top:20px;
-          }
-
-        }
-        &:first-child {
-          margin-bottom: 35px;
-        }
-        .campaign_avatar {
-          position:absolute;
-          background-color: rgba(38, 30, 72, 1.00);
-          background-position: center center;
-          border: 3px solid white;
-          width: 132px;
-          border-radius: 66px;
-          height: 132px;
-          margin-left: -66px;
-          left:50%;
-          top:-61px;
-        }
+        border: 1px solid rgba(96, 65, 176, .5);
         .campaignBgContainer{
           flex:1;
-          height:100px;
-          -webkit-filter: grayscale(100%) !important;
+          display:flex;
+
+          // -webkit-filter: grayscale(100%) !important;
           background: url('../images/galaxy.png') top center no-repeat;
           background-size: cover;
+          .moduleBody {
+            flex:1;
+            position:relative;
+            align-self: flex-end;
+            height:50%;
+            display:flex;
+            background-color: rgba(0,0,0, .1);
+            .characterActions {
+              height:30px;
+              align-self:center;
+              align-items: center;
+              justify-content: center;
+              margin: 3vh 0 4vh;
+              display:flex;
+              a {
+                min-width: 2vw;
+                height: 30px;
+                line-height: 30px;
+                min-height:30px;
+                font-weight:600;
+                font-size:11px;
+                text-transform: uppercase;
+                text-decoration: none;
+                text-align: center;
+                color: white;
+                margin: 0 10px;
+                border-radius: 6px;
+                -webkit-box-shadow: 0px 0px 0px 1px rgba(255,255,255,1);
+                transition: all .2s ease;
+                span {
+                  padding: 0 2vw;
+                }
+                &:hover {
+                  color: rgba(116, 69, 191, 1);
+                  -webkit-box-shadow: 0px 0px 0px 2px rgba(116, 69, 191,1);
+                }
+              }
+            }
+            h3 {
+              // flex:1;
+              align-self: center;
+              font-weight: 400;
+              text-transform: uppercase;
+              padding-top:10px;
+              font-size:12px;
+              letter-spacing: .1em;
+              color: rgba(116, 69, 191, 1.00);
+              text-align: center;
+              align-items: center;
+              margin: 50px 0 0 0;
+            }
+            h2 {
+              align-self: center;
+              flex:1;
+              font-size:20px;
+              font-weight: 400;
+              color: rgba(255,255,255,1);
+              text-align: center;
+              align-items: center;
+              margin: 5px 0 0 0;
+            }
+
+            .characterAvatar{
+              position:absolute;
+              display: flex;
+              align-self:center;
+              text-align: center;
+              font-size:6vh;
+              font-weight: 600;
+              align-items: center;
+              justify-content: center;
+              background-color: rgba(38, 30, 72, 1.00);
+              background-position: center center;
+              background-repeat: no-repeat;
+              background-size: cover;
+              border: 4px solid rgba(116, 69, 191, 1.00);
+              width: 100px;
+              align-self: center;
+              border-radius: 50px;
+              height: 100px;
+              left:50%;
+              top: 0;
+              margin-top: -50px;
+              margin-left: -50px;
+            }
+          }
         }
       }
       &.Character {
@@ -394,23 +447,21 @@ body, html {
         max-width:350px;
         min-width:300px;
         flex-direction: column;
-        border: 3px solid rgba(0,0,0,.5);
-
         .characterListContainer {
           display: flex;
           flex-direction: column;
           overflow:hidden;
-          overflow-y: scroll;
+          overflow-y: auto;
           flex:1;
           .character {
             transition:all .3s ease;
-            background: -webkit-linear-gradient(top, rgba(5,5,5,.5) 0%, rgba(0,0,0,.5) 100%);
-
+            // background: -webkit-linear-gradient(top, rgba(5,5,5,.5) 0%, rgba(0,0,0,.5) 100%);
             border-bottom: 1px solid rgba(0,0,0,.5);
             flex: 1;
-            min-height: 100px;
-            max-height: 110px;
+            min-height: 5vh;
+            max-height: 7vh;
             margin-bottom:2px;
+            padding: 10px 0;
             display:flex;
             position:relative;
             &.selectedCharacter{
@@ -427,9 +478,7 @@ body, html {
               .completion{
                 background-color:rgba(23, 81, 117, .6);
                 width:40%;
-
               }
-
             }
             .characterDetail{
               flex:1;
@@ -438,8 +487,9 @@ body, html {
               color: rgba(255,255,255,1);
               p {
                 &.characterName {
-                  font-weight: 400;
-                  color: rgba(148, 9, 64, 1.00);
+                  font-weight: 600;
+                  text-transform: uppercase;
+                  color: rgba(104, 63, 175, 1.00);
                 }
                 margin:0;
                 line-height:18px;
@@ -447,23 +497,27 @@ body, html {
               }
             }
             .characterAvatar {
+              display: flex;
               align-self:center;
+              text-align: center;
+              align-items: center;
+              justify-content: center;
               margin-left:10px;
-              flex:1;    background-size: cover;
-              max-width: 60px;
-              height: 60px;
+              flex:1;
+              background-size: cover;
+              max-width: 4vh;
+              min-height: 4vh;
+              background-color: black;
               background-position: center center;
-              border-radius: 60px;
+              border-radius: 4vh;
             }
           }
         }
       }
       &.Chat {
-        // min-height:300px;
         max-width:350px;
         min-width:300px;
         flex-direction: column;
-        border: 3px solid rgba(0,0,0,.5);
 
         .chatContainer {
           display: flex;
@@ -506,7 +560,6 @@ body, html {
                 align-self:center;
                 margin-left:10px;
                 flex:1;
-
                 max-width: 40px;
                 height: 40px;
                 background-size: cover;
@@ -545,7 +598,7 @@ body, html {
     top: 0; bottom: 0; left: 0; right: 0;
     width:100%;
     height:100%;
-    -webkit-filter: blur(6px) opacity(30%) saturate(50%);
+    -webkit-filter: blur(6px) opacity(0%) saturate(50%);
     z-index:0;
     position:absolute;
 }
@@ -562,21 +615,24 @@ body, html {
   font-size:150px !important;
   color:red;
 }
+
 .ApplicationBody{
   .flex-class();
   flex-direction: column;
   position:relative;
-  background-color: rgba(18, 15, 28, .8);
-
+  background-color: rgba(25, 25, 25, 1.00);
+  // background: url('../images/galaxy.png') top center no-repeat;
+  background-size: cover;
   .ApplicationHeader {
     -webkit-app-region: drag;
     -webkit-user-select: none;
-    background: rgba(0,0,0,.6);
+    // background: linear-gradient(90deg,#4855fb,#ba2b7d);
+    background: linear-gradient(90deg,rgba(37, 39, 38, 1.00),rgba(28, 28, 30, 1.00));
+
     display:flex;
     background-size: cover;
     // transition: all .3s ease;
     // border-bottom:1px solid rgba(255,255,255,.2);
-
     .AppControlUtils {
       display:flex;
       padding:0px;
@@ -584,6 +640,7 @@ body, html {
       margin:0px;
       transition: all .2s ease;
       flex:1;
+
       li {
         display:flex;
         flex:1;
@@ -701,14 +758,12 @@ body, html {
       background: transparent;
       display:flex;
       box-shadow: none;
-      // border-bottom:1px solid rgba(255,255,255,.2);
-
+      height: auto;
       ul {
         margin-bottom:0;
         display:flex;
         flex-direction: row;
         flex:1;
-
         li{
           list-style:none;
           display:flex;
@@ -720,17 +775,15 @@ body, html {
             letter-spacing: .1em;
             text-decoration: none;
             text-transform: uppercase;
-            margin:0 5px;
+            margin:0;
             color: rgba(255,255,255,1);
             line-height:60px;
             transition: all .2s ease;
             -webkit-box-shadow: inset 0 0px 0px 0px white;
             -webkit-app-region: no-drag;
-            &:first-child{
-              margin-left: 10px;
-            }
+            &.active,
             &:hover {
-                          color: rgba(120, 84, 191, 1.00);
+              color: rgba(120, 84, 191, 1.00);
               -webkit-box-shadow: inset 0 6px 0px -4px rgba(120, 84, 191, 1.00);
             }
           }
@@ -738,12 +791,18 @@ body, html {
       }
       .nav-wrapper {
         -webkit-app-region: drag;
-        background: rgba(0, 0, 0, 0);;
+        background: rgba(0, 0, 0, 0);
         .nav-login{
           margin-top: 0px;
         }
-        a {
-          -webkit-app-region: no-drag;
+        li {
+          a {
+            -webkit-app-region: no-drag;
+            &.active {
+              -webkit-box-shadow: inset 0 6px 0px -4px rgba(120, 84, 191, 1.00);
+              background-color: rgba(120, 84, 191, .1);
+            }
+          }
         }
       }
     }
@@ -764,7 +823,6 @@ body, html {
      padding: 0;
      flex:1;
      overflow: hidden;
-    //  border: 2px solid rgba(120, 84, 191, .1);
      display:flex;
      &:hover {
       visibility: visible !important;
@@ -778,13 +836,6 @@ body, html {
          &:last-child{
            margin-bottom: 0;
          }
-
-
-
-
-
-
-
          a {
            padding: 0 15px;
            flex:1;
@@ -798,7 +849,6 @@ body, html {
            text-transform: capitalize;
            &:hover {
              color: rgba(120, 84, 191, 1.00);
-
            }
          }
        }
@@ -818,7 +868,8 @@ body, html {
     display: flex;
     overflow: hidden;
     overflow-x: auto;
-    padding:20px 40px;
+    padding:40px;
+    padding-bottom: 0;
     position: relative;
     p {
       &.lead {
@@ -842,19 +893,19 @@ body, html {
 }
 @media screen and ( max-height: 900px ) {
 
-  .character {
-    min-height: 60px !important;
-    max-height: 70px !important;
-  }
-  .chatBubble{
-    min-height:60px !important;
-  }
-  .characterAvatar {
-
-    max-width: 40px !important;
-    height: 40px !important;
-    border-radius: 40px !important;
-  }
+  // .character {
+  //   min-height: 60px !important;
+  //   max-height: 70px !important;
+  // }
+  // .chatBubble{
+  //   min-height:60px !important;
+  // }
+  // .characterAvatar {
+  //
+  //   max-width: 40px !important;
+  //   height: 40px !important;
+  //   border-radius: 40px !important;
+  // }
   .opt-sm {
     display: none !important;
   }
@@ -865,7 +916,7 @@ body, html {
   min-height: 40px;
   max-height: 40px;
   background-color: transparent;
-  // border-top:1px solid rgba(255,255,255,.2);
+  background: linear-gradient(90deg,rgba(37, 39, 38, 1.00),rgba(28, 28, 30, 1.00));
 
 }
 .header-scroll {
@@ -873,37 +924,13 @@ body, html {
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
-.scroll3::-webkit-scrollbar {
-  background: rgba(128, 78, 198, .5);
-  width: 5px;
-}
-
-.scroll3::-webkit-scrollbar-thumb {
-  background: rgba(128, 78, 198, 1.00);
-}
-
-.scroll3::-webkit-scrollbar-track {
-  background: transparent;
-}
 
 .vert-scroll {
   width:100%;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
-.scroll4::-webkit-scrollbar {
-  background: transparent;
-  height: 5px;
-}
 
-.scroll4::-webkit-scrollbar-thumb {
-  background: rgba(128, 78, 198, 1.00);
-}
-
-.scroll4::-webkit-scrollbar-track {
-
-  background: rgba(128, 78, 198, .5);
-}
 
 
 .character-scroll {
@@ -912,6 +939,49 @@ body, html {
   transition: all 0.3s ease-out;
 }
 
+.row{
+  margin-left:0;
+  margin-bottom: 0;
+  .form-group {
+
+    margin-bottom: 0;
+    .control-label {
+      font-size:13.5px;
+    }
+    .form-control {
+      border-radius:3px;
+      font-family: Arial;
+      color:rgba(255,255,255, 1.00);
+      font-size:16px;
+      font-weight:bold;
+      border: none;
+      padding: 0 10px;
+      background-color: rgba(40, 28, 75, 1.00);
+      -webkit-box-sizing: border-box;
+    }
+  }
+  > .form-group{
+    padding-left:0;
+  }
+}
+
+textarea,
+input[type="number"],
+input[type="text"]{
+  transition: all .3s ease;
+  &:focus{
+    background-color: rgba(60, 40, 90, .7) !important;
+  }
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
 .overlay {
   position:absolute;
   top:0;
@@ -949,6 +1019,50 @@ body, html {
   }
 }
 
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: none;
+  box-shadow: 0 2px 0 0 #26a69a;
+}
+
+.scroll3{
+  &::-webkit-scrollbar {
+    background: rgba(128, 78, 198, 0);
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(128, 78, 198, .5);
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+
+.scroll4 {
+  &::-webkit-scrollbar {
+    background: transparent;
+    height: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(128, 78, 198, 1.00);
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(128, 78, 198, 0);
+  }
+
+}
 
 .saving-throw-header{
   background-color: #000;

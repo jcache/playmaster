@@ -2,22 +2,26 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 import authenticationReducer from './authentication';
-import { Characters, SelectedCharacter } from './characters';
+import { Character, Characters } from './characters';
 import { Campaigns } from './campaigns';
+import { Conversations } from './conversations';
 import { Player, Players } from './player';
-import { Gamesystems } from './game_systems';
+import { GameSystems } from './game_systems';
 import { reducer as reduxFormReducer } from 'redux-form';
 
 // console.log('reducer: ',SelectedCharacter());
 const reducer = combineReducers({
   Player,
   Players,
+  Conversations,
   Campaigns,
-  Gamesystems,
+  Character,
+  Characters,
+  GameSystems,
   Characters,
   form: reduxFormReducer,
   authenticated: authenticationReducer,
-  SelectedCharacter: SelectedCharacter,
+  // SelectedCharacter: SelectedCharacter,
   routing: routerReducer
 });
 

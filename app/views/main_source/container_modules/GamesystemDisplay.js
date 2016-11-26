@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
 import { IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';
-import { CollectGameSystems }  from '../actions/GameSystemActions';
 
 class GamesystemDisplayModule extends Component {
   constructor (props) {
@@ -10,7 +9,6 @@ class GamesystemDisplayModule extends Component {
   }
   componentWillMount(){
     const { dispatch } = this.props;
-    dispatch(CollectGameSystems());
   }
 
   _renderGameSystems() {
@@ -44,7 +42,7 @@ class GamesystemDisplayModule extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    game_systems: state.Gamesystems.game_systems
+    game_systems: state.GameSystems.game_systems
   }
 }
 export default connect(mapStateToProps)(GamesystemDisplayModule)

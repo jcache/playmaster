@@ -1,51 +1,82 @@
-import {
-  LOAD_PLAYER,
-  LOAD_PLAYERS,
-  NEW_PLAYER
-} from '../actions/types';
+
+import * as types from '../constants/PlayerActionTypes';
 import PlayerController from '../models/player_data';
 
-const LoadPlayerAction = {
-  type: LOAD_PLAYER,
-  player: {}
+
+function loadAuthenticationStatus(data) {
+  return {
+    type: types.LOAD_AUTH_STATUS,
+    authenticated: data
+  }
+}
+function loadPlayer(player) {
+  return {
+    type: types.LOAD_PLAYER,
+    player: player
+  }
 }
 
-const LoadPlayersAction = {
-  type: LOAD_PLAYERS,
-  players: []
-}
-
-const NewPlayerAction = {
-  type: NEW_PLAYER,
-  player: {}
+function loadPlayers(players) {
+  return {
+    type: types.LOAD_PLAYERS,
+    players: players
+  }
 }
 
 export function CreatePlayer(player){
   return dispatch => {
     // PLAYER CONTROLLER
     PlayerController.createPlayer(player, data => {
-      dispatch({...NewPlayerAction, player: data });
+      // dispatch({...NewPlayerAction, player: data });
+      dispatch(loadPlayer(data));
+    });
+  }
+}
+
+export function setAuthenticatedStatus(id, val){
+  return dispatch => {
+    // PLAYER CONTROLLER
+    PlayerController.setAuthenticationStatus(id, val, data => {
+      dispatch(loadAuthenticationStatus(data))
     })
   }
 }
-export const CollectPlayer = (id) => {
+export function isAuthenticated(id){
+  return dispatch => {
+    // PLAYER CONTROLLER
+    // alert(id);
+    PlayerController.getAuthenticationStatus(id,data => {
+      dispatch(loadAuthenticationStatus(data))
+    })
+  }
+}
+export function LoadPlayer(id){
   return dispatch => {
     // PLAYER CONTROLLER
     PlayerController.getPlayer(id, data => {
-      dispatch({...LoadPlayerAction, player: data})
+      dispatch(loadPlayer(data))
     })
   }
 }
 
-const LoadPlayers = (id) => {
+export function EditProfile(player){
+  return dispatch => {
+    // PLAYER CONTROLLER
+    PlayerController.editPlayer(player, data => {
+      dispatch(loadPlayer(data));
+    });
+
+  }
+}
+
+export function LoadPlayers() {
   return dispatch => {
     // PLAYER CONTROLLER
     PlayerController.getPlayers(data => {
-      dispatch({...LoadPlayersAction, players: data})
+      dispatch(loadPlayers(data))
     })
   }
 }
-export { LoadPlayers };
 
 const authenticate = (loggedIn) => {
   return {

@@ -1,5 +1,4 @@
-import * as types from '../constants/ActionTypes';
-import { NEW_PLAYER } from '../actions/types';
+import * as types from '../constants/PlayerActionTypes';
 
 const PlayerState = {
   player: {},
@@ -13,10 +12,9 @@ const PlayersState = {
 export const Players = (state = PlayersState, action ) => {
   switch (action.type) {
     case types.LOAD_PLAYERS:
-      return [
-        ...state,
+      return Object.assign({}, state, {
         players: action.players
-      ]
+      });
    default:
     return state;
   }
@@ -25,15 +23,12 @@ export const Players = (state = PlayersState, action ) => {
 // PLAYER (SINGLE) REDUCER
 
 export const Player = (state = PlayerState, action ) => {
-  action.type == 'NEW_PLAYER' ? console.log('Player -- action: ', action): null;
   switch (action.type) {
-    case types.LOAD_PLAYER:
-    console.log('reducers -- LOAD_PLAYERS fired!');
+    case types.LOAD_AUTH_STATUS:
       return Object.assign({}, state, {
-        player: action.player
+        authenticated: action.authenticated
       });
-    case NEW_PLAYER:
-    console.log('reducers -- NEW_PLAYER fired!');
+    case types.LOAD_PLAYER:
       return Object.assign({}, state, {
         player: action.player
       });
