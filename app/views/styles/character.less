@@ -1,3 +1,22 @@
+
+:root {
+  --progress-bg-color: #ddd;
+  // --progress-fg-color: #2ecc40;
+}
+
+.ProgressMaker-Bg,
+.ProgressMaker-Fg {
+    fill: none;
+}
+.ProgressMaker-Bg {
+    stroke: var(--progress-bg-color);
+}
+
+.ProgressMaker-Fg {
+    transition: stroke-dashoffset .5s ease-in-out;
+}
+
+
 .flex-boss{
   display: flex;
   flex:1;
@@ -26,6 +45,44 @@
       max-width: 260px;
       height: 260px;
       background-color: @base;
+      position: relative;
+      &:before {
+        position: absolute;
+        width: 100%;
+        bottom: -2rem;
+      }
+      &:after {
+        position: absolute;
+        width: 100%;
+        top: 3.7rem;
+        left: 0;
+      }
+      .characterAvatar{
+        border-radius:80px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 160px;
+        height: 160px;
+        margin-left: -80px;
+        margin-top: -80px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 2;
+      }
+      svg {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -100px;
+        margin-top: -100px;
+        transform: rotate(-90deg);
+        z-index: 1;
+
+      }
     }
 
     .experience-box {
@@ -76,8 +133,8 @@
                 font-weight:400;
                 display: block;
                 color: @base-white;
-                letter-spacing: .125vh;
-                font-size:1vh;
+                letter-spacing: .1em;
+                font-size:16px;
 
               }
               span {
@@ -89,7 +146,7 @@
                 text-align: center;
                 font-weight:bold;
                 line-height:40px;
-                font-size:1.2vh;
+                font-size:16px;
                 background-color: @base-white;
                 color: #000;
                 right:0;
@@ -100,7 +157,7 @@
               align-items: center;
               justify-content: center;
               h1 {
-                font-size:6vh;
+                font-size: 80px;
                 color: @base-white;
               }
             }
@@ -116,9 +173,9 @@
                 justify-content: center;
                 h6{
                   .flex-boss;
-                  font-size:.8vh;
-                  line-height:;
-                  font-weight: 600;
+                  font-size:12px;
+                  letter-spacing: .1em;
+                  font-weight: 200;
                   margin-bottom:0;
                   text-transform: uppercase;
                   color: @base-white;
@@ -127,7 +184,7 @@
                   .flex-boss;
                   font-weight:600;
                   color: @base-white;
-                  font-size:1.2vh;
+                  font-size:18px;
                 }
               }
             }

@@ -1,12 +1,30 @@
 import React, { Component } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
 import { IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';
 import { Link } from 'react-router';
-
+import ProgressMaker from '../components/progressMaker';
+// import ReactArt from 'react-art';
+function changeColor(perc){
+  if(perc <= 50) {
+    return `rgba(0,255,0, 1)`;
+  } else if (perc <= 75) {
+    return `rgba(255,255,0, 1)`;
+  } else if (perc > 75) {
+    return `rgba(255,0,0, 1)`;
+  }
+}
 class CharacterView extends Component {
   constructor (props) {
     super(props);
+    this.state ={
+      duration: 0,
+      percentage: 20
+    }
+  }
+  componentDidMount(){
+    this.setState({duration:20})
   }
   displayStatContainer(statName){
     return(
@@ -54,7 +72,8 @@ class CharacterView extends Component {
         <div className="Layout DnD5echaracterView scroll3">
           <div className={`section`}>
             <div className={`health-box`}>
-              <p>...</p>
+              <ProgressMaker strokeWidth="18" radius="90" color="rgba(45, 45, 45, 1.00)" bgcolor={changeColor(this.state.percentage)} percentage={this.state.percentage}/>
+              <div style={{backgroundImage: 'url(' + character.AvatarUri + ')' }} className="characterAvatar" ></div>
             </div>
             <div className={`experience-box`}>
               <p>...</p>
