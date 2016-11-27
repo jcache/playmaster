@@ -12,44 +12,54 @@ class ApplicationHeader extends Component {
       maximizeValue: false,
     };
   }
-  onCloseApp(){
-   ipcRenderer.send('app_close')
+
+  onCloseApp() {
+   ipcRenderer.send('app_close');
   }
+
   onAuthenticate(v) {
-    let {id} = this.props.player;
-    let {dispatch} = this.props;
-    dispatch(setAuthenticatedStatus(id, v))
+    let { id } = this.props.player;
+    let { dispatch } = this.props;
+    dispatch(setAuthenticatedStatus(id, v));
   }
-  onMinimize(){
+
+  onMinimize() {
     ipcRenderer.send('app_minimize');
   }
 
-  onMaximize(){
+  onMaximize() {
     let { maximizeValue } = this.state;
-    this.setState({maximizeValue: !maximizeValue});
-    ipcRenderer.send('app_maximize', !maximizeValue)
+    this.setState({ maximizeValue: !maximizeValue });
+    ipcRenderer.send('app_maximize', !maximizeValue);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.player !== nextProps.player) {
+      console.log(`gotnew props`, this.props.player);
+    }
   }
 
   render() {
-    let { player,authenticated} = this.props;
+    let { player, authenticated } = this.props;
     return (
       <div className={`ApplicationHeader header-scroll small`} >
         <AppCtrl {...this.props}
-          onMinimize={() => {this.onMinimize()}}
-          onMaximize={() => {this.onMaximize()}}
+          onMinimize={() => this.onMinimize()}
+          onMaximize={() => this.onMaximize()}
           onCloseApp={() => this.onCloseApp()} />
         {authenticated ? <Navigation {...this.props} /> : null }
-        {authenticated ? <PlayerCtrl {...this.props} onAuthenticate={(v) => this.onAuthenticate(v)} /> : null }
+        {authenticated ? <PlayerCtrl {...this.props}
+          onAuthenticate={(v) => this.onAuthenticate(v)} /> : null }
       </div>
     );
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
     authenticated: state.Player.authenticated,
-    player: state.Player.player
+    player: state.Player.player,
   };
 }
 
-export default connect(mapStateToProps)(ApplicationHeader)
+export default connect(mapStateToProps)(ApplicationHeader);

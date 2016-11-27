@@ -17,12 +17,11 @@ class DefaultView extends Component {
   };
 
   componentWillMount() {
-    console.log(this.props.params);
     this.props.dispatch(LoadFirstCharacter(this.props.params.id));
   }
 
   componentWillReceiveProps(nextProps) {
-    if(this.props.selected_character != nextProps.selected_character) {
+    if (this.props.selected_character != nextProps.selected_character) {
       this.setState({
         selected_character: nextProps.selected_character,
       });

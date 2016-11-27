@@ -129,6 +129,12 @@ let createWindow = () => {
     // console.log(path);
     event.returnValue = AppRouter.saveAsset(path,newContext,  name, newFileName);
     // console.log('File(s) here: ', path)
+    // event.sender.send('asynchronous-reply', 'pong')
+  });
+
+  ipcMain.on('update_avatar', (event, uri) => {
+    event.returnValue = uri;
+    event.sender.send('asynchronous-reply', uri);
   });
 
   ipcMain.on('app_maximize', (event, maximize) => {

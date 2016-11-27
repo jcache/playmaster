@@ -23,12 +23,12 @@ class CharacterView extends Component {
     super(props);
     this.state = {
       percentage: 0,
-      character: {stats:{}}
+      character: { stats:{} },
     }
   }
 
   componentWillMount() {
-    console.log(this.props)
+    console.log(this.props);
     this.props.dispatch(LoadCharacter(this.props.params.cid));
   }
 
@@ -47,7 +47,8 @@ class CharacterView extends Component {
       </div>
     )
   }
-  displayStatContainer(statName,val) {
+
+  displayStatContainer(statName, val) {
     return (
       <div className={`stat-container`}>
         <div>
@@ -74,12 +75,12 @@ class CharacterView extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   render() {
     let { character } = this.state;
-    console.log(character)
+    console.log(character);
 
     return (
       <div className="CharacterView releaseAppmargin">
