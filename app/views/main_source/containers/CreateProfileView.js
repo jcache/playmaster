@@ -10,7 +10,7 @@ class CreateProfileView extends Component {
 
   handleSubmit(values){
     let { dispatch } = this.props;
-    dispatch(CreatePlayer(values))
+    dispatch(CreatePlayer(values));
     this.context.router.push('/');
   }
 

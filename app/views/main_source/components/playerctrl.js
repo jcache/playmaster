@@ -1,24 +1,37 @@
 import React, { Component } from 'react';
-import { connect}  from 'react-redux';
+import { connect }  from 'react-redux';
 import { IoIosSearchStrong, IoIosGear, IoLogIn } from 'react-icons/lib/io';
 import { MdExitToApp, MdPerson } from 'react-icons/lib/md';
 import { FaSliders } from 'react-icons/lib/fa';
 import ReactTooltip from 'react-tooltip';
 import { Link } from 'react-router';
+import { ipcRenderer, remote } from 'electron';
 
 class PlayerCtrl extends Component {
   constructor (props) {
     super(props);
+    this.state = {
+      update: false,
+      avatar_uri: props.player.avatar_uri,
+    }
   }
 
-  render(){
-    let { router, player, onAuthenticate} = this.props;
+  componentDidMount() {
+    ipcRenderer.on('asynchronous-reply', (event, arg) => {
+      this.setState({ avatar_uri: arg});
+      this.forceUpdate();
+    })
+  }
+
+
+  render() {
+    let { router, player, onAuthenticate } = this.props;
     return (
-      <div style={{flex:1, display: 'flex'}} >
+      <div style={{ flex: 1, display: 'flex' }} >
         <ul className={`AppControlUtils`}>
           <li className="SearchIcon"><a href="#"> <IoIosSearchStrong/> </a></li>
           <li className="ProfileDropdown">
-            <Link style={{backgroundImage: `url('${player.avatar_uri}')`}} data-tip data-for='campaigns' />
+            <Link style={{ backgroundImage: `url('${this.state.avatar_uri }')` }} data-tip data-for='campaigns' />
           </li>
           <li className="SettingsIcon"><Link to={`player/${player.id}/settings`}> <IoIosGear /></Link></li>
           <li className="ProfileBn dropdown-content"></li>
