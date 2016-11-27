@@ -37,7 +37,7 @@ class LoginSelectView extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    authenticated: state.authenticated,
+    authenticated: state.Player.authenticated,
     players: state.Players.players
   }
 }

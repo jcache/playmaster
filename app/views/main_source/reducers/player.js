@@ -24,6 +24,10 @@ export const Players = (state = PlayersState, action ) => {
 
 export const Player = (state = PlayerState, action ) => {
   switch (action.type) {
+    case types.LOAD_AUTH_STATUS:
+      return Object.assign({}, state, {
+        authenticated: action.authenticated
+      });
     case types.LOAD_PLAYER:
       return Object.assign({}, state, {
         player: action.player

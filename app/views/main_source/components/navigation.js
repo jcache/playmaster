@@ -8,10 +8,10 @@ export const Navigation = (props) => {
     <nav>
       <div className="nav-wrapper">
         <ul className="hide-on-med-and-down">
-          <NavLink to={`player/${player.id}/`} >Dashboard</NavLink>
-          <NavLink to={`player/${player.id}/gamesystems`} >Game Systems</NavLink>
-          <NavLink to={`player/${player.id}/characters`} >Characters</NavLink>
-          <NavLink to={`player/${player.id}/campaigns`} >Campaigns</NavLink>
+          <li><Link onlyActiveOnIndex activeClassName={`active`} to={`player/${player.id}/`} >Dashboard</Link></li>
+          <li><Link activeClassName={`active`} to={`player/${player.id}/gamesystems`} >Game Systems</Link></li>
+          <li><Link activeClassName={`active`} to={`player/${player.id}/characters`} >Characters</Link></li>
+          <li><Link activeClassName={`active`} to={`player/${player.id}/campaigns`} >Campaigns</Link></li>
         </ul>
       </div>
     </nav>

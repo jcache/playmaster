@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
 import PlayerChip from '../components/PlayerLoginChip';
-import * as actions from '../actions';
-import {LoadPlayer} from '../actions/PlayerActions';
+// import * as actions from '../actions';
+import {LoadPlayer, setAuthenticatedStatus} from '../actions/PlayerActions';
 
  class PlayerChipList extends Component {
   constructor (props) {
@@ -12,7 +12,8 @@ import {LoadPlayer} from '../actions/PlayerActions';
   onAuthenticate(player) {
     let { dispatch, authenticate} = this.props;
     ipcRenderer.send('resize-to-main');
-    dispatch(authenticate(true))
+    console.log(`onAuthenticate`, player.id);
+    dispatch(setAuthenticatedStatus(player.id, true));
     dispatch(LoadPlayer(player.id))
   }
   _renderList(){

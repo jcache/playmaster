@@ -5,9 +5,9 @@ import _ from 'lodash';
 import uuid from 'uuid';
 
 const dataPath = ipcRenderer.sendSync('config-paths');
-const ConversationDataPath = path.resolve(dataPath, 'conversations.json');
+const ConversationDataPath = path.resolve(dataPath, 'conversation.json');
 const db = low(ConversationDataPath);
-const Conversations = db.get('conversations');
+const Conversations = db.get('conversation');
 
 export default {
   // GET PLAYERS BLOB

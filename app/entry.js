@@ -21,11 +21,18 @@ const setApplicationMenu = function () {
 let mainWindow = void 0;
 
 let createWindow = () => {
-  AppRouter.loadPlayerDB();
-  AppRouter.loadConversationDB();
-  AppRouter.loadCharacterDB();
-  AppRouter.loadPlayerDefaultsDB();
-  AppRouter.loadGameSystemDB();
+  AppRouter.initDatabases(
+    [
+      "settings",
+      "player",
+      "preferences",
+      "character",
+      "campaign",
+      "game_system",
+      "conversation"
+    ]
+  );
+
   // SETS APPLICATION MENU
    setApplicationMenu();
    // PROTOCOL MODULE
@@ -57,9 +64,9 @@ let createWindow = () => {
     horzL - (winH / 2)
   );
 
-  if (process.env.NODE_ENV === 'development') {
+  // if (process.env.NODE_ENV === 'development') {
     mainWindow.webContents.openDevTools({ detach: true });
-  }
+  // }
 
   // ADD REACT DEVTOOLS  For more info: https://goo.gl/HAip0t
   let appDataPath = app.getPath('appData');
@@ -101,7 +108,7 @@ let createWindow = () => {
   });
 
   ipcMain.on('resize-to-main', (e, arg) => {
-    var options = { width: 1140, height: 800 };
+    var options = { width: 1236, height: 800 };
     options.x = vertL  - (options.width / 2);
     options.y = horzL - (options.height / 2);
     mainWindow.show();
@@ -118,9 +125,9 @@ let createWindow = () => {
     mainWindow.close();
   });
 
-  ipcMain.on('send_file', (event, path,newContext,  name) => {
+  ipcMain.on('send_file', (event, path, newContext,  name, newFileName) => {
     // console.log(path);
-    event.returnValue = AppRouter.saveAsset(path,newContext,  name);
+    event.returnValue = AppRouter.saveAsset(path,newContext,  name, newFileName);
     // console.log('File(s) here: ', path)
   });
 
