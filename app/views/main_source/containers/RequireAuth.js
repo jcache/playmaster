@@ -23,8 +23,7 @@ export default function(ComposedComponent) {
     }
 
     componentWillUpdate(nextProps) {
-      let { router} = this.props;
-
+      let { router } = this.props;
       // console.log(nextProps)
       if (nextProps.authenticated == false) {
         router.push(`/`);

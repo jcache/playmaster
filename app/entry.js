@@ -64,9 +64,9 @@ let createWindow = () => {
     horzL - (winH / 2)
   );
 
-  if (process.env.NODE_ENV === 'development') {
+  // if (process.env.NODE_ENV === 'development') {
     mainWindow.webContents.openDevTools({ detach: true });
-  }
+  // }
 
   // ADD REACT DEVTOOLS  For more info: https://goo.gl/HAip0t
   let appDataPath = app.getPath('appData');
@@ -125,9 +125,9 @@ let createWindow = () => {
     mainWindow.close();
   });
 
-  ipcMain.on('send_file', (event, path,newContext,  name) => {
+  ipcMain.on('send_file', (event, path, newContext,  name, newFileName) => {
     // console.log(path);
-    event.returnValue = AppRouter.saveAsset(path,newContext,  name);
+    event.returnValue = AppRouter.saveAsset(path,newContext,  name, newFileName);
     // console.log('File(s) here: ', path)
   });
 

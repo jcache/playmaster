@@ -13,7 +13,7 @@ class ProfileView extends Component {
   handleSubmit(values){
     let { dispatch, router } = this.props;
     dispatch(EditProfile(values));
-    hashHistory.push(`/player/${values.id}`)
+    router.push(`/player/${values.id}`)
 
   }
   render() {

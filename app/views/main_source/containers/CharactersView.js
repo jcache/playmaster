@@ -7,7 +7,7 @@ class CharactersView extends Component {
   }
 
   render() {
-    let {characters } = this.props;
+    let { characters, router } = this.props;
     return (
       <div className="CharactersView releaseAppmargin">
         <hgroup>
@@ -15,7 +15,11 @@ class CharactersView extends Component {
         </hgroup>
         <div className="Layout scroll3">
           <div className={`ListViewMain CharactersMain`}>
-          {characters.map((c,i) => <div key={i} className="ListViewBlock CharacterBlock">{c.characterName}</div>)}
+          { characters.map((c,i) =>
+            <div key={i}
+              onClick={() => { router.push(`/player/${c.pid}/character/${c.id}`); }}
+              className="ListViewBlock CharacterBlock">{c.characterName}</div>)
+          }
           </div>
         </div>
       </div>

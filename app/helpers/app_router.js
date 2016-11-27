@@ -34,10 +34,12 @@ class Route {
     });
   }
 
-  saveAsset(path_toFile,newContext,  filename){
+  saveAsset(path_toFile, newContext,  filename, newFileName){
     const srcpath = this.app_asset_path + newContext;
-    const newFile = `${srcpath}${filename}`;
-    const assetpath = `ev://assets/${newContext}${filename}`;
+    // console.log(`injected_filename: ` , filename.replace(/\.[^/.]+$/, ""));
+    const fileArr = filename.split(".")
+    const newFile = `${srcpath}${newFileName}.${fileArr[1]}`;
+    const assetpath = `ev://assets/${newContext}${newFileName}.${fileArr[1]}`;
     console.log(assetpath);
     fs.copySync(path.resolve(path_toFile), newFile);
 

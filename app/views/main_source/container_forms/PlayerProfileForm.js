@@ -26,7 +26,7 @@ class PlayerProfileForm extends Component {
       properties: ['openFile', 'openDirectory', 'multiSelections']}, (fileNames) => {
       if (fileNames === undefined) return;
       var fileName = fileNames[0];
-      let avatarURI = ipcRenderer.sendSync('send_file', fileName, `player/${id}/avatar/`, fileName.split("/").pop());
+      let avatarURI = ipcRenderer.sendSync('send_file', fileName, `player/${id}/avatar/`, fileName.split("/").pop(),"player_avatar");
       this.props.change('avatar_uri', avatarURI);
     });
   }
