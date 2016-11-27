@@ -27,7 +27,6 @@ export default {
   // GET PLAYERS BLOB
   getCharacters(pid, cb) {
     const AllCharacters = Characters.filter({pid: pid}).value();
-    // console.log(`[All Players] -> `, AllPlayers);
     cb(AllCharacters);
   },
   // GET PLAYERS BLOB
@@ -43,6 +42,12 @@ export default {
   // GET PLAYERS BLOB
   getCharacter(id, cb) {
     const Character = Characters.filter({id: id}).value();
+    cb(Character[0]);
+  },
+
+  // GET PLAYERS BLOB
+  getFirstCharacter(id, cb) {
+    const Character = Characters.filter({pid: id}).take(1).value();
     cb(Character[0]);
   },
 }

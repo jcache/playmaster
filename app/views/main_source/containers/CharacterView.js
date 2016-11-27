@@ -23,17 +23,18 @@ class CharacterView extends Component {
     super(props);
     this.state = {
       percentage: 0,
+      character: {stats:{}}
     }
   }
 
   componentWillMount() {
-    let { character, router } = this.props;
+    console.log(this.props)
+    this.props.dispatch(LoadCharacter(this.props.params.cid));
+  }
 
-    if (character.stats == undefined) {
-      router.push(`/player/${character.pid}/`);
-    };
-
+  componentWillReceiveProps(nextProps) {
     this.setState({
+      character: nextProps.character,
       percentage: 22,
     });
   }
@@ -77,7 +78,8 @@ class CharacterView extends Component {
   }
 
   render() {
-    let { character } = this.props;
+    let { character } = this.state;
+    console.log(character)
 
     return (
       <div className="CharacterView releaseAppmargin">
@@ -130,15 +132,15 @@ class CharacterView extends Component {
             <div className={`stat-box`}>
 
               <div className={`stat-box-row`}>
-                {this.displayStatContainer(`Strength`, 2 || `--`)}
-                {this.displayStatContainer(`Dexterity`, 2 || `--`)}
-                {this.displayStatContainer(`Constitution`, 4 || `--`)}
+                {this.displayStatContainer(`Strength`, character.stats.strength || `--`)}
+                {this.displayStatContainer(`Dexterity`, character.stats.dexterity || `--`)}
+                {this.displayStatContainer(`Constitution`, character.stats.constitution || `--`)}
               </div>
 
               <div className={`stat-box-row`}>
-                {this.displayStatContainer(`Intelligence`, 1 || `--`)}
-                {this.displayStatContainer(`Wisdom`, 1 || `--`)}
-                {this.displayStatContainer(`Charisma`, 1 || `--`)}
+                {this.displayStatContainer(`Intelligence`, character.stats.intelligence || `--`)}
+                {this.displayStatContainer(`Wisdom`, character.stats.wisdom || `--`)}
+                {this.displayStatContainer(`Charisma`, character.stats.charisma || `--`)}
               </div>
 
               <div className={`content-box`}>

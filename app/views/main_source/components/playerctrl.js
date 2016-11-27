@@ -12,7 +12,7 @@ class PlayerCtrl extends Component {
   }
 
   render(){
-    let { router, player,onAuthenticate} = this.props;
+    let { router, player, onAuthenticate} = this.props;
     return (
       <div style={{flex:1, display: 'flex'}} >
         <ul className={`AppControlUtils`}>
@@ -36,9 +36,4 @@ class PlayerCtrl extends Component {
     )
   }
 }
-function mapStateToProps(state){
-  return {
-    player: state.Player.player,
-  }
-}
-export default connect(mapStateToProps)(PlayerCtrl)
+export default connect()(PlayerCtrl)

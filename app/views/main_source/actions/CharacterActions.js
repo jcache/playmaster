@@ -52,6 +52,13 @@ export function LoadCharacter(id){
     })
   }
 }
+export function LoadFirstCharacter(id){
+  return dispatch => {
+    CharacterController.getFirstCharacter(id, character => {
+      dispatch(selectCharacter(character));
+    })
+  }
+}
 export function LoadCharacters(pid){
   return dispatch => {
     CharacterController.getCharacters(pid, characters => {

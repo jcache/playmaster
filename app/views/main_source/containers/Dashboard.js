@@ -6,7 +6,7 @@ import CharacterListModule from '../container_modules/CharacterList';
 import ChatDisplayModule from '../container_modules/ChatDisplay';
 import CharacterViewer from '../container_modules/CharacterViewer';
 import GamesystemDisplayModule from '../container_modules/GamesystemDisplay';
-import { LoadCharacters, LoadCharacter } from '../actions/CharacterActions';
+import { LoadCharacters, LoadCharacter, LoadFirstCharacter } from '../actions/CharacterActions';
 
 class DefaultView extends Component {
   constructor (props) {
@@ -14,10 +14,21 @@ class DefaultView extends Component {
     this.state = {
       selected_character: {},
     };
-  }
-  componentWillMount(){
+  };
 
+  componentWillMount() {
+    console.log(this.props.params);
+    this.props.dispatch(LoadFirstCharacter(this.props.params.id));
   }
+
+  componentWillReceiveProps(nextProps) {
+    if(this.props.selected_character != nextProps.selected_character) {
+      this.setState({
+        selected_character: nextProps.selected_character,
+      });
+    }
+  }
+
   componentDidMount() {
     let { selected_character } = this.props;
 
