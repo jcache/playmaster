@@ -11,7 +11,7 @@ const Characters = db.get('character');
 
 export default {
   // CREATES PLAYER RESOURCE
-  createCharacter(pid,character,ret,err) {
+  createCharacter(pid, character, ret, err) {
     const newId = uuid(); // => e.g. bab303e3-6705-4164-b4f5-83e6092275e1
     // const newCharacter = new Character(character); // <- JSON IS RETURNED
     const newCharacter = _.assign({id: newId} , character)// <- JSON IS RETURNED

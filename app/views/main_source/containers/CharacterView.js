@@ -23,9 +23,9 @@ class CharacterView extends Component {
     super(props);
     this.state = {
       percentage: 0,
-      character: { stats:{} },
+      character: { stats: {}},
     }
-  }
+  } 
 
   componentWillMount() {
     console.log(this.props);
@@ -35,7 +35,7 @@ class CharacterView extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       character: nextProps.character,
-      percentage: 22,
+      percentage: 5,
     });
   }
 
@@ -88,7 +88,7 @@ class CharacterView extends Component {
           <h3>
             {`Character View`}
             <span className={`pull-right`}>
-              
+
               <Link
                 className={`btn btn-info`}
                 to={`player/${character.pid}/character/${character.id}/edit`}>Edit Character</Link>
@@ -147,14 +147,37 @@ class CharacterView extends Component {
                 </hgroup>
                 <p>Elves have a strong connection to the natural world, especially woodlands. They can live to be more than 700 years old. Known for being artists of both song and magic, elves have an affinity for spellcasting and lore. They stand about 5-1/2 feet tall, appearing graceful and frail. Elves receive a +2 to Dexterity and a –2 to Constitution. They are immune to sleep effects and receive a bonus against enchantment spells. Elves have low-light vision and a racial bonus on Listen, Search, and Spot checks.</p>
               </div>
+
+              <div className={`content-box`} style={{flexDirection: 'row', marginTop: 30, backgroundColor: 'transparent'}}>
+                <div style={{
+                  flex: 1,
+                  display: 'flex',
+                  minHeight: 100,
+                  backgroundColor: 'rgba(45, 45, 45, 1.00)'}}></div>
+
+                <div style={{
+                  flex: 1,
+                  display: 'flex',
+                  minHeight: 100,
+                  backgroundColor: 'rgba(45, 45, 45, 1.00)', marginLeft: 30}}></div>
+              </div>
             </div>
 
             <div className={`info-box`}>
               <div className={`physical-info`}>
                 <ul>
-                  <li><strong>Armor Class</strong> <span> {character.armor_class || 20} </span></li>
-                  <li><strong>Initiative</strong> <span> {character.initiative || `+4`}  </span></li>
-                  <li><strong>Max Speed</strong> <span> {character.speed || `40`} </span></li>
+                  <li>
+                    <strong>Armor Class</strong>
+                    <span> {character.armor_class || 20} </span>
+                  </li>
+                  <li>
+                    <strong>Initiative</strong>
+                    <span> {character.initiative || `+4`}  </span>
+                  </li>
+                  <li>
+                    <strong>Max Speed</strong>
+                    <span> {character.speed || `40`} </span>
+                  </li>
                 </ul>
               </div>
               <div className={`skills`}>
