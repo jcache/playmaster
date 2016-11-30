@@ -1,6 +1,5 @@
 import React from 'react';
-import {Route, IndexRoute } from 'react-router';
-
+import { Route, IndexRoute } from 'react-router';
 import App from './';
 import requireAuth from './containers/RequireAuth.js';
 import Dashboard from './containers/Dashboard';
@@ -16,6 +15,7 @@ import Profile from './containers/ProfileView';
 import Settings from './containers/SettingsView';
 import CreateProfile from './containers/CreateProfileView';
 import LoginSelect from './containers/LoginSelectView';
+
 const NotFound = () => <h1>404.. This page is not found!</h1>
 
 module.exports =
@@ -38,19 +38,6 @@ module.exports =
         <Route path="edit" component={CharacterEditView} />
       </Route>
     </Route>
-
-    {
-      /*
-        <Route path="step_two" component={Dashboard} />
-        <Route path="dashboard" component={Dashboard} />
-        <Route path="character/:id" component={Dashboard}>
-          <Route path="inventory" component={Dashboard}>
-            <Route path="item/:id" component={Dashboard}>
-            </Route>
-          </Route>
-        </Route>
-      */
-    }
     <Route path='*' component={NotFound} />
   </Route>
 ;

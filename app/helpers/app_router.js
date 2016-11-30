@@ -3,7 +3,6 @@ const path = require('path');
 const electron = require('electron');
 const fs = require('fs-extra');
 
-
 import low from 'lowdb';
 import _ from 'lodash';
 class Route {
@@ -17,30 +16,32 @@ class Route {
     return this.app_data_path;
   }
 
-  initDatabases(databases){
+  initDatabases(databases) {
     databases.map((database)=> {
       const srcpath = `${this.getAppDataPath()}${database}.json`;
       fs.ensureFile(srcpath, (err) => {
+
         if (err) return console.error(err);
         const db = low(srcpath);
-        console.log(`[${database}] Successfully Created`);
-        if(!db.has(database).value()){
+
+        if(!db.has(database).value()) {
           db.set(database, []).value();
-          console.log(`[${database}] Successfully Loaded`);
-        }
-        // file has now been created, including the directory it is to be placed in
-      })
-      // console.log(`create db:`, srcpath);
+        };
+      });
     });
   }
 
-  saveAsset(path_toFile,newContext,  filename){
+  saveAsset(path_toFile, newContext,  filename, newFileName) {
     const srcpath = this.app_asset_path + newContext;
-    const newFile = `${srcpath}${filename}`;
-    const assetpath = `ev://assets/${newContext}${filename}`;
-    console.log(assetpath);
-    fs.copySync(path.resolve(path_toFile), newFile);
-
+    // console.log(`injected_filename: ` , filename.replace(/\.[^/.]+$/, ""));
+    const fileArr = filename.split(".")
+    const newFile = `${srcpath}${newFileName}.${fileArr[1]}`;
+    const assetpath = `ev://assets/${newContext}${newFileName}.${fileArr[1]}`;
+    try {
+      fs.copySync(path.resolve(path_toFile), newFile);
+    } catch (err) {
+      console.log(err)
+    }
     return assetpath;
   }
 }

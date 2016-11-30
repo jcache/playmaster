@@ -4,11 +4,18 @@ import { connect}  from 'react-redux';
 import { IoChevronLeft, IoChevronRight,IoNavicon } from 'react-icons/lib/io';
 import { ChatBubble } from '../components/chatbubble.js'
 class ChatDisplay extends Component {
+
   constructor (props) {
     super(props);
   }
+
+  openConversation(player, conversation_id) {
+    console.log(player, conversation_id)
+    ipcRenderer.send(`openConversation`,player, conversation_id);
+  }
+
   render(){
-    let {conversations} = this.props;
+    let { conversations } = this.props;
     return (
       <div className='Chat Module '>
         <hgroup className='ModuleHeader deep-purple'>
@@ -17,7 +24,7 @@ class ChatDisplay extends Component {
         </hgroup>
         <div className="chatContainer">
           <div className={`ChatBody scroll3`}>
-            {conversations.map((c,i) => <ChatBubble key={i} />)}
+            {conversations.map((c,i) => <ChatBubble key={i} conversation={c} openConversation={(p,cid) => this.openConversation(p,cid) } />)}
           </div>
         </div>
       </div>

@@ -17,7 +17,7 @@ class CreateCharacterForm extends Component {
   }
 
   handleFile(event) {
-    console.log(this)
+    const {id, pid} = this.props.initialValues;
     event.preventDefault();
     dialog.showOpenDialog({
       filters: [
@@ -26,8 +26,8 @@ class CreateCharacterForm extends Component {
       properties: ['openFile', 'openDirectory', 'multiSelections']}, (fileNames) => {
       if (fileNames === undefined) return;
       var fileName = fileNames[0];
-      let avatarURI = ipcRenderer.sendSync('send_file', fileName, "character_avatar/", fileName.split("/").pop());
-      console.log(avatarURI);
+      let avatarURI = ipcRenderer.sendSync('send_file', fileName, `player/${pid}/character/${id}/`, fileName.split("/").pop(), "avatar");
+      console.log(this.props);
       this.props.change('AvatarUri', avatarURI);
     });
   }

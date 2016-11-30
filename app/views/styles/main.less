@@ -24,6 +24,7 @@ body, html {
 .GameSystemsView,
 .CampaignView,
 .CharacterView,
+.SettingsView,
 .CharactersView {
   flex-direction: column;
   padding-bottom: 40px;
@@ -33,6 +34,10 @@ body, html {
     // border-bottom: 2px solid rgba(32, 21, 55, .75);
 
     h3 {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
       font-weight: 500;
       text-transform: uppercase;
       font-size: 20px;
@@ -318,8 +323,6 @@ body, html {
             display:flex;
             margin:20px 5px;
             justify-content:center;
-            // flex-shrink:0;
-            // margin: 20px 0;
             min-width:220px;
             max-width:220px;
             a {
@@ -332,7 +335,6 @@ body, html {
               &:hover {
                 -webkit-filter: opacity(50%);
               }
-              // background-color: white;
             }
           }
         }
@@ -547,7 +549,9 @@ body, html {
               // }
               .playerContentHolder {
                 flex:1;
-                padding:0 20px 0 10px;
+                padding-right: 20px;
+                padding-left: 10px;
+                // padding:0 20px 0 10px;
                 h2 { font-size:16px; font-weight:600; margin: 0; color: rgba(21, 59, 88, 1.00); }
                 h3 { font-size:12px; line-height:23px; margin: 0; color: rgba(64, 41, 103, 1.00);}
               }
@@ -675,7 +679,8 @@ body, html {
             transition: all .3s ease;
             -webkit-box-shadow: 0px 0px 1px 1px rgba(255,255,255,.5);
             background-position: center center;
-            background-size:  contain;
+            background-size:  cover;
+            background-repeat: no-repeat;
             flex:1;
             align-self: stretch;
             transition: all .3s ease;

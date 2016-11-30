@@ -1,4 +1,4 @@
-import GMMessage from './Campaigns'
+import GMMessage from './campaigns'
 import Stats from './validators'
 
 // GAME SYSTEMS

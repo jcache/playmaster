@@ -22,14 +22,17 @@ export default function(ComposedComponent) {
       }
     }
 
-    componentWillUpdate(nextProps) {
-      let { router} = this.props;
+    // componentWillMount() {
+    //   this.props.dispatch(LoadCharacter(this.props.params.id));
+    // }
 
-      // console.log(nextProps)
+    componentWillUpdate(nextProps) {
+      let { router } = this.props;
       if (nextProps.authenticated == false) {
         router.push(`/`);
       }
     }
+
     render() {
       return <ComposedComponent {...this.props} />
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
+import uuid from 'uuid';
 import { Field, reduxForm } from 'redux-form';
 import fs from 'fs-extra';
 let {dialog} = remote;
@@ -26,7 +27,7 @@ class PlayerProfileForm extends Component {
       properties: ['openFile', 'openDirectory', 'multiSelections']}, (fileNames) => {
       if (fileNames === undefined) return;
       var fileName = fileNames[0];
-      let avatarURI = ipcRenderer.sendSync('send_file', fileName, `player/${id}/avatar/`, fileName.split("/").pop());
+      let avatarURI = ipcRenderer.sendSync('send_file', fileName, `player/${id}/avatar/`, fileName.split("/").pop(),`${uuid()}_avatar`);
       this.props.change('avatar_uri', avatarURI);
     });
   }
