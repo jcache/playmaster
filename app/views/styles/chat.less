@@ -1,0 +1,54 @@
+@base: rgb(45, 45, 45);
+@base-white: rgb(200, 200, 200);
+
+body, html {
+  display:flex;
+  background-color: #222;
+  margin:0;
+  height:100%;
+  width:100%;
+  overflow: hidden;
+}
+
+#chat-root {
+  display:flex;
+  flex:1;
+  height:100%;
+}
+
+.ChatHeader {
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+  background: linear-gradient(90deg,rgba(37, 39, 38, 1.00),rgba(28, 28, 30, 1.00));
+
+  .AppControl {
+    margin-left: 20px !important;
+    align-items: center;
+    background: none;
+    display:flex;
+    flex:1;
+    min-width: 170px;
+    flex-direction: row;
+    margin:0px;
+    padding:0px;
+    li {
+      display:flex;
+
+      align-items: center;
+      justify-content: center;
+      padding:0px;
+      margin:0px;
+      a {
+        flex:1;
+        text-align: center;
+        padding: 0 10px;
+        color: @base-white;
+        font-size:13.5px;
+        line-height:18px;
+        margin: 0px;
+        padding:10px;
+        -webkit-app-region: no-drag;
+      }
+    }
+  }
+}

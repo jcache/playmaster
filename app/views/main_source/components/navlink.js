@@ -2,18 +2,16 @@ import React, { Component } from 'react';
 import { Link } from 'react-router'
 
 class NavLink extends Component {
+  render() {
+    let isActive = this.context.router.isActive(this.props.to, true);
+    let className = isActive ? "active" : "";
 
-    render() {
-      console.log(this.props);
-        let isActive = this.context.router.isActive(this.props.to, true);
-        let className = isActive ? "active" : "";
-
-        return (
-            <li className={className}>
-              <Link {...this.props} />
-            </li>
-        );
-    }
+    return (
+      <li className={className}>
+        <Link {...this.props} />
+      </li>
+    );
+  }
 }
 
 NavLink.contextTypes = {

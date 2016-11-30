@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect}  from 'react-redux';
 import { Overlay } from './mainOverlay';
-
 class ApplicationFrame extends Component {
   constructor (props) {
     super(props);
@@ -11,7 +10,7 @@ class ApplicationFrame extends Component {
   }
 
   render() {
-    let {overlay} = this.state
+    let { overlay } = this.state;
     return (
       <div ref="scrollview" className={`AppView scroll3 `}>
         {this.props.children}

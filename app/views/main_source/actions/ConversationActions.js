@@ -9,7 +9,6 @@ function loadConversations(conversations) {
 }
 
 export function LoadConversations(pid){
-  console.log(pid);
   return dispatch => {
     ConversationController.getConversations(pid,conversations => {
       dispatch(loadConversations(conversations));

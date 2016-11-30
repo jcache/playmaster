@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { ipcRenderer, remote } from 'electron';
 import { connect}  from 'react-redux';
-import { authenticate } from '../actions';
-import DefaultHeader from '../components/defaultheader';
-
+import { setAuthenticatedStatus } from '../actions/PlayerActions';
+import AppCtrl from '../components/appctrl';
+import {Navigation} from '../components/navigation';
+import PlayerCtrl from '../components/playerctrl';
 class ApplicationHeader extends Component {
   constructor (props) {
     super(props);
@@ -12,43 +13,53 @@ class ApplicationHeader extends Component {
     };
   }
 
-  onCloseApp(){
-   ipcRenderer.send('app_close')
+  onCloseApp() {
+   ipcRenderer.send('app_close');
   }
 
-  onAuthenticate() {
-    this.props.dispatch(authenticate(false))
-  }
-  onMinimize(){
-    ipcRenderer.send('app_minimize'); 
+  onAuthenticate(v) {
+    let { id } = this.props.player;
+    let { dispatch } = this.props;
+    dispatch(setAuthenticatedStatus(id, v));
   }
 
-  onMaximize(){
+  onMinimize() {
+    ipcRenderer.send('app_minimize');
+  }
+
+  onMaximize() {
     let { maximizeValue } = this.state;
-    this.setState({
-      maximizeValue: !maximizeValue
-    });
-    ipcRenderer.send('app_maximize', !maximizeValue)
+    this.setState({ maximizeValue: !maximizeValue });
+    ipcRenderer.send('app_maximize', !maximizeValue);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.player !== nextProps.player) {
+      console.log(`gotnew props`, this.props.player);
+    }
   }
 
   render() {
-    let { player,authenticated} = this.props;
+    let { player, authenticated } = this.props;
     return (
-      <DefaultHeader  player={player}
-      router={this.context.router}
-      authenticated={authenticated}
-      onMinimize={() => {this.onMinimize()}}
-      onMaximize={() => {this.onMaximize()}}
-      onAuthenticate={(v) => this.onAuthenticate(v)} onCloseApp={() => this.onCloseApp()} />
+      <div className={`ApplicationHeader header-scroll small`} >
+        <AppCtrl {...this.props}
+          onMinimize={() => this.onMinimize()}
+          onMaximize={() => this.onMaximize()}
+          onCloseApp={() => this.onCloseApp()} />
+        {authenticated ? <Navigation {...this.props} /> : null }
+        {authenticated ? <PlayerCtrl {...this.props}
+          onAuthenticate={(v) => this.onAuthenticate(v)} /> : null }
+      </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state) {
   return {
-    authenticated: state.authenticated,
-    player: state.Player.player
-  }
+    authenticated: state.Player.authenticated,
+    player: state.Player.player,
+  };
 }
 
-export default connect(mapStateToProps)(ApplicationHeader)
+export default connect(mapStateToProps)(ApplicationHeader);

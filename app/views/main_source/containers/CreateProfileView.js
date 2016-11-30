@@ -10,8 +10,7 @@ class CreateProfileView extends Component {
 
   handleSubmit(values){
     let { dispatch } = this.props;
-    console.log('handleSubmit -- values: ', values);
-    dispatch(CreatePlayer(values))
+    dispatch(CreatePlayer(values));
     this.context.router.push('/');
   }
 

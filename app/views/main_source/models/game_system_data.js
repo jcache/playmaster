@@ -5,7 +5,7 @@ import _ from 'lodash';
 import uuid from 'uuid';
 
 const dataPath = ipcRenderer.sendSync('config-paths');
-const GameSystemDataPath = path.resolve(dataPath, 'game_systems.json');
+const GameSystemDataPath = path.resolve(dataPath, 'game_system.json');
 const db = low(GameSystemDataPath);
 const GameSystems = db.get('game_system');
 

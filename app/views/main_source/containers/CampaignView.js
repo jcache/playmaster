@@ -5,7 +5,7 @@ import { IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';
 import { Link } from 'react-router';
 
 class CampaignView extends Component {
-  
+
   constructor (props) {
     super(props);
   }
@@ -13,9 +13,10 @@ class CampaignView extends Component {
   render() {
     return (
       <div className="CampaignView releaseAppmargin">
-        <div className="ViewPlaceholderContainer">
+        <hgroup>
           <h3>Campaign View</h3>
-          <Link onClick={() => {this.context.router.goBack() }}>Go Back</Link>
+        </hgroup>
+        <div className="Layout scroll3">
         </div>
       </div>
     );

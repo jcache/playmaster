@@ -1,25 +1,29 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-
+import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from '../reducers';
-import { hashHistory } from 'react-router';
 import thunk from 'redux-thunk'
 import Evolition_DnD5e from '../gamesystems/dnd5e';
-
-
-
+import promiseMiddleware from 'redux-promise-middleware';
 
 export default function configureStore(initialState = {}){
+  let middleWare = [thunk, promiseMiddleware(),  Evolition_DnD5e];
+  let store;
 
-  let middleWare = applyMiddleware(thunk, Evolition_DnD5e);
-
-  if(process.env.NODE_ENV === 'development') {
-    middleWare = compose(middleWare);
+  if (process.env.NODE_ENV === 'development') {
+    store = createStore(rootReducer, initialState, compose(
+      applyMiddleware(...middleWare),
+      typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
+    ));
+  } else {
+    store = createStore(rootReducer, initialState, compose(applyMiddleware(...middleWare), f => f));
   }
 
-  const store = middleWare(createStore)(
-    rootReducer,
-    initialState
-  );  // reducers, initialState);
+  if (module.hot) {
+    // Enable Webpack hot module replacement for reducers
+    module.hot.accept('reducers', () => {
+      const nextReducer = require('../reducers');
+      store.replaceReducer(nextReducer);
+    });
+  }
 
   return store;
 };

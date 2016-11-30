@@ -2,24 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='styles/bootstrap.min.css'>
-    <link rel='stylesheet' href='styles/materialize.min.css'>
-    <link rel='stylesheet' href='styles/main.less'>
+    <link type="text/css" rel='stylesheet' href='styles/materialize.min.css'>
+    <link rel='stylesheet' href='styles/chat.less'>
   </head>
   <body>
-  <div id="react-root"></div>
+    <div id="chat-root"></div>
   <script> window.$ = window.jQuery = require('./js/jquery.min.js') </script>
   <script src="./js/hammer.min.js"></script>
-  <script src="./js/materialize.min.js"></script>
   <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/materialize.min.js"></script>
   <script src="./js/application.js"></script>
-  <script src="./main_source/index.js"></script>
+  <script src="./chat.js"></script>
   <script>
-    if (process.env.BROWSER_SYNC_CHAT_URL) {
+    if (process.env.BROWSER_SYNC_MAIN_URL) {
       const current = document.currentScript;
       const script = document.createElement('script');
-      script.src = process.env.BROWSER_SYNC_CHAT_URL;
+      script.src = process.env.BROWSER_SYNC_MAIN_URL;
       script.async = true;
       current.parentNode.insertBefore(script, current);
     }
