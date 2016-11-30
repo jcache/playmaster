@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect }  from 'react-redux';
 import { IoIosSearchStrong, IoIosGear, IoLogIn } from 'react-icons/lib/io';
-import { MdExitToApp, MdPerson } from 'react-icons/lib/md';
+import { MdExitToApp, MdPerson, MdNotifications } from 'react-icons/lib/md';
 import { FaSliders } from 'react-icons/lib/fa';
 import ReactTooltip from 'react-tooltip';
 import { Link } from 'react-router';
@@ -29,7 +29,8 @@ class PlayerCtrl extends Component {
     return (
       <div style={{ flex: 1, display: 'flex' }} >
         <ul className={`AppControlUtils`}>
-          <li className="SearchIcon"><a href="#"> <IoIosSearchStrong/> </a></li>
+          <li className="SearchIcon"><a href="#"> <IoIosSearchStrong /> </a></li>
+          <li className="NotificationIcon"><a href="#"> <MdNotifications /> </a></li>
           <li className="ProfileDropdown">
             <Link style={{ backgroundImage: `url('${this.state.avatar_uri }')` }} data-tip data-for='campaigns' />
           </li>
@@ -40,9 +41,18 @@ class PlayerCtrl extends Component {
         <ReactTooltip class='tooltip characterPrefPane' id='campaigns'
           event='click' delayHide={10} place="bottom" delayShow={1} effect="solid">
           <ul onMouseLeave={() => ReactTooltip.hide()}>
-            <li><Link to={`player/${player.id}/profile`} onClick={() => ReactTooltip.hide()}><MdPerson/> Player Profile</Link></li>
-            <li><Link onClick={() => ReactTooltip.hide()}><FaSliders/> Player Settings</Link></li>
-            <li><Link onClick={() => {ReactTooltip.hide(); onAuthenticate(false)}}><IoLogIn/> Log Out</Link></li>
+            <li>
+              <Link to={`player/${player.id}/profile`}
+              onClick={() => ReactTooltip.hide()}>
+                <MdPerson/> Edit Profile</Link>
+            </li>
+            <li>
+              <Link onClick={() => ReactTooltip.hide()}><FaSliders/> Edit Settings</Link>
+            </li>
+            <li>
+              <Link onClick={() => { ReactTooltip.hide(); onAuthenticate(false)} }>
+                <IoLogIn/> Log Out</Link>
+            </li>
           </ul>
         </ReactTooltip>
       </div>

@@ -24,6 +24,7 @@ body, html {
 .GameSystemsView,
 .CampaignView,
 .CharacterView,
+.SettingsView,
 .CharactersView {
   flex-direction: column;
   padding-bottom: 40px;
@@ -33,6 +34,10 @@ body, html {
     // border-bottom: 2px solid rgba(32, 21, 55, .75);
 
     h3 {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
       font-weight: 500;
       text-transform: uppercase;
       font-size: 20px;
@@ -547,7 +552,9 @@ body, html {
               // }
               .playerContentHolder {
                 flex:1;
-                padding:0 20px 0 10px;
+                padding-right: 20px;
+                padding-left: 10px;
+                // padding:0 20px 0 10px;
                 h2 { font-size:16px; font-weight:600; margin: 0; color: rgba(21, 59, 88, 1.00); }
                 h3 { font-size:12px; line-height:23px; margin: 0; color: rgba(64, 41, 103, 1.00);}
               }
