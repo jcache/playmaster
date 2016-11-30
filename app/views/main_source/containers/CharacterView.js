@@ -88,10 +88,7 @@ class CharacterView extends Component {
           <h3>
             {`Character View`}
             <span className={`pull-right`}>
-              <Link
-                className={`btn btn-info`}
-                to={`player/${character.pid}/character/new`}>Create Character</Link>
-
+              
               <Link
                 className={`btn btn-info`}
                 to={`player/${character.pid}/character/${character.id}/edit`}>Edit Character</Link>
