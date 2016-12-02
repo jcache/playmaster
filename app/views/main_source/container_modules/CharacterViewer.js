@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { ipcRenderer, remote } from 'electron';
-import { connect}  from 'react-redux';
-import { IoEye, IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';
+import { connect }  from 'react-redux';
+import { IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';
 import { Link } from 'react-router';
+
 //
 class CharacterViewerModule extends Component {
   constructor (props) {
     super(props);
   }
-  _renderAvatar(c){
+
+  _renderAvatar(c) {
     let CharacterAvatar;
     if(c.AvatarUri == undefined){
       return <div style={{backgroundColor: `rgba(120, 84, 191, 1.00)`}} className="characterAvatar" >{c.characterName.charAt(0)}</div>
@@ -16,7 +17,8 @@ class CharacterViewerModule extends Component {
       return <div style={{backgroundImage: 'url(' + c.AvatarUri + ')' }} className="characterAvatar"></div>
     }
   }
-  render(){
+
+  render() {
     let { selected_character, _onSelectCharacter } = this.props;
     return(
       <div className="moduleBody">
@@ -31,6 +33,7 @@ class CharacterViewerModule extends Component {
     )
   }
 }
+
 //
 class CharacterViewer extends Component {
   constructor (props) {
@@ -40,17 +43,18 @@ class CharacterViewer extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps){
-    if(this.props !== nextProps){
+  componentWillReceiveProps(nextProps) {
+    if(this.props !== nextProps) {
       this.setState({
-        selected_character: nextProps.selected_character
-      })
+        selected_character: nextProps.selected_character,
+      });
     }
   }
-  renderCharacter(){
+
+  renderCharacter() {
     let { selected_character } = this.state;
     return (
-      <div style={{flex:1, display: 'flex'}}>
+      <div style={{ flex:1, display: 'flex' }}>
         <div className="campaignBgContainer">
           <CharacterViewerModule {...this.props} selected_character={selected_character}/>
         </div>
@@ -59,15 +63,21 @@ class CharacterViewer extends Component {
       </div>
     )
   }
-  renderEmptyCharacter(){
+
+  renderEmptyCharacter() {
     let { empty, player } = this.props;
     return (
-      <div style={{flex:1, display: 'flex'}}>
+      <div style={{ flex: 1, display: 'flex' }}>
         <h1>CHARACTERS NOT FOUND</h1>
-        <Link className={`btn btn-info`} to={`player/${player.id}/character/new`}>Create Character</Link>
+        <Link
+          className={`btn btn-info`}
+          to={`player/${player.id}/character/new`}>
+          {`Create Character`}
+        </Link>
       </div>
-    )
+    );
   }
+
   render() {
     let { selected_character } = this.state;
     let { empty, player } = this.props;
@@ -79,5 +89,4 @@ class CharacterViewer extends Component {
   }
 }
 
-
-export default connect()(CharacterViewer)
+export default connect()(CharacterViewer);

@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-import { ipcRenderer, remote } from 'electron';
-import { connect}  from 'react-redux';
+import { remote } from 'electron';
+import { connect }  from 'react-redux';
 import { setAuthenticatedStatus } from '../actions/PlayerActions';
 import AppCtrl from '../components/appctrl';
-import {Navigation} from '../components/navigation';
+import { Navigation } from '../components/navigation';
 import PlayerCtrl from '../components/playerctrl';
+const BrowserWindow = remote.getCurrentWindow();
 class ApplicationHeader extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      maximizeValue: false,
+      isMaximized: false,
     };
   }
 
   onCloseApp() {
-   ipcRenderer.send('app_close');
+    BrowserWindow.close();
   }
 
   onAuthenticate(v) {
@@ -24,13 +25,17 @@ class ApplicationHeader extends Component {
   }
 
   onMinimize() {
-    ipcRenderer.send('app_minimize');
+    BrowserWindow.minimize();
   }
 
   onMaximize() {
-    let { maximizeValue } = this.state;
-    this.setState({ maximizeValue: !maximizeValue });
-    ipcRenderer.send('app_maximize', !maximizeValue);
+    let { isMaximized } = this.state;
+    this.setState({ isMaximized: !isMaximized });
+    if (!isMaximized) {
+      BrowserWindow.maximize();
+    } else {
+      BrowserWindow.unmaximize();
+    }
   }
 
   componentWillReceiveProps(nextProps) {

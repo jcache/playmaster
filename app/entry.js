@@ -31,12 +31,10 @@ let createChatWindow = () => {
     minHeight: 800,
     show: false,
     frame: false,
-    enableLargerThanScreen: true,
+    enableLargerThanScreen: false,
     flashFrame: true,
     setAlwaysOnTop: true,
   });
-
-  chatWindow.webContents.openDevTools({ detach: true });
 
   chatWindow.loadURL(`file://${__dirname}/views/chat.html`);
 
@@ -69,13 +67,13 @@ let createWindow = () => {
   // CRASH REPORTER
   require('./helpers/app_reporter');
 
-  var WINDOW_WIDTH = 520;
-  var WINDOW_HEIGHT = 800;
-  var atomScreen = electron.screen;
-  var size = atomScreen.getPrimaryDisplay().workAreaSize;
-  var workArea = atomScreen.getPrimaryDisplay().workArea;
-  var HORIZONTAL_LENGTH = Math.floor(size.width / 2);
-  var VERTICAL_LENGTH = Math.floor(size.height / 2);
+  let WINDOW_WIDTH = 520;
+  let WINDOW_HEIGHT = 800;
+  let ATOM_SCREEN = electron.screen;
+  let size = ATOM_SCREEN.getPrimaryDisplay().workAreaSize;
+  let workArea = ATOM_SCREEN.getPrimaryDisplay().workArea;
+  let HORIZONTAL_LENGTH = Math.floor(size.width / 2);
+  let VERTICAL_LENGTH = Math.floor(size.height / 2);
 
   mainWindow = new BrowserWindow({
     backgroundColor: '#282c3a',
@@ -147,28 +145,13 @@ let createWindow = () => {
     mainWindow.setBounds(options, true);
   });
 
-  ipcMain.on('app_minimize', (event) => {
-    mainWindow.minimize();
-  });
-
-  ipcMain.on('app_close', (event) => {
-    mainWindow.close();
-  });
 
   ipcMain.on('send_file', (event, path, newContext,  name, newFileName) => {
-
-    // console.log(path);
     event.returnValue = AppRouter.saveAsset(path, newContext,  name, newFileName);
-
-    // console.log('File(s) here: ', path)
-    // event.sender.send('asynchronous-reply', 'pong')
   });
 
   ipcMain.on('openConversation', (event, player, id) => {
     createChatWindow();
-
-    // event.returnValue = uri;
-    // event.sender.send('asynchronous-reply', uri);
   });
 
   ipcMain.on('update_avatar', (event, uri) => {
@@ -176,10 +159,6 @@ let createWindow = () => {
     event.sender.send('asynchronous-reply', uri);
   });
 
-  ipcMain.on('app_maximize', (event, maximize) => {
-    maximize ? mainWindow.maximize() : mainWindow.unmaximize();
-    mainWindow.center();
-  });
 
   ipcMain.on('config-paths', (e, arg) => {
     const routePaths = AppRouter.getAppDataPath();
