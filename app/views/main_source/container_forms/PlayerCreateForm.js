@@ -8,7 +8,7 @@ import {
 } from '../components/formFields' // EXTERNAL THIS OR ELSE :(
 const colors = [ 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet' ]
 
-class CreateProfileForm extends Component {
+class PlayerCreateForm extends Component {
   constructor (props) {
     super(props);
   }
@@ -31,5 +31,5 @@ class CreateProfileForm extends Component {
 }
 
 export default reduxForm({
-  form: 'contact'  // a unique identifier for this form
-})(CreateProfileForm)
+  form: 'player_form'  // a unique identifier for this form
+})(PlayerCreateForm)
