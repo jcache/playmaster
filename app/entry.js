@@ -22,28 +22,18 @@ const setApplicationMenu = function () {
 let mainWindow = void 0;
 let chatWindow = void 0;
 
-let createChatWindow = () => {
-  chatWindow = new BrowserWindow({
-    backgroundColor: '#282c3a',
-    width: 400,
-    height: 800,
-    minWidth: 400,
-    minHeight: 800,
-    show: false,
-    frame: false,
-    enableLargerThanScreen: false,
-    flashFrame: true,
-    setAlwaysOnTop: true,
+// let createChatWindow = (id) => {
+//
+//
+// };
+
+if (chatWindow !== undefined) {
+  chatWindow.on('close', (event) => {
+    // chatWindow.hide();
+    event.preventDefault();
   });
-
-  chatWindow.loadURL(`file://${__dirname}/views/chat.html`);
-
-  chatWindow.webContents.on('did-finish-load', () => {
-    chatWindow.setTitle('evolition | chat');
-  });
-
-  chatWindow.show();
 };
+
 
 let createWindow = () => {
   AppRouter.initDatabases(
@@ -84,7 +74,7 @@ let createWindow = () => {
     frame: false,
     enableLargerThanScreen: true,
     flashFrame: true,
-    setAlwaysOnTop: true,
+    alwaysOnTop: true,
   });
 
   mainWindow.setPosition(
@@ -137,7 +127,7 @@ let createWindow = () => {
   });
 
   ipcMain.on('resize-to-main', (e, arg) => {
-    var options = { width: 1236, height: size.height };
+    var options = { width: 1170, height: size.height };
     options.x = size.width - options.width;
     options.y = VERTICAL_LENGTH - (size.height / 2 - workArea.y);
     mainWindow.show();
@@ -145,31 +135,34 @@ let createWindow = () => {
     mainWindow.setBounds(options, true);
   });
 
-
-  ipcMain.on('send_file', (event, path, newContext,  name, newFileName) => {
-    event.returnValue = AppRouter.saveAsset(path, newContext,  name, newFileName);
-  });
-
-  ipcMain.on('openConversation', (event, player, id) => {
-    createChatWindow();
-  });
-
-  ipcMain.on('update_avatar', (event, uri) => {
-    event.returnValue = uri;
-    event.sender.send('asynchronous-reply', uri);
-  });
-
-
-  ipcMain.on('config-paths', (e, arg) => {
-    const routePaths = AppRouter.getAppDataPath();
-    e.returnValue = routePaths;
-  });
 };
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
+});
+
+ipcMain.on('send_file', (event, path, newContext,  name, newFileName) => {
+  event.returnValue = AppRouter.saveAsset(path, newContext,  name, newFileName);
+});
+
+ipcMain.on('update_avatar', (event, uri) => {
+  event.returnValue = uri;
+  event.sender.send('asynchronous-reply', uri);
+});
+
+ipcMain.on('config-paths', (e, arg) => {
+  const routePaths = AppRouter.getAppDataPath();
+  e.returnValue = routePaths;
+});
+
+// ipcMain.on('openConversation', (event, player, id) => {
+//   createChatWindow(id);
+// });
+ipcMain.on('closeConversation', (event, windowId) => {
+  BrowserWindow.fromId(windowId).close();
+  // console.log(BrowserWindow)
 });
 
 // Windows data directory correction since Electron's default is backwards

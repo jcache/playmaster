@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect}  from 'react-redux';
-import CreateProfileForm from '../container_forms/CreateProfileForm';
+import PlayerCreateForm from '../container_forms/PlayerCreateForm';
 import { CreatePlayer } from '../actions/PlayerActions';
 
 class CreateProfileView extends Component {
@@ -18,11 +18,11 @@ class CreateProfileView extends Component {
     const { handleSubmit } = this.props;
     return (
       <div className="DefaultView">
-      <div style={{flex:1}}>
-        <hgroup>
-          <h1>Create a Player</h1>
-        </hgroup>
-        <CreateProfileForm onSubmit={(player) => this.handleSubmit(player)} />
+        <div style={{flex:1}}>
+          <hgroup>
+            <h1>Create a Player</h1>
+          </hgroup>
+          <PlayerCreateForm onSubmit={(player) => this.handleSubmit(player)} />
         </div>
       </div>
     );

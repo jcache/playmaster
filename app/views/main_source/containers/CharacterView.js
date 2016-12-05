@@ -25,7 +25,7 @@ class CharacterView extends Component {
       percentage: 0,
       character: { stats: {}},
     }
-  } 
+  }
 
   componentWillMount() {
     console.log(this.props);
@@ -145,7 +145,7 @@ class CharacterView extends Component {
                 <hgroup className='ModuleHeader'>
                   <h3>Features & Traits</h3>
                 </hgroup>
-                <p>Elves have a strong connection to the natural world, especially woodlands. They can live to be more than 700 years old. Known for being artists of both song and magic, elves have an affinity for spellcasting and lore. They stand about 5-1/2 feet tall, appearing graceful and frail. Elves receive a +2 to Dexterity and a –2 to Constitution. They are immune to sleep effects and receive a bonus against enchantment spells. Elves have low-light vision and a racial bonus on Listen, Search, and Spot checks.</p>
+                <p>{character.biography}</p>
               </div>
 
               <div className={`content-box`} style={{flexDirection: 'row', marginTop: 30, backgroundColor: 'transparent'}}>
@@ -153,13 +153,13 @@ class CharacterView extends Component {
                   flex: 1,
                   display: 'flex',
                   minHeight: 100,
-                  backgroundColor: 'rgba(45, 45, 45, 1.00)'}}></div>
+                backgroundColor: 'rgba(45, 45, 45, 1.00)'}}></div>
 
                 <div style={{
                   flex: 1,
                   display: 'flex',
                   minHeight: 100,
-                  backgroundColor: 'rgba(45, 45, 45, 1.00)', marginLeft: 30}}></div>
+                backgroundColor: 'rgba(45, 45, 45, 1.00)', marginLeft: 30}}></div>
               </div>
             </div>
 

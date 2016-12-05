@@ -7,7 +7,7 @@ class ApplicationFooter extends Component {
 
   render() {
     return (
-      <div style={{flex: 1, display: 'flex', maxHeight: '60px', backgroundColor: 'green'}}>
+      <div  className={`ChatFooter`}>
         <p>Footer</p>
       </div>
     );

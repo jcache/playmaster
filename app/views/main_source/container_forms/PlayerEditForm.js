@@ -11,14 +11,14 @@ import {
   renderFileField,
 } from '../components/formFields' // EXTERNAL THIS OR ELSE :(
 
-class PlayerProfileForm extends Component {
+class PlayerEditForm extends Component {
   constructor (props) {
     super(props);
     this.handleFile = ::this.handleFile;
   }
 
   handleFile(event) {
-    const {id} = this.props.initialValues
+    const {id, avatar_uri} = this.props.initialValues;
     event.preventDefault();
     dialog.showOpenDialog({
       filters: [
@@ -27,25 +27,31 @@ class PlayerProfileForm extends Component {
       properties: ['openFile', 'openDirectory', 'multiSelections']}, (fileNames) => {
       if (fileNames === undefined) return;
       var fileName = fileNames[0];
-      let avatarURI = ipcRenderer.sendSync('send_file', fileName, `player/${id}/avatar/`, fileName.split("/").pop(),`${uuid()}_avatar`);
-      this.props.change('avatar_uri', avatarURI);
+
+      if(fileName){
+        let avatarURI = ipcRenderer.sendSync('send_file', fileName, `player/${id}/avatar/`, fileName.split("/").pop(),`${uuid()}_avatar`);
+        this.props.change('avatar_uri', avatarURI);
+      }
+
     });
   }
 
   render() {
     const { handleSubmit } = this.props;
+    const {id, avatar_uri} = this.props.initialValues;
     return (
         <form className={`player_profile_form`} style={{display: 'block', overflow: 'hidden'}} onSubmit={handleSubmit}>
           <div className={`row`}>
             <div className={`col-xs-2`}>
               <div className={`row`}>
-                <button className={`btn btn-info`} type="button" onClick={this.handleFile}>{`Change`}</button>
+                <img className={`img-responsive`} onClick={this.handleFile} src={avatar_uri} />
+
               </div>
             </div>
             <div className={`col-xs-10`}>
               <div className={`row`}>
                 <Field name="player_name" wrapClass={`form-group col-xs-12`} component={renderTextField} type="text" label="Player Name"/>
-                <Field name="email" wrapClass={`form-group col-xs-12`}component={renderTextField} type="email" label="E-Mail Address"/>
+                <Field name="email" wrapClass={`form-group col-xs-12`} component={renderTextField} type="email" label="E-Mail Address"/>
                 <Field name="first_name" wrapClass={`form-group col-xs-6`} component={renderTextField} type="text" label="First Name"/>
                 <Field name="last_name" wrapClass={`form-group col-xs-6`} component={renderTextField} type="text" label="Last Name"/>
                 <Field name={`avatar_uri`}  component={renderTextField} type="hidden"/>
@@ -63,4 +69,4 @@ class PlayerProfileForm extends Component {
 
 export default reduxForm({
   form: 'player_profile'  // a unique identifier for this form
-})(PlayerProfileForm)
+})(PlayerEditForm)
