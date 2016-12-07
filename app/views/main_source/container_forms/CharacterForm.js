@@ -41,7 +41,7 @@ class CreateCharacterForm extends Component {
     const { handleSubmit } = this.props;
     let character = this.props.initialValues;
     return (
-        <form className={`character_form`} style={{display: 'block', overflow: 'hidden'}} onSubmit={handleSubmit}>
+        <form className={`character_form`} onSubmit={handleSubmit}>
           <div className="DnD5echaracterView">
             <div className={`section`}>
               <div className={`health-box`}>

@@ -5,6 +5,7 @@ import { Router, useRouterHistory } from 'react-router';
 import { createHashHistory } from 'history';
 import configureStore from './main_source/store/configureStore';
 import routes from './main_source/routes';
+
 const store = configureStore();
 const appHistory = useRouterHistory(createHashHistory)();
 ReactDOM.render(

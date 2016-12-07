@@ -7,12 +7,7 @@ export default  class App extends Component {
   constructor(props){
     super(props);
   }
-  componentWillMount(){
-    console.log(this.props);
-  }
-  componentWillReceiveProps(nextProps) {
-    console.log(this.props);
-  }
+
 
   render() {
     return (

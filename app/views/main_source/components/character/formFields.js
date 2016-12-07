@@ -13,28 +13,11 @@ export const TextField = ({ input, label, wrapClass, type, meta: { touched, erro
 
 
 export const displayStatContainer = ({ input, label, wrapClass, type, meta: { touched, error, warning } }) => (
-  <div className={`stat-container`}>
+  <div className={`stat-container sm`}>
     <div>
-      <div className={`stat-header`}>
+      <div className={`stat-field`}>
         <h2>{label}</h2>
-        <input {...input} type={type} className={`validate`} min="1" max="20" pattern="[1-20]*" maxLength="2" placeholder={`--`}/>
-      </div>
-      <div className={`stat-bonus`}>
-        <h1>10</h1>
-      </div>
-      <div className={`stat-other-bonus-container`}>
-        <div>
-          <h6>Base</h6>
-          <span>15</span>
-        </div>
-        <div>
-          <h6>Racial</h6>
-          <span>+15</span>
-        </div>
-        <div>
-          <h6>Inc.</h6>
-          <span>-15</span>
-        </div>
+        <input {...input} type={type} className={`validate`} min="1" max="20" pattern="[1-20]*" maxLength="2" placeholder={`--`} />
       </div>
     </div>
   </div>

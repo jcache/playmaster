@@ -127,7 +127,7 @@ let createWindow = () => {
   });
 
   ipcMain.on('resize-to-main', (e, arg) => {
-    var options = { width: 1170, height: size.height };
+    var options = { width: 960, height: size.height };
     options.x = size.width - options.width;
     options.y = VERTICAL_LENGTH - (size.height / 2 - workArea.y);
     mainWindow.show();
