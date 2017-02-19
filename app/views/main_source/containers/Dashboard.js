@@ -46,8 +46,7 @@ class DefaultView extends Component {
 
   render() {
 
-    let { authenticated, player, conversations } = this.props;
-    let { selected_character } = this.state;
+    let { authenticated, player, conversations, selected_character } = this.props;
     const Style={ "color" : "#FFF", visibility: authenticated ? `visible` : `hidden` };
     return (
       <div className="DefaultView">
@@ -57,7 +56,7 @@ class DefaultView extends Component {
             <ChatDisplayModule conversations={conversations}/>
           </div>
           <div style={{ flex: 1, flexDirection: 'column', display: 'flex', maxWidth: '1140px' } } >
-            <CharacterViewer player={player} empty={selected_character.id == undefined ? true : false} _onSelectCharacter={( id ) => { this._onSelectCharacter(id) }} selected_character={selected_character} />
+            <CharacterViewer player={player} empty={selected_character == typeof undefined ? true : false} _onSelectCharacter={( id ) => { this._onSelectCharacter(id) }} selected_character={selected_character} />
             <GamesystemDisplayModule />
           </div>
         </div>

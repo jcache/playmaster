@@ -11,16 +11,18 @@ class CharacterViewerModule extends Component {
   _renderAvatar(c){
     let CharacterAvatar;
     if(c.AvatarUri == undefined){
-      return <div style={{backgroundColor: `rgba(120, 84, 191, 1.00)`}} className="characterAvatar" >{c.characterName.charAt(0)}</div>
+      return <div style={{backgroundColor: `rgba(120, 84, 191, 1.00)`}} className="characterAvatar" >{c.characterName}</div>
     } else {
       return <div style={{backgroundImage: 'url(' + c.AvatarUri + ')' }} className="characterAvatar"></div>
     }
   }
   render(){
     let { selected_character, _onSelectCharacter } = this.props;
+
+    if(selected_character != typeof undefined) console.log("CharacterViewerModule -- selected_character: ", selected_character);
     return(
       <div className="moduleBody">
-        <h3>{`${selected_character.characterProfession}`}</h3>
+        <h3>{`${selected_character != typeof undefined ?selected_character.characterProfession:""}`}</h3>
         <h2>{`${selected_character.characterName}`}</h2>
         {this._renderAvatar(selected_character)}
         <div className={`characterActions`}>
@@ -48,7 +50,8 @@ class CharacterViewer extends Component {
     }
   }
   renderCharacter(){
-    let { selected_character } = this.state;
+    let selected_character = this.state.selected_character || {};
+
     return (
       <div style={{flex:1, display: 'flex'}}>
         <div className="campaignBgContainer">
