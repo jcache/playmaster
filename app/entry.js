@@ -22,30 +22,18 @@ const setApplicationMenu = function () {
 let mainWindow = void 0;
 let chatWindow = void 0;
 
-let createChatWindow = () => {
-  chatWindow = new BrowserWindow({
-    backgroundColor: '#282c3a',
-    width: 400,
-    height: 800,
-    minWidth: 400,
-    minHeight: 800,
-    show: false,
-    frame: false,
-    enableLargerThanScreen: true,
-    flashFrame: true,
-    setAlwaysOnTop: true,
+// let createChatWindow = (id) => {
+//
+//
+// };
+
+if (chatWindow !== undefined) {
+  chatWindow.on('close', (event) => {
+    // chatWindow.hide();
+    event.preventDefault();
   });
-
-  chatWindow.webContents.openDevTools({ detach: true });
-
-  chatWindow.loadURL(`file://${__dirname}/views/chat.html`);
-
-  chatWindow.webContents.on('did-finish-load', () => {
-    chatWindow.setTitle('evolition | chat');
-  });
-
-  chatWindow.show();
 };
+
 
 let createWindow = () => {
   AppRouter.initDatabases(
@@ -69,13 +57,13 @@ let createWindow = () => {
   // CRASH REPORTER
   require('./helpers/app_reporter');
 
-  var WINDOW_WIDTH = 520;
-  var WINDOW_HEIGHT = 800;
-  var atomScreen = electron.screen;
-  var size = atomScreen.getPrimaryDisplay().workAreaSize;
-  var workArea = atomScreen.getPrimaryDisplay().workArea;
-  var HORIZONTAL_LENGTH = Math.floor(size.width / 2);
-  var VERTICAL_LENGTH = Math.floor(size.height / 2);
+  let WINDOW_WIDTH = 520;
+  let WINDOW_HEIGHT = 800;
+  let ATOM_SCREEN = electron.screen;
+  let size = ATOM_SCREEN.getPrimaryDisplay().workAreaSize;
+  let workArea = ATOM_SCREEN.getPrimaryDisplay().workArea;
+  let HORIZONTAL_LENGTH = Math.floor(size.width / 2);
+  let VERTICAL_LENGTH = Math.floor(size.height / 2);
 
   mainWindow = new BrowserWindow({
     backgroundColor: '#282c3a',
@@ -86,7 +74,7 @@ let createWindow = () => {
     frame: false,
     enableLargerThanScreen: true,
     flashFrame: true,
-    setAlwaysOnTop: true,
+    alwaysOnTop: true,
   });
 
   mainWindow.setPosition(
@@ -112,8 +100,10 @@ let createWindow = () => {
     chromeExt.id,
     chromeExt.version);
 
-  // console.log('RDToolsPath: ', RDToolsPath);
-  BrowserWindow.addDevToolsExtension(devToolsExtPath);
+  // ONLY IN DEV
+  if (process.env.NODE_ENV === 'development') {
+    BrowserWindow.addDevToolsExtension(devToolsExtPath);
+  }
 
   mainWindow.loadURL(`file://${__dirname}/views/index.html`);
 
@@ -139,7 +129,7 @@ let createWindow = () => {
   });
 
   ipcMain.on('resize-to-main', (e, arg) => {
-    var options = { width: 1236, height: size.height };
+    var options = { width: 960, height: size.height };
     options.x = size.width - options.width;
     options.y = VERTICAL_LENGTH - (size.height / 2 - workArea.y);
     mainWindow.show();
@@ -147,50 +137,34 @@ let createWindow = () => {
     mainWindow.setBounds(options, true);
   });
 
-  ipcMain.on('app_minimize', (event) => {
-    mainWindow.minimize();
-  });
-
-  ipcMain.on('app_close', (event) => {
-    mainWindow.close();
-  });
-
-  ipcMain.on('send_file', (event, path, newContext,  name, newFileName) => {
-
-    // console.log(path);
-    event.returnValue = AppRouter.saveAsset(path, newContext,  name, newFileName);
-
-    // console.log('File(s) here: ', path)
-    // event.sender.send('asynchronous-reply', 'pong')
-  });
-
-  ipcMain.on('openConversation', (event, player, id) => {
-    createChatWindow();
-
-    // event.returnValue = uri;
-    // event.sender.send('asynchronous-reply', uri);
-  });
-
-  ipcMain.on('update_avatar', (event, uri) => {
-    event.returnValue = uri;
-    event.sender.send('asynchronous-reply', uri);
-  });
-
-  ipcMain.on('app_maximize', (event, maximize) => {
-    maximize ? mainWindow.maximize() : mainWindow.unmaximize();
-    mainWindow.center();
-  });
-
-  ipcMain.on('config-paths', (e, arg) => {
-    const routePaths = AppRouter.getAppDataPath();
-    e.returnValue = routePaths;
-  });
 };
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
+});
+
+ipcMain.on('send_file', (event, path, newContext,  name, newFileName) => {
+  event.returnValue = AppRouter.saveAsset(path, newContext,  name, newFileName);
+});
+
+ipcMain.on('update_avatar', (event, uri) => {
+  event.returnValue = uri;
+  event.sender.send('asynchronous-reply', uri);
+});
+
+ipcMain.on('config-paths', (e, arg) => {
+  const routePaths = AppRouter.getAppDataPath();
+  e.returnValue = routePaths;
+});
+
+// ipcMain.on('openConversation', (event, player, id) => {
+//   createChatWindow(id);
+// });
+ipcMain.on('closeConversation', (event, windowId) => {
+  BrowserWindow.fromId(windowId).close();
+  // console.log(BrowserWindow)
 });
 
 // Windows data directory correction since Electron's default is backwards
