@@ -100,8 +100,10 @@ let createWindow = () => {
     chromeExt.id,
     chromeExt.version);
 
-  // console.log('RDToolsPath: ', RDToolsPath);
-  BrowserWindow.addDevToolsExtension(devToolsExtPath);
+  // ONLY IN DEV
+  if (process.env.NODE_ENV === 'development') {
+    BrowserWindow.addDevToolsExtension(devToolsExtPath);
+  }
 
   mainWindow.loadURL(`file://${__dirname}/views/index.html`);
 
