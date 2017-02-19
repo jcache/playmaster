@@ -38,12 +38,6 @@ class ApplicationHeader extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.player !== nextProps.player) {
-      console.log(`gotnew props`, this.props.player);
-    }
-  }
-
   render() {
     let { player, authenticated } = this.props;
     return (

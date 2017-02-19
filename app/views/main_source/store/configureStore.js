@@ -1,11 +1,12 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from '../reducers';
 import thunk from 'redux-thunk'
-import Evolition_DnD5e from '../gamesystems/dnd5e';
+// import Evolition_DnD5e from '../gamesystems/dnd5e';
 import promiseMiddleware from 'redux-promise-middleware';
+import evolitionModule from 'evolition-module';
 
 export default function configureStore(initialState = {}){
-  let middleWare = [thunk, promiseMiddleware(),  Evolition_DnD5e];
+  let middleWare = [thunk, promiseMiddleware(), evolitionModule];
   let store;
 
   if (process.env.NODE_ENV === 'development') {

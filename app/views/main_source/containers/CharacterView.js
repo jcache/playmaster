@@ -28,7 +28,6 @@ class CharacterView extends Component {
   }
 
   componentWillMount() {
-    console.log(this.props);
     this.props.dispatch(LoadCharacter(this.props.params.cid));
   }
 
@@ -80,7 +79,6 @@ class CharacterView extends Component {
 
   render() {
     let { character } = this.state;
-    console.log(character);
 
     return (
       <div className="CharacterView releaseAppmargin">

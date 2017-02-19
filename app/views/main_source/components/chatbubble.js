@@ -11,7 +11,8 @@ export const ChatBubble = (props) => {
         value =>
           <div className={`chatBubble `}
             style={{opacity: `${value.x}`}}
-            onClick={()=> openConversation(conversation.id, conversation.pid) }>
+            // onClick={()=> openConversation(conversation.id, conversation.pid) }
+            >
             <div className={`playerAvatar`} style={{backgroundImage: `url('${conversation.AvatarUri}')`}}/>
             <div className={`playerContentHolder`}>
               <h2>thing one test title </h2>
