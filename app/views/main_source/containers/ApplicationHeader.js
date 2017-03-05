@@ -3,7 +3,6 @@ import { remote } from 'electron';
 import { connect }  from 'react-redux';
 import { setAuthenticatedStatus } from '../actions/PlayerActions';
 import AppCtrl from '../components/appctrl';
-import { Navigation } from '../components/navigation';
 import PlayerCtrl from '../components/playerctrl';
 const BrowserWindow = remote.getCurrentWindow();
 class ApplicationHeader extends Component {
@@ -46,7 +45,6 @@ class ApplicationHeader extends Component {
           onMinimize={() => this.onMinimize()}
           onMaximize={() => this.onMaximize()}
           onCloseApp={() => this.onCloseApp()} />
-        {authenticated ? <Navigation {...this.props} /> : null }
         {authenticated ? <PlayerCtrl {...this.props}
           onAuthenticate={(v) => this.onAuthenticate(v)} /> : null }
       </div>

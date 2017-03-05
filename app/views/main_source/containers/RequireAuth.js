@@ -17,9 +17,7 @@ export default function(ComposedComponent) {
       dispatch(LoadConversations(params.id));
       dispatch(LoadGameSystems());
       dispatch(isAuthenticated(params.id));
-      if (authenticated == true) {
-        ipcRenderer.send('resize-to-main');
-      }
+
     }
 
     // componentWillMount() {

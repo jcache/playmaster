@@ -27,7 +27,7 @@ class PlayerCtrl extends Component {
   render() {
     let { router, player, onAuthenticate } = this.props;
     return (
-      <div style={{ flex: 1, display: 'flex' }} >
+      <div >
         <ul className={`AppControlUtils`}>
           <li className="SearchIcon"><a href="#"> <IoIosSearchStrong /> </a></li>
           <li className="NotificationIcon"><a href="#"> <MdNotifications /> </a></li>

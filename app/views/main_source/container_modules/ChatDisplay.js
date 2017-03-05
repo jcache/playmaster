@@ -10,37 +10,6 @@ class ChatDisplay extends Component {
     super(props);
   }
 
-  openConversation(player, conversation_id) {
-    console.log(player, conversation_id);
-    const { BrowserWindow } = remote;
-    let chatWindow = new BrowserWindow({
-      backgroundColor: '#282c3a',
-      width: 320,
-      height: 800,
-      minWidth: 320,
-      // parent: parent,
-      minHeight: 800,
-      show: false,
-      hasShadow: false,
-      frame: false,
-      enableLargerThanScreen: false,
-      flashFrame: true,
-      alwaysOnTop: true,
-    });
-
-    chatWindow.loadURL(`file://${path.join(__dirname, '../..')}/chat.html`);
-
-    chatWindow.webContents.on('did-finish-load', () => {
-      chatWindow.setTitle('evolition | chat');
-    });
-
-    chatWindow.show();
-
-
-
-    // ipcRenderer.send(`openConversation`,player, conversation_id);
-  }
-
   render(){
     let { conversations } = this.props;
     return (
@@ -51,7 +20,7 @@ class ChatDisplay extends Component {
         </hgroup>
         <div className="chatContainer">
           <div className={`ChatBody scroll3`}>
-            {conversations.map((c,i) => <ChatBubble key={i} conversation={c} openConversation={(p,cid) => this.openConversation(p,cid) } />)}
+            {conversations.map((c,i) => <ChatBubble key={i} conversation={c}  />)}
           </div>
         </div>
       </div>

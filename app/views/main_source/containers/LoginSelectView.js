@@ -12,18 +12,15 @@ class LoginSelectView extends Component {
   }
   componentWillMount(){
     this.props.dispatch(LoadPlayers());
-    ipcRenderer.send('resize-to-login');
   }
 
   render() {
     const { handleSubmit, players, authenticated} = this.props;
     return (
       <div className="LoginSelectView releaseAppmargin">
-        <div style={{flex:1, display: 'flex', maxWidth: '520px'}}>
+        <div style={{flex:1, display: 'flex'}}>
           <div style={{flex:1, display: 'flex', flexDirection: 'column'}}>
-            <hgroup>
-              <h2>Player Selection</h2>
-            </hgroup>
+
             <div className={`PersonSelectList`}>
               <PlayerChipList players={players} authenticated={authenticated} authenticate={authenticate}/>
               <Link to="/create_player" className={`btn btn-xl btn-primary`}>New Player</Link>

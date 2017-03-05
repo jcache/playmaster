@@ -22,10 +22,6 @@ const setApplicationMenu = function () {
 let mainWindow = void 0;
 let chatWindow = void 0;
 
-// let createChatWindow = (id) => {
-//
-//
-// };
 
 if (chatWindow !== undefined) {
   chatWindow.on('close', (event) => {
@@ -57,7 +53,9 @@ let createWindow = () => {
   // CRASH REPORTER
   require('./helpers/app_reporter');
 
-  let WINDOW_WIDTH = 520;
+  require('./helpers/app_updater');
+
+  let WINDOW_WIDTH = 960;
   let WINDOW_HEIGHT = 800;
   let ATOM_SCREEN = electron.screen;
   let size = ATOM_SCREEN.getPrimaryDisplay().workAreaSize;
@@ -74,7 +72,7 @@ let createWindow = () => {
     frame: false,
     enableLargerThanScreen: true,
     flashFrame: true,
-    alwaysOnTop: true,
+    alwaysOnTop: false,
   });
 
   mainWindow.setPosition(
@@ -83,9 +81,9 @@ let createWindow = () => {
   );
 
   // console.log(`[WINDOW MAXIMUMS]`, mainWindow.getMaximumSize());
-  if (process.env.NODE_ENV === 'development') {
-    mainWindow.webContents.openDevTools({ detach: true });
-  }
+  // if (process.env.NODE_ENV === 'development') {
+  //   mainWindow.webContents.openDevTools({ detach: true });
+  // }
 
   // ADD REACT DEVTOOLS  For more info: https://goo.gl/HAip0t
   let appDataPath = app.getPath('appData');
@@ -128,14 +126,14 @@ let createWindow = () => {
     mainWindow.setBounds(options, true);
   });
 
-  ipcMain.on('resize-to-main', (e, arg) => {
-    var options = { width: 960, height: size.height };
-    options.x = size.width - options.width;
-    options.y = VERTICAL_LENGTH - (size.height / 2 - workArea.y);
-    mainWindow.show();
-    mainWindow.setMinimumSize(options.width, 800);
-    mainWindow.setBounds(options, true);
-  });
+  // ipcMain.on('resize-to-main', (e, arg) => {
+  //   var options = { width: 960, height: size.height };
+  //   options.x = Math.ceil(size.width) - Math.ceil(options.width);
+  //   options.y = VERTICAL_LENGTH - (size.height / 2 - workArea.y);
+  //   mainWindow.show();
+  //   mainWindow.setMinimumSize(options.width, 800);
+  //   mainWindow.setBounds(options, true);
+  // });
 
 };
 

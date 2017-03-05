@@ -19,9 +19,7 @@ export function EditCharacter(character){
   return dispatch => {
     // PLAYER CONTROLLER
     CharacterController.editCharacter(character,
-      ret => {
-        dispatch(loadCharacters(ret));
-      },
+      ret => dispatch(loadCharacters(ret)),
       err => {
         console.log(err);
         // DISPATCH ERROR
@@ -34,9 +32,7 @@ export function CreateCharacter(pid, character){
   return dispatch => {
     // PLAYER CONTROLLER
     CharacterController.createCharacter(pid, character,
-      ret => {
-        dispatch(loadCharacters(ret));
-      },
+      ret => dispatch(loadCharacters(ret)),
       err => {
         console.log(err);
         // DISPATCH ERROR
