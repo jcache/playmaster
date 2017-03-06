@@ -11,18 +11,13 @@ export default function(ComposedComponent) {
   class Authentication extends Component {
 
     componentDidMount() {
-      let { params, dispatch, authenticated,router} = this.props;
+      let { params, dispatch, authenticated, router } = this.props;
       dispatch(LoadPlayer(params.id));
       dispatch(LoadCharacters(params.id));
       dispatch(LoadConversations(params.id));
       dispatch(LoadGameSystems());
       dispatch(isAuthenticated(params.id));
-
     }
-
-    // componentWillMount() {
-    //   this.props.dispatch(LoadCharacter(this.props.params.id));
-    // }
 
     componentWillUpdate(nextProps) {
       let { router } = this.props;

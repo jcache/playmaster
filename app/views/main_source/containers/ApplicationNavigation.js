@@ -31,6 +31,7 @@ class ApplicationNavigation extends Component {
             <li><Link activeClassName={`active`} to={`player/${player.id}/gamesystems`}>Game Systems</Link></li>
             <li><Link activeClassName={`active`} to={`player/${player.id}/characters`}>Characters</Link></li>
             <li><Link activeClassName={`active`} to={`player/${player.id}/campaigns`}>Campaigns</Link></li>
+            <li><Link activeClassName={`active`} to={`player/${player.id}/character/new`}>Create a Character</Link></li>
           </ul>
         </div>
       </nav>

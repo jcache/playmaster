@@ -30,5 +30,33 @@
     "redux-promise-middleware": "^4.1.0",
     "redux-thunk": "^2.1.0",
     "uuid": "^2.0.3"
+  },
+  "resolutions": {
+    "uuid": "3.0.0",
+    "babylon": "6.16.1",
+    "debug": "2.3.3",
+    "js-tokens": "3.0.1",
+    "core-js": "2.4.1",
+    "regenerator-runtime": "0.10.3",
+    "jsesc": "1.3.0",
+    "babel-plugin-transform-async-to-generator": "6.22.0",
+    "babel-helper-remap-async-to-generator": "6.22.0",
+    "debug-electron": "0.0.2",
+    "mkdirp": "0.5.1",
+    "minimist": "1.2.0",
+    "glob": "7.1.1",
+    "readable-stream": "2.0.6",
+    "xtend": "4.0.1",
+    "isarray": "1.0.0",
+    "commander": "2.9.0",
+    "assert-plus": "1.0.0",
+    "source-map": "0.5.6",
+    "entities": "1.1.1",
+    "acorn": "2.7.0",
+    "sax": "1.2.1",
+    "wordwrap": "1.0.0",
+    "is-promise": "2.1.0",
+    "promise": "7.1.1",
+    "css-parse": "1.7.0"
   }
 }
