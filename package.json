@@ -1,9 +1,14 @@
 {
   "name": "playmaster",
+  "productName": "Playmaster",
   "version": "0.0.0",
-  "description": "evolition.io presents playmaster, your table top roleplaying character manager",
+  "description": "Evolition L.L.C presents Playmaster, your table top roleplaying character manager",
   "main": "app/",
   "engineStrict": true,
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "prune": true,
   "build": {
     "appId": "io.ev.playmaster",
     "copyright": "Copyright (c) 2017, Evolition, LLC. All Rights Reserved.",
@@ -17,6 +22,7 @@
     "mac-dist": "NODE_ENV=production build -m --x64",
     "win-dist": "NODE_ENV=production build -w --x64",
     "pack:osx": "npm run clean && electron-packager . \"Playmaster\" --arch=x64 --out=dist/osx --platform=darwin",
+    "package": "babel-node ./bin/package.js",
     "start": "NODE_ENV=development babel-node scripts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -42,10 +48,14 @@
       "name": "Joshua Owens"
     }
   ],
-  "author": "Evolition",
+  "author": {
+    "name": "Evolition, LLC",
+    "email": "kevin@evolition.io",
+    "url": "https://evolition.io"
+  },
   "license": "Apache-2.0",
-  "copyright": "Copyright (c) 2017, Evolition, LLC. All rights reserved.",
-  "homepage": "https://github.com/evolition/playmaster#readme",
+  "copyright": "Copyright (c) 2017, Evolition L.L.C. All rights reserved.",
+  "homepage": "https://evolition.io/playmaster",
   "devDependencies": {
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
@@ -61,6 +71,7 @@
     "electron-compilers": "^5.5.1",
     "electron-packager": "^8.5.2",
     "eslint": "^3.17.0",
+    "fs-extra": "^2.0.0",
     "spectron": "^3.6.0"
   },
   "resolutions": {
