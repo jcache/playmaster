@@ -49,7 +49,7 @@ Bsync.init(BrowserSyncOPTS, (err, bs) => {
 
   // SPAWN
   const electroSpawn = spawn(electron, ['.'], {
-    stdio: 'ignore',
+    stdio: 'inherit',
     env: {
       ...{
         NODE_ENV: 'development',
@@ -63,9 +63,8 @@ Bsync.init(BrowserSyncOPTS, (err, bs) => {
      if (code !== 0){
        console.log(`WARNING: Electron process exited with code ${code}`);
      }
-     console.log(' ');
-     Bsync.exit()
-     process.exit()
+     Bsync.exit();
+     process.exit();
    });
 
   // WATCH

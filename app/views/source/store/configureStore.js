@@ -2,9 +2,14 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from '../reducers';
 import thunk from 'redux-thunk'
 import promiseMiddleware from 'redux-promise-middleware';
+// import evolitionModule from 'evolition-module';
 
 export default function configureStore(initialState = {}){
-  let middleWare = [thunk, promiseMiddleware()];
+  let middleWare = [
+    thunk,
+    promiseMiddleware(),
+    // evolitionModule
+  ];
   let store;
 
   if (process.env.NODE_ENV === 'development') {

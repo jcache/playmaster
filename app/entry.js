@@ -20,15 +20,6 @@ const setApplicationMenu = function () {
 };
 
 let mainWindow = void 0;
-let chatWindow = void 0;
-
-
-if (chatWindow !== undefined) {
-  chatWindow.on('close', (event) => {
-    // chatWindow.hide();
-    event.preventDefault();
-  });
-};
 
 
 let createWindow = () => {
@@ -46,13 +37,10 @@ let createWindow = () => {
 
   // SETS APPLICATION MENU
   setApplicationMenu();
-
   // PROTOCOL MODULE
   require('./helpers/app_protocol');
-
   // CRASH REPORTER
   require('./helpers/app_reporter');
-
   require('./helpers/app_updater');
 
   let WINDOW_WIDTH = 960;
@@ -79,11 +67,6 @@ let createWindow = () => {
     HORIZONTAL_LENGTH - (WINDOW_WIDTH / 2),
     VERTICAL_LENGTH - (WINDOW_HEIGHT / 2)
   );
-
-  // console.log(`[WINDOW MAXIMUMS]`, mainWindow.getMaximumSize());
-  // if (process.env.NODE_ENV === 'development') {
-  //   mainWindow.webContents.openDevTools({ detach: true });
-  // }
 
   // ADD REACT DEVTOOLS  For more info: https://goo.gl/HAip0t
   let appDataPath = app.getPath('appData');
@@ -126,21 +109,13 @@ let createWindow = () => {
     mainWindow.setBounds(options, true);
   });
 
-  // ipcMain.on('resize-to-main', (e, arg) => {
-  //   var options = { width: 960, height: size.height };
-  //   options.x = Math.ceil(size.width) - Math.ceil(options.width);
-  //   options.y = VERTICAL_LENGTH - (size.height / 2 - workArea.y);
-  //   mainWindow.show();
-  //   mainWindow.setMinimumSize(options.width, 800);
-  //   mainWindow.setBounds(options, true);
-  // });
-
 };
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
+  process.exit();
 });
 
 ipcMain.on('send_file', (event, path, newContext,  name, newFileName) => {
@@ -157,13 +132,6 @@ ipcMain.on('config-paths', (e, arg) => {
   e.returnValue = routePaths;
 });
 
-// ipcMain.on('openConversation', (event, player, id) => {
-//   createChatWindow(id);
-// });
-ipcMain.on('closeConversation', (event, windowId) => {
-  BrowserWindow.fromId(windowId).close();
-  // console.log(BrowserWindow)
-});
 
 // Windows data directory correction since Electron's default is backwards
 // as ref'd here... https://github.com/electron/electron/issues/1404
