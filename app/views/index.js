@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, useRouterHistory } from 'react-router';
 import { createHashHistory } from 'history';
-import configureStore from './main_source/store/configureStore';
-import routes from './main_source/routes';
+import configureStore from './source/store/configureStore';
+import routes from './source/routes';
 
 const store = configureStore();
 const appHistory = useRouterHistory(createHashHistory)();

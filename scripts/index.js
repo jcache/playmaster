@@ -18,11 +18,6 @@ const getMainUrl = (options) => {
   return getRootUrl(options) + pathname;
 };
 
-const getChatUrl = (options) => {
-  const pathname = browserSyncConnectUtils.clientScript(options);
-  return getRootUrl(options) + pathname;
-};
-
 const BrowserSyncOPTS = {
   ui: false,
   ghostMode: true,
@@ -53,20 +48,28 @@ Bsync.init(BrowserSyncOPTS, (err, bs) => {
   if (err) return console.error(err);
 
   // SPAWN
-  spawn(electron, ['.'], {
+  const electroSpawn = spawn(electron, ['.'], {
     stdio: 'inherit',
     env: {
       ...{
         NODE_ENV: 'development',
         BROWSER_SYNC_MAIN_URL: getMainUrl(bs.options),
-        BROWSER_SYNC_CHAT_URL: getChatUrl(bs.options),
       },
       ...process.env,
     },
   });
 
+  electroSpawn.on('close', (code) => {  // EXITS WHEN ELECTRON EXITS OR CLOSES BADLY
+     if (code !== 0){
+       console.log(`WARNING: Electron process exited with code ${code}`);
+     }
+     Bsync.exit();
+     process.exit();
+   });
+
   // WATCH
   Bsync.watch([
+    'app/entry.js',
     'app/views/**/*.js',
     'app/views/**/*.less',
     'app/views/**/*.jsx',
