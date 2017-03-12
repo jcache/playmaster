@@ -1,0 +1,310 @@
+.flex-class() {
+  display:flex;
+  flex:1;
+}
+
+body, html {
+  display:flex;
+  background-color: #222;
+  margin:0;
+  height:100%;
+  width:100%;
+  overflow: hidden;
+}
+
+#react-root {
+  display:flex;
+  flex:1;
+  height:100%;
+}
+
+.ApplicationFrame {
+  .flex-class();
+  justify-content: space-around;
+  height:100%;
+  flex-direction: column;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+
+.LoginSelectView {
+  display:flex;
+  flex:1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  hr {
+    border: 1px solid transparent;
+  }
+  hgroup{
+    margin: 20px 40px;
+    text-align:  center;
+
+    &.lt {
+      text-align:left;
+    }
+
+    h2 {
+      text-transform: uppercase;
+      font-size:32px;
+      color: rgba(255,255,255,1);
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+    h4 {
+      text-transform: uppercase;
+      font-size:13.5px;
+      font-weight: 600;
+      color: rgba(140,140,140,1);
+      margin: 0;
+    }
+  }
+  .PersonCreateContainer{
+    display:flex;
+    flex:1;
+    margin: 10px 40px;
+    .btn {
+      align-self: flex-end;
+    }
+  }
+}
+
+
+.silly {
+  font-size:150px !important;
+  color:red;
+}
+
+.ApplicationBody{
+  .flex-class();
+  flex-direction: column;
+  position:relative;
+  background-color: rgba(25, 25, 25, 1.00);
+  background-size: cover;
+  .ApplicationHeader {
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+    display:flex;
+    background-size: cover;
+    ul.AppControl {
+      align-items: center;
+      background: none;
+      display:flex;
+      flex:1;
+      min-width: 170px;
+      flex-direction: row;
+      margin:0px 0 0 10px;
+      padding:0px;
+      li {
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        padding:0px;
+        margin:0px;
+        a {
+          flex:1;
+          text-align: center;
+          color: #fff;
+          font-size:13.5px;
+          line-height:18px;
+          margin: 0px;
+          padding:10px;
+          -webkit-app-region: no-drag;
+        }
+      }
+    }
+  }
+
+  .AppView {
+    flex:1;
+    display: flex;
+    overflow: hidden;
+    overflow-x: auto;
+    padding:40px;
+    padding-bottom: 0;
+    position: relative;
+    p {
+      &.lead {
+        color:rgba(128, 0, 128, 1.00);
+        font-size:26px;
+        line-height:38px;
+      }
+      font-size:18px;
+      line-height:30px;
+    }
+  }
+}
+
+@media screen and ( min-height: 600px ) {
+
+}
+@media screen and ( max-height: 900px ) {
+
+  .opt-sm {
+    display: none !important;
+  }
+}
+
+.ApplicationFooter {
+  .flex-class();
+  min-height: 40px;
+  max-height: 40px;
+  background-color: transparent;
+
+
+}
+.header-scroll {
+  width:100%;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.vert-scroll {
+  width:100%;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.row{
+  margin-left:0;
+  margin-bottom: 0;
+  .form-group {
+
+    margin-bottom: 0;
+    .control-label {
+      font-size:13.5px;
+    }
+    .form-control {
+      border-radius:3px;
+      font-family: Arial;
+      color:rgba(255,255,255, 1.00);
+      font-size:16px;
+      font-weight:bold;
+      border: none;
+      padding: 0 10px;
+      background-color: rgba(40, 28, 75, 1.00);
+      -webkit-box-sizing: border-box;
+    }
+  }
+  > .form-group{
+    padding-left:0;
+  }
+}
+
+textarea,
+input[type="number"],
+input[type="text"]{
+  transition: all .3s ease;
+  &:focus{
+    background-color: rgba(60, 40, 90, .7) !important;
+  }
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+.overlay {
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  display:flex;
+  background: rgba(0,0,0,.8);
+  justify-content: center;
+  align-items: center;
+  .settings-view {
+    margin:10px 10px;
+    flex:1;
+
+    // height:80%;
+    flex-shrink: 0;
+    align-self: stretch;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,1);
+    border-radius:6px;
+    padding: 0 20px;
+  }
+  .bn-close {
+    position: absolute;
+    // width:40px;
+    top:20px;
+    font-size:20px;
+    color: rgba(255,255,255,.5);
+    right:20px;
+    // height:40px;
+    svg {
+      vertical-align: top !important;
+    }
+  }
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: none;
+  box-shadow: 0 2px 0 0 #26a69a;
+}
+
+.scroll3{
+  &::-webkit-scrollbar {
+    background: rgba(128, 78, 198, 0);
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(128, 78, 198, .5);
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+
+.scroll4 {
+  &::-webkit-scrollbar {
+    background: transparent;
+    height: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(128, 78, 198, 1.00);
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(128, 78, 198, 0);
+  }
+
+}
+
+.saving-throw-header{
+  background-color: #000;
+  max-width:30px;
+  margin-right:0 !important;
+  position: relative;
+
+  // flex:1;
+
+  p{
+    display:block;
+    position:absolute;
+    top:50%;
+    text-align: center;
+    -webkit-transform: rotate(-90deg);
+  }
+}

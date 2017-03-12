@@ -1,12 +1,16 @@
-*node_modules/
+node_modules/
 /compiled/src/*
 /tmp/*
 /debug.log
 **/npm-debug.log
 /dist/*
 
+# Yarn
+yarn-error.log
+
+
 # React Dev Tool settings
-**/dev_chromeExt.js
+dev_chromeExt.js
 
 # Created by https://www.gitignore.io/api/osx
 ### OSX ###
