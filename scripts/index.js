@@ -21,7 +21,7 @@ const getMainUrl = (options) => {
 const BrowserSyncOPTS = {
   ui: false,
   ghostMode: true,
-  open: false, // false
+  open: false,
   notify: false,
   logPrefix: 'playmaster',
   logSnippet: false,

@@ -1,6 +1,4 @@
-$(document.body).ready(function() {
-  $('select').material_select();
-});
+
 $("#ApplicationBody").scroll(function () {
   //
   var sc = $("#ApplicationBody").scrollTop();
