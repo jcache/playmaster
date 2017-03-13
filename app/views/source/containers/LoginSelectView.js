@@ -1,40 +1,42 @@
 import React, { Component } from 'react';
 import { connect}  from 'react-redux';
-import PlayerChipList from '../container_modules/PlayerChipList';
-import { LoadPlayers } from '../actions/PlayerActions';
+import PlayerAuthenticate from '../container_forms/PlayerAuthenticateForm';
 import { authenticate } from '../actions';
 import { Link } from 'react-router';
+import { MdArrowBack } from 'react-icons/lib/md';
 import { ipcRenderer, remote } from 'electron';
 class LoginSelectView extends Component {
 
   constructor (props) {
     super(props);
   }
-
-  componentWillMount(){
-    this.props.dispatch(LoadPlayers());
+  authenticatePlayer(values){
+    alert(values.password);
+    let { dispatch } = this.props;
+    dispatch(authenticate(values));
   }
-
+  authticateWithFacebook(){
+    alert(`call to facebook`);
+  }
   render() {
-    const { handleSubmit, players, authenticated} = this.props;
     return (
-      <div className="LoginSelectView releaseAppmargin">
-        <div style={{flex:1, display: 'flex'}}>
-          <div style={{flex:1, display: 'flex', flexDirection: 'column'}}>
-            <div className={`PersonSelectList`}>
-              <Link to="/create_player" className={`btn btn-xl btn-primary`}>New Player</Link>
-            </div>
+      <div className="AuthView view">
+        <div className="viewNavigator">
+          <div className="arrowBackContainer">
+            <Link className="arrowBack" onClick={() => alert('hi')}><MdArrowBack/></Link>
+            <span>Back</span>
           </div>
+          <img src="./images/playmaster-logo-steel-gloss.png" width="600"/>
+        </div>
+        <div className={`LoginContainer`}>
+          <PlayerAuthenticate
+            onSubmit={(player) => this.authenticatePlayer(player)}
+            onFacebookAuth={() => this.authticateWithFacebook()}
+          />
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    authenticated: state.Player.authenticated,
-    players: state.Players.players
-  }
-}
-export default connect(mapStateToProps)(LoginSelectView)
+export default connect()(LoginSelectView)
