@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect}  from 'react-redux';
 import { Overlay } from './mainOverlay';
+
 class ApplicationFrame extends Component {
   constructor (props) {
     super(props);
