@@ -15,6 +15,7 @@ class ApplicationFrame extends Component {
       <div ref="scrollview" className={`AppView scroll3 `}>
         {this.props.children}
         <Overlay visibility={overlay} onDismissOverlay={() => this.setState({overlay: !overlay})}></Overlay>
+        <div className="appbg"></div>
       </div>
     );
   }

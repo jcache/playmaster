@@ -2,7 +2,14 @@
   display:flex;
   flex:1;
 }
-
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 body, html {
   display:flex;
   background-color: #222;
@@ -16,6 +23,7 @@ body, html {
   display:flex;
   flex:1;
   height:100%;
+  animation: fadein .8s;
 }
 
 .ApplicationFrame {
@@ -29,11 +37,11 @@ body, html {
 
 
 
-.LoginSelectView {
+.AuthView {
   display:flex;
   flex:1;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   hr {
     border: 1px solid transparent;
@@ -61,12 +69,144 @@ body, html {
       margin: 0;
     }
   }
-  .PersonCreateContainer{
+  .viewNavigator{
+    flex:1;
+    display:flex;
+    background-color: rgba(0,0,0,.2);
+    justify-content: center;
+    align-self: stretch;
+    position: relative;
+    max-height: 100px;
+    // align-items: center;
+    .arrowBackContainer{
+      flex:1;
+      display: flex;
+      position:absolute;
+      left: 5px;
+      top: 30px;
+      margin-left:15px;
+      span {
+        transition: .3s ease all;
+        color: rgba(255,255,255,.1);
+        line-height: 38px;
+        margin-left: 10px;
+        font-size: 20px;
+        font-weight: 600;
+      }
+      .arrowBack{
+        flex:1;
+        font-size: 25px;
+        transition: .3s ease all;
+        border: 2px solid rgba(255,255,255,.1);
+        color: rgba(255,255,255,.1);
+        border-radius: 40px;
+        padding: 0;
+        min-width:40px;
+        min-height:40px;
+        line-height: 34px;
+        text-align: center;
+        align-self: flex-start;
+        svg {
+          margin-top: -5px;
+          //  margin-left: -3px;
+        }
+      }
+      &:hover {
+        span {
+          color: rgba(255,255,255,1);
+          margin-left: 20px;
+        }
+        .arrowBack{
+          color: rgba(255,255,255,1);
+          border: 2px solid rgba(255,255,255,1);
+        }
+        color: rgba(255,255,255,1);
+      }
+    }
+    img {
+      margin-bottom: -20px;
+      -webkit-app-region: drag;
+      -webkit-user-select: none;
+      display:flex;
+      position: absolute;
+      left: 50%;
+      margin-left: -300px;
+      bottom: -100px;
+      display:flex;
+    }
+  }
+  .LoginContainer{
     display:flex;
     flex:1;
-    margin: 10px 40px;
+
+    // margin: 10px 40px 0;
+    // background: rgba(0,0,0,1);
+    // flex-grow: 0;
+    justify-content: center;
+    align-items: center;
+    // align-self: center;
+    min-height: 240px;
+    min-width: 400px;
+    flex-direction: row;
+    .form,
+    form {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 20px;
+    }
+
+    .form {
+      h3 {
+        text-align:center;
+        font-weight: 200;
+        color: rgba(37, 37, 37, 1.00);
+        // font-style: italic;
+      }
+      .fbButtonContainer{
+        display:flex;
+        padding: 5px 0;
+        max-height: 50px !important;
+        flex:1;
+        button {
+          background-color: rgba(56, 83, 133, 1.00);
+          border: none;
+          padding: 0;
+          border-radius: 0;
+          line-height: 50px;
+          height: 50px;
+          width: 100%;
+        }
+      }
+    }
+
+    form {
+      .form-group {
+        margin-bottom: 0;
+        .form-control{
+          transition: all .3s ease;
+          border-radius: 0;
+          border: none;
+          line-height: 60px;
+          height: 60px;
+          background-color: rgba(0, 0, 0, .5);
+          margin-bottom: 15px;
+          &:focus{
+            background-color: rgba(0, 0, 0, .8) !important;
+          }
+        }
+      }
+    }
     .btn {
-      align-self: flex-end;
+      align-self: center;
+      background: -webkit-linear-gradient(top, rgba(40,40,40,.5) 0%, rgba(60,60,60,.5) 100%);
+      border-bottom: 1px solid rgba(0,0,0,.5);
+      border: none;
+      padding: 0;
+      border-radius: 0;
+      line-height: 60px;
+      height: 60px;
+      width: 100%;
     }
   }
 }
@@ -81,13 +221,31 @@ body, html {
   .flex-class();
   flex-direction: column;
   position:relative;
-  background-color: rgba(25, 25, 25, 1.00);
-  background-size: cover;
+  background-color: rgba(10, 10, 10, 1.00);
+
+
+  .ApplicationFooter {
+    .flex-class();
+    min-height: 40px;
+    max-height: 40px;
+    background-color: rgba(10, 10, 10, 1.00);
+    border-top: 1px solid rgba(0, 0, 0, 1.00);
+    p {
+      padding: 5px 20px;
+      line-height:30px;
+      color: rgba(255,255,255,1);
+      font-size: 10px;
+      .heart {
+        color: rgba(255, 84, 32, 1.00);
+      }
+    }
+  }
   .ApplicationHeader {
     -webkit-app-region: drag;
     -webkit-user-select: none;
     display:flex;
     background-size: cover;
+    background-color: rgba(0, 0, 0, 1.00);
     ul.AppControl {
       align-items: center;
       background: none;
@@ -106,25 +264,45 @@ body, html {
         a {
           flex:1;
           text-align: center;
-          color: #fff;
+          color: rgba(255,255,255,.6);
           font-size:13.5px;
           line-height:18px;
-          margin: 0px;
-          padding:10px;
+          margin: 10px 5px;
+          padding: 4px 7px;
           -webkit-app-region: no-drag;
+          transition: .4s ease all;
+          background-color: rgba(10,10,10,1);
+          border-radius: 28px;
+          &:hover {
+            background-color: rgba(0,0,0,.5);
+            color: rgba(255,255,255,1);
+          }
         }
       }
     }
   }
-
+  .view {
+    z-index: 2;
+  }
   .AppView {
     flex:1;
     display: flex;
     overflow: hidden;
     overflow-x: auto;
-    padding:40px;
     padding-bottom: 0;
     position: relative;
+
+    .appbg{
+      position: absolute;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      background-size: cover !important;
+      filter: grayscale(95%);
+      z-index: 0;
+      background: url('../images/lines_red.jpg') top center no-repeat;
+    }
     p {
       &.lead {
         color:rgba(128, 0, 128, 1.00);
@@ -147,14 +325,7 @@ body, html {
   }
 }
 
-.ApplicationFooter {
-  .flex-class();
-  min-height: 40px;
-  max-height: 40px;
-  background-color: transparent;
 
-
-}
 .header-scroll {
   width:100%;
   -webkit-transition: all 0.3s ease-out;
@@ -261,7 +432,7 @@ input[type=number]:focus:not([readonly]),
 input[type=search]:focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
   border-bottom: none;
-  box-shadow: 0 2px 0 0 #26a69a;
+  box-shadow: 0 2px 0 0 rgba(100,100,100,.5);
 }
 
 .scroll3{

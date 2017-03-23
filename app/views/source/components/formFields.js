@@ -4,10 +4,10 @@ import { ipcRenderer, remote } from 'electron';
 
 
 
-export const renderTextField = ({ input, label, wrapClass, type, meta: { touched, error, warning } }) => (
+export const renderTextField = ({ input, label, wrapClass, type, placeholder, meta: { touched, error, warning } }) => (
   <div className={`${wrapClass}`}>
     <label data-error="wrong" data-success="right" className={`control-label`}>{label}</label>
-    <input {...input} type={type} className={`form-control validate`}/>
+    <input {...input} type={type} className={`form-control validate`} placeholder={placeholder}/>
     {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
   </div>
 )
