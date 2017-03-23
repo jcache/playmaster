@@ -3,6 +3,8 @@ import rootReducer from '../reducers';
 import thunk from 'redux-thunk'
 import promiseMiddleware from 'redux-promise-middleware';
 // import evolitionModule from 'evolition-module';
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux';
+
 
 export default function configureStore(initialState = {}){
   let middleWare = [

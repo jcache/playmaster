@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { ipcRenderer, remote } from 'electron';
 import { connect }  from 'react-redux';
 import { IoChevronLeft, IoChevronRight } from 'react-icons/lib/io';

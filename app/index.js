@@ -6,4 +6,4 @@ if (process.env.NODE_ENV === 'development') {
   var appRoot = path.join(__dirname);
 }
 
-require('electron-compile').init(appRoot, './entry', false);
+require('electron-compile').init(appRoot, require.resolve('./entry'));
