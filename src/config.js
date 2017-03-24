@@ -1,7 +1,7 @@
 import path from 'path';
 
 const APP_NAME = 'Playmaster';
-const APP_TEAM = 'Evolition, LLC';
+const APP_TEAM = 'Evolition, L.L.C';
 const APP_TEAM_URL = 'https://evolition.io';
 const APP_GIT_URL = 'https://github.com/evolition/playmaster/';
 const APP_VERSION = require('../package.json').version;
