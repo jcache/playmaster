@@ -1,7 +1,7 @@
 {
   "name": "playmaster",
   "description": "Evolition L.L.C presents Playmaster, your table top roleplaying character manager",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Kevin Carr <kevin@evolition.io>",
   "main": "index.js",
   "dependencies": {
