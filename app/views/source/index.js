@@ -13,14 +13,14 @@ class App extends Component {
   render() {
     return (
       <div className="ApplicationFrame container-fluid">
-        <div className={`ApplicationBody`}>
-          <ApplicationHeader />
-          <ApplicationNavigation/>
-          <ApplicationFrame>
-            {this.props.children}
-          </ApplicationFrame>
-          <ApplicationFooter/>
-        </div>
+          <div className={`ApplicationBody`}>
+            <ApplicationHeader />
+            <ApplicationNavigation/>
+            <ApplicationFrame>
+              {this.props.children}
+            </ApplicationFrame>
+            <ApplicationFooter/>
+          </div>
       </div>
     );
   }
