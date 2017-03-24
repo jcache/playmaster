@@ -26,7 +26,7 @@ const argv = minimist(process.argv.slice(2), {
   ],
   default: {
     package: 'all',
-    sign: false
+    sign: true
   },
   string: [
     'package'
@@ -87,11 +87,15 @@ const win32 = {
 const darwin = {
   platform: 'darwin',
   arch: 'x64',
+  'app-bundle-id': 'io.evolition.playmaster',
+  'app-category-type': 'public.app-category.utilities',
+  icon: config.APP_ICON + '.icns'
 }
 
 build()
 
 function buildDarwin(cb) {
+  const plist = require('plist');
   console.log('Mac: Packaging electron...');
 
   electronPackager(Object.assign({}, all, darwin), (err, buildPath) => {
@@ -104,14 +108,16 @@ function buildDarwin(cb) {
     const appPath = path.join(buildPath[0], config.APP_NAME + '.app')
     const contentsPath = path.join(appPath, 'Contents')
     const resourcesPath = path.join(contentsPath, 'Resources')
-
+    const infoPlistPath = path.join(contentsPath, 'Info.plist')
     console.log(`apppath: `,appPath);
     console.log(`contentsPath: `,contentsPath);
     console.log(`resourcesPath: `,resourcesPath);
+    console.log(`infoPlistPath: `,infoPlistPath);
+    const infoPlist = plist.parse(fs.readFileSync(infoPlistPath, 'utf8'))
 
     // Copy torrent file icon into app bundle
     // cp.execSync(`cp ${config.APP_FILE_ICON + '.icns'} ${resourcesPath}`)
-
+    console.log(process.platform, process.platform === 'darwin', `argv.sign`, argv.sign);
     if (process.platform === 'darwin') {
       if (argv.sign) {
         signApp(function (err) {
@@ -146,7 +152,9 @@ function buildDarwin(cb) {
       const signOpts = {
         app: appPath,
         platform: 'darwin',
-        verbose: true
+        verbose: true,
+        'gatekeeper-assess': false,
+        identity: "3rd Party Mac Developer Application: Evolition L.L.C (RPL98XGCL6) "
       }
 
       console.log('Mac: Signing app...')

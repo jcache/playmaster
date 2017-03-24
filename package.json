@@ -68,7 +68,7 @@
     "fs-extra": "^2.0.0",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
-    "os": "^0.1.1",
+    "plist": "^2.0.1",
     "run-series": "^1.1.4",
     "spectron": "^3.6.0"
   }
