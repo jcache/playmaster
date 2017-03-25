@@ -1,7 +1,7 @@
 {
   "name": "playmaster",
   "productName": "Playmaster",
-  "version": "0.0.0",
+  "version": "0.0.6",
   "description": "Evolition L.L.C presents Playmaster, your table top roleplaying character manager",
   "main": "app/",
   "engineStrict": true,

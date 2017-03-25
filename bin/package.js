@@ -4,7 +4,7 @@
 import cp from 'child_process';
 import fs from 'fs';
 import electronPackager from 'electron-packager';
-import pkg from '../package.json';
+import pkg from '../app/package.json';
 import rimraf from 'rimraf';
 import path  from 'path';
 import config from '../src/config';
@@ -153,8 +153,8 @@ function buildDarwin(cb) {
         app: appPath,
         platform: 'darwin',
         verbose: true,
-        'gatekeeper-assess': false,
-        identity: "3rd Party Mac Developer Application: Evolition L.L.C (RPL98XGCL6) "
+        'gatekeeper-assess': true,
+        identity: "3rd Party Mac Developer Application: Evolition L.L.C (RPL98XGCL6)"
       }
 
       console.log('Mac: Signing app...')
